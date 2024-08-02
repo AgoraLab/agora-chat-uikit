@@ -1,4 +1,4 @@
-![Customize Contact Details Page](/images/customize-contact-details-page.png)
+![Customize Contact Details Page](./assets/images/customize-contact-details-page.png)
 
 ## 1. Customize the navigation section of contact details
 
