@@ -1,4 +1,4 @@
-![Customize Your Contact List](/images/customize-your-contact-list.png)
+![Customize Your Contact List](./assets/images/customize-your-contact-list.png)
 
 ## 1. Customize the header navigation bar of the Conversation List page (ContactViewController.swift)
 
