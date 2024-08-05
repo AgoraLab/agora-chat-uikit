@@ -12,4 +12,4 @@ The tutorials in this wiki will guide you step by step to complete the operation
 
 5. [Customize group details](./customize_group_details_page.md)
 
-6. [Theme related](./theme_related.md)
+6. [Switch and customize the theme](./theme_related.md)
