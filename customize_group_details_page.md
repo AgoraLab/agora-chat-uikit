@@ -2,70 +2,70 @@
 
 ## 1. Customize the navigation section of group details
 
-- In the demo, inherit the `EaseChatNavigationBar` class from `EaseChatUIKit` to create your own conversation list page navigation. This example is named `CustomConversationNavigationBar`.
+- In the demo, inherit the `EaseChatNavigationBar` class from `EaseChatUIKit` to create your own page navigation. In this example, it is named `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
-``` swift
-    override func createNavigationBar() -> EaseChatNavigationBar {
-        CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "more", in: .chatBundle, with: nil,hiddenAvatar: false)
-    }
-```
-
-- To customize the right side of the navigation bar button to display images, set `rightImages` in the above code to return the picture you want. Note that the order is 0, 1, 2. Whether to display the avatar on the left side of the navigation bar can be controlled by the `hiddenAvatar` parameter in the above code.
-
-- To customize navigation and listen to the original navigation click event, you need to overload the `navigationClick` method in the session list page, and then perform corresponding processing according to the corresponding click area. The sample code is as follows:
-
-``` swift
-    override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
-        switch type {
-        case .back: self.backAction()
-        case .avatar: self.avatarAction()
-        case .title: self.titleAction()
-        case .subtitle: self.subtitleAction()
-        case .rightItems: self.rightItemsAction(indexPath: indexPath)
-        default:
-            break
+    ``` swift
+        override func createNavigationBar() -> EaseChatNavigationBar {
+            CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "more", in: .chatBundle, with: nil,hiddenAvatar: false)
         }
-    }
-```
+    ```
 
-- The edit mode of the navigation bar can be enabled by setting `editMode = true`, which means that both the **back** button and the three buttons on the right side will be hidden, and a **cancel** button will appear on the right side.
+- To customize the look of the button on the right side of the navigation bar, set `rightImages` in the above sample code to return the required image. Note that the order is 0, 1, 2. Control whether to display the avatar on the left side of the navigation bar with the `hiddenAvatar` parameter.
 
-- Changing the navigation title content can be achieved by `self.navigation.title = "Chats".chat.localize`, and the implementation of the navigation subtitle  `self.navigation.subtitle = "xxx"` is similar, but it should be noted that you need to set up the subtitle before setting up the title. But if there is no subtitle, then the title can be set directly. The reason for setting the subtitle first and then the title is to update the corresponding layout position inside (if both are present).
+- To customize navigation and listen to the original navigation click event, override the `navigationClick` method and perform the processing according to the corresponding click area. The sample code is as follows:
 
-- Changing the navigation avatar can be accomplished with `self.navigation.avatarURL = "https://xxx.xxx.xxx"`.
+    ``` swift
+        override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
+            switch type {
+            case .back: self.backAction()
+            case .avatar: self.avatarAction()
+            case .title: self.titleAction()
+            case .subtitle: self.subtitleAction()
+            case .rightItems: self.rightItemsAction(indexPath: indexPath)
+            default:
+                break
+            }
+        }
+    ```
 
-- Setting the navigation and background color can be achieved through `self.navigation.backgroudColor = .red`. The internal components of the navigation can also support this method of modification provided that the theme is not switched. If the theme is switched, it will switch to the theme's default color.
+- Enable the editing mode of the navigation bar by setting `editMode = true`. In this mode, both the **back** button and the three buttons on the right side will be hidden, and a **cancel** button will appear.
+
+- Set `self.navigation.title = "Chats".chat.localize` and `self.navigation.subtitle = "xxx"` to change the navigation title and subtitle, respectively. If present, set the subtitle first to update the corresponding layout position inside.
+
+- Change the navigation avatar with `self.navigation.avatarURL = "https://xxx.xxx.xxx"`.
+
+- Set the navigation background color with `self.navigation.backgroudColor = .red`. The internal components of the navigation can also support this method of modification provided that the theme is not switched. If the theme is switched, it will use the theme's default color.
 
 - Click the `...` button in the upper right corner of the group details page to bring up the `ActionSheet` menu to see the configurable data source items `Appearance.contact.moreActions`. The following example shows how to add or remove them:
 
-``` swift
-    //Add
-    Appearance.contact.moreActions.append(ActionSheetItem(title: "new list item", type: .destructive, tag: "contact_custom"))
-    //Remove
-    Appearance.contact.moreActions.removeAll { $0. tag == "you want remove" }
-```
+    ``` swift
+        //Add
+        Appearance.contact.moreActions.append(ActionSheetItem(title: "new list item", type: .destructive, tag: "contact_custom"))
+        //Remove
+        Appearance.contact.moreActions.removeAll { $0. tag == "you want remove" }
+    ```
 
-Get the click event of a single item in the array, example:
-
-``` swift
-    if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-        item.actionClosure = { [weak self] _ in
-            //do something
+    Get the click event of a single item in this array:
+    
+    ``` swift
+        if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
+            item.actionClosure = { [weak self] _ in
+                //do something
+            }
         }
-    }
-    if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-        item.actionClosure = { [weak self] _ in
-            //do something
+        if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
+            item.actionClosure = { [weak self] _ in
+                //do something
+            }
         }
-    }
-```
+    ```
 
 
-## 2. Group details customized list item section
+## 2. Customize a group details list item
 
-- The data source in the `CollectionView` of the button in the Header of the contact details page can be configured with items `Appearance.contact.detailExtensionActionItems`. Event listening to the same user as above, add items with the following code. First, integrate contact inheritance and register the detail page into `EaseChatUIKit`, `ComponentsRegister.shared.GroupInfoController = MineGroupDetailViewController.self`, then
+Configure the data source in the `CollectionView` of the header button of the group details page with `Appearance.contact.detailExtensionActionItems`. The event listening is the same as above. Adding items is the same as the following code. First, integrate contact inheritance and register the detail page into `EaseChatUIKit`, then set `ComponentsRegister.shared.GroupInfoController = MineGroupDetailViewController.self`.
 
 ``` swift
 final class MineGroupDetailViewController: GroupInfoViewController {

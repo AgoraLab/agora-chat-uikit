@@ -2,7 +2,7 @@
 
 ## 1. Customize the navigation bar UI in the message list page
 
-- In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own conversation list page navigation. This example is named `CustomConversationNavigationBar`.
+- In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
@@ -12,7 +12,7 @@
         }
     ```
 
-- To customize the right side of the navigation bar button to display images, set `rightImages` in the above code to return the picture you want. Note that the order is 0, 1, 2. Control whether to display the avatar on the left side of the navigation bar with the `hiddenAvatar` parameter.
+- To customize the look of the button on the right side of the navigation bar, set `rightImages` in the above sample code to return the required image. Note that the order is 0, 1, 2. Control whether to display the avatar on the left side of the navigation bar with the `hiddenAvatar` parameter.
 
 - To customize navigation and listen to the original navigation click event, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
 
@@ -32,28 +32,27 @@
 
 - Enable the editing mode of the navigation bar by setting `editMode = true`. This means that both the **back** button and the three buttons on the right side will be hidden, and a **cancel** button will appear on the right side.
 
-- Change the navigation title content by setting `self.navigation.title = "Chats".chat.localize`. The implementation of the navigation subtitle  `self.navigation.subtitle = "xxx"` is similar, but it should be noted that you need to set up the subtitle before setting up the title. If there is no subtitle, then the title can be set directly. The reason for setting the subtitle first is to update the corresponding layout position inside (if both are present).
+- Set `self.navigation.title = "Chats".chat.localize` and `self.navigation.subtitle = "xxx"` to change the navigation title and subtitle, respectively. If present, set the subtitle first to update the corresponding layout position inside.
 
 - Change the navigation avatar with `self.navigation.avatarURL = "https://xxx.xxx.xxx"`.
 
-- Set the navigation and background color through `self.navigation.backgroudColor = .red`. The internal components of the navigation can also support this method of modification provided that the theme is not switched. If the theme is switched, it will switch to the theme's default color.
+- Set the navigation background color with `self.navigation.backgroudColor = .red`. The internal components of the navigation can also support this method of modification provided that the theme is not switched. If the theme is switched, it will use the theme's default color.
 
-- To customize the redirect event, check for the methods marked as **open** in the message list page and override them to jump to your own business page. Here are some examples of APIs that can be overriden:
+- To customize the redirect event, check for the methods marked as **open** in the message list page and override them to jump to your own business page. Here are some examples of APIs that can be overridden:
 
-    | Method name            | Usage         | Can be overriden |
-    |------------------------|---------------|-------------------|
-    | `messageBubbleClicked` | Message bubble click | Yes        |
-    | `messageAvatarClick`   | Message avatar click | Yes        |
-    | `audioDialog`          | Input box audio button click event | Yes         |
-    | `attachmentDialog`     | Input box sends attachment message click event | Yes          |
-
+    | Method name            | Usage         | Can be overridden |
+    |------------------------|-------------------|-------------------|
+    | `messageBubbleClicked` | Message bubble click | Yes               |
+    | `messageAvatarClick`   | Message avatar click | Yes               |
+    | `audioDialog`          | Input box audio button click | Yes               |
+    | `attachmentDialog`     | Input box send attachment message  | Yes               |
 
 ## 2. Customize the list items, such as the cell for each message type
 
 Customize the content of the list items in the message table, that is, `TextMessageCell`. Inherit the cell of the message type, register and override some services in the subscript in `EaseChatUIKit`, and then set the following code:
 
-| Cell class name       | Usage                     | Swift code to register corresponding override property |
-|-----------------------|---------------------------|--------------------------------------------------------|
+| Cell class name       | Usage                     | Swift code to register the corresponding override property                     |
+|-----------------------|---------------------------|--------------------------------------------------------------------------------|
 | `TextMessageCell `    | Text type message         | `ComponentsRegister.shared.ChatTextMessageCell = YourTextMessageCell.self`     |
 | `ImageMessageCell`    | Picture type message      | `ComponentsRegister.shared.ChatImageMessageCell = YourImageMessageCell.self`   |
 | `AudioMessageCell`    | Audio type message        | `ComponentsRegister.shared.ChatAudioMessageCell = YourAudioMessageCell.self`   |
@@ -74,11 +73,11 @@ Then, in your custom class, override the corresponding method. If you need to re
     }
 ```
 
-If you need to make changes to the previous logic, copy the code from the previous `refresh` method and make changes without calling `super.xxxx`. Each corresponding message type cell has an initialization method, content `createContent`, and `refresh` method in the bubble that can be overriden, as well as other methods for small modules.
+If you need to make changes to the previous logic, copy the code from the previous `refresh` method and make changes without calling `super.xxxx`. Each corresponding message type cell has an initialization method, content `createContent`, and `refresh` method in the bubble that can be overridden, as well as other methods for small modules.
 
 ## 3. Other customizable methods in the message list page
 
-All other methods marked as **open** can be overriden to implement your own business logic.
+All other methods marked as **open** can be overridden to implement a custom business logic.
 
 ## 4. Configurable items in the message list module
 
@@ -117,19 +116,19 @@ The `ChatAppearance` class is a configurable container class. For simple configu
     }
     ```
 
-Get an action of the click event, sample code:
+    Get an action of the click event, sample code:
+    
+    ``` swift
+        Appearance.chat.messageLongPressedActions.first { $0.tag == "xxx" }?.action = { [weak self ] in 
+            //action handler
+        }
+    ```
 
-``` swift
-    Appearance.chat.messageLongPressedActions.first { $0.tag == "xxx" }?.action = { [weak self ] in 
-        //action handler
-    }
-```
+- `Appearance.chat.targetLanguage= .Chinese`: After long pressing a text message, a translation menu will appear. After clicking **Translate**, set the target language to be translated to. The prerequisite is to apply for the translation function in Agora Console and set `Appearance.chat.enableTranslation` to `true`.
 
-- `Appearance.chat.targetLanguage= .Chinese`: After long pressing a text message, a translation menu will appear. After clicking **Translate**, set the target language to be translated to. The prerequisite is to apply for the translation function in the background of Agora Console and set `Appearance.chat.enableTranslation` to `true` to enable the translation function of text message long press. If the background application is not passed, the front-end API call will fail to translate.
+- `Appearance.chat.reportSelectionTags` & `Appearance.chat.reportSelectionReasons`: The message reporting feature has an array of report tags and a corresponding array of reasons.
 
-- `Appearance.chat.reportSelectionTags` & `Appearance.chat.reportSelectionReasons`: The message reporting feature has an array of report tags and a corresponding array of reasons, kv one-to-one.
-
-- `Appearance.chat.inputExtendActions`: Click on the right side of the message input box to pop up the `ActionSheet` data source array. For usage refer to `Appearance.chat.messageLongPressedActions` above.
+- `Appearance.chat.inputExtendActions`: Click on the right side of the message input box to pop up the `ActionSheet` data source array. For usage, refer to `Appearance.chat.messageLongPressedActions` above.
 
 - `Appearance.chat.dateFormatToday = "HH:mm"` & `Appearance.chat.dateFormatOtherDay = "yyyy-MM-dd HH:mm"`: Time format of the message.
 
