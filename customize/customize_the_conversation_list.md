@@ -1,4 +1,4 @@
-![Customize Conversation List](./assets/images/customize-conversation-list.png)
+![Customize Conversation List](../assets/images/customize-conversation-list.png)
 
 ## 1. Customize the header navigation bar of the conversation list (ConversationListController.swift)
 

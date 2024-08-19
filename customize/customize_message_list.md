@@ -1,4 +1,4 @@
-![Customize Message List](./assets/images/customize-message-list.png)
+![Customize Message List](../assets/images/customize-message-list.png)
 
 ## 1. Customize the navigation bar UI in the message list page
 
