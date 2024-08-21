@@ -1,4 +1,4 @@
-![Contact Info](../assets/images/customize-group-details-contact-info.png)
+![Contact Info](../../assets/images/customize-group-details-contact-info.png)
 
 ## 1. Customize the navigation section of group details
 
