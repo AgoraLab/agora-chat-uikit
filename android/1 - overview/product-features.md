@@ -14,9 +14,9 @@ they need.
 Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
 one-to-one conversation or a chat group.
 
-### Start one-to-one chat
+### Start a conversation
 
-A user initiates communication with another user by starting a conversation.
+A user initiates communication with one or more users by starting a conversation.
 
 ### Create chat group
 
@@ -26,7 +26,7 @@ manage it.
 ### Manage chat group
 
 Chat group administrators have all permissions to the group, which includes adding or deleting members, 
-modifying the group name, description, and avatar, banning or kicking out group members, and others.
+modifying the group name, description, and avatar, banning or deleting group members, and others.
 
 ### User list
 
@@ -68,9 +68,10 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 This section covers specific features related to managing conversations. 
 
-### Conversation read receipt
+### Conversation marked as read
 
-Conversation read receipt shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or long-press it to open a context menu and set the conversation as read. 
+Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
+long-press it to open a context menu and mark the conversation as read.
 
 ### Pin a conversation
 
