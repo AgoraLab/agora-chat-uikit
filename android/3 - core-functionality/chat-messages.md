@@ -107,9 +107,9 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 
 ### Add a custom message layout
 
-Developers can inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement their own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set `EaseChatFragment#Builder#setCustomAdapter` to `CustomMessageAdapter`.
+You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set `EaseChatFragment#Builder#setCustomAdapter` to `CustomMessageAdapter`.
 
-1. To create a custom `CustomMessageAdapter`, inherit from `EaseMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods.
+1. To create a custom `CustomMessageAdapter`, inherit from `EaseMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
 
     ```kotlin
     class CustomMessageAdapter: EaseMessagesAdapter() {
@@ -150,4 +150,178 @@ Developers can inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseC
     }
     }
     }
+    ```
+
+1. Inherit from `EaseChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
+
+```kotlin
+class CustomChatTypeViewViewHolder(
+    itemView: View
+): EaseChatRowViewHolder(itemView) {
+
+    override fun onBubbleClick(message: EaseMessage?) {
+        super.onBubbleClick(message)
+        // Adding a click event
+    }
+}
+```
+
+1. Complete `CustomMessageAdapter`:
+
     ```kotlin
+  class CustomMessageAdapter: EaseMessagesAdapter() {
+  
+      override fun getItemNotEmptyViewType(position: Int): Int {
+          // Set your own itemViewType according to the message type.
+          mData?.get(position)?.getMessage()?.let { msg ->
+              msg.getStringAttribute("type", null)?.let { type ->
+                  if (type == CUSTOM_TYPE) {
+                      return if (msg.direct() == ChatMessageDirection.SEND) {
+                          VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME
+                      } else {
+                          VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER
+                      }
+                  }
+              }
+          }
+          // If you want to use the default, return super.getItemNotEmptyViewType(position).
+          return super.getItemNotEmptyViewType(position)
+      }
+  
+      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+          // If you want to use the default, return super.getItemNotEmptyViewType(position).
+          if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
+              CustomChatTypeViewViewHolder(
+                  CustomTypeChatRow(parent.context, isSender = viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME)
+              )
+          }
+          // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
+          return super.getViewHolder(parent, viewType)
+      }
+  
+      companion object {
+          private const val CUSTOM_TYPE = "custom_type"
+          private const val VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME = 1000
+          private const val VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER = 1001
+      }
+  }
+    ```
+    
+1. Add `CustomMessageAdapter` to `EaseChatFragment#Builder`:
+
+    ```kotlin
+    builder.setCustomAdapter(CustomMessageAdapter())
+    ```
+   
+## List control-related function settings
+
+```kotlin
+val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
+```
+
+The following `EaseChatMessageListLayout` methods are provided:
+
+| Method | Description |
+|:---:|:---:|
+| `setViewModel()` | UIKit provides a default implementation EaseMessageListViewModel, which developers can inherit IChatMessageListRequestand add their own data logic. |
+| `setMessagesAdapter()` | Set the adapter for the message list, which needs to be EaseMessagesAdaptera subclass of . |
+| `getMessagesAdapter()` | An adapter that returns a list of messages. |
+| `addHeaderAdapter()` | Add adapter for header layout of message list. |
+| `addFooterAdapter()` | Add the adapter for the footer layout of the message list. |
+| `removeAdapter()` | Removes the specified adapter. |
+| `addItemDecoration()` | Decorator that adds a list of messages. |
+| `removeItemDecoration()` | Remove the message list decorator. |
+| `setAvatarDefaultSrc()` | Sets the default avatar for an entry. |
+| `setAvatarShapeType()` | Set the style of the avatar, which is divided into three styles: default style, circular style and rectangular style. |
+| `showNickname()` | Whether to display the nickname of the entry, EaseChatFragment#Builderand the setting method of this function is also provided. |
+| `setItemSenderBackground()` | Set the background of the sender, EaseChatFragment#Builderand also provide the setting method of this function. |
+| `setItemReceiverBackground()` | Set the background of the receiver, EaseChatFragment#Builderand also provide the setting method of this function. |
+| `setItemTextSize()` | Set the font size for text messages. |
+| `setItemTextColor()` | Set the font color of text messages. |
+| `setTimeTextSize()` | Set the font size of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
+| `setTimeTextColor()` | Set the color of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
+| `setTimeBackground()` | Set the background of the timeline. |
+| `hideChatReceiveAvatar()` | The recipient's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
+| `hideChatSendAvatar()` | The sender's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
+| `setOnChatErrorListener()` | Set the error callback when sending a message. EaseChatFragment#BuilderThe setting method of this function is also provided. |
+
+## Extended function settings
+
+```kotlin
+val chatExtendMenu: IChatExtendMenu? = binding?.layoutChat?.chatInputMenu?.chatExtendMenu
+```
+
+After obtaining a `chatExtendMenu` object, you can add, remove, sort, and handle click events of extended functions.
+
+`IChatExtendMenu` provides the following methods: 
+
+| Method | Describe |
+|:---:|:---:|
+| `clear()` | Clear all extended menu items. |
+| `setMenuOrder()` | Sort the specified menu items. |
+| `registerMenuItem()` | Add a new menu item. |
+
+## Listen for extension item click events
+
+You can use `EaseChatFragment#Builder#setOnChatExtendMenuItemClickListener` for monitoring or override the `ChatExtendMenuItemClick` method in a custom Fragment.
+
+```kotlin
+override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
+    if(itemId == CUSTOM_YOUR_EXTEND_MENU_ID) {
+        // Handle your own click event logic
+        // If you want to customize the click event, return `true`
+        return true
+    }
+    return super.onChatExtendMenuItemClick(view, itemId)
+}
+```
+
+## Long press menu function settings
+
+- Add custom menu items
+
+    ```kotlin
+  binding?.let {
+      it.layoutChat.addItemMenu(menuId, menuOrder, menuTile)
+  }
+    ```
+  
+    `EaseChatLayout` provides the following long-press menu methods: 
+
+    | Method | Description |
+    |:---:|:---:|
+    | `clearMenu()` | Clear a menu item. |
+    | `addItemMenu()` | Add a new menu item. |
+    | `findItemVisible()` | Set the visibility of a menu item by specifying `itemId`. |
+    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `EaseChatFragment`.|
+
+- Handle menu events
+
+    Override the following method in your custom Fragment:
+
+        ```kotlin
+        override fun onPreMenu(helper: EaseChatMenuHelper?, message: ChatMessage?) {
+          // Callback event before menu is displayed. You can use the helper object to set whether the menu item is displayed.
+        }
+      
+        override fun onMenuItemClick(item: EaseMenuItem?, message: ChatMessage?): Boolean {
+          // If you want to intercept a click event, you need to set it to return `true`.
+        return false
+        }
+      
+        override fun onDismiss() {
+          // You can handle the hiding event of the shortcut menu here.
+        }
+        ```
+  
+## Set properties related to the input menu 
+
+- Get `EaseChatInputMenu` object: 
+
+  ```kotlin
+  val chatInputMenu: EaseChatInputMenu? = binding?.layoutChat?.chatInputMenu
+  ```
+  
+  `EaseChatInputMenu` provides the following methods: 
+
+    
