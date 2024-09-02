@@ -316,7 +316,7 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   
 ## Set properties related to the input menu 
 
-- Get `EaseChatInputMenu` object: 
+- Get an `EaseChatInputMenu` object: 
 
   ```kotlin
   val chatInputMenu: EaseChatInputMenu? = binding?.layoutChat?.chatInputMenu
@@ -324,4 +324,56 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   
   `EaseChatInputMenu` provides the following methods: 
 
+    | method | describe |
+    |:---:|:---:|
+    | `setCustomPrimaryMenu()` | Set custom menu items, supports View and Fragment. |
+    | `setCustomEmojiconMenu()` | Set a custom emoji menu, supports View and Fragment. |
+    | `setCustomExtendMenu()` | Set custom extended menu items, supports View, Dialog, and Fragment. |
+    | `setCustomTopExtendMenu()` | Set a custom extended top menu layout, supports View and Fragment. |
+    | `hideExtendContainer()` | Hide the extended area, including the emoji and extended menu areas. |
+    | `hideInputMenu()` | Hide all areas except the top area of the menu. |
+    | `showEmojiconMenu()` | Display the emoji area. |
+    | `showExtendMenu()` | Display the extended menu. |
+    | `showTopExtendMenu()` | Show the top of the extended menu. |
+    | `setChatInputMenuListener()` | Set the input menu listener. |
+    | `chatPrimaryMenu` | Get the menu item interface. |
+    | `chatEmojiMenu` | Get the emoji menu interface. |
+    | `chatExtendMenu` | Get the extended menu interface. |
+    | `chatTopExtendMenu` | Get the top extended menu interface. |
+
+- Get a menu item object:
+
+  ```kotlin
+  val primaryMenu: IChatPrimaryMenu? = binding?.layoutChat?.chatInputMenu?.chatPrimaryMenu
+  ```
+
+  `IChatPrimaryMenu` provides the following methods:
     
+    | Method | Description|
+    |:---:|:---:|
+    | `onTextInsert()` | Insert text at the cursor. |
+    | `editText` | Get the menu input box object. |
+    | `setMenuBackground()` | Set the menu background. |
+
+- Get an emoji menu object:
+
+  ```kotlin
+  val emojiconMenu: IChatEmojiconMenu? = binding?.layoutChat?.chatInputMenu?.chatEmojiMenu
+  ```
+  
+  `IChatEmojiconMenu` provides the following methods:
+
+    | Method | Description |
+    |:---:|:---:|
+    | `addEmojiconGroup()` | Add custom emojis. |
+    | `removeEmojiconGroup()` | Remove the specified emoji group. |
+    | `setTabBarVisibility()` | Set the `TabBar` visibility. |
+
+    Add a custom emoji in the following way:
+
+    ```kotlin
+    binding?.let {
+           it.layoutChat.chatInputMenu?.chatEmojiMenu?.addEmojiconGroup(EmojiconExampleGroupData.getData())
+       }
+    ```
+  
