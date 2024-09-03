@@ -14,14 +14,14 @@ You can inherit `ConversationListController` and register it in `ComponentsRegis
 | `navigationClick` | Navigation click | Yes |
 | `pop` | Page return  | Yes |
 | `toChat` | Jump to chat  | Yes |
-| `searchAction` | How to click the search box | Yes |
-| `rightActions` | How to click the button on the right side of the navigation | Yes |
-| `selectContact` | How to jump to the contact selection page | Yes |
-| `chatToContact` | Jump to the chat page to specify the contact chat method | Yes |
-| `createChat` | Create a corresponding type of session according to the type to start the chat method | Yes |
-| `addContact` | Method to call up the add contact pop-up window | Yes |
-| `createGroup` | How to create a group and jump to the page for selecting group members | Yes |
-| `create` | How to create a group | Yes |
+| `searchAction` | Сlick the search box | Yes |
+| `rightActions` | Click the button on the right side of the navigation | Yes |
+| `selectContact` | Jump to the contact selection page | Yes |
+| `chatToContact` | Jump to the chat page to specify the contact | Yes |
+| `createChat` | Create a corresponding type of conversation to start chatting | Yes |
+| `addContact` | Call up the add contact pop-up | Yes |
+| `createGroup` | Create a group and jump to the page for selecting group members | Yes |
+| `create` | Create a group | Yes |
 
 ## Chat page
 
@@ -29,32 +29,32 @@ You can inherit `MessageListController` and register it in `ComponentsRegister.s
 
 | Method name | Usage | Overridable? (Yes/No) |
 |:---:|:---:|:---:|
-| `createNavigation` | Creating a navigation bar method | Yes |
-| `createLoading` | Create a Loading page method | Yes |
+| `createNavigation` | Create a navigation bar | Yes |
+| `createLoading` | Create a Loading page | Yes |
 | `navigationClick` | All click methods of the navigation bar | Yes |
 | `viewDetail` | View a contact or group details page | Yes |
-| `rightItemsAction` | How to click the button on the right side of the navigation | Yes |
-| `pop` | yes | Page return to the previous level method |
-| `messageWillSendFillExtensionInfo` | Method to add extended information before sending a message | Yes |
-| `filterMessageActions` | Method for filtering menu items on the pop-up menu after long pressing | Yes |
-| `showMessageLongPressedDialog` | Display the menu after long pressing the message | Yes |
-| `processMessage` | Process the pop-up window click event after long pressing the message | Yes |
-| `editAction` | Click on the message and long press it, then the edit pop-up window will pop up. | Yes |
-| `reportAction` | How to click and hold the report button in the menu to pop up the report pop-up window | Yes |
-| `messageAttachmentLoading` | Whether to display the loading page after clicking on pictures, videos and attachments | Yes |
-| `messageBubbleClicked` | Message bubble click method | Yes |
-| `viewContact` | View Contacts Page | Yes |
+| `rightItemsAction` | Click the button on the right side of the navigation | Yes |
+| `pop` |  Return to the previous page  | Yes |
+| `messageWillSendFillExtensionInfo` | Add extended information before sending a message | Yes |
+| `filterMessageActions` | Filtering menu items on the pop-up menu after long-pressing | Yes |
+| `showMessageLongPressedDialog` | Display the menu after long-pressing a message | Yes |
+| `processMessage` | Process the pop-up window click event after long-pressing a message | Yes |
+| `editAction` | Click on the message and long-press it. The edit window will pop up. | Yes |
+| `reportAction` | Click and hold the report button in the menu to pop up the report window | Yes |
+| `messageAttachmentLoading` | Whether to display the loading page after clicking on pictures, videos, and attachments | Yes |
+| `messageBubbleClicked` | Message bubble click  | Yes |
+| `viewContact` | View contacts  | Yes |
 | `messageAvatarClick` | Message avatar click | Yes |
-| `audioDialog` | Show recording audio pop-up |  |
+| `audioDialog` | Show the recording audio pop-up |  |
 | `mentionAction` | Entering the @ symbol in the input box in the group chat triggers an event | Yes |
 | `attachmentDialog` | Display a pop-up window for sending pictures, videos, and file messages | Yes |
-| `selectFile` | Select File | Yes |
+| `selectFile` | Select a file | Yes |
 | `selectPhoto` | Open the album and select a photo | Yes |
 | `openCamera` | Open the camera to take video or photo | Yes |
 | `selectContact` | Select a contact to send a card | Yes |
-| `openFile` | Open Select File | Yes |
-| `processImagePicker是` | Processing click to select pictures and videos to send messages | Yes |
-| `documentPickerOpenFile` | How to open the file chooser | Yes |
+| `openFile` | Open the selected file | Yes |
+| `processImagePicker是` | Click to select pictures and videos to send messages | Yes |
+| `documentPickerOpenFile` | Open the file selector | Yes |
 
 ## Contact page
 
@@ -62,16 +62,16 @@ You can inherit `ContactViewController` and register it in `ComponentsRegister.s
 
 | Method name | Usage | Overridable? (Yes/No) |
 |:---:|:---:|:---:|
-| `createNavigation` | Creating a navigation bar method | Yes |
+| `createNavigation` | Create a navigation bar method | Yes |
 | `navigationClick` | All click methods of the navigation bar | Yes |
-| `viewContact` | View Contact Details Page | Yes |
-| `rightItemsAction` | How to click the button on the right side of the navigation | Yes |
-| `pop` | Page return to the previous level method | Yes |
+| `viewContact` | View contact details  | Yes |
+| `rightItemsAction` | Click the button on the right side of the navigation | Yes |
+| `pop` | Return to the previous page | Yes |
 | `setupTitle` | Set navigation titles for different types of contact pages | Yes |
 | `receiveContactHeaderAction` |  | Yes |
 | `searchAction` | Click the search box | Yes |
-| `addContact` | Add contact pop-up window | Yes |
-| `confirmAction` | Navigation right text button click event | Yes |
-| `viewNewFriendRequest` | View new friend requests page | Yes |
+| `addContact` | Add a contact  | Yes |
+| `confirmAction` | Confirm action click event | Yes |
+| `viewNewFriendRequest` | View the new friend requests page | Yes |
 | `viewJoinedGroups` | View the group list page you have joined | Yes |
 
