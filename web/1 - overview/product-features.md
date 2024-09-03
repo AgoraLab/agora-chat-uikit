@@ -64,6 +64,32 @@ Users can send and receive voice messages in addition to text ones.
 Messages sent by users are examined to determine whether they comply with the platform's
 community guidelines, terms of service, and relevant laws and regulations.
 
+### Input status indication
+
+The input status indicator means real-time display of the input status of one party in a one-to-one chat, which enhances the real-time nature of communication interaction. This feature helps users understand whether the other party is replying.
+
+This functionality is in the UIKit `Typing` component.
+
+The input status indicator feature is enabled by default. To disable it in the global configuration, you can set it as follows:
+
+```javascript
+features.chat.messageInput.typing = false;
+```
+
+This feature is implemented using the SDK's transparent message transmission. For details, see [the SDK documentation](https://docs.agora.io/en/agora-chat/client-api/messages/send-receive-messages?platform=web).
+
+### Group mention
+
+The group mention feature allows users to directly mention specific members in a chat group using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates the efficient delivery of important information and ensures that key messages receive timely attention and response.
+
+This feature is available in the `MessageInput`, `TextMessage`, and `ConversationItem` components.
+
+The group mention feature is enabled by default. Disable it in the global configuration in the following way:
+
+```javascript
+features.chat.messageInput.mention = false;
+```
+
 ## Conversation-related
 
 This section covers specific features related to managing conversations.

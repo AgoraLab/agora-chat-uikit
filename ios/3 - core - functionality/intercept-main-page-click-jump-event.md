@@ -30,30 +30,30 @@ You can inherit `MessageListController` and register it in `ComponentsRegister.s
 | Method name | Usage | Overridable? (Yes/No) |
 |:---:|:---:|:---:|
 | `createNavigation` | Create a navigation bar | Yes |
-| `createLoading` | Create a Loading page | Yes |
+| `createLoading` | Create a loading page | Yes |
 | `navigationClick` | All click methods of the navigation bar | Yes |
 | `viewDetail` | View a contact or group details page | Yes |
 | `rightItemsAction` | Click the button on the right side of the navigation | Yes |
 | `pop` |  Return to the previous page  | Yes |
 | `messageWillSendFillExtensionInfo` | Add extended information before sending a message | Yes |
-| `filterMessageActions` | Filtering menu items on the pop-up menu after long-pressing | Yes |
+| `filterMessageActions` | Filter pop-up menu items after long-pressing | Yes |
 | `showMessageLongPressedDialog` | Display the menu after long-pressing a message | Yes |
 | `processMessage` | Process the pop-up window click event after long-pressing a message | Yes |
 | `editAction` | Click on the message and long-press it. The edit window will pop up. | Yes |
-| `reportAction` | Click and hold the report button in the menu to pop up the report window | Yes |
-| `messageAttachmentLoading` | Whether to display the loading page after clicking on pictures, videos, and attachments | Yes |
+| `reportAction` | Click and hold the report button in the menu to call the report window | Yes |
+| `messageAttachmentLoading` | Display the loading page after clicking on pictures, videos, and attachments | Yes |
 | `messageBubbleClicked` | Message bubble click  | Yes |
 | `viewContact` | View contacts  | Yes |
 | `messageAvatarClick` | Message avatar click | Yes |
 | `audioDialog` | Show the recording audio pop-up |  |
-| `mentionAction` | Entering the @ symbol in the input box in the group chat triggers an event | Yes |
+| `mentionAction` | Entering the @ symbol in the input box in the chat group  | Yes |
 | `attachmentDialog` | Display a pop-up window for sending pictures, videos, and file messages | Yes |
 | `selectFile` | Select a file | Yes |
 | `selectPhoto` | Open the album and select a photo | Yes |
 | `openCamera` | Open the camera to take video or photo | Yes |
 | `selectContact` | Select a contact to send a card | Yes |
 | `openFile` | Open the selected file | Yes |
-| `processImagePicker是` | Click to select pictures and videos to send messages | Yes |
+| `processImagePicker是` | Click to select pictures and videos to send | Yes |
 | `documentPickerOpenFile` | Open the file selector | Yes |
 
 ## Contact page
@@ -62,7 +62,7 @@ You can inherit `ContactViewController` and register it in `ComponentsRegister.s
 
 | Method name | Usage | Overridable? (Yes/No) |
 |:---:|:---:|:---:|
-| `createNavigation` | Create a navigation bar method | Yes |
+| `createNavigation` | Create a navigation bar  | Yes |
 | `navigationClick` | All click methods of the navigation bar | Yes |
 | `viewContact` | View contact details  | Yes |
 | `rightItemsAction` | Click the button on the right side of the navigation | Yes |
@@ -71,7 +71,7 @@ You can inherit `ContactViewController` and register it in `ComponentsRegister.s
 | `receiveContactHeaderAction` |  | Yes |
 | `searchAction` | Click the search box | Yes |
 | `addContact` | Add a contact  | Yes |
-| `confirmAction` | Confirm action click event | Yes |
+| `confirmAction` | Confirm action  | Yes |
 | `viewNewFriendRequest` | View the new friend requests page | Yes |
 | `viewJoinedGroups` | View the group list page you have joined | Yes |
 

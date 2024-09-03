@@ -1,52 +1,25 @@
-Agora UIKit for one-to-one chats and chat groups is an instant messaging UI component library developed based on 
+Agora UIKit for one-to-one chats and chat groups is an instant messaging React UI component library developed based on 
 Agora Chat SDK. It provides various components to implement features such as a conversation list, chat interface, 
-contact list and interface, and others. This helps you to quickly build instant messaging applications based 
-on the particular business needs.
+contact list, group settings, and others. The CHat SDK is integrated into a component, which helps you to quickly build instant messaging applications including UI interfaces based on the particular business needs. There is no need to worry about internal implementation and data management.
 
 To access the source code, [click here](https://github.com/easemob/chatuikit-android).
 
-## UIKit basic project structure
+## Understand the tech
 
-```
-└── easeui
-    ├── EaseIM // UIKit SDK entrance
-    ├── EaseIMConfig // UIKit SDK configuration class
-    ├── feature // UIKit function module
-    │ ├── chat // Chat function module
-    │ │ ├── activities // Activity folder of the chat function module
-    │ │ │ └── EaseChatActivity // UIKit built-in chat interface
-    │ │ ├── adapter // Adapter folder of the chat function module
-    │ │ │ └── EaseMessagesAdapter // Message list adapter for the chat function module
-    │ │ ├── reply // Related to the reply function of the chat function module
-    │ │ ├── report // Related to the reporting message function of the chat function module
-    │ │ ├── viewholders // Message type of the chat function module ViewHolder
-    │ │ ├── widgets // Custom View of the chat function module
-    │ │ └── EaseChatFragment // Chat Fragment provided in UIKit
-    │ ├── conversation // Conversation list function module
-    │ │ ├── adapter // Adapter folder of the conversation list function module
-    │ │ │ └── EaseConversationListAdapter // Conversation list adapter of the conversation list function module
-    │ │ ├── viewholders // Conversation type ViewHolder of the conversation list function module
-    │ │ ├── widgets // Custom View of the conversation list function module
-    │ │ └── EaseConversationListFragment // Conversation list Fragment provided in UIKit
-    │ ├── contact // Contact list function module
-    │ │ ├── adapter // Adapter folder of the contact list function module
-    │ │ │ └── EaseContactListAdapter // Contact list adapter of the contact list function module
-    │ │ ├── viewholders // Contact-related ViewHolder of the contact list function module
-    │ │ ├── widgets // Custom View of the contact list function module
-    │ │ └── EaseContactsListFragment // Contact list Fragment provided in UIKit
-    │ └── group // Group function module
-    ├── repository // UIKit SDK data warehouse
-    ├── viewmodel // UIKit SDK ViewModel
-    ├── provider // UIKit SDK provider
-    ├── common // UIKit SDK public class
-    ├── interfaces // UIKit SDK interface class
-    └── widget // UIKit SDK custom View
-```
+Agora Chat UIKit integrates the Chat SDK and Agora server connection to implement functions such as sending and receiving messages. UIKit uses the React Context API to manage internal states. Users can use the web hooks provided by UIKit to obtain the required information from the global data, or use custom hooks to obtain methods to operate on these data.
+
+![technical-principle](../../assets/images/uikit-web-technical-principle.png)
 
 ## Functions
 
-The business-related UI controls are mainly included in the following three Fragments:
+The following components are currently provided:
 
-- Chat Fragment provides a container for all chat views.
-- Conversation Fragment provides a conversation list container.
-- Contact Fragment provides a container for contacts, groups, and their details.
+- Container components: `Provider`, `Chat`, `ConversationList`, `ContactList`.
+- Module components: `BaseMessage`, `AudioMessage`, `FileMessage`, `VideoMessage`, `ImageMessage`, `TextMessage`, `CombinedMessage`, `UserCardMessage`, `GroupDetail`, `UserSelect`, `Header`, `Empty`, `MessageList`, `ConversationItem`, `MessageInput`, `MessageStatus`, `Typing`.
+- Pure UI components: `Avatar`, `Badge`, `Button`, `Checkbox`, `Icon`, `Modal`, `Tooltip`, `ScrollList`, `Switch`, `UserItem`, `Broadcast`, `Dropdown`.
+
+The business-related UI controls UIKit are mainly included in the following three components:
+
+- `Chat`: Provides a container for all chat views.
+- `ConversationList`: Provides a conversation list container.
+- `ContactList`: Provides containers for contacts, groups, and their details.
