@@ -150,7 +150,7 @@ Before using this feature, enable it in Agora Console.
 1. Set the target language
 
   The `EaseChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
-  Chinese is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+  English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 

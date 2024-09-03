@@ -115,39 +115,7 @@ The user can swipe a conversation left/right or long-press it to open a context 
 
 ## Message-related
 
-This section covers specific features related to managing messages. For message quoting, translation, threads, and forwarding, you can turn the feature on or off.
-
-The message cell contains the following display modules:
-
-- Quoted message
-- User avatar
-- User nickname
-- Message time
-- Message thread
-- Emoji reply
-
-If a module is not displayed, it can be hidden. The sample code is as follows:
-
-```swift
-// Display module contained in message cell
-  @objc public enum MessageContentDisplayStyle: UInt {
-  case withReply = 1
-  case withAvatar = 2
-  case withNickName = 4
-  case withDateAndTime = 8
-  case withMessageThread = 16
-  case withMessageReaction = 32
-}
-// If it is not displayed, it can be hidden.
-Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAvatar,.withNickName,.withDateAndTime,.withMessageThread,.withMessageReaction]
-
-    if hiddenTopic {
-    Appearance.chat.contentStyle.removeAll { $0 == .withMessageThread }
-    }
-    if hiddenReaction {
-    Appearance.chat.contentStyle.removeAll { $0 == .withMessageReaction }
-    }
-```
+This section covers specific features related to managing messages, including message deletion, recall, editing, quoting, translation, emoji reply, topic, and forwarding. You can turn these features on or off.
 
 ### Copy message
 
@@ -155,108 +123,187 @@ Users can copy a message to the clipboard to save it somewhere else or paste it 
 
 ### Delete message
 
-Users can delete messages that they do not want to keep.
+Users can delete messages that they do not want to keep. This feature is included in the message components such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
+
+The message deletion feature is enabled by default. You can disable it in the global configuration:
+
+```javascript
+features.chat.message.delete = false;
+```
 
 ### Recall message
 
-Users can recall messages that were sent by mistake.
+Users can recall messages that were sent by mistake. This feature is included in the message components such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
+
+The message recall feature is enabled by default. You can disable it in the global configuration:
+
+```javascript
+features.chat.message.recall = false;
+```
 
 ### Edit sent message
 
-Users can edit sent messages to correct mistakes.
+Users can edit sent messages to correct mistakes. This feature is in the UIKit `TextMessage` component. 
+
+The message editing feature is enabled by default. You can disable it in the global configuration:
+                                                  
+```javascript
+features.chat.message.edit = false;
+```
 
 ### Quote message
 
-Users can quote a specific message to reply to it or emphasize its importance. The quoting feature is enabled by default.
+Users can quote a specific message to reply to it or emphasize its importance. This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and others. 
 
-The sample code is as follows:
+The quoting feature is enabled by default. You can disable it in the global configuration:
 
-```swift
-Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAvatar,.withNickName,.withDateAndTime,.withMessageThread,.withMessageReaction]
-
-    if hiddenTopic {
-      Appearance.chat.contentStyle.removeAll { $0 == .withReply }
-    }
+```javascript
+features.chat.message.reply = false;
 ```
 
 ### Translate message
 
-Users can translate messages into other languages for easier communication. The UI and logic structure are in
-`Appearance.swift`.
+Users can translate messages into other languages for easier communication. This feature is in the UIKit `TextMessage` component.
 
 Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
-The message translation feature is disabled by default, that is, the default value of `Appearance.chat.enableTranslation` in
-`Appearance.swift` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
-
+    The message translation feature is enabled by default. You can disable it in the global configuration: 
+    
+    ```javascript
+   features.chat.message.translate = false;
+    ```
+   
 1. Set the target language
 
-`Appearance.swift` provides the `Appearance.chat.targetLanguage` function to set the target language. If the target
-language is not set, Chinese is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
-
-The sample code is as follows:
-
-  ```swift
-  Appearance.chat.enableTranslation = true
-  Appearance.chat.targetLanguage = .English
-  ```
+Initialize UIKit configuration `initConfig.translationTargetLanguage` and set it to the target language for translation. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
 
 ### Reply with emoji
 
 Users can long-press a single message to open the context menu and reply with an emoji. Emoji replies
-(reactions) can help express emotions or attitudes, conduct surveys or votes. Currently, the UIKit supports
-reactions only for chat groups, which can be turned on and off in `Appearance.swift`.
+(reactions) can help express emotions or attitudes, conduct surveys or votes. 
+
+This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
 
 Before using this feature, enable it in Agora Console.
 
-The emoji reply feature is disabled by default in `Appearance.swift`. That is, `.withMessageReaction` is not
-included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling.
+The emoji reply feature is enabled by default. You can disable it in the global configuration:
 
-```swift
-Appearance.chat.contentStyle.append(.withMessageReaction)
+```javascript
+features.chat.message.reaction = false;
 ```
 
 ### Message thread
 
-Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
+Users can create a message thread based on a message in a chat group, to have a topic-specific discussion.
+
+The thread page is implemented in the UIKit `EaseChatThreadActivity`. You only need to call `EaseChatThreadActivity.actionStart` to start the page and pass in the required parameters. This feature is in the UIKit `TextMessage` component.
 
 Before using this feature, enable it in Agora Console.
 
-The message thread feature is disabled by default in `Appearance.swift`. That is, `.withMessageThread` is not
-included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling.
-The sample code is as follows:
+The message thread feature is enabled by default. Disable it in the global configuration:
 
-```swift
-Appearance.chat.contentStyle.append(.withMessageThread)
+```javascript
+features.chat.message.thread = false;
 ```
 
-### Forward message
+Introduce the Thread component from UIKit and display this component when the listener `rootStore.threadStore.showThreadPanel` is set to `true`.
 
-Users can forward a single or multiple combined messages to other users.
+### Forward multiple messages
 
-The UI and logic structure are as follows:
+Users can combine and forward multiple messages to other users.
 
-- `MessageMultiSelectedBottomBar.swift`: Bottom menu View.
-- `MessageListController.swift`: Handles UI layout changes and logic for forwarding and deleting.
-- `MessageListController.swift`: The message selection helper class used to record the selected message information and provide acquisition methods.
+This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
+
+Multiple message forwarding is enabled by default. You can disable it in the global configuration: 
+
+```javascript
+features.chat.message.select = false;
+```
+
+The logic is as follows: Listen for the `onSendMessage` event in the Chat component, determine if it is a combined message, display the contact component, select the target user to forward the message to, and then send the message.
+
+Sample code:
+
+```javascript
+// ...
+<Chat
+  messageInputProps={{
+    onSendMessage: (message) => {
+      if (message.type == "combine") {
+        forwardedMessages = message
+        setContactListVisible(true); // Show the contact component
+      }
+    },
+  }}
+></Chat>
+
+//...
+<ContactList
+    onItemClick={(data) => {
+        forwardedMessages.to = data.id;
+        forwardedMessages.chatType =
+        data.type == "contact" ? "singleChat" : "groupChat";
+        rootStore.messageStore.sendMessage(forwardedMessages); // Send a message
+
+        // Set up a new conversation
+        rootStore.conversationStore.setCurrentCvs({
+            chatType: data.type == "contact" ? "singleChat" : "groupChat",
+            conversationId: data.id,
+            lastMessage: forwardedMessages,
+        });
+
+         // Set the selection status of the last message in the current conversartion  
+        rootStore.messageStore.setSelectedMessage(currentConversation, {
+            selectable: false,
+            selectedMessage: [],
+        });
+    }}
+></ContactList>
+```
+
+### Forward a single message
+
+Users can forward a single message. This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
+
+The single message forwarding feature is enabled by default. You can disable it in the global configuration:
+
+```javascript
+features.chat.message.forward = false;
+```
+
+The logic is as follows: Listen for `onForwardMessage` events in the `Chat` component, display the contact component, select the target user to forward the message to, and then send the message.
+
+Sample code:
+
+```javascript
+// ...
+<Chat
+  messageListProps={{
+    messageProps: {
+        onForwardMessage: (msg) => {
+            forwardedMessages = {...msg}
+            forwardedMessages.id = Date.now() + ""; // Set a new message ID
+            forwardedMessages.from = rootStore.client.user; // Set to your own user ID
+            setContactListVisible(true); // Show the contact component
+        }
+  }
+}}
+></Chat>
+
+// The contact component is the same as that of combined forwarding
+```
 
 ### Pin message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 
-The UI and logic structure are as follows:
+This feature is in UIKit's message components, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on. The pinned message list feature is in the `PinnedMessage` component.
 
-- `Appearance.chat.enablePinMessage`: Controls the display and hiding of the message pin feature.
-- `Appearance.chat.messageLongPressedActions`: Contains all items in the long-press menu of the message. If you do
-  not need the ability to pin messages, delete the corresponding item.
-- `MessageListController#showPinnedMessages`: Display the pinned message list.
+This feature is enabled by default. You can disable it in the global configuration:
 
-The message pinning feature is enabled by default in `Appearance.chat`. That is, the default value of
-`enablePinMessage` is set to `true`. To disable this feature, set it to `false`. The sample code is as follows:
-
-```swift
-Appearance.chat.enablePinMessage = false
-Appearance.chat.messageLongPressedActions.removeAll { $0.tag == "Pin" }
+```javascript
+features.chat.header.pinMessage = false;
+features.chat.message.pin = false;
 ```

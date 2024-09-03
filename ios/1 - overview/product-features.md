@@ -168,7 +168,7 @@ Before using this feature, enable it in Agora Console.
 1. Set the target language
 
   `Appearance.swift` provides the `Appearance.chat.targetLanguage` function to set the target language. If the target 
-  language is not set, Chinese is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+  language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 
