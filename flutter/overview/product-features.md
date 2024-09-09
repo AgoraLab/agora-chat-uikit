@@ -125,62 +125,72 @@ Users can delete messages that they do not want to keep.
 
 ### Recall message
 
-Users can recall messages that were sent by mistake.
+Users can recall messages that were sent by mistake. 
+
+The message recall feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageRecall` is `true`. To disable, set this parameter to `false`. 
+
+The sample code is as follows:
+
+```dart
+ChatUIKitSettings.enableMessageRecall = false;
+```
+
+You can also configure the duration of showing the recall option. The default is 120 seconds. Upon expiration, the option will no longer be available after long-pressing a message.
+
+```dart
+ChatUIKitSettings.recallExpandTime = 120;
+```
 
 ### Edit sent message
 
 Users can edit sent messages to correct mistakes. 
 
+The message editing feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageEdit` is `true`. To disable, set this parameter to `false`. The sample code is as follows:
+
+```dart
+ChatUIKitSettings.enableMessageEdit = false;
+```
+
 ### Quote message
 
 Users can quote a specific message to reply to it or emphasize its importance. The message quoting UI and logic structure are as follows:
 
-- `AgoraChatMessageReplyView`: A custom View for the quoted message of the message bubble.
-- `AgoraChatExtendMessageReplyView`: A custom View for the reference message displayed above the bottom input box 
-  component.
-- `AgoraChatMessageReplyController`: Controls the display, hiding, scrolling, and other logic of reference functions.
+- `ChatUIKitQuoteWidget`: A custom View for the quoted message of the message bubble.
+- `ChatUIKitReplyBar`: A custom View for the quoted message displayed above the bottom input box.
 
-The quoting feature is enabled by default in `AgoraChatConfig`, that is, the default value of `enableReplyMessage` 
+The quoting feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageReply` 
 is `true`. To disable this feature, set it to `false`.
 
 The sample code is as follows:
 
-```kotlin
-AgoraIM.getConfig()?.chatConfig?.enableReplyMessage
+```dart
+ChatUIKitSettings.enableMessageReply = false;
 ```
 
 ### Translate message
 
-Users can translate messages into other languages for easier communication. The UI and logic structure are as follows:
+Users can translate messages into other languages for easier communication. 
 
-- The UI layout of message translation is a custom `AgoraChatMessageTranslationView` layout.
-- The logic for adding views to the message bubble and showing and hiding the translation layout is in the 
-  `addTranslationViewToMessage` method in `AgoraChatAddExtendFunctionViewController`.
-- The logic for showing and hiding the translation menu that pops up when long-pressing a message bubble is in 
-  `EaseChatMessageTranslationController`.
+The UI layout of message translation is in `ChatUIKitTextMessageWidget`.
 
 Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
-  The message translation feature is disabled by default, that is, the default value of 
-     `enableTranslationMessage` in 
-  `EaseChatConfig` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
+  `ChatUIKitSettings` provides a `ChatUIKitSettings.enableMessageTranslation` setting to enable message translation. The message translation feature is disabled by default. To enable this feature, set it to `true`. The sample code is as follows:
   
-  ```kotlin
-  AgoraIM.getConfig()?.chatConfig?.enableTranslationMessage
+  ```dart
+  ChatUIKitSettings.enableMessageTranslation = true;
   ```
 
 1. Set the target language
 
-  The `EaseChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
-  English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+  `ChatUIKitSettings` provides a `translateTargetLanguage` property to set the target translation language. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 
-  ```kotlin
-  val builder = EaseChatFragment.Builder
-  builder.setTargetTranslation(EaseTranslationLanguageType.English)
+  ```dart
+  ChatUIKitSettings.translateTargetLanguage = 'zh-Hans';
   ```
 
 ### Reply with emoji
@@ -190,51 +200,36 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- Reaction implements a custom layout `EaseChatMessageReactionView` in the message list. 
-- Reaction implements a custom layout `EaseMessageMenuReactionView` in the message long-press menu `RecyclerView`.
-- The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
-- Reaction member list is `EaseReactionUserListFragment`.
-
-The logic for adding views to message bubbles and showing and hiding React layouts is in the 
-`addReactionViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
+- `ChatUIKitMessageReactionsRow` implements a custom UI layout in the message list. 
+- `ChatUIKitMessageReactionInfo` shows a pop-up window with the emoji list.
 
 Before using this feature, enable it in Agora Console.
 
-The emoji reply feature is disabled by default. That is, the default value of `enableMessageReaction` in `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+`ChatUIKitSettings` provides an `enableMessageReaction` property to enable reactions. This feature is disabled by default. To enable, set it to `true`. The sample code is as follows:
 
-```kotlin
-EaseIM.getConfig()?.chatConfig?.enableMessageReaction
+```dart
+ChatUIKitSettings.enableMessageReaction = true;
 ```
 
 ### Message thread
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-The thread page is implemented in `EaseChatThreadActivity`. Call `EaseChatThreadActivity.actionStart` and pass in the required parameters.
-
 Before using this feature, enable it in Agora Console.
 
-The message thread feature is disabled by default. That is, the default value of `enableChatThreadMessage` in 
-`EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+UIKit provides a `ChatUIKitSettings.enableChatThreadMessage` switch. The message thread feature is disabled by default. To enable this feature, set it to `true`. The sample code is as follows:
 
-```kotlin
-EaseIM.getConfig()?.chatConfig?.enableChatThreadMessage
+```dart
+ChatUIKitSettings.enableMessageThread = true;
 ```
 
-You can add your own logic by inheriting `EaseChatThreadActivity`. For example:
+### Forward multiple messages
 
-```kotlin
+Users can forward multiple combined messages to other users. 
 
-class ChatThreadActivity:EaseChatThreadActivity() {
-    override fun setChildSettings(builder: EaseChatFragment.Builder) {
-        super.setChildSettings(builder)
-    }
-}
-```
+### Forward a single message
 
-### Forward message
-
-Users can forward a single or multiple combined messages to other users. 
+Users can forward a single message to other users. 
 
 The UI and logic structure are as follows:
 

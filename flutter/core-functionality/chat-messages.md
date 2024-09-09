@@ -1,4 +1,6 @@
-UIKit provides `EaseChatActivity` and `EaseChatFragment` to facilitate quick integration and customization of chat pages. This page describes the following features:
+`MessagesView` is the main component provided by UIKit to display messages between users. It can be used directly or through routing.
+
+Currently, the following features are available on the message page:
 
 - Send and receive messages, including text, emoticons, pictures, voice, video, files, and business card messages.
 - Copy, quote, recall, delete, edit, resend, and review messages.
@@ -7,373 +9,57 @@ UIKit provides `EaseChatActivity` and `EaseChatFragment` to facilitate quick int
 
 For details about message-related features, see [Product features](./overview/product-features.md).
 
-## Usage examples
+## Add a message page
 
-The `EaseChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and others.
+You can directly add a message page to the location you need and pass in the `ChatUIKitProfile` information. `ChatUIKitProfile` is a user information packaging class. See [User information](user-information.md) for details.
 
-```kotlin
-// conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-// chatType: For one-to-one chat and chat group, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-EaseChatActivity.actionStart(mContext, conversationId, chatType)
-```
-```kotlin
-class ChatActivity: AppCompactActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
-        // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-        // chatType: For one-to-one chat and chat group, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-        EaseChatFragment.Builder(conversationId, chatType)
-            .build()?.let { fragment ->
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_fragment, fragment).commit()
-                }
-    }
+At the same time, clicking a conversation in the [conversation list](conversation-list.md) will also bring the user to the message page.
+
+```dart
+@override
+Widget build(BuildContext context) {
+  return MessagesView(
+    profile: ChatUIKitProfile.contact(
+      id: chatterId,
+    ),
+  );
 }
 ```
 
-## Advanced usage
+## Customize the message page
 
-### Customize settings through EaseChatFragment.Builder
+If you need to customize the message page, you can modify the following parameters:
 
-An `EaseChatFragment` Builder construction method is provided to facilitate customization of settings. The currently provided settings are as follows:
-
-```kotlin
-// conversationID: Peer user ID for a one-to-one conversation and group ID for a chat group
-// easeChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and chat group, respectively
-EaseChatFragment.Builder(conversationID, easeChatType) 
-        .useTitleBar(true) 
-        .setTitleBarTitle("title") 
-        .setTitleBarSubTitle("subtitle") 
-        .enableTitleBarPressBack(true) 
-        .setTitleBarBackPressListener(onBackPressListener) 
-        .getHistoryMessageFromServerOrLocal(false) 
-        .setOnChatExtendMenuItemClick Listener(onChatExtendMenuItemClickListener)
-        .setOnChatInputChangeListener(onChatInputChangeListener) 
-        .setOnMessageItemClickListener(onMessageItemClickListener) 
-        .setOnMessageSendCallBack(onMessageSendCallBack) 
-        .setOnWillSendMessageListener(willSendMessageListener) 
-        .setOnChatRecordTouchListener(onChatRecordTouchListener) 
-        .setOnModifyMessageListener(onModifyMessageListener) 
-        .setOnReportMessageListener(onReportMessageListener) 
-        .setMsgTimeTextColor(msgTimeTextColor) 
-        .setMsgTimeTextSize(msgTimeTextSize) 
-        .setReceivedMsgBubbleBackground(receivedMsgBubbleBackground) 
-        .setSentBubbleBackground(sentBubbleBackground) 
-        .showNick name(false)
-        .hideReceiverAvatar(false) 
-        .hideSenderAvatar(true) 
-        .setChatBackground(chatBackground) 
-        .setChatInputMenuBackground(inputMenuBackground) 
-        .setChatInputMenuHint(inputMenuHint) 
-        .sendMessageByOriginalImage(true) 
-        .setEmptyLayout(R.layout.layout_chat_empty) 
-        .setCustomAdapter(customAdapter) 
-        .setCustomFragment(myChatFragment) .build()
-```
-
-`EaseChatFragment#Builder` provides the following methods:
-
-| Method | Description |
+| Parameter | Description |
 |:---:|:---:|
-| `useTitleBar()` | Set whether to use the default title bar (`EaseTitleBar`). Set to `true` for yes, `false` (default) for no. |
-| `setTitleBarTitle()` | Set the title of the title bar. |
-| `setTitleBarSubTitle()` | Set the subtitle of the title bar. |
-| `enableTitleBarPressBack()` | Set whether to display the back button. Set to `true` for yes, `false` (default) for no. |
-| `setTitleBarBackPressListener()` | Set the event listener for clicking the back button in the title bar. |
-| `getHistoryMessageFromServerOrLocal()` | Set whether to get messages from the server or locally first. |
-| `setOnChatExtendMenuItemClickListener()` | Set the item click event listener for the extended function. |
-| `setOnChatInputChangeListener()` | Set the listener for text changes in the menu. |
-| `setOnMessageItemClickListener()` | Set the click event listener for the message item, including click and long press events of the bubble area and avatar. |
-| `setOnMessageSendCallBack()` | Set the result callback listener for sending messages. |
-| `setOnWillSendMessageListener()` | Set the callback for adding extended message attributes before sending the message. |
-| `setOnChatRecordTouchListener()` | Set the touch event callback of the recording button. |
-| `setOnModifyMessageListener()` | Set the result callback listener for editing a message. |
-| `setOnReportMessageListener()` | Set the result callback listener for reporting a message. |
-| `setMsgTimeTextColor()` | Set the color of the timeline text. |
-| `setMsgTimeTextSize()` | Set the font size of the timeline text. |
-| `setReceivedMsgBubbleBackground()` | Set the background of the receiving message bubble area. |
-| `setSentBubbleBackground()` | Set the background of the send message bubble area. |
-| `showNickname()` | Set whether to display the nickname. Set to `true` for yes, `false` (default) for no. |
-| `hideReceiverAvatar()` | Set to hide the recipient's profile picture, displayed by default. |
-| `hideSenderAvatar()` | Set to hide the sender's profile picture, displayed by default. |
-| `setChatBackground()` | Set the background of the chat list area. |
-| `setChatInputMenuBackground()` | Set the background of the menu area. |
-| `setChatInputMenuHint()` | Set the prompt text of the input text box in the menu area. |
-| `sendMessageByOriginalImage()` | Set whether to send the original image when sending picture messages. Set to `true` for yes, `false` (default) for no. |
-| `setEmptyLayout()` | Set a blank page for the chat list. |
-| `setCustomAdapter()` | Set a custom adapter, the default is `EaseMessageAdapter`. |
-| `setCustomFragment()` | Set a custom chat Fragment. Must be inherited from `EaseChatFragment`. |
-
-### Add a custom message layout
-
-You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set `EaseChatFragment#Builder#setCustomAdapter` to `CustomMessageAdapter`.
-
-1. To create a custom `CustomMessageAdapter`, inherit from `EaseMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
-
-    ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
-    
-    override fun getItemNotEmptyViewType(position: Int): Int {
-    // Set your own itemViewType according to the message type
-    // If you want to use the default, return super.getItemNotEmptyViewType(position)
-    return CUSTOM_YOUR_MESSAGE_TYPE
-    }
-    
-    override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
-    // Return the corresponding ViewHolder according to the returned viewType
-    // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
-    return CUSTOM_VIEW_HOLDER()
-    }
-    }
-    ```
-   
-1. Inherit from `EaseChatRow` to create `CustomTypeChatRow`:
-
-    ```kotlin
-    class CustomTypeChatRow(
-    private val context: Context,
-    private val attrs: AttributeSet? = null,
-    private val defStyle: Int = 0,
-    isSender: Boolean = false
-    ): EaseChatRow(context, attrs, defStyle, isSender) {
-    
-    override fun onInflateView() {
-    inflater.inflate(if (!isSender) R.layout.layout_row_received_custom_type
-    else R.layout.layout_row_sent_custom_type,
-    this)
-    }
-    
-    override fun onSetUpView() {
-    (message?.getMessage()?.body as? ChatTextMessageBody)?.let { txtBody ->
-    contentView.text = txtBody.message
-    }
-    }
-    }
-    ```
-
-1. Inherit from `EaseChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
-
-```kotlin
-class CustomChatTypeViewViewHolder(
-    itemView: View
-): EaseChatRowViewHolder(itemView) {
-
-    override fun onBubbleClick(message: EaseMessage?) {
-        super.onBubbleClick(message)
-        // Adding a click event
-    }
-}
-```
-
-1. Complete `CustomMessageAdapter`:
-
-    ```kotlin
-  class CustomMessageAdapter: EaseMessagesAdapter() {
-  
-      override fun getItemNotEmptyViewType(position: Int): Int {
-          // Set your own itemViewType according to the message type.
-          mData?.get(position)?.getMessage()?.let { msg ->
-              msg.getStringAttribute("type", null)?.let { type ->
-                  if (type == CUSTOM_TYPE) {
-                      return if (msg.direct() == ChatMessageDirection.SEND) {
-                          VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME
-                      } else {
-                          VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER
-                      }
-                  }
-              }
-          }
-          // If you want to use the default, return super.getItemNotEmptyViewType(position).
-          return super.getItemNotEmptyViewType(position)
-      }
-  
-      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
-          // If you want to use the default, return super.getItemNotEmptyViewType(position).
-          if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
-              CustomChatTypeViewViewHolder(
-                  CustomTypeChatRow(parent.context, isSender = viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME)
-              )
-          }
-          // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
-          return super.getViewHolder(parent, viewType)
-      }
-  
-      companion object {
-          private const val CUSTOM_TYPE = "custom_type"
-          private const val VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME = 1000
-          private const val VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER = 1001
-      }
-  }
-    ```
-    
-1. Add `CustomMessageAdapter` to `EaseChatFragment#Builder`:
-
-    ```kotlin
-    builder.setCustomAdapter(CustomMessageAdapter())
-    ```
-   
-## List control-related function settings
-
-```kotlin
-val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
-```
-
-The following `EaseChatMessageListLayout` methods are provided:
-
-| Method | Description |
-|:---:|:---:|
-| `setViewModel()` | UIKit provides a default implementation EaseMessageListViewModel, which developers can inherit IChatMessageListRequestand add their own data logic. |
-| `setMessagesAdapter()` | Set the adapter for the message list, which needs to be EaseMessagesAdaptera subclass of . |
-| `getMessagesAdapter()` | An adapter that returns a list of messages. |
-| `addHeaderAdapter()` | Add adapter for header layout of message list. |
-| `addFooterAdapter()` | Add the adapter for the footer layout of the message list. |
-| `removeAdapter()` | Removes the specified adapter. |
-| `addItemDecoration()` | Decorator that adds a list of messages. |
-| `removeItemDecoration()` | Remove the message list decorator. |
-| `setAvatarDefaultSrc()` | Sets the default avatar for an entry. |
-| `setAvatarShapeType()` | Set the style of the avatar, which is divided into three styles: default style, circular style and rectangular style. |
-| `showNickname()` | Whether to display the nickname of the entry, EaseChatFragment#Builderand the setting method of this function is also provided. |
-| `setItemSenderBackground()` | Set the background of the sender, EaseChatFragment#Builderand also provide the setting method of this function. |
-| `setItemReceiverBackground()` | Set the background of the receiver, EaseChatFragment#Builderand also provide the setting method of this function. |
-| `setItemTextSize()` | Set the font size for text messages. |
-| `setItemTextColor()` | Set the font color of text messages. |
-| `setTimeTextSize()` | Set the font size of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
-| `setTimeTextColor()` | Set the color of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
-| `setTimeBackground()` | Set the background of the timeline. |
-| `hideChatReceiveAvatar()` | The recipient's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
-| `hideChatSendAvatar()` | The sender's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
-| `setOnChatErrorListener()` | Set the error callback when sending a message. EaseChatFragment#BuilderThe setting method of this function is also provided. |
-
-## Extended function settings
-
-```kotlin
-val chatExtendMenu: IChatExtendMenu? = binding?.layoutChat?.chatInputMenu?.chatExtendMenu
-```
-
-After obtaining a `chatExtendMenu` object, you can add, remove, sort, and handle click events of extended functions.
-
-`IChatExtendMenu` provides the following methods: 
-
-| Method | Describe |
-|:---:|:---:|
-| `clear()` | Clear all extended menu items. |
-| `setMenuOrder()` | Sort the specified menu items. |
-| `registerMenuItem()` | Add a new menu item. |
-
-## Listen for extension item click events
-
-You can use `EaseChatFragment#Builder#setOnChatExtendMenuItemClickListener` for monitoring or override the `ChatExtendMenuItemClick` method in a custom Fragment.
-
-```kotlin
-override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
-    if(itemId == CUSTOM_YOUR_EXTEND_MENU_ID) {
-        // Handle your own click event logic
-        // If you want to customize the click event, return `true`
-        return true
-    }
-    return super.onChatExtendMenuItemClick(view, itemId)
-}
-```
-
-## Long press menu function settings
-
-- Add custom menu items
-
-    ```kotlin
-  binding?.let {
-      it.layoutChat.addItemMenu(menuId, menuOrder, menuTile)
-  }
-    ```
-  
-    `EaseChatLayout` provides the following long-press menu methods: 
-
-    | Method | Description |
-    |:---:|:---:|
-    | `clearMenu()` | Clear a menu item. |
-    | `addItemMenu()` | Add a new menu item. |
-    | `findItemVisible()` | Set the visibility of a menu item by specifying `itemId`. |
-    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `EaseChatFragment`.|
-
-- Handle menu events
-
-    Override the following method in your custom Fragment:
-
-        ```kotlin
-        override fun onPreMenu(helper: EaseChatMenuHelper?, message: ChatMessage?) {
-          // Callback event before menu is displayed. You can use the helper object to set whether the menu item is displayed.
-        }
-      
-        override fun onMenuItemClick(item: EaseMenuItem?, message: ChatMessage?): Boolean {
-          // If you want to intercept a click event, you need to set it to return `true`.
-        return false
-        }
-      
-        override fun onDismiss() {
-          // You can handle the hiding event of the shortcut menu here.
-        }
-        ```
-  
-## Set properties related to the input menu 
-
-- Get an `EaseChatInputMenu` object: 
-
-  ```kotlin
-  val chatInputMenu: EaseChatInputMenu? = binding?.layoutChat?.chatInputMenu
-  ```
-  
-  `EaseChatInputMenu` provides the following methods: 
-
-    | method | describe |
-    |:---:|:---:|
-    | `setCustomPrimaryMenu()` | Set custom menu items, supports View and Fragment. |
-    | `setCustomEmojiconMenu()` | Set a custom emoji menu, supports View and Fragment. |
-    | `setCustomExtendMenu()` | Set custom extended menu items, supports View, Dialog, and Fragment. |
-    | `setCustomTopExtendMenu()` | Set a custom extended top menu layout, supports View and Fragment. |
-    | `hideExtendContainer()` | Hide the extended area, including the emoji and extended menu areas. |
-    | `hideInputMenu()` | Hide all areas except the top area of the menu. |
-    | `showEmojiconMenu()` | Display the emoji area. |
-    | `showExtendMenu()` | Display the extended menu. |
-    | `showTopExtendMenu()` | Show the top of the extended menu. |
-    | `setChatInputMenuListener()` | Set the input menu listener. |
-    | `chatPrimaryMenu` | Get the menu item interface. |
-    | `chatEmojiMenu` | Get the emoji menu interface. |
-    | `chatExtendMenu` | Get the extended menu interface. |
-    | `chatTopExtendMenu` | Get the top extended menu interface. |
-
-- Get a menu item object:
-
-  ```kotlin
-  val primaryMenu: IChatPrimaryMenu? = binding?.layoutChat?.chatInputMenu?.chatPrimaryMenu
-  ```
-
-  `IChatPrimaryMenu` provides the following methods:
-    
-    | Method | Description|
-    |:---:|:---:|
-    | `onTextInsert()` | Insert text at the cursor. |
-    | `editText` | Get the menu input box object. |
-    | `setMenuBackground()` | Set the menu background. |
-
-- Get an emoji menu object:
-
-  ```kotlin
-  val emojiconMenu: IChatEmojiconMenu? = binding?.layoutChat?.chatInputMenu?.chatEmojiMenu
-  ```
-  
-  `IChatEmojiconMenu` provides the following methods:
-
-    | Method | Description |
-    |:---:|:---:|
-    | `addEmojiconGroup()` | Add custom emojis. |
-    | `removeEmojiconGroup()` | Remove the specified emoji group. |
-    | `setTabBarVisibility()` | Set the `TabBar` visibility. |
-
-    Add a custom emoji in the following way:
-
-    ```kotlin
-    binding?.let {
-           it.layoutChat.chatInputMenu?.chatEmojiMenu?.addEmojiconGroup(EmojiconExampleGroupData.getData())
-       }
-    ```
-  
+| `final ChatUIKitProfile profile` | The user information packaging class. Refer to [User information](user-information.md) for details . |
+| `final MessageListViewController? controller`| The message list controller. |
+| `final ChatUIKitAppBar? appBar` | The custom message page. If `appBar` not set, the default one will be used. |
+| `final bool enableAppBar` | Whether to enable `appBar`. It is enabled by default. Will no longer be displayed after disabling, and the `appBar` input will no longer take effect. |
+| `final String? title` | The default `appBar` title information. If you use a custom `appBar` or disable it, this parameter will not take effect. |
+| `final Widget? inputBar` | A custom input component. If not set, the default `ChatUIKitInputBar` will be used. |
+| `final CustomTextEditingController? inputBarTextEditingController` | If you customize the `inputBar` controller, the `inputBar` settings here will not take effect. |
+| `final bool showAvatar` | Whether to display the avatar. |
+| `final bool showNickname` | Whether to display the nickname. |
+| `final MessageItemTapHandler? onItemTap` | The message click event. By default, it will process video, picture, and audio type messages. If you need to intercept the click during customization, return `true`; if not, return `false`. |
+| `final MessageItemTapHandler? onItemLongPress` | The message long-press event. By default, a menu will pop up after a long press. When customizing, if you need to intercept the click, return `true`; if not, return `false`. |
+| `final MessageItemTapHandler? onDoubleTap` | Message double-click event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
+| `final MessageItemTapHandler? onAvatarTap`| When the avatar click event occurs, the page will jump to the contact details page of the message sender by default. If the sender is not a friend, the page will be redirected to the add friend details page. If you need to intercept the click during customization, return `true`; if you do not want to intercept, return `false`. |
+| `final MessageItemTapHandler? onAvatarLongPress` | The avatar long press event, not implemented by default. If you need to intercept the click during customization, return `true`; if you do not want to intercept, return `false`. |
+| `final MessageItemTapHandler? onNicknameTap` | The nickname long press event, not implemented by default. If you need to intercept the click during customization, return `true`, if not, return `false`. |
+| `final ChatUIKitMessageListViewBubbleStyle bubbleStyle` | The message bubble style. Currently two styles are provided: `ChatUIKitMessageListViewBubbleStyle.arrow` (default) and `ChatUIKitMessageListViewBubbleStyle.noArrow`. |
+| `final MessageItemBuilder? itemBuilder` | The custom message item builder. If you need to rewrite the message style (including avatar, nickname, message bubble, message quote, and all other styles), implement it here. |
+| `final MessageItemBuilder? alertItemBuilder` | The prompt message of the custom item builder. If you need to rewrite the prompt message style, implement it here. |
+| `final FocusNode? focusNode` | The input control focus controller, not recommended to set. If `inputBar` is customized, the setting will not take effect. |
+| `final List<ChatUIKitBottomSheetItem>? morePressActions` | More menu button items. If not set, the default menu will be used. This parameter will not take effect after `inputBar` customization. |
+| `final MessagesViewMorePressHandler? onMoreActionsItemsHandler` | The callback when clicking the default `inputBar`. You can return a new menu list. If you return null or do not implement it, the content set in `morePressActions` will be used. If not set, the default `morePressActions` will be used. |
+| `final List<ChatUIKitBottomSheetItem>? longPressActions` | The message long-press menu. If not set, the default menu will be used. |
+| `final MessagesViewItemLongPressHandler? onItemLongPressHandler` | The callback for long-pressing the menu item, which can return a new menu list. If it returns null or is not implemented, the content set in `longPressActions` will be used. If not set, the default `longPressActions` will be used. |
+| `final bool? forceLeft` | Whether to flush all messages to the left. |
+| `final widget? emojiWidget` | The emoji widget. If not set, the default one will be used. |
+| `final MessageItemBuilder? replyBarBuilder` | The custom `replyBar` component, used to temporarily display the message content above the input box when the message is quoted. If not set, the default `ChatUIKitReplyBar` will be used. |
+| `final Widget Function(BuildContext context, QuoteModel model)? quoteBuilder` | Customize the style of message references when displayed. If not set, the default style is used. |
+| `final bool Function(BuildContext context, Message message)? onErrorTapHandler;` | The callback when clicking the red dot of message sending failure. If not set, it will trigger the message to be re-sent. |
+| `final MessageItemBubbleBuilder? bubbleBuilder` | The message bubble. If you need to customize the message bubble, implement it here. If you don't set it, the default `ChatUIKitMessageListViewBubble` will be used. |
+| `final MessageBubbleContentBuilder? bubbleContentBuilder` | The message bubble content. If you need to customize the bubble content, implement it here. If you do not set it, the default value will be used. |
+| `final String? attributes` | The extended parameters that will be passed to the next page. |
