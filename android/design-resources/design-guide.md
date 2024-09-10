@@ -345,7 +345,7 @@ Ordinary buttons are divided into two types: primary and secondary.
 
 Used for recommended actions. Typically, the background color is the theme color (Primary5/Primary6) or a gradient theme color. It appears grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Primary Button](/images/uikit/chatroomdesign/cruk2111.png)
+![Primary Button](../../assets/uikit/chatroomdesign/cruk2111.png)
 
 #### 2.1.1.2. Secondary Operations
 
