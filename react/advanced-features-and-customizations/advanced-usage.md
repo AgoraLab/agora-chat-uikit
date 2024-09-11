@@ -1,236 +1,220 @@
-The following are examples of advanced usage of UIKit. The conversation list page, message list page, and contact list page can all be used separately.
+The UI component library `Chat UIKit SDK` provides themes, internationalization, common UI components, and other elements. In addition to providing default usage, the component library supports custom component styles and behaviors.
 
-## Initialization
+## Entry component Container
 
-Compared to the initialization in the quickstart, additional `ChatOptions` parameters are added, including the switch configuration of whether to print logs in the SDK, whether to log in automatically, and whether to use user attributes by default.
+`Container` provides global configuration and initialization. If this component is not used, other UI components may not work properly. Its custom parameters are as follows:
 
-```swift
-let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
-```
+| Property | Type | Required/Optional | Description |
+|:---:|:---:|:---:|:---:|
+| `options` | `ChatOptionsType` | Required | A composite parameter set, consistent with `ChatOptions`, with `appKey` as the only required parameter. |
+| `language` | `LanguageCode` | Optional | Language code. Specifies the language in which the UI component displays content. For example, English. |
+| `translateLanguage` | `LanguageCode` | Optional | Language code. Specifies the target language for message translation. For example, English. |
+| `palette` | palette | Optional | Theme color palette. The theme will select colors and styles from the palette to form the theme. |
+| `theme` | theme | Optional | Theme. Light and dark are provided by default. |
+| `fontFamily` | string | Optional | Customize the font style of UI components. |
+| `emojiFontFamily` | string | Optional | Customize the emoji font style. |
+| `headerFontFamily` | string | Optional | Customize the font style of the navigation bar. |
+| `releaseArea` | `ReleaseArea` | Optional | Set the release region. For example, Global. |
+| `formatTime` | object | Optional | Time formatting callback notification for the conversation list and chat page. If not provided, the default formatting is used. |
+| `recallTimeout` | number | Optional | Callback timeout. The unit is milliseconds. The default value is 120. |
+| `group` | object | Optional | The maximum number of members to select when creating a group. Default is 1000. |
+| `conversationDetail` | `ConversationDetailType` | Optional | A collection of chat page configurations. See the corresponding definition for details. |
+| `avatar` | object | Optional | Global avatar style settings. Supports border rounding settings. |
+| `input` | object | Optional | Global input component style settings. Supports border radius settings. |
+| `alert` | object | Optional | Global warning box component style settings. Supports border radius settings. |
+| `onInitLanguageSet` | function | Optional | Register callback notification for the language pack. You can customize the language pack. |
+| `onInitialized` | function | Optional | Register the callback notification when initialization is completed. |
+| `onUsersHandler` | function | Optional | Register the callback notification for obtaining user data. If the user provides this interface, the user's avatar and nickname are obtained through this interface. If not provided, the default is used. |
+| `onGroupsHandler` | function | Optional | Register the callback notification for obtaining group data. If the user provides this interface, the group's avatar and nickname are obtained through this interface. If not provided, the default is used. |
+| `onChangeStatus` | function | Optional | Register the presence status callback notification. If the user provides this interface, the user's status change notification will be received. |
+| `enableTranslate` | boolean | Optional | Whether to enable the translation feature. If enabled, it also needs to be turned on in the background. |
+| `enableThread` | boolean | Optional | Whether to enable the thread feature. If enabled, it also needs to be enabled in the background. |
+| `enableReaction` | boolean | Optional | Whether to enable the emoji reply feature. If enabled, it also needs to be turned on in the background. |
+| `enablePresence` | boolean | Optional | Whether to enable the status subscription feature. If enabled, it also needs to be enabled in the background. |
+| `enableAVMeeting` | boolean | Optional | Whether to enable the audio and video call feature. If enabled, it also needs to be enabled in the background. Enabled by default. |
 
-## Login
+## Chat SDK component ChatService
 
-Use the user information of the current user object that conforms to `EaseProfileProtocol` to log in to `EaseChatUIKit`.
+`ChatServiceComponents` are encapsulations of Chat SDK, which can simplify calling logic, return standardized results, trigger UI change events, and so on.
 
-Create a user on Agora Console and pass in the user ID into the `userId` field in the following code. 
+Commonly used interfaces include login, logout, adding and deleting event listeners, adding and deleting Chat SDK event listeners, and others.
 
-If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit. 
+The core common methods are as follows:
 
-```swift
-public final class YourAppUser: NSObject, EaseProfileProtocol {
+| Method | Type | Description |  
+|:---:|:---:|:---:|
+| `login` | Function | Log in. |  
+| `logout` | Function | Log out. |  
+| `autoLogin` | Function | Automatically log in. |  
+| `loginState` | Function | Current login status. |  
+| `userId` | get | Get the ID of the currently logged in user. |  
+| `updateDataList` | Function | Actively update the avatar and nickname of the specified data. Will trigger the refresh of the loaded UI components. |  
 
-    public func toJsonObject() -> Dictionary<String, Any>? {
-        ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
-    }
+For more methods, see the [corresponding definitions](https://github.com/easemob/react-native-chat-library).
 
-    public var userId: String = <#T##String#>
+### Listeners
 
-    public var nickname: String = "Jack"
+`ChatService` provides `EventServiceListener` and `ConnectServiceListener`.
 
-    public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
+- `ConnectServiceListener`: Receive notifications of changes in the connection status between the SDK and the server.
 
+   | Method | Description |
+   |:---:|:---:|
+   | `onConnected` | Connected. |
+   | `onDisconnected` | Disconnected. See `DisconnectReasonType`. |
+
+- `EventServiceListener`: Receive notifications of event changes called by the specified interface.
+
+   | Method | Description |
+   |:---:|:---:|
+   | `onBefore` | Notification before the interface is called. |
+   | `onFinished` | Notification of the interface call completion. |
+   | `onError` | Notification of an error in an interface call. |
+
+## Custom hooks
+
+This section introduces common hooks.
+
+### useColors
+
+Usually `usePaletteContext` is used with custom color objects to change component colors.
+
+For example:
+
+```typescript
+export function SomeView() {
+  const { colors } = usePaletteContext();
+  const { getColor } = useColors({
+    bg: {
+      light: colors.neutral[98],
+      dark: colors.neutral[1],
+    },
+  });
+  return (
+    <View
+      style={{
+        backgroundColor: getColor("bg"),
+      }}
+    />
+  );
 }
- EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
- }
 ```
 
-## Provider in EaseChatUIKitContext
+### useDelayExecTask
 
-<Admonition type="tip" title="Note">Provider is only used for the conversation list and contact list. If you only enter the chat page through quickstart, you do not need to implement the Provider.</Admonition>
+Delays the execution of a task. If called again before the timeout occurs, the delay continues until timeout while executing the task.
 
-1. Set the Provider implementation class
+For example:
 
-    - Use coroutines to asynchronously return information about the conversation list. This is limited to Swift.
-
-    ```swift
-       
-        //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
-        EaseChatUIKitContext.shared?.userProfileProvider = self
-        EaseChatUIKitContext.shared?.userProfileProviderOC = nil
-        //The principle of groupProvider is the same as above
-        EaseChatUIKitContext.shared?.groupProfileProvider = self
-        EaseChatUIKitContext.shared?.groupProfileProviderOC = nil
-    ```
-
-    - Use closure to return information about the conversation list. It can be used in both Swift and OC.
-
-    ```swift
-           //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
-           EaseChatUIKitContext.shared?.userProfileProvider = nil
-           EaseChatUIKitContext.shared?.userProfileProviderOC = self
-           //The principle of groupProvider is the same as above
-           EaseChatUIKitContext.shared?.groupProfileProvider = nil
-           EaseChatUIKitContext.shared?.groupProfileProviderOC = self
-    ```
-   
-1. Implement the conversation list Provider.
-
-    For Objective-C, implement `EaseProfileProviderOC`. The following sample code implements a Swift-specific provider with the coroutine functionality.
-
-    ```
-       //MARK: - EaseProfileProvider for conversations&contacts usage.
-       //For example, using conversations controller as follows:
-       extension MainViewController: EaseProfileProvider,EaseGroupProfileProvider {
-           //MARK: - EaseProfileProvider
-           func fetchProfiles(profileIds: [String]) async -> [any EaseChatUIKit.EaseProfileProtocol] {
-               return await withTaskGroup(of: [EaseChatUIKit.EaseProfileProtocol].self, returning: [EaseChatUIKit.EaseProfileProtocol].self) { group in
-                   var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
-                   group.addTask {
-                       var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
-                       let result = await self.requestUserInfos(profileIds: profileIds)
-                       if let infos = result {
-                           resultProfiles.append(contentsOf: infos)
-                       }
-                       return resultProfiles
-                   }
-                   //Await all task were executed.Return values.
-                   for await result in group {
-                       resultProfiles.append(contentsOf: result)
-                   }
-                   return resultProfiles
-               }
-           }
-           //MARK: - EaseGroupProfileProvider
-           func fetchGroupProfiles(profileIds: [String]) async -> [any EaseChatUIKit.EaseProfileProtocol] {
-               
-               return await withTaskGroup(of: [EaseChatUIKit.EaseProfileProtocol].self, returning: [EaseChatUIKit.EaseProfileProtocol].self) { group in
-                   var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
-                   group.addTask {
-                       var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
-                       let result = await self.requestGroupsInfo(groupIds: profileIds)
-                       if let infos = result {
-                           resultProfiles.append(contentsOf: infos)
-                       }
-                       return resultProfiles
-                   }
-                   //Await all task were executed.Return values.
-                   for await result in group {
-                       resultProfiles.append(contentsOf: result)
-                   }
-                   return resultProfiles
-               }
-           }
-           
-           private func requestUserInfos(profileIds: [String]) async -> [EaseProfileProtocol]? {
-               var unknownIds = [String]()
-               var resultProfiles = [EaseProfileProtocol]()
-               for profileId in profileIds {
-                   if let profile = EaseChatUIKitContext.shared?.userCache?[profileId] {
-                       if profile.nickname.isEmpty {
-                           unknownIds.append(profile.id)
-                       } else {
-                           resultProfiles.append(profile)
-                       }
-                   } else {
-                       unknownIds.append(profileId)
-                   }
-               }
-               if unknownIds.isEmpty {
-                   return resultProfiles
-               }
-               let result = await ChatClient.shared().userInfoManager?.fetchUserInfo(byId: unknownIds)
-               if result?.1 == nil,let infoMap = result?.0 {
-                   for (userId,info) in infoMap {
-                       let profile = EaseChatProfile()
-                       let nickname = info.nickname ?? ""
-                       profile.id = userId
-                       profile.nickname = nickname
-                       if let remark = ChatClient.shared().contactManager?.getContact(userId)?.remark {
-                           profile.remark = remark
-                       }
-                       profile.avatarURL = info.avatarUrl ?? ""
-                       resultProfiles.append(profile)
-                       if (EaseChatUIKitContext.shared?.userCache?[userId]) != nil {
-                           profile.updateFFDB()
-                       } else {
-                           profile.insert()
-                       }
-                       EaseChatUIKitContext.shared?.userCache?[userId] = profile
-                   }
-                   return resultProfiles
-               }
-               return []
-           }
-           
-           private func requestGroupsInfo(groupIds: [String]) async -> [EaseProfileProtocol]? {
-               var resultProfiles = [EaseProfileProtocol]()
-               let groups = ChatClient.shared().groupManager?.getJoinedGroups() ?? []
-               for groupId in groupIds {
-                   if let group = groups.first(where: { $0.groupId == groupId }) {
-                       let profile = EaseChatProfile()
-                       profile.id = groupId
-                       profile.nickname = group.groupName
-                       profile.avatarURL = group.settings.ext
-                       resultProfiles.append(profile)
-                       EaseChatUIKitContext.shared?.groupCache?[groupId] = profile
-                   }
-       
-               }
-               return resultProfiles
-           }
-       }
-    ```
-
-## Conversation list
-
-1. Create a conversation list 
-
-    ```swift
-       
-        let vc = EaseChatUIKit.ComponentsRegister.shared.ConversationsController.init()
-        vc.tabBarItem.tag = 0
-    ```
-   
-1. Listen for events on the conversation list page
-
-    ```swift
-           
-        vc.viewModel?.registerEventsListener(listener: self)
-    ```
-
-
-## Contact list
-
-1. Create a contact list page
-
-    The custom class that inherits the contact list page class provided by UIKit can call ViewModel's methods to listen to related events after registering `ContactViewController().viewModel.registerEventsListener`.
-
-    ```swift
-           let vc = EaseChatUIKit.ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
-    ```
-
-1.  Listen for contact list page events
-
-    ```swift
-            vc.viewModel?.registerEventsListener(listener: self)
-    ```
-
-## Initialize chat page
-
-Most of the message processing and page processing logic in the chat page can be overridden, including ViewModel.
-
-```
-//Create a new user in the Agora Console, pass the user ID into the following construction method parameters, and jump to the chat page.
-let vc = ComponentsRegister.shared.MessageViewController.init(conversationId: <#ID of the user just created#>, chatType: .chat)
-// Custom classes after inheritance and registration can also call the registerEventsListener method of ViewModel to listen for chat message-related events, such as message reception, long press, click, etc. 
-// Either push or present can be used
-ControllerStack.toDestination(vc: vc)
+```typescript
+export function SomeView() {
+  const [value, setValue] = React.useState("");
+  const { delayExecTask: deferSearch } = useDelayExecTask(
+    500,
+    React.useCallback((keyword: string) => {
+      // Perform a search
+    }, [])
+  );
+  return (
+    <Search
+      onCancel={onCancel}
+      onChangeText={(v) => {
+        setValue(v);
+        deferSearch?.(v);
+      }}
+      value={value}
+    />
+  );
+}
 ```
 
-## Monitor user and server connection events
+### useForceUpdate
 
-You can call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and AgoraChatUIKit.
+`useForceUpdate` provides forced updates. This hook can be used if the component has no state or needs to be updated manually.
 
+For example:
+
+```typescript
+export function SomeView() {
+  const count = React.useRef(0);
+  const { updater } = useForceUpdate();
+  return (
+    <View style={{ paddingTop: 100, flexGrow: 1 }}>
+      <Pressable
+        onPress={() => {
+          count.current += 1;
+          updater();
+        }}
+      >
+        <Text>{"test updater"}</Text>
+      </Pressable>
+      <Text>{`${count.current}`}</Text>
+    </View>
+  );
+}
 ```
-EaseChatUIKitClient.shared.registerUserStateListener(self)
+
+### useGetStyleProps
+
+`useGetStyleProps` provides access to component style properties. Usually used in conjunction with `getStyleSize`.
+
+For example:
+
+```typescript
+export function SomeView(props) {
+  const { containerStyle } = props;
+  const { getStyleSize } = useGetStyleProps();
+  const { width: propsWidth } = getStyleSize(containerStyle);
+  const { checkType } = useCheckType();
+  if (propsWidth) {
+    checkType(propsWidth, "number");
+  }
+  return <View style={{ width: propsWidth }} />;
+}
 ```
 
-When the listener is not used, you can call `unregisterUserStateListener` to remove it:
+### useKeyboardHeight
 
+Gets the user's keyboard height. The keyboard needs to be popped up at least once to get the height.
+
+### usePermissions
+
+Request the permissions required by the UI component library. For example:
+
+```javascript
+export function SomeView() {
+  const { getPermission } = usePermissions();
+  React.useEffect(() => {
+    getPermission({
+      onResult: (isSuccess: boolean) => {
+        // Permission obtained successfully
+      },
+    });
+  }, [getPermission]);
+  return <View />;
+}
 ```
-EaseChatUIKitClient.shared.unregisterUserStateListener(self)
-```
 
-## More
+## Event notifications
 
-For more advanced usage, refer to the [demo](https://github.com/easemob/easemob-demo-ios/tree/SwiftDemo).
+Currently, the UI component library mainly provides two event notification methods:
+
+- SDK event notifications: Forwarded Chat SDK events, focusing on data changes: 
+
+    - `ConnectServiceListener`: Listens for notifications of changes in the connection between the SDK and the server.
+    - `MessageServiceListener`: Listens for message-related notifications.
+    - `ConversationListener`: Listens for conversation-related notifications.
+    - `GroupServiceListener`: Listens for group-related notifications.
+    - `ContactServiceListener`: Listens for contact-related notifications.
+    - `PresenceServiceListener`: Listens for notifications of user status subscriptions.
+    - `CustomServiceListener`: Listens for custom notifications.
+    - `MultiDeviceStateListener`: Listens for notifications related to multiple devices.
+    - `EventServiceListener`: Listens for event notifications, such as notifications before adding a friend, adding a friend successfully, and failure to add a friend.
+
+- UI event notifications: Application behavior may cause addition, deletion, and modification of list items, list refresh, and list reload. For example, if a group name is modified on the group details page, the page of the conversation list component will also be updated. In many cases, a single interface line may cause changes in multiple UI components. See [UIListener](#listeners) for details.
+  
+    - `UIConversationListListener`: Listens for notifications of changes to the conversation list.
+    - `UIContactListListener`: Listen for notifications of changes to the contact list.
+    - `UIGroupListListener`: Listens for notifications of changes to group lists.
+    - `UIGroupParticipantListListener`: Listens for notifications of changes to the group member list.
+    - `UINewRequestListListener`: Listens for notifications of changes to the friend request list.
