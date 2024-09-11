@@ -66,7 +66,7 @@ Before you start, make sure your development environment meets the following con
 
       Update the `ProjectName/Info.plist` file to add the following permissions:
 
-      ```json
+      ```xml
       <dict>
         <!-- Start of append section -->
               <key>NSCameraUsageDescription</key>
@@ -216,6 +216,6 @@ Before you start, make sure your development environment meets the following con
 
    Click **Login** to enter the chat page, enter the text content, and click **Send**.
 
-## Example project address
+## Sample project
 
-[Warehouse address](https://github.com/easemob/easemob-uikit-reactnative).
+See [UIKit sample project](https://github.com/easemob/easemob-uikit-reactnative).
