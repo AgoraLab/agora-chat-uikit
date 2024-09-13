@@ -2,7 +2,7 @@
 
 If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify the jump of the Activity.
 
-For example, if `EaseChatActivity` cannot meet the current needs, inherit `EaseChatActivity` to implement a new `ChatActivity`. When calling `EaseChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `ChatActivity`.
+For example, if `AgoraChatActivity` cannot meet the current needs, inherit `AgoraChatActivity` to implement a new `ChatActivity`. When calling `AgoraChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `ChatActivity`.
 
 Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
@@ -15,7 +15,7 @@ companion object {
     private const val REQUEST_CODE_STORAGE_FILE = 113
 
     fun actionStart(context: Context, conversationId: String, chatType: EaseChatType) {
-        Intent(context, EaseChatActivity::class.java).apply {
+        Intent(context, AgoraChatActivity::class.java).apply {
              putExtra(EaseConstant.EXTRA_CONVERSATION_ID, conversationId)
              putExtra(EaseConstant.EXTRA_CHAT_TYPE, chatType.ordinal)
              EaseIM.getCustomActivityRoute()?.getActivityRoute(this.clone() as Intent)?.let {

@@ -23,7 +23,7 @@ You can use CocoaPods to install UIKit as a dependency in your Xcode project.
    target 'YourTarget' do
      use_frameworks!
      
-     pod 'EaseChatUIKit'
+     pod 'AgoraChatUIKit'
    end
    
    post_install do |installer|
