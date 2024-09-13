@@ -1,4 +1,4 @@
-UIKit provides `EaseChatActivity` and `EaseChatFragment` to facilitate quick integration and customization of chat pages. This page describes the following features:
+UIKit provides `AgoraChatActivity` and `AgoraChatFragment` to facilitate quick integration and customization of chat pages. This page describes the following features:
 
 - Send and receive messages, including text, emoticons, pictures, voice, video, files, and business card messages.
 - Copy, quote, recall, delete, edit, resend, and review messages.
@@ -9,12 +9,12 @@ For details about message-related features, see [Product features](./overview/pr
 
 ## Usage examples
 
-The `EaseChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and others.
+The `AgoraChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and others.
 
 ```kotlin
 // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-// chatType: For one-to-one chat and chat group, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-EaseChatActivity.actionStart(mContext, conversationId, chatType)
+// chatType: For one-to-one chat and chat group, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
+AgoraChatActivity.actionStart(mContext, conversationId, chatType)
 ```
 ```kotlin
 class ChatActivity: AppCompactActivity() {
@@ -22,8 +22,8 @@ class ChatActivity: AppCompactActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-        // chatType: For one-to-one chat and chat group, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-        EaseChatFragment.Builder(conversationId, chatType)
+        // chatType: For one-to-one chat and chat group, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
+        AgoraChatFragment.Builder(conversationId, chatType)
             .build()?.let { fragment ->
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fl_fragment, fragment).commit()
@@ -34,14 +34,14 @@ class ChatActivity: AppCompactActivity() {
 
 ## Advanced usage
 
-### Customize settings through EaseChatFragment.Builder
+### Customize settings through AgoraChatFragment.Builder
 
-An `EaseChatFragment` Builder construction method is provided to facilitate customization of settings. The currently provided settings are as follows:
+An `AgoraChatFragment` Builder construction method is provided to facilitate customization of settings. The currently provided settings are as follows:
 
 ```kotlin
 // conversationID: Peer user ID for a one-to-one conversation and group ID for a chat group
-// easeChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and chat group, respectively
-EaseChatFragment.Builder(conversationID, easeChatType) 
+// agoraChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and chat group, respectively
+AgoraChatFragment.Builder(conversationID, agoraChatType) 
         .useTitleBar(true) 
         .setTitleBarTitle("title") 
         .setTitleBarSubTitle("subtitle") 
@@ -72,11 +72,11 @@ EaseChatFragment.Builder(conversationID, easeChatType)
         .setCustomFragment(myChatFragment) .build()
 ```
 
-`EaseChatFragment#Builder` provides the following methods:
+`AgoraChatFragment#Builder` provides the following methods:
 
 | Method | Description |
 |:---:|:---:|
-| `useTitleBar()` | Set whether to use the default title bar (`EaseTitleBar`). Set to `true` for yes, `false` (default) for no. |
+| `useTitleBar()` | Set whether to use the default title bar (`ChatTitleBar`). Set to `true` for yes, `false` (default) for no. |
 | `setTitleBarTitle()` | Set the title of the title bar. |
 | `setTitleBarSubTitle()` | Set the subtitle of the title bar. |
 | `enableTitleBarPressBack()` | Set whether to display the back button. Set to `true` for yes, `false` (default) for no. |
@@ -102,17 +102,17 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 | `setChatInputMenuHint()` | Set the prompt text of the input text box in the menu area. |
 | `sendMessageByOriginalImage()` | Set whether to send the original image when sending picture messages. Set to `true` for yes, `false` (default) for no. |
 | `setEmptyLayout()` | Set a blank page for the chat list. |
-| `setCustomAdapter()` | Set a custom adapter, the default is `EaseMessageAdapter`. |
-| `setCustomFragment()` | Set a custom chat Fragment. Must be inherited from `EaseChatFragment`. |
+| `setCustomAdapter()` | Set a custom adapter, the default is `ChatMessageAdapter`. |
+| `setCustomFragment()` | Set a custom chat Fragment. Must be inherited from `AgoraChatFragment`. |
 
 ### Add a custom message layout
 
-You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set `EaseChatFragment#Builder#setCustomAdapter` to `CustomMessageAdapter`.
+You can inherit from `ChatMessageAdapter`, `AgoraChatRowViewHolder`, and `AgoraChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set `AgoraChatFragment#Builder#setCustomAdapter` to `CustomMessageAdapter`.
 
-1. To create a custom `CustomMessageAdapter`, inherit from `EaseMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
+1. To create a custom `CustomMessageAdapter`, inherit from `ChatMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
 
     ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
+    class CustomMessageAdapter: ChatMessagesAdapter() {
     
     override fun getItemNotEmptyViewType(position: Int): Int {
     // Set your own itemViewType according to the message type
@@ -120,7 +120,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     return CUSTOM_YOUR_MESSAGE_TYPE
     }
     
-    override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+    override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
     // Return the corresponding ViewHolder according to the returned viewType
     // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
     return CUSTOM_VIEW_HOLDER()
@@ -128,7 +128,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     }
     ```
    
-1. Inherit from `EaseChatRow` to create `CustomTypeChatRow`:
+1. Inherit from `AgoraChatRow` to create `CustomTypeChatRow`:
 
     ```kotlin
     class CustomTypeChatRow(
@@ -136,7 +136,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     private val attrs: AttributeSet? = null,
     private val defStyle: Int = 0,
     isSender: Boolean = false
-    ): EaseChatRow(context, attrs, defStyle, isSender) {
+    ): AgoraChatRow(context, attrs, defStyle, isSender) {
     
     override fun onInflateView() {
     inflater.inflate(if (!isSender) R.layout.layout_row_received_custom_type
@@ -152,14 +152,14 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     }
     ```
 
-1. Inherit from `EaseChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
+1. Inherit from `AgoraChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
 
 ```kotlin
 class CustomChatTypeViewViewHolder(
     itemView: View
-): EaseChatRowViewHolder(itemView) {
+): AgoraChatRowViewHolder(itemView) {
 
-    override fun onBubbleClick(message: EaseMessage?) {
+    override fun onBubbleClick(message: ChatMessage?) {
         super.onBubbleClick(message)
         // Adding a click event
     }
@@ -169,7 +169,7 @@ class CustomChatTypeViewViewHolder(
 1. Complete `CustomMessageAdapter`:
 
     ```kotlin
-  class CustomMessageAdapter: EaseMessagesAdapter() {
+  class CustomMessageAdapter: ChatMessagesAdapter() {
   
       override fun getItemNotEmptyViewType(position: Int): Int {
           // Set your own itemViewType according to the message type.
@@ -188,7 +188,7 @@ class CustomChatTypeViewViewHolder(
           return super.getItemNotEmptyViewType(position)
       }
   
-      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
           // If you want to use the default, return super.getItemNotEmptyViewType(position).
           if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
               CustomChatTypeViewViewHolder(
@@ -207,7 +207,7 @@ class CustomChatTypeViewViewHolder(
   }
     ```
     
-1. Add `CustomMessageAdapter` to `EaseChatFragment#Builder`:
+1. Add `CustomMessageAdapter` to `AgoraChatFragment#Builder`:
 
     ```kotlin
     builder.setCustomAdapter(CustomMessageAdapter())
@@ -216,15 +216,15 @@ class CustomChatTypeViewViewHolder(
 ## List control-related function settings
 
 ```kotlin
-val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
+val chatMessageListLayout:AgoraChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
 ```
 
-The following `EaseChatMessageListLayout` methods are provided:
+The following `AgoraChatMessageListLayout` methods are provided:
 
 | Method | Description |
 |:---:|:---:|
-| `setViewModel()` | UIKit provides a default implementation EaseMessageListViewModel, which developers can inherit IChatMessageListRequestand add their own data logic. |
-| `setMessagesAdapter()` | Set the adapter for the message list, which needs to be EaseMessagesAdaptera subclass of . |
+| `setViewModel()` | UIKit provides a default implementation ChatMessageListViewModel, which developers can inherit IChatMessageListRequestand add their own data logic. |
+| `setMessagesAdapter()` | Set the adapter for the message list, which needs to be ChatMessagesAdaptera subclass of . |
 | `getMessagesAdapter()` | An adapter that returns a list of messages. |
 | `addHeaderAdapter()` | Add adapter for header layout of message list. |
 | `addFooterAdapter()` | Add the adapter for the footer layout of the message list. |
@@ -233,17 +233,17 @@ The following `EaseChatMessageListLayout` methods are provided:
 | `removeItemDecoration()` | Remove the message list decorator. |
 | `setAvatarDefaultSrc()` | Sets the default avatar for an entry. |
 | `setAvatarShapeType()` | Set the style of the avatar, which is divided into three styles: default style, circular style and rectangular style. |
-| `showNickname()` | Whether to display the nickname of the entry, EaseChatFragment#Builderand the setting method of this function is also provided. |
-| `setItemSenderBackground()` | Set the background of the sender, EaseChatFragment#Builderand also provide the setting method of this function. |
-| `setItemReceiverBackground()` | Set the background of the receiver, EaseChatFragment#Builderand also provide the setting method of this function. |
+| `showNickname()` | Whether to display the nickname of the entry, AgoraChatFragment#Builderand the setting method of this function is also provided. |
+| `setItemSenderBackground()` | Set the background of the sender, AgoraChatFragment#Builderand also provide the setting method of this function. |
+| `setItemReceiverBackground()` | Set the background of the receiver, AgoraChatFragment#Builderand also provide the setting method of this function. |
 | `setItemTextSize()` | Set the font size for text messages. |
 | `setItemTextColor()` | Set the font color of text messages. |
-| `setTimeTextSize()` | Set the font size of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
-| `setTimeTextColor()` | Set the color of the timeline text, EaseChatFragment#Builderand also provide a setting method for this function. |
+| `setTimeTextSize()` | Set the font size of the timeline text, AgoraChatFragment#Builderand also provide a setting method for this function. |
+| `setTimeTextColor()` | Set the color of the timeline text, AgoraChatFragment#Builderand also provide a setting method for this function. |
 | `setTimeBackground()` | Set the background of the timeline. |
-| `hideChatReceiveAvatar()` | The recipient's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
-| `hideChatSendAvatar()` | The sender's avatar is not displayed. It is displayed by default. EaseChatFragment#BuilderThe setting method of this function is also provided. |
-| `setOnChatErrorListener()` | Set the error callback when sending a message. EaseChatFragment#BuilderThe setting method of this function is also provided. |
+| `hideChatReceiveAvatar()` | The recipient's avatar is not displayed. It is displayed by default. AgoraChatFragment#BuilderThe setting method of this function is also provided. |
+| `hideChatSendAvatar()` | The sender's avatar is not displayed. It is displayed by default. AgoraChatFragment#BuilderThe setting method of this function is also provided. |
+| `setOnChatErrorListener()` | Set the error callback when sending a message. AgoraChatFragment#BuilderThe setting method of this function is also provided. |
 
 ## Extended function settings
 
@@ -263,7 +263,7 @@ After obtaining a `chatExtendMenu` object, you can add, remove, sort, and handle
 
 ## Listen for extension item click events
 
-You can use `EaseChatFragment#Builder#setOnChatExtendMenuItemClickListener` for monitoring or override the `ChatExtendMenuItemClick` method in a custom Fragment.
+You can use `AgoraChatFragment#Builder#setOnChatExtendMenuItemClickListener` for monitoring or override the `ChatExtendMenuItemClick` method in a custom Fragment.
 
 ```kotlin
 override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
@@ -286,25 +286,25 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   }
     ```
   
-    `EaseChatLayout` provides the following long-press menu methods: 
+    `AgoraChatLayout` provides the following long-press menu methods: 
 
     | Method | Description |
     |:---:|:---:|
     | `clearMenu()` | Clear a menu item. |
     | `addItemMenu()` | Add a new menu item. |
     | `findItemVisible()` | Set the visibility of a menu item by specifying `itemId`. |
-    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `EaseChatFragment`.|
+    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `AgoraChatFragment`.|
 
 - Handle menu events
 
     Override the following method in your custom Fragment:
 
         ```kotlin
-        override fun onPreMenu(helper: EaseChatMenuHelper?, message: ChatMessage?) {
+        override fun onPreMenu(helper: AgoraChatMenuHelper?, message: ChatMessage?) {
           // Callback event before menu is displayed. You can use the helper object to set whether the menu item is displayed.
         }
       
-        override fun onMenuItemClick(item: EaseMenuItem?, message: ChatMessage?): Boolean {
+        override fun onMenuItemClick(item: ChatMenuItem?, message: ChatMessage?): Boolean {
           // If you want to intercept a click event, you need to set it to return `true`.
         return false
         }
@@ -316,13 +316,13 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   
 ## Set properties related to the input menu 
 
-- Get an `EaseChatInputMenu` object: 
+- Get an `AgoraChatInputMenu` object: 
 
   ```kotlin
-  val chatInputMenu: EaseChatInputMenu? = binding?.layoutChat?.chatInputMenu
+  val chatInputMenu: AgoraChatInputMenu? = binding?.layoutChat?.chatInputMenu
   ```
   
-  `EaseChatInputMenu` provides the following methods: 
+  `AgoraChatInputMenu` provides the following methods: 
 
     | method | describe |
     |:---:|:---:|

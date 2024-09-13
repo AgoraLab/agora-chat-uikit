@@ -160,10 +160,10 @@ Take the following steps:
     <script setup>
     import { ref } from "vue";
     import { applyPureReactInVue } from "veaury";
-    import EaseChat from "../react_app/chat";
+    import AgoraChat from "../react_app/chat";
     import Logo from "../assets/logo.svg";
     
-    const Chat = applyPureReactInVue(EaseChat);
+    const Chat = applyPureReactInVue(AgoraChat);
     
     const theme = ref("light");
     

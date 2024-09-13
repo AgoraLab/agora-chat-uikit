@@ -4,21 +4,21 @@ If the default Activity and the configurable items it provides do not meet your 
 
 For example, if `AgoraChatActivity` cannot meet the current needs, inherit `AgoraChatActivity` to implement a new `ChatActivity`. When calling `AgoraChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `ChatActivity`.
 
-Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
+Only the Activity that implements `ChatIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// Jump implementation in EaseChatActivity
+// Jump implementation in AgoraChatActivity
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
     private const val REQUEST_CODE_STORAGE_VIDEO = 112
     private const val REQUEST_CODE_STORAGE_FILE = 113
 
-    fun actionStart(context: Context, conversationId: String, chatType: EaseChatType) {
+    fun actionStart(context: Context, conversationId: String, chatType: AgoraChatType) {
         Intent(context, AgoraChatActivity::class.java).apply {
-             putExtra(EaseConstant.EXTRA_CONVERSATION_ID, conversationId)
-             putExtra(EaseConstant.EXTRA_CHAT_TYPE, chatType.ordinal)
-             EaseIM.getCustomActivityRoute()?.getActivityRoute(this.clone() as Intent)?.let {
+             putExtra(ChatConstant.EXTRA_CONVERSATION_ID, conversationId)
+             putExtra(ChatConstant.EXTRA_CHAT_TYPE, chatType.ordinal)
+             ChatIM.getCustomActivityRoute()?.getActivityRoute(this.clone() as Intent)?.let {
                     if (it.hasRoute()) {
                     context.startActivity(it)
                     return
@@ -31,9 +31,9 @@ companion object {
 
 
 // Implementation of the routing interception 
-EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
+ChatIM.setCustomActivityRoute(object : ChatCustomActivityRoute {
     override fun getActivityRoute(intent: Intent): Intent {
-        if (intent.component?.className == EaseChatActivity::class.java.name) {
+        if (intent.component?.className == AgoraChatActivity::class.java.name) {
             intent.setClass(this@DemoApplication, ChatActivity::class.java)
          }
         return intent
@@ -46,14 +46,14 @@ EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
 The UIKit provides some global configurations that can be set during initialization. The sample code is as follows:
 
 ```kotlin
-val avatarConfig = EaseAvatarConfig()
+val avatarConfig = ChatAvatarConfig()
 // Set avatar to rounded corners
-avatarConfig.avatarShape = EaseImageView.ShapeType.ROUND
-val config = EaseIMConfig(avatarConfig = avatarConfig)
-EaseIM.init(this, options, config)
+avatarConfig.avatarShape = ChatImageView.ShapeType.ROUND
+val config = ChatIMConfig(avatarConfig = avatarConfig)
+ChatIM.init(this, options, config)
 ```
 
-`EaseAvatarConfig` provides the following configuration items:
+`ChatAvatarConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -62,7 +62,7 @@ EaseIM.init(this, options, config)
 | `avatarBorderColor` | The color of the avatar border. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
-`EaseChatConfig` provides the following configuration items:
+`ChatChatConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -71,7 +71,7 @@ EaseIM.init(this, options, config)
 | `timePeriodCanRecallMessage` | Set the time within which a message can be recalled. The default is 2 minutes. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
-`EaseDateFormatConfig` provides the following configuration items:
+`ChatDateFormatConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -79,13 +79,13 @@ EaseIM.init(this, options, config)
 | `convOtherDayFormat` | The format of other dates in the conversation list. The default format is `MM:dd`. |
 | `convOtherYearFormat` | The format of other dates with year in the conversation list. The default format is `MM:dd:yyyy`. |
 
-`EaseSystemMsgConfig` provides the following configuration items:
+`ChatSystemMsgConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
 | `useDefaultContactInvitedSystemMsg` | Whether to enable the system message function. Enabled by default.|
 
-`EaseMultiDeviceEventConfig` provides the following configuration items:
+`ChatMultiDeviceEventConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|

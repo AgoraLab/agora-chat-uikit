@@ -24,7 +24,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
    You can initialize the app when it loads or before using UIKit. During initialization, you will need to pass the app key you have obtained in Agora Console.
 
     ```
-   import EaseChatUIKit
+   import AgoraChatUIKit
        
    @UIApplicationMain
    class AppDelegate：UIResponder，UIApplicationDelegate {
@@ -33,22 +33,22 @@ If your network environment has a firewall deployed, contact [Agora technical su
    
    
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-            let error = EaseChatUIKitClient.shared.setup(appkey: "Appkey")
+            let error = AgoraChatUIKitClient.shared.setup(appkey: "Appkey")
         }
    }
     ```
 
 1. Log in
 
-    Log in to `EaseChatUIKit` with a user ID and token. If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit.
+    Log in to `AgoraChatUIKit` with a user ID and token. If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit.
 
     In a development environment, you need to create a Chat user in Agora Console and obtain a user token from your app server. 
 
    ```
-   public final class YourAppUser: NSObject, EaseProfileProtocol {
+   public final class YourAppUser: NSObject, ChatProfileProtocol {
    
                public func toJsonObject() -> Dictionary<String, Any>? {
-           ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
+           ["agora_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
        }
        
        
@@ -65,8 +65,8 @@ If your network environment has a firewall deployed, contact [Agora technical su
        public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
    
    }
-   // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `EaseProfileProtocol` protocol
-    EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
+   // Log in to AgoraChatUIKit using the user information of the current user object that conforms to the `ChatProfileProtocol` protocol
+    AgoraChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
     }
     ```
 

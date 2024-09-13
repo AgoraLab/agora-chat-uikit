@@ -19,7 +19,7 @@ Take the following steps to integrate UIKit:
    Add the following dependencies in the app project build.gradle.kts:
 
    ```kotlin
-   implementation("io.hyphenate:ease-chat-kit:4.7.0")
+   implementation("io.hyphenate:agora-chat-kit:4.7.0")
    ```
 
 1. Add local dependencies
@@ -29,15 +29,15 @@ Take the following steps to integrate UIKit:
    1. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
 
    ```kotlin
-   include(":ease-im-kit")
-   project(":ease-im-kit").projectDir = File("../chatuikit-android/ease-im-kit")
+   include(":chat-im-kit")
+   project(":chat-im-kit").projectDir = File("../chatuikit-android/chat-im-kit")
    ```
    
    1. Add the following code to the `/Gradle Scripts/build.gradle` file:
 
    ```kotlin
    //chatuikit-android
-   implementation(project(mapOf("path" to ":ease-im-kit")))
+   implementation(project(mapOf("path" to ":chat-im-kit")))
    ```
 
 1. Prevent code obfuscation
@@ -49,24 +49,23 @@ Take the following steps to integrate UIKit:
    -dontwarn  com.hyphenate.**
    ```
 
-
 ## Build a page
 
 ### Create a chat page
 
 Use either of the following: 
 
-- The `EaseChatActivity#actionStart` method of the `EaseChatActivity` page. The sample code is as follows:
+- The `AgoraChatActivity#actionStart` method of the `AgoraChatActivity` page. The sample code is as follows:
 
    ```kotlin
    // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-   // chatType: EaseChatType#SINGLE_CHAT for one-to-one chat and EaseChatType#GROUP_CHAT for chat group
-   EaseChatActivity.actionStart(mContext, conversationId, chatType)
+   // chatType: AgoraChatType#SINGLE_CHAT for one-to-one chat and AgoraChatType#GROUP_CHAT for chat group
+   AgoraChatActivity.actionStart(mContext, conversationId, chatType)
    ```
 
-   The `EaseChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and other.
+   The `AgoraChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and other.
 
-- `useEaseChatFragment`. The sample code is as follows:
+- `useAgoraChatFragment`. The sample code is as follows:
 
    ```kotlin
    class ChatActivity: AppCompactActivity() {
@@ -74,8 +73,8 @@ Use either of the following:
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         // conversationID: Peer user ID for a one-to-one chat and group ID for a chat group
-        // chatType can be EaseChatType#SINGLE_CHAT or EaseChatType#GROUP_CHAT
-        EaseChatFragment.Builder(conversationId, chatType)
+        // chatType can be AgoraChatType#SINGLE_CHAT or AgoraChatType#GROUP_CHAT
+        AgoraChatFragment.Builder(conversationId, chatType)
                         .build()?.let { fragment ->
                             supportFragmentManager.beginTransaction()
                                 .replace(R.id.fl_fragment, fragment).commit()

@@ -2,12 +2,12 @@
 
 ## 1. Customize the navigation section of group details
 
-- In the demo, inherit the `EaseChatNavigationBar` class from `EaseChatUIKit` to create your own page navigation. In this example, it is named `CustomConversationNavigationBar`.
+- In the demo, inherit the `AgoraChatNavigationBar` class from `AgoraChatUIKit` to create your own page navigation. In this example, it is named `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ``` swift
-        override func createNavigationBar() -> EaseChatNavigationBar {
+        override func createNavigationBar() -> AgoraChatNavigationBar {
             CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "more", in: .chatBundle, with: nil,hiddenAvatar: false)
         }
     ```
@@ -17,7 +17,7 @@
 - To customize navigation and listen to the original navigation click event, override the `navigationClick` method and perform the processing according to the corresponding click area. The sample code is as follows:
 
     ``` swift
-        override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
+        override func navigationClick(type: AgoraChatNavigationBarClickEvent, indexPath: IndexPath?) {
             switch type {
             case .back: self.backAction()
             case .avatar: self.avatarAction()
@@ -65,7 +65,7 @@
 
 ## 2. Customize a group details list item
 
-Configure the data source in the `CollectionView` of the header button of the group details page with `Appearance.contact.detailExtensionActionItems`. The event listening is the same as above. Adding items is the same as the following code. First, integrate contact inheritance and register the detail page into `EaseChatUIKit`, then set `ComponentsRegister.shared.GroupInfoController = MineGroupDetailViewController.self`.
+Configure the data source in the `CollectionView` of the header button of the group details page with `Appearance.contact.detailExtensionActionItems`. The event listening is the same as above. Adding items is the same as the following code. First, integrate contact inheritance and register the detail page into `AgoraChatUIKit`, then set `ComponentsRegister.shared.GroupInfoController = MineGroupDetailViewController.self`.
 
 ``` swift
 final class MineGroupDetailViewController: GroupInfoViewController {

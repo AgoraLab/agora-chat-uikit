@@ -59,7 +59,7 @@ Users can quickly add a contact or start a conversation through the contact card
 
 Users can send and receive voice messages in addition to text ones. 
 
-### Content moderation
+### Message reporting
 
 Messages sent by users are examined to determine whether they comply with the platform's 
 community guidelines, terms of service, and relevant laws and regulations.
@@ -70,13 +70,25 @@ The input status indicator means real-time display of the input status of one pa
 
 This feature is implemented using the SDK's transparent message transmission. For details, see [the SDK documentation](https://docs.agora.io/en/agora-chat/client-api/messages/send-receive-messages?platform=web).
 
-The input status indication feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableTypingIndicator` is `true`. To disable this feature, set this parameter to `false`.
+The input status indication feature is enabled by default. To disable this feature, set `ContainerProps.enableTyping` to `false`.
 
 The sample code is as follows:
 
-```dart
-ChatUIKitSettings.enableTypingIndicator = false;
+```typescript
+export function App() {
+  // Set whether to enable the input state
+  const enableTypingRef = React.useRef(false);
+
+  return (
+    <UIKitContainer enableTyping={enableTypingRef.current}>
+      {/* your custom component */}
+      <ToastView />
+    </UIKitContainer>
+  );
+}
 ```
+
+If you need to customize the style of the typing component or the navigation bar component of the chat page, refer to `ConversationDetailNavigationBar`.
 
 ### Local message search
 
@@ -84,9 +96,42 @@ The local message search feature allows users to quickly search for messages wit
 
 On the message search page, enter keywords to search for messages in the current conversation. If there are any results, they will be returned in the form of a list. Click the search result to jump to the location of the message.
 
-### Group mention
+The `MessageSearch` component is an independent page and requires the input of necessary parameters `convId`, `convType`, and `onClickedItem`.
 
-The group mention feature allows users to directly mention specific members in a chat group using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates the efficient delivery of important information and ensures that key messages receive timely attention and response.
+The sample code is as follows:
+
+```typescript
+type Props = NativeStackScreenProps<RootScreenParamsList>;
+export function MessageSearchScreen(props: Props) {
+  const { route } = props;
+  const navi = useStackScreenRoute(props);
+  const convId = ((route.params as any)?.params as any)?.convId;
+  const convType = ((route.params as any)?.params as any)?.convType;
+  return (
+    <SafeAreaViewFragment>
+      <MessageSearch
+        onCancel={(_data?: MessageSearchModel) => {
+          navi.goBack();
+        }}
+        convId={convId}
+        convType={convType}
+        onClickedItem={(item) => {
+          navi.push({
+            to: "MessageHistory",
+            props: {
+              convId: convId,
+              convType: convType,
+              messageId: item.msg.msgId,
+            },
+          });
+        }}
+      />
+    </SafeAreaViewFragment>
+  );
+}
+```
+
+`MessageSearch` provides the basic style and other parameter modifications. You can also implement the message search component yourself.
 
 ## Conversation-related 
 
@@ -127,71 +172,34 @@ Users can delete messages that they do not want to keep.
 
 Users can recall messages that were sent by mistake. 
 
-The message recall feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageRecall` is `true`. To disable, set this parameter to `false`. 
-
-The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageRecall = false;
-```
-
-You can also configure the duration of showing the recall option. The default is 120 seconds. Upon expiration, the option will no longer be available after long-pressing a message.
-
-```dart
-ChatUIKitSettings.recallExpandTime = 120;
-```
-
 ### Edit sent message
 
 Users can edit sent messages to correct mistakes. 
-
-The message editing feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageEdit` is `true`. To disable, set this parameter to `false`. The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageEdit = false;
-```
 
 ### Quote message
 
 Users can quote a specific message to reply to it or emphasize its importance. The message quoting UI and logic structure are as follows:
 
-- `ChatUIKitQuoteWidget`: A custom View for the quoted message of the message bubble.
-- `ChatUIKitReplyBar`: A custom View for the quoted message displayed above the bottom input box.
+- `MessageQuoteBubble`: A custom View for the quoted message of the message bubble.
 
-The quoting feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableMessageReply` 
-is `true`. To disable this feature, set it to `false`.
-
-The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageReply = false;
-```
+The message quoting feature is enabled by default, that is, the default value of `ContainerProps.enableMessageQuote` is `true`. To disable, set this to `false`.
 
 ### Translate message
 
 Users can translate messages into other languages for easier communication. 
 
-The UI layout of message translation is in `ChatUIKitTextMessageWidget`.
+The UI layout of message translation is in `MessageText`.
 
 Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
-  `ChatUIKitSettings` provides a `ChatUIKitSettings.enableMessageTranslation` setting to enable message translation. The message translation feature is disabled by default. To enable this feature, set it to `true`. The sample code is as follows:
-  
-  ```dart
-  ChatUIKitSettings.enableMessageTranslation = true;
-  ```
+   The `ContainerProps` object of UIKit provides a `ContainerProps.enableTranslate` setting to enable the message translation feature. The default value is `false`. To enable this feature, you need to set this parameter to `true`.
 
 1. Set the target language
 
-  `ChatUIKitSettings` provides a `translateTargetLanguage` property to set the target translation language. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
-  
-  The sample code is as follows: 
-
-  ```dart
-  ChatUIKitSettings.translateTargetLanguage = 'zh-Hans';
-  ```
+  The `ContainerProps` object of UIKit provides a `translateLanguage` setting to enable the message translation feature. If the target language for the translation is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+ 
 
 ### Reply with emoji
 
@@ -200,16 +208,12 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- `ChatUIKitMessageReactionsRow` implements a custom UI layout in the message list. 
-- `ChatUIKitMessageReactionInfo` shows a pop-up window with the emoji list.
+- `MessageReaction`: Implements a custom UI layout in the message list. 
+- `BottomSheetEmojiList`: A pop-up window showing the reaction list.
 
 Before using this feature, enable it in Agora Console.
 
-`ChatUIKitSettings` provides an `enableMessageReaction` property to enable reactions. This feature is disabled by default. To enable, set it to `true`. The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageReaction = true;
-```
+The `ContainerProps` object provides an `enableReaction` property to enable reactions. This feature is disabled by default. To enable, set it to `true`. The sample code is as follows:
 
 ### Message thread
 
@@ -217,42 +221,43 @@ Users can create a message thread based on a message in a group chat, to have a 
 
 Before using this feature, enable it in Agora Console.
 
-UIKit provides a `ChatUIKitSettings.enableChatThreadMessage` switch. The message thread feature is disabled by default. To enable this feature, set it to `true`. The sample code is as follows:
+UIKit provides a `ContainerProps.enableThread` switch. The message thread feature is disabled by default. To enable this feature, set it to `true`. 
 
-```dart
-ChatUIKitSettings.enableMessageThread = true;
-```
+### Forward messages
 
-### Forward multiple messages
+Users can forward single or multiple combined messages to other users. 
 
-Users can forward multiple combined messages to other users. 
+The UI and logic structure are as follows:
 
-`ForwardMessageSelectView` is the page to select the recipients of the forwarded messages. The message forwarding feature is switched on and off in `ChatUIKitSettings.enableMessageMultiSelect`, with the default value of `true`. To disable, set this parameter to `false`.
+- `MessageForwardSelector`: Select the forward message recipient page.
 
-The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageMultiSelect = true;
-```
-
-### Forward a single message
-
-Users can forward a single message to other users. 
-
-`ForwardMessageSelectView` is the page to select the recipients of the forwarded messages. The message forwarding feature is switched on and off in `ChatUIKitSettings.enableMessageForward`, with the default value of `true`. To disable, set this parameter to `false`.
-
-The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableMessageForward = false;
-```
+The message forwarding feature is enabled by default. To disable, set `ContainerProps.enableMessageMultiSelect` to `false`. 
 
 ### Pin message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 
-The message pinning feature is enabled by default. That is, the default value of `ChatUIKitSettings.enablePinMsg` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
+Use `ContainerProps.enableMessagePin` to control whether pinning messages is enabled. This feature is enabled by default. In the `ConversationDetail` component, a built-in message pinning listener `MessageList` is used to dynamically update the pinned message list. In the component, call the context menu to pin messages.
 
-```dart
-ChatUIKitSettings.enablePinMsg = false;
+To pin/unpin a message on the chat page, call the context menu on the message bubble and select the pin/unpin option. After successful execution, the pinned message list will be updated.
+
+The following sample code shows how to enable this feature:
+
+```typescript
+import { NavigationContainer } from "@react-navigation/native";
+import { Container as UIKitContainer } from "react-native-chat-uikit";
+export function App() {
+  // The default is on. To turn it off, set it to false.
+  const enableMessagePin = true;
+  return (
+    <UIKitContainer
+      options={{
+        appKey: gAppKey,
+      }}
+      enableMessagePin={enableMessagePin}
+    >
+      {/** Other sample codes */}
+    </UIKitContainer>
+  );
+}
 ```

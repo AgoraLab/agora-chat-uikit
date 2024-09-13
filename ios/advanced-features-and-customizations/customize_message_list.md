@@ -2,12 +2,12 @@
 
 ## 1. Customize the navigation bar UI in the message list page
 
-- In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
+- In the demo, inherit the `AgoraChatNavigationBar` class in `AgoraChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ``` swift
-        override func createNavigationBar() -> EaseChatNavigationBar {
+        override func createNavigationBar() -> AgoraChatNavigationBar {
             CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)
         }
     ```
@@ -17,7 +17,7 @@
 - To customize navigation and listen to the original navigation click event, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
 
     ```
-        override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
+        override func navigationClick(type: AgoraChatNavigationBarClickEvent, indexPath: IndexPath?) {
             switch type {
             case .back: self.backAction()
             case .avatar: self.avatarAction()
@@ -49,7 +49,7 @@
 
 ## 2. Customize the list items, such as the cell for each message type
 
-Customize the content of the list items in the message table, that is, `TextMessageCell`. Inherit the cell of the message type, register and override some services in the subscript in `EaseChatUIKit`, and then set the following code:
+Customize the content of the list items in the message table, that is, `TextMessageCell`. Inherit the cell of the message type, register and override some services in the subscript in `AgoraChatUIKit`, and then set the following code:
 
 | Cell class name       | Usage                     | Swift code to register the corresponding override property                     |
 |-----------------------|---------------------------|--------------------------------------------------------------------------------|
