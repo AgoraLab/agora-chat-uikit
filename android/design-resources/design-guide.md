@@ -215,10 +215,6 @@ Set font typesetting tokens as shown:
 
 ![Font Token](../../assets/images/cruk146a.png)
 
-Simplified Chinese font tokens:
-
-![Simplified Chinese Font Token](../../assets/images/cruk146b.png)
-
 ## 1.5. Effects
 
 ### 1.5.1. Background Blur
