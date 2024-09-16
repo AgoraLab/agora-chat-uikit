@@ -437,7 +437,6 @@ Avatars can include badges to reflect online and offline status. Badges can be p
 
 Badges are used in navigation items, list items, and avatars to display status, notifications, and counts. Configuration options include count visibility, size (standard or small), and the presence of an icon.
 
-![Badge](../../assets/uikit/chatroomdesign/cruk249.png)
 
 ### 2.10. Emojis
 
@@ -466,8 +465,6 @@ Provides simple feedback on the current operation. Toasts come in two types: wit
 ### 2.12. Modal Background (Modal)
 
 Modals are temporary pop-ups with critical information requiring user action to exit. The modal background color can be any AlphaColor, and background blur effects can be set.
-
-![Modal Background](../../assets/uikit/chatroomdesign/cruk296.png)
 
 ### 2.13. Index
 
