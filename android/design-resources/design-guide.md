@@ -1,6 +1,6 @@
 # Mobile Single/Group Chat Human-Computer Interaction Interface Toolkit Design Guide
 
-![Cover Image](../../assets/uikit/chatuikit/design/CUIcover2.png)
+![Cover Image](../../assets/images/CUIcover2.png)
 
 ## General Design Principles
 
@@ -40,7 +40,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 - **Saturation**: Radius of the cylinder (0% to 100%)
 - **Lightness**: Height of the cylinder (0% to 100%)
 
-![HSLA Model Overview](../../assets/uikit/chatroomdesign/cruk1113.png)
+![HSLA Model Overview](../../assets/images/cruk1113.png)
 
 #### 1.1.2. Theme Colors
 
@@ -48,7 +48,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 
 Users can set the Hue (0-360) to adjust the theme colors. The Hue value changes the color to fit user scenarios.
 
-![Hue Example](../../assets/uikit/chatroomdesign/cruk11211.png)
+![Hue Example](../../assets/images/cruk11211.png)
 
 ##### 1.1.2.2. Saturation
 
@@ -58,20 +58,20 @@ The saturation values are fixed:
 - **Neutral**: 8%
 - **Neutral Special**: 36%
 
-![Saturation Example](../../assets/uikit/chatroomdesign/cruk1122.png)
+![Saturation Example](../../assets/images/cruk1122.png)
 
 ##### 1.1.2.3. Lightness Level
 
 Lightness is available in thirteen levels:
 0(0%) to 100(100%)
 
-![Lightness Levels](../../assets/uikit/chatroomdesign/cruk1123.png)
+![Lightness Levels](../../assets/images/cruk1123.png)
 
 ##### 1.1.2.4. Example
 
 Setting Primary Hue to 203, Secondary Hue to 155, and Error Hue to 350 generates 39 theme colors.
 
-![Example Colors](../../assets/uikit/chatroomdesign/cruk1124.png)
+![Example Colors](../../assets/images/cruk1124.png)
 
 #### 1.1.3. Primary Gradient Color
 
@@ -79,13 +79,13 @@ Setting Primary Hue to 203, Secondary Hue to 155, and Error Hue to 350 generates
 
 The Start Color should match the Primary class color.
 
-![Start Color](../../assets/uikit/chatroomdesign/cruk1131.png)
+![Start Color](../../assets/images/cruk1131.png)
 
 ##### 1.1.3.2. End Color
 
 Users can configure the End Color hue. Brightness is fixed.
 
-![End Color Example](../../assets/uikit/chatroomdesign/cruk11321.png)
+![End Color Example](../../assets/images/cruk11321.png)
 
 ##### 1.1.3.3. Gradient Configuration
 
@@ -95,7 +95,7 @@ Users can configure the End Color hue for gradient effects.
 
 End Color Hue = 233 with gradient direction "↓" produces the following effect:
 
-![Gradient Example](../../assets/uikit/chatroomdesign/cruk11341.png)
+![Gradient Example](../../assets/images/cruk11341.png)
 
 #### 1.1.4. Transparent Color (Alpha)
 
@@ -103,7 +103,7 @@ End Color Hue = 233 with gradient direction "↓" produces the following effect:
 
 Used for modal background and light prompt background. Two classes: Alpha onlight and Alpha ondark.
 
-![Alpha Colors](../../assets/uikit/chatroomdesign/cruk1141.png)
+![Alpha Colors](../../assets/images/cruk1141.png)
 
 ### 1.1.5. Neutral Colors
 
@@ -111,13 +111,13 @@ Used for modal background and light prompt background. Two classes: Alpha onligh
 
 Neutral color has one configurable item: Hue. Saturation is fixed at 8%.
 
-![Neutral Example](../../assets/uikit/chatroomdesign/cruk1151.png)
+![Neutral Example](../../assets/images/cruk1151.png)
 
 #### 1.1.5.2. Example
 
 If Primary Hue is 203 and Neutral Hue is also 203, users get the following color options:
 
-![Neutral Example Colors](../../assets/uikit/chatroomdesign/cruk11521.png)
+![Neutral Example Colors](../../assets/images/cruk11521.png)
 
 ### 1.1.6. Neutral Special
 
@@ -125,7 +125,7 @@ If Primary Hue is 203 and Neutral Hue is also 203, users get the following color
 
 For a Primary hue of 203 and Neutral Special Hue of 220:
 
-![Neutral Special Colors](../../assets/uikit/chatroomdesign/cruk1161.png)
+![Neutral Special Colors](../../assets/images/cruk1161.png)
 
 ## 1.2. Theme
 
@@ -135,13 +135,13 @@ There are two themes: Rounded and Hard, each with Light and Dark modes.
 
 Uses larger rounded corners for a soft, light appearance.
 
-![Rounded Theme](../../assets/uikit/chatuikit/design/1.2.1.png)
+![Rounded Theme](../../assets/images/1.2.1.png)
 
 ### 1.2.2. Hard Theme
 
 Avoids large rounded corners for a tough, solid look.
 
-![Hard Theme](../../assets/uikit/chatuikit/design/1.2.2.png)
+![Hard Theme](../../assets/images/1.2.2.png)
 
 ## 1.3. Icon
 
@@ -149,13 +149,13 @@ Avoids large rounded corners for a tough, solid look.
 
 Icons follow the Material Icon Font template with a 24-grid base and a 1.5-grid stroke.
 
-![Icon Template](../../assets/uikit/chatroomdesign/cruk131.png)
+![Icon Template](../../assets/images/cruk131.png)
 
 ### 1.3.2. Icon Naming
 
 Icons should be named descriptively and avoid fixed operational behaviors.
 
-![Icon Naming](../../assets/uikit/chatroomdesign/cruk132.png)
+![Icon Naming](../../assets/images/cruk132.png)
 
 ## 1.4. Typography
 
@@ -213,11 +213,11 @@ Roles include Headline, Title, Label, and Body. Use based on component context a
 
 Set font typesetting tokens as shown:
 
-![Font Token](../../assets/uikit/chatroomdesign/cruk146a.png)
+![Font Token](../../assets/images/cruk146a.png)
 
 Simplified Chinese font tokens:
 
-![Simplified Chinese Font Token](../../assets/uikit/chatroomdesign/cruk146b.png)
+![Simplified Chinese Font Token](../../assets/images/cruk146b.png)
 
 ## 1.5. Effects
 
@@ -268,7 +268,7 @@ box-shadow: 0 4px 4px rgba(Neutral4, 0.15), 2px 0 8px rgba(Neutral1, 0.1);
 box-shadow: 0 1px 3px rgba(Neutral4, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 ```
 
-![img](../../assets/uikit/chatroomdesign/cruk1522b.png)
+![img](../../assets/images/cruk1522b.png)
 
 ## 1.6. Radius
 
@@ -276,7 +276,7 @@ box-shadow: 0 1px 3px rgba(Neutral4, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 
 Rounded corners are categorized into six values: None (r=0), Extra Small (r=4), Small (r=8), Medium (r=12), Large (r=16), and Extra Large (r=½ Height). Typically, all four corners of a component share the same radius.
 
-![General Rounded Corners](../../assets/uikit/chatroomdesign/cruk161.png)
+![General Rounded Corners](../../assets/images/cruk161.png)
 
 #### 1.6.1.1. Extra Small (r=4)
 
@@ -327,7 +327,7 @@ Special rounded corners are applied to IM chat message components with backgroun
 
 - Message Bubble (Large Radius)
 
-![Special Rounded Corners](../../assets/uikit/chatroomdesign/cruk162.png)
+![Special Rounded Corners](../../assets/images/cruk162.png)
 
 ## 2. Widgets
 
@@ -345,41 +345,41 @@ Ordinary buttons are divided into two types: primary and secondary.
 
 Used for recommended actions. Typically, the background color is the theme color (Primary5/Primary6) or a gradient theme color. It appears grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Primary Button](../../assets/uikit/chatroomdesign/cruk2111.png)
+![Primary Button](../../assets/images/cruk2111.png)
 
 #### 2.1.1.2. Secondary Operations
 
 Used to assist primary operations. They usually do not appear alone. The background color is typically light (Neutral98) or dark (Neutral1) and includes a stroke. They appear grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Secondary Button](../../assets/uikit/chatroomdesign/cruk2112.png)
+![Secondary Button](../../assets/images/cruk2112.png)
 
 ### 2.1.2. Text Button (Text)
 
 Text buttons only have foreground color and are divided into primary and secondary operations. They are used for more frequent routine actions (e.g., form steps, message display) or as secondary actions when a normal button is present on the page.
 
-![Text Button](../../assets/uikit/chatroomdesign/cruk212.png)
+![Text Button](../../assets/images/cruk212.png)
 
 ### 2.1.3. Icon Button (Icon)
 
 Icon buttons are used when space is limited but buttons are necessary, such as for keyboard switching, top bar operations, form actions, or clearing inputs.
 
-![Icon Button](../../assets/uikit/chatroomdesign/cruk213.png)
+![Icon Button](../../assets/images/cruk213.png)
 
 Note: On the web, icon buttons should be used with Popover to explain their specific function clearly.
 
-![Icon Button with Popover](../../assets/uikit/chatroomdesign/cruk213b.png)
+![Icon Button with Popover](../../assets/images/cruk213b.png)
 
 ### 2.2. Input Box
 
 Used for entering short text. It comes in three sizes: large, medium, and small. The style includes options for background color, stroke color, rounded corners, and six status types: out of focus not filled, out of focus filled, focused not filled, focused filled, disabled filled, and disabled not filled.
 
-![Input Box](../../assets/uikit/chatroomdesign/cruk22.png)
+![Input Box](../../assets/images/cruk22.png)
 
 ### 2.3. Input Area
 
 Used for entering larger amounts of text, such as in forms or content publishing. The style includes options for background color, stroke color, rounded corners, and maximum character count display. The status is divided into six types: out of focus unfilled, out of focus filled, focused unfilled, focused filled, disabled filled, and disabled unfilled.
 
-![Input Area](../../assets/uikit/chatroomdesign/cruk23.png)
+![Input Area](../../assets/images/cruk23.png)
 
 ### 2.4. Checkboxes and Radios
 
@@ -407,31 +407,31 @@ Avatars display user or operation item information. They are often placed on per
 
 Displays a picture when user avatar information is available.
 
-![Picture Avatar](../../assets/uikit/chatroomdesign/cruk241.png)
+![Picture Avatar](../../assets/images/cruk241.png)
 
 #### 2.8.2. Character Avatar
 
 Displayed when the user has not uploaded an avatar. Character avatars can be single-character or double-character.
 
-![Character Avatar](../../assets/uikit/chatroomdesign/cruk242.png)
+![Character Avatar](../../assets/images/cruk242.png)
 
 #### 2.8.3. Combined Avatars
 
 Automatically generated avatars for group chats when no user avatar data is available.
 
-![Combined Avatars](../../assets/uikit/chatroomdesign/cruk243.png)
+![Combined Avatars](../../assets/images/cruk243.png)
 
 #### 2.8.4. Icon Avatar
 
 Used for empty states when no user avatar information is available or for form items with icons.
 
-![Icon Avatar](../../assets/uikit/chatroomdesign/cruk244.png)
+![Icon Avatar](../../assets/images/cruk244.png)
 
 #### 2.8.5. Avatar Badge
 
 Avatars can include badges to reflect online and offline status. Badges can be placed in the lower right or upper right corner.
 
-![Avatar Badge](../../assets/uikit/chatroomdesign/cruk245.png)
+![Avatar Badge](../../assets/images/cruk245.png)
 
 ### 2.9. Badge
 
@@ -444,19 +444,19 @@ Badges are used in navigation items, list items, and avatars to display status, 
 
 Twemoji, an open-source emoji set free for commercial use, is used as the base for emojis. By default, 52 emojis are built-in. Users can replace, add, or remove emojis from the 3,245 available in Twemoji.
 
-![Twemoji Examples](../../assets/uikit/chatroomdesign/cruk291.png)
+![Twemoji Examples](../../assets/images/cruk291.png)
 
 #### 2.10.2. Emoji Template
 
 For custom emojis or replacing Twemoji, use the provided templates.
 
-![Emoji Template](../../assets/uikit/chatroomdesign/cruk292.png)
+![Emoji Template](../../assets/images/cruk292.png)
 
 #### 2.10.3. Expression Component State
 
 Expression components have four states: Enabled, Hovered (web only), Pressed, and Focused. On hover, the background color darkens; when pressed, it lightens; and on focus, it changes to the Key Color.
 
-![Expression Component State](../../assets/uikit/chatroomdesign/cruk293.png)
+![Expression Component State](../../assets/images/cruk293.png)
 
 ### 2.11. Toast
 
@@ -534,7 +534,7 @@ The emoji keyboard allows sending emojis built into the app. It supports:
 
 **Note:** Emojis entered through this component will not synchronize with the system's emojis but will display as built-in app emojis. Ensure to use emojis that are open source and free for commercial use to meet legal requirements.
 
-![EmojisPick](../../assets/uikit/chatroomdesign/cruk34.png)
+![EmojisPick](../../assets/images/cruk34.png)
 
 ### 3.5. List Item
 
@@ -579,7 +579,7 @@ Pop-up notifications are modal prompts for key information or user actions. Conf
 
 Style options include matching rounded corners of the input box and operation buttons with the pop-up window.
 
-![Pop-up Window](../../assets/uikit/chatroomdesign/cruk27.png)
+![Pop-up Window](../../assets/images/cruk27.png)
 
 ### 3.7. Action Sheet
 
@@ -590,7 +590,7 @@ The action sheet displays multiple operation items in a modal form. Each item ha
 
 This component is available only on mobile devices.
 
-<img src="../../assets/uikit/chatroomdesign/cruk25.png" width="390" >
+<img src="../../assets/images/cruk25.png" width="390" >
 
 ## 4. Message Bubble
 
