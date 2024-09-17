@@ -1,13 +1,13 @@
-![Customize Message List](./assets/images/customize-message-list.png)
+![Customize Message List](../../assets/images/customize-message-list.png)
 
 ## 1. Customize the navigation bar UI in the message list page
 
-- In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
+- In the demo, inherit the `AgoraChatNavigationBar` class in `AgoraChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ``` swift
-        override func createNavigationBar() -> EaseChatNavigationBar {
+        override func createNavigationBar() -> AgoraChatNavigationBar {
             CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)
         }
     ```
@@ -17,7 +17,7 @@
 - To customize navigation and listen to the original navigation click event, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
 
     ```
-        override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
+        override func navigationClick(type: AgoraChatNavigationBarClickEvent, indexPath: IndexPath?) {
             switch type {
             case .back: self.backAction()
             case .avatar: self.avatarAction()
@@ -49,7 +49,7 @@
 
 ## 2. Customize the list items, such as the cell for each message type
 
-Customize the content of the list items in the message table, that is, `TextMessageCell`. Inherit the cell of the message type, register and override some services in the subscript in `EaseChatUIKit`, and then set the following code:
+Customize the content of the list items in the message table, that is, `TextMessageCell`. Inherit the cell of the message type, register and override some services in the subscript in `AgoraChatUIKit`, and then set the following code:
 
 | Cell class name       | Usage                     | Swift code to register the corresponding override property                     |
 |-----------------------|---------------------------|--------------------------------------------------------------------------------|
@@ -85,7 +85,7 @@ The `ChatAppearance` class is a configurable container class. For simple configu
 
 - `Appearance.chat.bubbleStyle = .withArrow`: This property is the style type of the message bubble. It has two enumeration values. The default is a bubble with sharp corners and the other is a message bubble with polygonal rounded corners.
 
-- `Appearance.chat.contentStyle = [.withReply,.withAvatar,.withNickName,.withDateAndTime]`: This property is the message list item, which is the content displayed in the cell. By default, it displays the reply message bubble, the message sender's avatar, the message sender's nickname, and the date and time of the message. The value-added functions include the expression response to the message (`MessageReaction`) and the opening of a topic discussion group in the group based on the current message (`MessageThread`). Make sure to enable these two features in the Console before adding them.
+- `Appearance.chat.contentStyle = [.withReply,.withAvatar,.withNickName,.withDateAndTime]`: This property is the message list item, which is the content displayed in the cell. By default, it displays the reply message bubble, the message sender's avatar, the message sender's nickname, and the date and time of the message. The value-added functions include the expression response to the message (`MessageReaction`) and the opening of a topic discussion group in the group based on the current message (`MessageThread`). 
 
     ``` swift
         //Whether to show the message topic or not.
