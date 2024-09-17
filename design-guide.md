@@ -1,38 +1,37 @@
-# Mobile Single/Group Chat Human-Computer Interaction Interface Toolkit Design Guide
+# UIKit Mobile Design Guide
 
-![Cover Image](../../assets/images/CUIcover2.png)
+![Cover Image](/assets/images/CUIcover2.png)
 
-## General Design Principles
+## General design principles
 
-**Universal Functions and Behaviors**
+**Universal features and behaviors**
 
-Incorporate universal and common functions and behaviors into the design to ensure consistency and ease of use.
+Incorporate universal and common features and behaviors into the design to ensure consistency and ease of use.
 
 **Customizability**
 
 Enable easy customization of styles to allow users to tailor the interface to their preferences.
 
+**User autonomy**
 
-**User Autonomy**
+Avoid making decisions on behalf of users regarding business models or preferences, allowing them a full control over their choices.
 
-Avoid making decisions on behalf of users regarding business models or preferences, allowing them full control over their choices.
+## 1. Global style (Style)
 
-## 1. Global Style (Style)
+### 1.1. UIkit color specification
 
-### 1.1. UIkit Color Specification
+#### 1.1.1. Color configuration instructions
 
-#### 1.1.1. Color Configuration Instructions
-
-##### 1.1.1.1. Color Categories
+##### 1.1.1.1. Color categories
 
 Colors are categorized into eight types:
 
-- **Theme Colors**: Primary, Secondary, Error
-- **Primary Gradients**: Eight variations
-- **Transparent Colors**: Alpha colors for Light and Dark modes
-- **Neutral Colors**: Neutral and Neutral Special
+- **Theme colors**: Primary, secondary, error
+- **Primary gradients**: Eight options
+- **Transparent colors**: Alpha colors for the light and dark themes
+- **Neutral colors**: Neutral and special neutral
 
-##### 1.1.1.2. Color Mode (HSLA Model)
+##### 1.1.1.2. Color mode (HSLA model)
 
 Colors are specified using the HSLA model, visualized as a cylinder:
 
@@ -42,9 +41,9 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 
 ![HSLA Model Overview](../../assets/images/cruk1113.png)
 
-#### 1.1.2. Theme Colors
+#### 1.1.2. Theme colors
 
-##### 1.1.2.1. Hue Value
+##### 1.1.2.1. Hue value
 
 Users can set the Hue (0-360) to adjust the theme colors. The Hue value changes the color to fit user scenarios.
 
@@ -54,54 +53,53 @@ Users can set the Hue (0-360) to adjust the theme colors. The Hue value changes 
 
 The saturation values are fixed:
 
-- **Primary, Secondary, Error**: 100%
+- **Primary, secondary, error**: 100%
 - **Neutral**: 8%
-- **Neutral Special**: 36%
+- **Special neutral**: 36%
 
 ![Saturation Example](../../assets/images/cruk1122.png)
 
-##### 1.1.2.3. Lightness Level
+##### 1.1.2.3. Lightness
 
-Lightness is available in thirteen levels:
-0(0%) to 100(100%)
+Thirteen levels of lighting are available, ranging from 0(0%) to 100(100%).
 
 ![Lightness Levels](../../assets/images/cruk1123.png)
 
 ##### 1.1.2.4. Example
 
-Setting Primary Hue to 203, Secondary Hue to 155, and Error Hue to 350 generates 39 theme colors.
+Setting the primary hue to 203, secondary hue to 155, and error hue to 350 generates 39 theme colors.
 
 ![Example Colors](../../assets/images/cruk1124.png)
 
-#### 1.1.3. Primary Gradient Color
+#### 1.1.3. Primary gradient color
 
-##### 1.1.3.1. Start Color
+##### 1.1.3.1. Start color
 
-The Start Color should match the Primary class color.
+The start color should match the primary color.
 
 ![Start Color](../../assets/images/cruk1131.png)
 
-##### 1.1.3.2. End Color
+##### 1.1.3.2. End color
 
-Users can configure the End Color hue. Brightness is fixed.
+Users can configure the end color hue. The brightness is fixed.
 
 ![End Color Example](../../assets/images/cruk11321.png)
 
-##### 1.1.3.3. Gradient Configuration
+##### 1.1.3.3. Gradient configuration
 
-Users can configure the End Color hue for gradient effects.
+Users can configure the end color hue for gradient effects.
 
 ##### 1.1.3.4. Example
 
-End Color Hue = 233 with gradient direction "↓" produces the following effect:
+End color hue 233 with the downward gradient direction produces the following effect:
 
 ![Gradient Example](../../assets/images/cruk11341.png)
 
-#### 1.1.4. Transparent Color (Alpha)
+#### 1.1.4. Transparent color (Alpha)
 
-##### 1.1.4.1. Alpha Colors
+##### 1.1.4.1. Alpha colors
 
-Used for modal background and light prompt background. Two classes: Alpha onlight and Alpha ondark.
+Used for the modal background and the light prompt background. There are two classes: Alpha onlight and Alpha ondark.
 
 ![Alpha Colors](../../assets/images/cruk1141.png)
 
