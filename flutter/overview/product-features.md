@@ -18,12 +18,12 @@ one-to-one conversation or a group chat.
 
 A user initiates communication with one or more users by starting a conversation.
 
-### Create group chat
+### Create a group chat
 
 A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and 
 manage it.
 
-### Manage group chat
+### Manage a group chat
 
 Group chat administrators have all permissions to the group, which includes adding or deleting members, 
 modifying the group name, description, and avatar, banning or deleting group members, and others.
@@ -59,7 +59,7 @@ Users can quickly add a contact or start a conversation through the contact card
 
 Users can send and receive voice messages in addition to text ones. 
 
-### Content moderation
+### Message reporting
 
 Messages sent by users are examined to determine whether they comply with the platform's 
 community guidelines, terms of service, and relevant laws and regulations.
@@ -97,7 +97,7 @@ This section covers specific features related to managing conversations.
 Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
 long-press it to open a context menu and mark the conversation as read.
 
-### Pin a conversation
+### Pin a conversation (sticky conversation)
 
 The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the 
 top for easy access.
@@ -107,7 +107,7 @@ top for easy access.
 The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND 
 mode. 
 
-### Delete conversation
+### Delete a conversation
 
 The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
 
@@ -115,15 +115,15 @@ The user can swipe a conversation left/right or long-press it to open a context 
 
 This section covers specific features related to managing messages.
 
-### Copy message
+### Copy a message
 
 Users can copy a message to the clipboard to save it somewhere else or paste it into other applications.
 
-### Delete message
+### Delete a message
 
 Users can delete messages that they do not want to keep.
 
-### Recall message
+### Recall a message
 
 Users can recall messages that were sent by mistake. 
 
@@ -141,7 +141,7 @@ You can also configure the duration of showing the recall option. The default is
 ChatUIKitSettings.recallExpandTime = 120;
 ```
 
-### Edit sent message
+### Edit a sent message
 
 Users can edit sent messages to correct mistakes. 
 
@@ -151,7 +151,7 @@ The message editing feature is enabled by default, that is, the default value of
 ChatUIKitSettings.enableMessageEdit = false;
 ```
 
-### Quote message
+### Quote a message
 
 Users can quote a specific message to reply to it or emphasize its importance. The message quoting UI and logic structure are as follows:
 
@@ -167,13 +167,11 @@ The sample code is as follows:
 ChatUIKitSettings.enableMessageReply = false;
 ```
 
-### Translate message
+### Translate a message
 
 Users can translate messages into other languages for easier communication. 
 
 The UI layout of message translation is in `ChatUIKitTextMessageWidget`.
-
-Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
@@ -203,8 +201,6 @@ The structure of the reaction UI and logic is as follows:
 - `ChatUIKitMessageReactionsRow` implements a custom UI layout in the message list. 
 - `ChatUIKitMessageReactionInfo` shows a pop-up window with the emoji list.
 
-Before using this feature, enable it in Agora Console.
-
 `ChatUIKitSettings` provides an `enableMessageReaction` property to enable reactions. This feature is disabled by default. To enable, set it to `true`. The sample code is as follows:
 
 ```dart
@@ -214,8 +210,6 @@ ChatUIKitSettings.enableMessageReaction = true;
 ### Message thread
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
-
-Before using this feature, enable it in Agora Console.
 
 UIKit provides a `ChatUIKitSettings.enableChatThreadMessage` switch. The message thread feature is disabled by default. To enable this feature, set it to `true`. The sample code is as follows:
 
@@ -247,7 +241,7 @@ The sample code is as follows:
 ChatUIKitSettings.enableMessageForward = false;
 ```
 
-### Pin message
+### Pin a message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 
