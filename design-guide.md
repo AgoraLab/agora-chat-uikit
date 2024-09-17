@@ -39,7 +39,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 - **Saturation**: Radius of the cylinder (0% to 100%)
 - **Lightness**: Height of the cylinder (0% to 100%)
 
-![HSLA Model Overview](../../assets/images/cruk1113.png)
+![HSLA Model Overview](/assets/images/cruk1113.png)
 
 #### 1.1.2. Theme colors
 
@@ -47,7 +47,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 
 Users can set the Hue (0-360) to adjust the theme colors. The Hue value changes the color to fit user scenarios.
 
-![Hue Example](../../assets/images/cruk11211.png)
+![Hue Example](/assets/images/cruk11211.png)
 
 ##### 1.1.2.2. Saturation
 
@@ -57,33 +57,35 @@ The saturation values are fixed:
 - **Neutral**: 8%
 - **Special neutral**: 36%
 
-![Saturation Example](../../assets/images/cruk1122.png)
+![Saturation Example](/assets/images/cruk1122.png)
 
 ##### 1.1.2.3. Lightness
 
-Thirteen levels of lighting are available, ranging from 0(0%) to 100(100%).
+Thirteen levels of lighting are available, ranging from 0 (0%) to 100 (100%).
 
-![Lightness Levels](../../assets/images/cruk1123.png)
+![Lightness Levels](/assets/images/cruk1123.png)
 
 ##### 1.1.2.4. Example
 
 Setting the primary hue to 203, secondary hue to 155, and error hue to 350 generates 39 theme colors.
 
-![Example Colors](../../assets/images/cruk1124.png)
+![Example Colors](/assets/images/cruk1124.png)
 
 #### 1.1.3. Primary gradient color
+
+The gradient theme color is a gradient color derived from the primary color. It is a linear gradient with 8 possible directions.
 
 ##### 1.1.3.1. Start color
 
 The start color should match the primary color.
 
-![Start Color](../../assets/images/cruk1131.png)
+ ![Start Color](/assets/images/cruk1131.png)
 
 ##### 1.1.3.2. End color
 
 Users can configure the end color hue. The brightness is fixed.
 
-![End Color Example](../../assets/images/cruk11321.png)
+ ![End Color Example](/assets/images/cruk11321.png)
 
 ##### 1.1.3.3. Gradient configuration
 
@@ -93,106 +95,106 @@ Users can configure the end color hue for gradient effects.
 
 End color hue 233 with the downward gradient direction produces the following effect:
 
-![Gradient Example](../../assets/images/cruk11341.png)
+![Gradient Example](/assets/images/cruk11341.png)
 
 #### 1.1.4. Transparent color (Alpha)
 
 ##### 1.1.4.1. Alpha colors
 
-Used for the modal background and the light prompt background. There are two classes: Alpha onlight and Alpha ondark.
+Used for the modal background and the light prompt background. There are two categories: Alpha onlight and Alpha ondark.
 
-![Alpha Colors](../../assets/images/cruk1141.png)
+![Alpha Colors](/assets/images/cruk1141.png)
 
-### 1.1.5. Neutral Colors
+### 1.1.5. Neutral colors
 
 #### 1.1.5.1. Neutral
 
-Neutral color has one configurable item: Hue. Saturation is fixed at 8%.
+A neutral color only has hue as a configurable item. The saturation is fixed at 8%.
 
-![Neutral Example](../../assets/images/cruk1151.png)
+![Neutral Example](/assets/images/cruk1151.png)
 
 #### 1.1.5.2. Example
 
-If Primary Hue is 203 and Neutral Hue is also 203, users get the following color options:
+If the primary hue is 203 and the neutral hue is also 203, then users get the following color options:
 
-![Neutral Example Colors](../../assets/images/cruk11521.png)
+![Neutral Example Colors](/assets/images/cruk11521.png)
 
-### 1.1.6. Neutral Special
+### 1.1.6. Neutral special
 
 #### 1.1.6.1. Example
 
-For a Primary hue of 203 and Neutral Special Hue of 220:
+For a primary hue of 203 and a neutral special hue of 220:
 
-![Neutral Special Colors](../../assets/images/cruk1161.png)
+![Neutral Special Colors](/assets/images/cruk1161.png)
 
 ## 1.2. Theme
 
-There are two themes: Rounded and Hard, each with Light and Dark modes.
+There are two themes - rounded and hard. Each comes with light and dark modes.
 
-### 1.2.1. Rounded Theme
+### 1.2.1. Rounded theme
 
 Uses larger rounded corners for a soft, light appearance.
 
-![Rounded Theme](../../assets/images/1.2.1.png)
+![Rounded Theme](/assets/images/1.2.1.png)
 
-### 1.2.2. Hard Theme
+### 1.2.2. Hard theme
 
 Avoids large rounded corners for a tough, solid look.
 
-![Hard Theme](../../assets/images/1.2.2.png)
+![Hard Theme](/assets/images/1.2.2.png)
 
 ## 1.3. Icon
 
-### 1.3.1. Icon Template
+### 1.3.1. Icon template
 
 Icons follow the Material Icon Font template with a 24-grid base and a 1.5-grid stroke.
 
-![Icon Template](../../assets/images/cruk131.png)
+![Icon Template](/assets/images/cruk131.png)
 
-### 1.3.2. Icon Naming
+### 1.3.2. Icon naming
 
-Icons should be named descriptively and avoid fixed operational behaviors.
+Icons should be named descriptively, avoiding fixed operational behaviors.
 
-![Icon Naming](../../assets/images/cruk132.png)
+![Icon Naming](/assets/images/cruk132.png)
 
 ## 1.4. Typography
 
-### 1.4.1. Font Family
+### 1.4.1. Font family
 
-#### 1.4.1.1. iOS Font Family
+#### 1.4.1.1. iOS font family
 
 - **Western**: SF Pro
 - **Right-to-Left**: SF Arabic, SF Hebrew
 - **Chinese**: PingFang (SC, TC, HK)
 
-#### 1.4.1.2. Android Font Family
+#### 1.4.1.2. Android font family
 
 - **Western**: Roboto
 - **Right-to-Left**: Noto Sans Arabic, Noto Sans Hebrew
 - **Chinese**: Noto Sans (SC, TC, HK)
 
-#### 1.4.1.3. Web Font Family
+#### 1.4.1.3. Web font family
 
 - **Western**: Roboto
 - **Right-to-Left**: Noto Sans Arabic, Noto Sans Hebrew
 - **Chinese**: Noto Sans (SC, TC, HK)
 
-### 1.4.2. Font Size
+### 1.4.2. Font size
 
-#### 1.4.2.1. Minimum Font Size
+#### 1.4.2.1. Minimum font size
 
 - **Mobile**: 11
 - **Web**: 12
 
-#### 1.4.2.2. Size Rules
+#### 1.4.2.2. Size rules
 
-Increase font size in increments of 2: 11, 12, 14, 16, 18, 20
+Increase the font size in increments of 2: 10, 12, 14, 16, 18, 20.
 
-### 1.4.3. Font Weight
+### 1.4.3. Font weight
 
-Divided into Regular (400), Medium (510), and Semibold (590). Use approximate values if exact weights are not supported.
+Divided into regular (400), medium (510), and semibold (590). Use approximate values if exact weights are not supported.
 
-### 1.4.4. Line Height
+### 1.4.4. Line height
 
 Line heights are fixed per font size:
 
@@ -203,19 +205,19 @@ Line heights are fixed per font size:
 - **18**: 26
 - **20**: 28
 
-### 1.4.5. Font Role
+### 1.4.5. Font role
 
-Roles include Headline, Title, Label, and Body. Use based on component context and information importance.
+Roles include headline, title, label, and body. Use based on the component context and information importance.
 
-### 1.4.6. Font Token
+### 1.4.6. Font token
 
-Set font typesetting tokens as shown:
+Set font typesetting tokens as shown below:
 
-![Font Token](../../assets/images/cruk146a.png)
+![Font Token](/assets/images/cruk146a.png)
 
 ## 1.5. Effects
 
-### 1.5.1. Background Blur
+### 1.5.1. Background blur
 
 Used for components with Alpha color backgrounds to reduce interference.
 
@@ -226,17 +228,17 @@ backdrop-filter: blur(20);
 
 ## 1.5.2. Shadow
 
-Shadows are applied to alerts, pop-ups, drawers, etc., to distinguish levels and highlight focused components.
+Shadows are applied to alerts, pop-ups, drawers, and others, to distinguish levels and highlight components in focus.
 
-### 1.5.2.1. Shadow Size
+### 1.5.2.1. Shadow size
 
-Shadows are categorized into three types: small, medium, and large. The general principle is: the smaller the component, the more recommended it is to use a small shadow, and vice versa. Additionally, the size of the rounded corners affects the shadow recommendation.
+Shadows are categorized into three types: Small, medium, and large. The general principle is the following: The smaller the component, the more recommended it is to use a small shadow, and vice versa. Additionally, the size of the rounded corners affects the shadow recommendation.
 
-### 1.5.2.2. Shadow Token
+### 1.5.2.2. Shadow token
 
 To ensure the shadow effect is natural and soft, each shadow has two layers with different offsets, blurriness, and transparency values. There are also two sets of shadows for light and dark modes.
 
-#### Shadow on Light
+#### Shadow on light
 
 ```css
 /* shadow/onlight/large */
@@ -249,7 +251,7 @@ box-shadow: 0 4px 4px rgba(Neutral3, 0.15), 2px 0 8px rgba(Neutral1, 0.1);
 box-shadow: 0 1px 3px rgba(Neutral3, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 ```
 
-#### Shadow on Dark
+#### Shadow on dark
 
 ```css
 /* shadow/ondark/large */
@@ -262,66 +264,62 @@ box-shadow: 0 4px 4px rgba(Neutral4, 0.15), 2px 0 8px rgba(Neutral1, 0.1);
 box-shadow: 0 1px 3px rgba(Neutral4, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 ```
 
-![img](../../assets/images/cruk1522b.png)
+![img](/assets/images/cruk1522b.png)
 
 ## 1.6. Radius
 
-### 1.6.1. General Rounded Corners
+### 1.6.1. General rounded corners
 
-Rounded corners are categorized into six values: None (r=0), Extra Small (r=4), Small (r=8), Medium (r=12), Large (r=16), and Extra Large (r=½ Height). Typically, all four corners of a component share the same radius.
+Rounded corners are categorized into six values: None (r=0), extra small (r=4), small (r=8), medium (r=12), large (r=16), and extra large (r=½ height). Typically, all four corners of a component share the same radius.
 
-![General Rounded Corners](../../assets/images/cruk161.png)
+![General Rounded Corners](/assets/images/cruk161.png)
 
-#### 1.6.1.1. Extra Small (r=4)
+#### 1.6.1.1. Extra small (r=4)
 
-Typically applies to:
+Typically applies to the following:
 
-- Button (Small Radius)
-- Input (Small Radius)
-- Float (Small Radius)
-- Message Bubble (Small Radius)
-- Avatar (Small Radius)
+- Button (small radius)
+- Input (small radius)
+- Float (small radius)
+- Message bubble (small radius)
+- Avatar (small radius)
 - Popover
-- Global Broadcast (Small Radius)
+- Global broadcast (small radius)
 
 #### 1.6.1.2. Small (r=8)
 
-Typically applies to:
+Typically applies to the following:
 
-- Alert (Small Radius)
-- Drawer (Small Radius)
+- Alert (small radius)
+- Drawer (small radius)
 
 #### 1.6.1.3. Medium (r=12)
 
-Typically applies to:
-
-- This case is not involved
-
 #### 1.6.1.4. Large (r=16)
 
-Typically applies to:
+Typically applies to the following:
 
-- Input Area (Large Radius)
-- Alert (Large Radius)
-- Drawer (Large Radius)
-- Float (Large Radius)
+- Input area (large radius)
+- Alert (large radius)
+- Drawer (large radius)
+- Float (large radius)
 
-#### 1.6.1.5. Extra Large (r=½ Height)
+#### 1.6.1.5. Extra large (r=½ height)
 
-Typically applies to:
+Typically applies to the following:
 
-- Input Area (Large Radius)
-- Alert (Large Radius)
-- Drawer (Large Radius)
-- Message Bubble (Large Radius)
+- Input area (large radius)
+- Alert (large radius)
+- Drawer (large radius)
+- Message bubble (large radius)
 
-### 1.6.2. Special Rounded Corners
+### 1.6.2. Special rounded corners
 
-Special rounded corners are applied to IM chat message components with background color:
+Special rounded corners are applied to chat message components with background color:
 
-- Message Bubble (Large Radius)
+- Message bubble (large radius)
 
-![Special Rounded Corners](../../assets/images/cruk162.png)
+![Special Rounded Corners](/assets/images/cruk162.png)
 
 ## 2. Widgets
 
@@ -329,59 +327,85 @@ Widgets are basic visual interaction modules.
 
 ### 2.1. Button (Bottom)
 
-Button components come in three types: normal button, text button, and icon button. Each button has five states: Enabled, Hovered (only for web), Pressed, Loading, and Disabled. There are also three button sizes: large, medium, and small to fit different containers.
+Button components come in three types: Regular button, text button, and icon button. Each button has five states: Enabled, hovered (only for web), clicked, loading, and disabled. There are also three button sizes: Large, medium, and small to fit different containers.
 
-### 2.1.1. Normal Button
+### 2.1.1. Regular button
 
-Ordinary buttons are divided into two types: primary and secondary.
+Regular buttons are divided into two types: Primary and secondary.
 
-#### 2.1.1.1. Primary Operation
+#### 2.1.1.1. Primary button
 
 Used for recommended actions. Typically, the background color is the theme color (Primary5/Primary6) or a gradient theme color. It appears grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Primary Button](../../assets/images/cruk2111.png)
+![Primary Button](/assets/images/cruk2111.png)
 
-#### 2.1.1.2. Secondary Operations
+#### 2.1.1.2. Secondary button
 
 Used to assist primary operations. They usually do not appear alone. The background color is typically light (Neutral98) or dark (Neutral1) and includes a stroke. They appear grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Secondary Button](../../assets/images/cruk2112.png)
+![Secondary Button](/assets/images/cruk2112.png)
 
-### 2.1.2. Text Button (Text)
+### 2.1.2. Text button (Text)
 
-Text buttons only have foreground color and are divided into primary and secondary operations. They are used for more frequent routine actions (e.g., form steps, message display) or as secondary actions when a normal button is present on the page.
+Text buttons only have foreground color and are divided into primary and secondary. They are used for more frequent routine actions (for example, form steps, message display) or as secondary actions when a regular button is present on the page.
 
-![Text Button](../../assets/images/cruk212.png)
+![Text Button](/assets/images/cruk212.png)
 
-### 2.1.3. Icon Button (Icon)
+### 2.1.3. Icon button (Icon)
 
 Icon buttons are used when space is limited but buttons are necessary, such as for keyboard switching, top bar operations, form actions, or clearing inputs.
 
-![Icon Button](../../assets/images/cruk213.png)
+![Icon Button](/assets/images/cruk213.png)
 
-Note: On the web, icon buttons should be used with Popover to explain their specific function clearly.
+Note: On the web, icon buttons should be used with a popover to explain their specific function clearly.
 
-![Icon Button with Popover](../../assets/images/cruk213b.png)
+![Icon Button with Popover](/assets/images/cruk213b.png)
 
-### 2.2. Input Box
+### 2.2. Input box
 
-Used for entering short text. It comes in three sizes: large, medium, and small. The style includes options for background color, stroke color, rounded corners, and six status types: out of focus not filled, out of focus filled, focused not filled, focused filled, disabled filled, and disabled not filled.
+Used for entering short text. It comes in three sizes: Large, medium, and small. The style includes options for background color, stroke color, rounded corners, and six status types: 
 
-![Input Box](../../assets/images/cruk22.png)
+- Out of focus and unfilled,
+- Out of focus and filled, 
+- Focused and unfilled, 
+- Focused and filled, 
+- Disabled and filled, 
+- Disabled and unfilled.
 
-### 2.3. Input Area
+![Input Box](/assets/images/cruk22.png)
 
-Used for entering larger amounts of text, such as in forms or content publishing. The style includes options for background color, stroke color, rounded corners, and maximum character count display. The status is divided into six types: out of focus unfilled, out of focus filled, focused unfilled, focused filled, disabled filled, and disabled unfilled.
+### 2.3. Input area
 
-![Input Area](../../assets/images/cruk23.png)
+Used for entering larger amounts of text, such as in forms or content publishing. The style includes options for background color, stroke color, rounded corners, and maximum character count display. The status is divided into six types: 
 
-### 2.4. Checkboxes and Radios
+- Out of focus and unfilled,
+- Out of focus and filled, 
+- Focused and unfilled, 
+- Focused and filled, 
+- Disabled and filled, 
+- Disabled and unfilled.
 
-Single and multiple selectors allow users to choose one or more items from a list. There are four states: selected, unselected, selected disabled, and unselected disabled.
+![Input Area](/assets/images/cruk23.png)
+
+### 2.4. Checkboxes and radio buttons
+
+Single and multiple selectors allow users to choose one or more items from a list. There are four states: 
+
+- Selected,
+- Unselected,
+- Selected and disabled,
+- Unselected and disabled.
 
 ### 2.5. Switch
 
-A switch allows users to toggle a list item on and off. There are four states: closed, open, closed and disabled, and open and disabled. Switches should not be automatically toggled; user action is required.
+A switch allows users to toggle a list item on and off. There are four states: 
+
+- Closed, 
+- Open, 
+- Closed and disabled, 
+- Open and disabled. 
+
+Switches should not be automatically toggled; user action is required.
 
 The style uses the iOS or Material default style, with the enabled color matching the KeyColor value of Primary5/Primary6.
 
@@ -395,155 +419,161 @@ The PopMenu displays non-recurring options or lists. It supports configuration f
 
 ### 2.8. Avatar
 
-Avatars display user or operation item information. They are often placed on personal info pages or related list items. The corner radius can be Extra Small (r=4) or Extra Large (r=½ Height). The size of the avatar can be configured, but the ratio remains 1:1.
+Avatars display user or operation item information. They are often placed on personal info pages or related list items. The corner radius can be extra small (r=4) or extra large (r=½ height). The size of the avatar can be configured, but the ratio remains 1:1.
 
-#### 2.8.1. Picture Avatar
+#### 2.8.1. Picture avatar
 
 Displays a picture when user avatar information is available.
 
-![Picture Avatar](../../assets/images/cruk241.png)
+![Picture Avatar](/assets/images/cruk241.png)
 
-#### 2.8.2. Character Avatar
+#### 2.8.2. Character avatar
 
 Displayed when the user has not uploaded an avatar. Character avatars can be single-character or double-character.
 
-![Character Avatar](../../assets/images/cruk242.png)
+![Character Avatar](/assets/images/cruk242.png)
 
-#### 2.8.3. Combined Avatars
+#### 2.8.3. Combined avatars
 
 Automatically generated avatars for group chats when no user avatar data is available.
 
-![Combined Avatars](../../assets/images/cruk243.png)
+![Combined Avatars](/assets/images/cruk243.png)
 
-#### 2.8.4. Icon Avatar
+#### 2.8.4. Icon avatar
 
 Used for empty states when no user avatar information is available or for form items with icons.
 
-![Icon Avatar](../../assets/images/cruk244.png)
+![Icon Avatar](/assets/images/cruk244.png)
 
-#### 2.8.5. Avatar Badge
+#### 2.8.5. Avatar badge
 
 Avatars can include badges to reflect online and offline status. Badges can be placed in the lower right or upper right corner.
 
-![Avatar Badge](../../assets/images/cruk245.png)
+![Avatar Badge](/assets/images/cruk245.png)
 
 ### 2.9. Badge
 
 Badges are used in navigation items, list items, and avatars to display status, notifications, and counts. Configuration options include count visibility, size (standard or small), and the presence of an icon.
 
-
 ### 2.10. Emojis
 
 #### 2.10.1. Twemoji [↗](https://github.com/twitter/twemoji)
 
-Twemoji, an open-source emoji set free for commercial use, is used as the base for emojis. By default, 52 emojis are built-in. Users can replace, add, or remove emojis from the 3,245 available in Twemoji.
+Twemoji, an open-source emoji set free for commercial use, is used as the base for emojis. By default, 52 emojis are built in. Users can replace, add, or remove emojis from the 3,245 available in Twemoji.
 
-![Twemoji Examples](../../assets/images/cruk291.png)
+![Twemoji Examples](/assets/images/cruk291.png)
 
-#### 2.10.2. Emoji Template
+#### 2.10.2. Emoji template
 
 For custom emojis or replacing Twemoji, use the provided templates.
 
-![Emoji Template](../../assets/images/cruk292.png)
+![Emoji Template](/assets/images/cruk292.png)
 
-#### 2.10.3. Expression Component State
+#### 2.10.3. Expression component state
 
-Expression components have four states: Enabled, Hovered (web only), Pressed, and Focused. On hover, the background color darkens; when pressed, it lightens; and on focus, it changes to the Key Color.
+Expression components have four states: 
 
-![Expression Component State](../../assets/images/cruk293.png)
+- Enabled, 
+- Hovered (web only), 
+- Clicked, 
+- Focused. 
+
+On hover, the background color darkens; when clicked, it lightens; and on focus, it changes to the Key Color.
+
+![Expression Component State](/assets/images/cruk293.png)
 
 ### 2.11. Toast
 
-Provides simple feedback on the current operation. Toasts come in two types: with icon and without icon.
+Provides simple feedback on the current operation. Toasts come in two types: with and without an icon.
 
-### 2.12. Modal Background (Modal)
+### 2.12. Modal background (modal)
 
-Modals are temporary pop-ups with critical information requiring user action to exit. The modal background color can be any AlphaColor, and background blur effects can be set.
+Modals are temporary popups with critical information requiring user action to exit. The modal background color can be any AlphaColor, and background blur effects can be set.
 
 ### 2.13. Index
 
-The Index is used on contact pages to quickly find contacts by category.
+The index is used on contact pages to quickly find contacts by category.
 
-#### 2.13.1. Section Index
+#### 2.13.1. Section sndex
 
-The directory index is located on the far right of the contact or member list and acts as a scroll bar to locate related contacts by letter.
+The section index is located on the far right of the contact or member list and acts as a scroll bar to locate related contacts by letter.
 
-#### 2.13.2. Index In List
+#### 2.13.2. Index in list
 
 Used to separate contacts into alphabetical categories. Configuration options include whether to display a bottom separator line.
 
-### 2.14. Bottom Tab Bar (BottomTabs)
+### 2.14. Bottom tab bar (BottomTabs)
 
 The bottom navigation bar allows switching between different views on mobile devices, with at least two items. If there are more than five items, they are displayed in pages.
 
-### 2.15. Top Tab Bar (TopTabs)
+### 2.15. Top tab bar (TopTabs)
 
 The top navigation bar is used to switch between different views on mobile devices, with a minimum of one item and paged display when there are more than five items.
 
 ## 3. Components
 
-### 3.1. Top Bar
+### 3.1. Top bar
 
 The top bar displays the current view title and provides overall control over the current page. 
 
-- **Left Side:** Configurable for return operations, avatar (with/without), subtitle (with/without).
-- **Right Side:** Supports 1 to 3 actions.
+- **Left side:** Configurable for return operations, avatar (with/without), and subtitle (with/without).
+- **Right side:** Supports 1 to 3 actions.
 
-### 3.2. Search Bar
+### 3.2. Search bar
 
-The search bar allows users to search for items on the current page. Configurable items include:
+The search bar allows users to search for items on the current page. Configurable items include the following:
 
 - Return icon on the left
 - Display of the cancel button
 
-### 3.3. Bottom Bars
+### 3.3. Bottom bars
 
-#### 3.3.1. Bottom Operation Bar (navigation_bar)
+#### 3.3.1. Bottom operation bar (navigation_bar)
 
-Used for operations on the current view. Supports:
+Used for operations on the current view. Supports the following:
 
-- At least one item, and at most three items
-- Configurable as a text button or an icon button
+- At least one item, and at most three items.
+- Configurable as a text button or an icon button.
 
-#### 3.3.2. Input Bar
+#### 3.3.2. Input bar
 
 The input bar is used for message publishing, such as on the conversation details page. Configurable items include:
 
-- Action buttons on the left (Action1, Action2, Action3)
-- Send button on the right (configurable as a text button or an icon button)
-- Top dividing line
-- Input box rounded corner style
+- Action buttons on the left (Action1, Action2, Action3).
+- Send button on the right (configurable as a text button or an icon button).
+- Top dividing line.
+- Input box rounded corner style.
 
-#### 3.3.3. Recording Model
+#### 3.3.3. Recording model
 
-The recording pop-up window controls recording and sending voice messages.
+The recording popup window controls recording and sending voice messages.
 
 ### 3.4. EmojisPick
 
-The emoji keyboard allows sending emojis built into the app. It supports:
+The emoji keyboard allows sending emojis built into the app. It supports the following:
 
 - Increasing or decreasing the number of emojis
 - Send and backspace buttons with configurable rounded corners
 - Access to third-party emoji/sticker libraries
 
-**Note:** Emojis entered through this component will not synchronize with the system's emojis but will display as built-in app emojis. Ensure to use emojis that are open source and free for commercial use to meet legal requirements.
+**Note:** Emojis entered through this component will not synchronize with the system's emojis but will display as built-in app emojis. Use emojis that are open source and free for commercial use to meet legal requirements.
 
-![EmojisPick](../../assets/images/cruk34.png)
+![EmojisPick](/assets/images/cruk34.png)
 
-### 3.5. List Item
+### 3.5. List item
 
-#### 3.5.1. Form List Item (FromItem)
+#### 3.5.1. Form list item (FromItem)
 
-Used on contact/group details pages or app settings pages. Supports:
+Used on contact/group details pages or app settings pages. Supports the following:
 
 - Click events
 - Configurable buttons on the right
 - Data display, switches, sliders, single/multi-selectors
-- Configurable left avatar, subtitle, category title (Headline), and annotation (postil)
+- Configurable left avatar, subtitle, category title (headline), and annotation (postil)
 
 #### 3.5.2. ConversationItem
 
-The conversation list item provides access to conversation details and displays:
+The conversation list item provides access to conversation details and displays the following:
 
 - Contact avatar (Avatar)
 - Contact nickname (Title)
@@ -555,7 +585,7 @@ Style options include large/small rounded corners for avatars and dividing lines
 
 #### 3.5.3. ContactsItem
 
-The contact list item provides access to contact details and displays:
+The contact list item provides access to contact details and displays the following:
 
 - Contact avatar (Avatar)
 - Contact nickname (Title)
@@ -563,132 +593,130 @@ The contact list item provides access to contact details and displays:
 
 Style options include large/small rounded corners for avatars and dividing lines for list items.
 
-### 3.6. Pop-up Window (Alert)
+### 3.6. Popup window (Alert)
 
-Pop-up notifications are modal prompts for key information or user actions. Configurable items include:
+Popup notifications are modal prompts for key information or user actions. Configurable items include the following:
 
 - Description
 - Input box
 - Up to three operation items
 
-Style options include matching rounded corners of the input box and operation buttons with the pop-up window.
+Style options include matching rounded corners of the input box and operation buttons with the popup window.
 
-![Pop-up Window](../../assets/images/cruk27.png)
+![Popup Window](/assets/images/cruk27.png)
 
-### 3.7. Action Sheet
+### 3.7. Action sheet
 
-The action sheet displays multiple operation items in a modal form. Each item has four states: Enabled, Pressed, Disabled, Destructive, and a special Cancel type. Configurable items include:
+The action sheet displays multiple operation items in a modal form. Each item has four states: Enabled, clicked, disabled, destructive, and a special cancel type. Configurable items include the following:
 
 - Display of icons
 - Presence of dividing lines (strokes)
 
 This component is available only on mobile devices.
 
-<img src="../../assets/images/cruk25.png" width="390" >
+![Action Sheet](/assets/images/cruk25.png)
 
-## 4. Message Bubble
+## 4. Message bubble
 
-### 4.1. Text Messages (TextsMsg)
+### 4.1. Text messages (TextsMsg)
 
 Text messages use a bubble style for sending characters and emoji expressions.
 
-### 4.2. Audio Message (AudioMsg)
+### 4.2. Audio message (AudioMsg)
 
 Audio messages use a bubble style for sending voice messages. The width of the bubble changes with the length of the voice message and supports click-to-play with animation during playback.
 
-### 4.3. File Message (FileMsg)
+### 4.3. File message (FileMsg)
 
-File messages use a bubble style for sending files. Displayed fields include:
+File messages use a bubble style for sending files. Displayed fields include the following:
 
 - File icon
 - File name (Title)
 - File size (Subtitle)
 
-### 4.4. Contact Message (ContactMsg)
+### 4.4. Contact message (ContactMsg)
 
-Contact messages use a bubble style to display contacts and support click events. Displayed fields include:
+Contact messages use a bubble style to display contacts and support click events. Displayed fields include the following:
 
-- Contact Avatar
-- Contact Nickname (Title)
+- Contact avatar
+- Contact nickname (Title)
 
-### 4.5. Thumbnail Message (ImgMsg)
+### 4.5. Thumbnail message (ImgMsg)
 
 Thumbnail messages use a bubble style for sending picture and video messages.
 
-**Display Rules:** 
-
-### 4.6. Additional Message at the Top (DescantMsg)
+### 4.6. Additional message at the top (DescantMsg)
 
 Top additional messages display attached information, such as replies to messages. Supports click events.
 
-### 4.7. Message Long Press Action List (MsgActionSheet)
+### 4.7. Message long-press action list (MsgActionSheet)
 
-Supports operations such as copying, editing, withdrawing, and replying to the current message.
+Supports operations such as copying, editing, recalling, and replying to the current message.
 
-## 5. Module View
+## 5. Module view
 
-### 5.1. Conversation View
+### 5.1. Conversation view
 
-#### 5.1.1. Conversation List
+#### 5.1.1. Conversation list
 
 The conversation view includes conversation search and conversation list items.
 
-#### 5.1.2. New Session (NewMsg)
+#### 5.1.2. New conversation (NewMsg)
 
 Options in the upper right corner of the conversation for initiating a conversation, creating a group, and adding contacts.
 
-##### 5.1.2.1. Start Conversation
+##### 5.1.2.1. Start conversation
 
 Calls up the contact list. Users can click or search for a contact to enter the conversation details page and initiate a conversation by sending a message.
 
-##### 5.1.2.2. Create Group (CreateGroup)
+##### 5.1.2.2. Create group (CreateGroup)
 
-Calls up a contact list in multi-select state. Users select group members and click Create to enter the group conversation details page.
+Calls up a contact list in the multi-select state. Users select group members and click **Create** to enter the group conversation details page.
 
-##### 5.1.2.3. Add Contact (Addcontact)
+##### 5.1.2.3. Add contact (Addcontact)
 
-Calls up a contact addition pop-up window. Users enter the contact ID to be added and send the add message.
+Calls up a contact addition popup window. Users enter the contact ID to be added.
 
-### 5.2. Contacts View
+### 5.2. Contacts view
 
 The contact view includes contact search and contact list items.
 
-#### 5.2.2. New Request List (NewRequest)
+#### 5.2.2. New request list (NewRequest)
 
 Displays requests to add contacts. Users can process requests through the add operation.
 
-#### 5.2.3. Group List (GroupList)
+#### 5.2.3. Group list (GroupList)
 
 Displays all groups the user has joined. Users can process group addition requests through the add operation.
 
-### 5.3. Conversation Detail View (ConversationDetailView)
+### 5.3. Conversation detail view (ConversationDetailView)
 
-Displays details of group chats or individual conversations. The page is divided into:
+Displays details of group or one-to-one chats. The page is divided into the following:
 
-- **Header:** Displays session title information, contact/group avatar, nickname/group name, online/offline status, and session-related operations.
+- **Header:** Displays conversation title information, contact/group avatar, nickname/group name, online/offline status, and conversation-related operations.
 - **Body:** Arranges messages chronologically from top to bottom.
 - **Footer:** Used to send text, voice, attachments, and custom messages.
 
-#### 5.3.1. Top Navigation Bar of the Session (Header)
+#### 5.3.1. Top navigation bar of the conversation (Header)
 
-Displays key conversation information and session-related operations.
+Displays key conversation information and conversation-related operations.
 
-#### 5.3.2. Message Bubble List (Body)
+#### 5.3.2. Message bubble list (Body)
 
-Displays messages in chronological order.
+Displays messages in the chronological order.
 
-#### 5.3.3. Sending Messages (Footer)
+#### 5.3.3. Sending messages (Footer)
 
 Used for sending different types of messages.
 
-### 5.4. Contact Detail View (ContactDetailView)
+### 5.4. Contact detail view (ContactDetailView)
 
 Displays contact details, including contact avatar, nickname, and ID. Supports operations for contact do-not-disturb and contact deletion. Allows entering message details and other functions.
 
-### 5.5. Group Detail View (GroupDetailView)
+### 5.5. Group detail view (GroupDetailView)
 
 Displays group details, including group avatar, name, and ID. Supports group do-not-disturb, exiting the group, and modifying group information. Group owners can transfer ownership and disband groups. Allows entering message details and other functions.
 
 ## 6. Design Resources
 
-For design resources, please see [figma link](https://www.figma.com/community/file/1327193019424263350/chat-uikit-for-mobile).
+For design resources, please see the [Figma project](https://www.figma.com/community/file/1327193019424263350/chat-uikit-for-mobile).
