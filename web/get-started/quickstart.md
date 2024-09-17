@@ -1,4 +1,4 @@
-With UIKit, you can easily implement messaging in one-to-one chats and chat groups. This page explains how do this for a one-to-one chat.
+With UIKit, you can easily implement messaging in one-to-one chats and group chats. This page explains how do this for a one-to-one chat.
 
 ## Prerequisites
 
@@ -93,9 +93,9 @@ Project directory:
             .then((res) => {
               // Create a conversation
               rootStore.conversationStore.addConversation({
-                chatType: "singleChat", // One-to-onne chat and chat group are 'singleChat' and 'groupChat', respectively.
-                conversationId: "userId", // Peer user ID for a one-to-one chat, group ID for a chat group.
-                name: "User 1", // Peer user nickname for a one-to-one chat, group name for a chat group.
+                chatType: "singleChat", // One-to-onne chat and group chat are 'singleChat' and 'groupChat', respectively.
+                conversationId: "userId", // Peer user ID for a one-to-one chat, group ID for a group chat.
+                name: "User 1", // Peer user nickname for a one-to-one chat, group name for a group chat.
                 lastMessage: {},
               });
             });

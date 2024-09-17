@@ -26,7 +26,7 @@ A user initiates communication with one or more users by starting a conversation
 
 ### Create a group chat
 
-A chat group is a conversation that allows multiple users to join. Users can invite other users to join the group and 
+A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and 
 manage it.
 
 ![Create group chat](../../assets/images/create_group_chat.png)

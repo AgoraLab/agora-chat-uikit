@@ -2,7 +2,7 @@ This page introduces the common UIKit features for the one-to-one and group chat
 
 ## General
 
-This section covers general features related to conversations, chat groups, one-to-one chats, and contacts. 
+This section covers general features related to conversations, group chats, one-to-one chats, and contacts. 
 
 ### Conversation list
 
@@ -12,20 +12,20 @@ they need.
 ### Message chat
 
 Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
-one-to-one conversation or a chat group.
+one-to-one conversation or a group chat.
 
 ### Start a conversation
 
 A user initiates communication with one or more users by starting a conversation.
 
-### Create chat group
+### Create group chat
 
-A chat group is a conversation that allows multiple users to join. Users can invite other users to join the group and 
+A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and 
 manage it.
 
-### Manage chat group
+### Manage group chat
 
-Chat group administrators have all permissions to the group, which includes adding or deleting members, 
+Group chat administrators have all permissions to the group, which includes adding or deleting members, 
 modifying the group name, description, and avatar, banning or deleting group members, and others.
 
 ### User list
@@ -86,7 +86,7 @@ On the message search page, enter keywords to search for messages in the current
 
 ### Group mention
 
-The group mention feature allows users to directly mention specific members in a chat group using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates the efficient delivery of important information and ensures that key messages receive timely attention and response.
+The group mention feature allows users to directly mention specific members in a group chat using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates the efficient delivery of important information and ensures that key messages receive timely attention and response.
 
 ## Conversation-related 
 

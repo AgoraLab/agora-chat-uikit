@@ -1,4 +1,4 @@
-The 'ConversationList' component is used to display all conversations of the current user in one-to-one chats and chat groups. It provides conversation search, deletion, pinning, and do not disturb features.
+The 'ConversationList' component is used to display all conversations of the current user in one-to-one chats and group chats. It provides conversation search, deletion, pinning, and do not disturb features.
 
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
@@ -8,7 +8,7 @@ The 'ConversationList' component is used to display all conversations of the cur
 A single conversation displays the conversation name, the last message, the time of the last message, and the pinned and muted status.
 
 - For one-on-one chats, the name displayed in the conversation is the nickname of the other party. If the other party has not set a nickname, the other party's user ID is displayed. The conversation avatar is the other party's avatar. If it is not set, the default avatar is used.
-- For chat groups, the conversation name is the name of the current group and the avatar is the default avatar.
+- For group chats, the conversation name is the name of the current group and the avatar is the default avatar.
 
 For details about the features related to the conversation list, see [Product features](../overview/product-features.md).
 

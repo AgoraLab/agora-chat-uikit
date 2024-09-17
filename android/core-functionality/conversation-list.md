@@ -1,4 +1,4 @@
-`ChatConversationListFragment` is used to display all conversations of the current user, including one-to-one chats and chat groups (excluding chat rooms). It provides conversation search, deletion, pinning, and do not disturb functions, specifically:
+`ChatConversationListFragment` is used to display all conversations of the current user, including one-to-one chats and group chats (excluding chat rooms). It provides conversation search, deletion, pinning, and do not disturb functions, specifically:
 
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.

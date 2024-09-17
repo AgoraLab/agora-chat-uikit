@@ -91,7 +91,7 @@ const ChatAPP = () => {
   const sendCustomMessage = () => {
     const customMsg = easemobChat.message.create({
       type: "custom",
-      to: "targetId", // Peer user ID for a one-to-one chat, group ID for a chat group.
+      to: "targetId", // Peer user ID for a one-to-one chat, group ID for a group chat.
       chatType: "singleChat",
       customEvent: "CARD",
       customExts: {

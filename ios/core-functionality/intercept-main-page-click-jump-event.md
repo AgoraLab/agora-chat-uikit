@@ -46,7 +46,7 @@ You can inherit `MessageListController` and register it in `ComponentsRegister.s
 | `viewContact` | View contacts  | Yes |
 | `messageAvatarClick` | Message avatar click | Yes |
 | `audioDialog` | Show the recording audio pop-up |  |
-| `mentionAction` | Entering the @ symbol in the input box in the chat group  | Yes |
+| `mentionAction` | Entering the @ symbol in the input box in the group chat  | Yes |
 | `attachmentDialog` | Display a pop-up window for sending pictures, videos, and file messages | Yes |
 | `selectFile` | Select a file | Yes |
 | `selectPhoto` | Open the album and select a photo | Yes |

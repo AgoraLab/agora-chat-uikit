@@ -1,8 +1,8 @@
-The conversation list `ConversationsView` is the main component provided by `ChatUIKit`, which is used to display all the conversations of the current user, including one-to-one chat and chat group. It provides conversation search, deletion, pinning, and do not disturb features. A single conversation displays the user's conversation list, including the conversation name, the last message, the time of the last message, and the pinning and mute status.
+The conversation list `ConversationsView` is the main component provided by `ChatUIKit`, which is used to display all the conversations of the current user, including one-to-one chat and group chat. It provides conversation search, deletion, pinning, and do not disturb features. A single conversation displays the user's conversation list, including the conversation name, the last message, the time of the last message, and the pinning and mute status.
 
 It can be used directly or through (routing)[../advanced-features-and-customizations/advanced-usage.md] `ConversationsView`.
 
-For one-to-one chat and chat group, the name displayed in the conversation is the nickname set in the profile. If the nickname is not obtained, the ID is displayed. The conversation avatar is the avatar set in the profile. If no avatar is set, the default avatar is used.
+For one-to-one chat and group chat, the name displayed in the conversation is the nickname set in the profile. If the nickname is not obtained, the ID is displayed. The conversation avatar is the avatar set in the profile. If no avatar is set, the default avatar is used.
 
 ## Add a conversation list to the page
 

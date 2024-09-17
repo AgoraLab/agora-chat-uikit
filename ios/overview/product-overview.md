@@ -1,4 +1,4 @@
-Agora UIKit for one-to-one chats and chat groups is an instant messaging UI component library developed based on 
+Agora UIKit for one-to-one chats and group chats is an instant messaging UI component library developed based on 
 Agora Chat SDK. It provides various components to implement features such as a conversation list, chat interface, 
 contact list and interface, and others. This helps you to quickly build instant messaging applications based 
 on the particular business needs.
@@ -17,7 +17,7 @@ Classes
 │ │ ├─ ChatService // Chat protocol, including various processing operations on messages
 │ │ ├─ UserService // User login protocol, including user login and socket connection status change
 │ │ ├─ MultiService // Multi-device notification protocol
-│ │ └─ GroupService // Implement chat group management protocol, including joining and leaving the group, modifying 
+│ │ └─ GroupService // Implement group chat management protocol, including joining and leaving the group, modifying 
 group information, and others
 │ └─ Implement // Implementation component of the corresponding protocol
 │

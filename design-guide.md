@@ -327,7 +327,7 @@ Widgets are basic visual interaction modules.
 
 ### 2.1. Button (Bottom)
 
-Button components come in three types: Regular button, text button, and icon button. Each button has five states: Enabled, hovered (only for web), clicked, loading, and disabled. There are also three button sizes: Large, medium, and small to fit different containers.
+Button components come in three types: Regular button, text button, and icon button. Each button has five states: Enabled, hovered (only for web), pressed, loading, and disabled. There are also three button sizes: Large, medium, and small to fit different containers.
 
 ### 2.1.1. Regular button
 
@@ -431,8 +431,6 @@ Displays a picture when user avatar information is available.
 
 Displayed when the user has not uploaded an avatar. Character avatars can be single-character or double-character.
 
-![Character Avatar](/assets/images/cruk242.png)
-
 #### 2.8.3. Combined avatars
 
 Automatically generated avatars for group chats when no user avatar data is available.
@@ -475,7 +473,7 @@ Expression components have four states:
 
 - Enabled, 
 - Hovered (web only), 
-- Clicked, 
+- Pressed, 
 - Focused. 
 
 On hover, the background color darkens; when clicked, it lightens; and on focus, it changes to the Key Color.
@@ -607,7 +605,7 @@ Style options include matching rounded corners of the input box and operation bu
 
 ### 3.7. Action sheet
 
-The action sheet displays multiple operation items in a modal form. Each item has four states: Enabled, clicked, disabled, destructive, and a special cancel type. Configurable items include the following:
+The action sheet displays multiple operation items in a modal form. Each item has four states: Enabled, pressed, disabled, destructive, and a special cancel type. Configurable items include the following:
 
 - Display of icons
 - Presence of dividing lines (strokes)

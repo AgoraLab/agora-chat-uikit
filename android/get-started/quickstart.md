@@ -1,4 +1,4 @@
-With UIKit, you can easily implement messaging in one-to-one chats and chat groups. This page explains how do this for a one-to-one chat.
+With UIKit, you can easily implement messaging in one-to-one chats and group chats. This page explains how do this for a one-to-one chat.
 
 ## Prerequisites
 
@@ -85,7 +85,7 @@ Once the project is created successfully, make sure the project is synchronized.
 
 ## Implementation
 
-This section explains how send a message to a one-to-one conversation or a chat group.
+This section explains how send a message to a one-to-one conversation or a group chat.
 
 1. Create a quick start page
 

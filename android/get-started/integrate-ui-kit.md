@@ -58,8 +58,8 @@ Use either of the following:
 - The `AgoraChatActivity#actionStart` method of the `AgoraChatActivity` page. The sample code is as follows:
 
    ```kotlin
-   // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-   // chatType: AgoraChatType#SINGLE_CHAT for one-to-one chat and AgoraChatType#GROUP_CHAT for chat group
+   // conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
+   // chatType: AgoraChatType#SINGLE_CHAT for one-to-one chat and AgoraChatType#GROUP_CHAT for group chat
    AgoraChatActivity.actionStart(mContext, conversationId, chatType)
    ```
 
@@ -72,7 +72,7 @@ Use either of the following:
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        // conversationID: Peer user ID for a one-to-one chat and group ID for a chat group
+        // conversationID: Peer user ID for a one-to-one chat and group ID for a group chat
         // chatType can be AgoraChatType#SINGLE_CHAT or AgoraChatType#GROUP_CHAT
         AgoraChatFragment.Builder(conversationId, chatType)
                         .build()?.let { fragment ->

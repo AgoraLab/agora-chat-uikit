@@ -2,7 +2,7 @@ This page introduces the common UIKit features for the one-to-one and group chat
 
 ## General
 
-This section covers general features related to conversations, chat groups, one-to-one chats, and contacts. 
+This section covers general features related to conversations, group chats, one-to-one chats, and contacts. 
 
 ### Conversation list
 
@@ -12,20 +12,20 @@ they need.
 ### Message chat
 
 Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
-one-to-one conversation or a chat group.
+one-to-one conversation or a group chat.
 
 ### Start a conversation
 
 A user initiates communication with one or more users by starting a conversation.
 
-### Create chat group
+### Create group chat
 
-A chat group is a conversation that allows multiple users to join. Users can invite other users to join the group and 
+A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and 
 manage it.
 
-### Manage chat group
+### Manage group chat
 
-Chat group administrators have all permissions to the group, which includes adding or deleting members, 
+Group chat administrators have all permissions to the group, which includes adding or deleting members, 
 modifying the group name, description, and avatar, banning or deleting group members, and others.
 
 ### User list
@@ -181,7 +181,7 @@ Before using this feature, enable it in Agora Console.
 
 Users can long-press a single message to open the context menu and reply with an emoji. Emoji replies 
 (reactions) can help express emotions or attitudes, conduct surveys or votes. Currently, the UIKit supports 
-reactions only for chat groups, which can be turned on and off in `Appearance.swift`.
+reactions only for group chats, which can be turned on and off in `Appearance.swift`.
 
 Before using this feature, enable it in Agora Console.
 

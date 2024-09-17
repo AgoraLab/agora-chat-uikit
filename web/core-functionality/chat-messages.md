@@ -158,7 +158,7 @@ const ChatContainer = () => {
   const sendCustomMessage = () => {
     const customMsg = AgoraChat.message.create({
       type: "custom",
-      to: "targetId", // Message recipient: Peer user ID for a one-to-one chat and group ID for a chat group.
+      to: "targetId", // Message recipient: Peer user ID for a one-to-one chat and group ID for a group chat.
       chatType: "singleChat",
       customEvent: "CARD",
       customExts: {

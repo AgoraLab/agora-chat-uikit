@@ -12,8 +12,8 @@ For details about message-related features, see [Product features](./overview/pr
 The `AgoraChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and others.
 
 ```kotlin
-// conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-// chatType: For one-to-one chat and chat group, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
+// conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
+// chatType: For one-to-one chat and group chat, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
 AgoraChatActivity.actionStart(mContext, conversationId, chatType)
 ```
 ```kotlin
@@ -21,8 +21,8 @@ class ChatActivity: AppCompactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        // conversationId: Peer user ID for a one-to-one conversation and group ID for a chat group
-        // chatType: For one-to-one chat and chat group, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
+        // conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
+        // chatType: For one-to-one chat and group chat, it is AgoraChatType#SINGLE_CHAT and AgoraChatType#GROUP_CHAT, respectively.
         AgoraChatFragment.Builder(conversationId, chatType)
             .build()?.let { fragment ->
                 supportFragmentManager.beginTransaction()
@@ -39,8 +39,8 @@ class ChatActivity: AppCompactActivity() {
 An `AgoraChatFragment` Builder construction method is provided to facilitate customization of settings. The currently provided settings are as follows:
 
 ```kotlin
-// conversationID: Peer user ID for a one-to-one conversation and group ID for a chat group
-// agoraChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and chat group, respectively
+// conversationID: Peer user ID for a one-to-one conversation and group ID for a group chat
+// agoraChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and group chat, respectively
 AgoraChatFragment.Builder(conversationID, agoraChatType) 
         .useTitleBar(true) 
         .setTitleBarTitle("title") 
