@@ -124,7 +124,7 @@ The `ChatAppearance` class is a configurable container class. For simple configu
         }
     ```
 
-- `Appearance.chat.targetLanguage= .Chinese`: After long pressing a text message, a translation menu will appear. After clicking **Translate**, set the target language to be translated to. The prerequisite is to apply for the translation function in Agora Console and set `Appearance.chat.enableTranslation` to `true`.
+- `Appearance.chat.targetLanguage= .Chinese`: After long pressing a text message, a translation menu will appear. After clicking **Translate**, set the target language to be translated to. The prerequisite is to set `Appearance.chat.enableTranslation` to `true`.
 
 - `Appearance.chat.reportSelectionTags` & `Appearance.chat.reportSelectionReasons`: The message reporting feature has an array of report tags and a corresponding array of reasons.
 

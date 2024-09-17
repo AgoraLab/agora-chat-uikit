@@ -174,7 +174,7 @@ top for easy access.
 The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND 
 mode. 
 
-### Delete conversation
+### Delete a conversation
 
 The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
 
@@ -182,31 +182,31 @@ The user can swipe a conversation left/right or long-press it to open a context 
 
 This section covers specific features related to managing messages.
 
-### Copy message
+### Copy a message
 
 Users can copy a message to the clipboard to save it somewhere else or paste it into other applications.
 
 ![Copy message](../../assets/images/copy_message.png)
 
-### Delete message
+### Delete a message
 
 Users can delete messages that they do not want to keep.
 
 ![Delete message](../../assets/images/delete_message.png)
 
-### Recall message
+### Recall a message
 
 Users can recall messages that were sent by mistake.
 
 ![Recall message](../../assets/images/recall_message.png)
 
-### Edit sent message
+### Edit a sent message
 
 Users can edit sent messages to correct mistakes. 
 
 ![Edit message](../../assets/images/edit_message.png)
 
-### Quote message
+### Quote a message
 
 Users can quote a specific message to reply to it or emphasize its importance. 
 
@@ -228,7 +228,7 @@ The sample code is as follows:
 ChatIM.getConfig()?.chatConfig?.enableReplyMessage
 ```
 
-### Translate message
+### Translate a message
 
 Users can translate messages into other languages for easier communication. The UI and logic structure are as follows:
 
@@ -237,8 +237,6 @@ Users can translate messages into other languages for easier communication. The 
   `addTranslationViewToMessage` method in `AgoraChatAddExtendFunctionViewController`.
 - The logic for showing and hiding the translation menu that pops up when long-pressing a message bubble is in 
   `AgoraChatMessageTranslationController`.
-
-Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
@@ -279,8 +277,6 @@ The structure of the reaction UI and logic is as follows:
 The logic for adding views to message bubbles and showing and hiding React layouts is in the 
 `addReactionViewToMessage` method in `AgoraChatAddExtendFunctionViewController`.
 
-Before using this feature, enable it in Agora Console.
-
 The emoji reply feature is disabled by default. That is, the default value of `enableMessageReaction` in `AgoraChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
@@ -292,8 +288,6 @@ ChatIM.getConfig()?.chatConfig?.enableMessageReaction
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
 The thread page is implemented in `AgoraChatThreadActivity`. Call `AgoraChatThreadActivity.actionStart` and pass in the required parameters.
-
-Before using this feature, enable it in Agora Console.
 
 The message thread feature is disabled by default. That is, the default value of `enableChatThreadMessage` in 
 `AgoraChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
@@ -313,7 +307,7 @@ class ChatThreadActivity:AgoraChatThreadActivity() {
 }
 ```
 
-### Forward message
+### Forward a message
 
 Users can forward a single or multiple combined messages to other users. 
 
@@ -330,7 +324,7 @@ The message forwarding feature is enabled by default. That is, the default value
 ChatIM.getConfig()?.chatConfig?.enableSendCombineMessage
 ```
 
-### Pin message
+### Pin a message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 

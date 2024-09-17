@@ -270,8 +270,6 @@ When you long-press a message, you can modify the pop-up menu by adjusting the o
 
 Users can create a thread based on a message in a group chat to conduct in-depth discussions and track specific project tasks without affecting other chat content.
 
-Before using this feature, enable it in Agora Console.
-
 The message topic feature is provided as a switch in `ChatUIKitSettings.enableChatThreadMessage`, with a default value of `false`. To enable it, set this parameter to `true`.
 
 The sample code is as follows:
@@ -281,8 +279,6 @@ The sample code is as follows:
 ```
 
 ### Set whether to enable message translation
-
-Users can translate a message into other languages. Before using this feature, enable it in Agora Console.
 
 1. Enable message translation.
 
@@ -307,8 +303,6 @@ Users can translate a message into other languages. Before using this feature, e
 ### Set whether to enable an emoji reply
 
 Users can reply to messages with emojis to express emotions and attitudes, or to conduct surveys or votes. In UIKit, users can long-press a single message to call the extended menu and select an emoji reply.
-
-Before using this feature, enable it in Agora Console.
 
 `ChatUIKitSettings` provides an `enableMessageReaction` property to enable emoji replies. The default value is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 

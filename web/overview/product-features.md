@@ -18,12 +18,12 @@ one-to-one conversation or a group chat.
 
 A user initiates communication with one or more users by starting a conversation.
 
-### Create group chat
+### Create a group chat
 
 A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and
 manage it.
 
-### Manage group chat
+### Manage a group chat
 
 Group chat administrators have all permissions to the group, which includes adding or deleting members,
 modifying the group name, description, and avatar, banning or deleting group members, and others.
@@ -59,7 +59,7 @@ Users can quickly add a contact or start a conversation through the contact card
 
 Users can send and receive voice messages in addition to text ones.
 
-### Content moderation
+### Message reporting
 
 Messages sent by users are examined to determine whether they comply with the platform's
 community guidelines, terms of service, and relevant laws and regulations.
@@ -99,7 +99,7 @@ This section covers specific features related to managing conversations.
 Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
 long-press it to open a context menu and mark the conversation as read.
 
-### Pin a conversation
+### Pin a conversation (sticky conversation)
 
 The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the
 top for easy access.
@@ -109,7 +109,7 @@ top for easy access.
 The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND
 mode.
 
-### Delete conversation
+### Delete a conversation
 
 The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
 
@@ -117,11 +117,11 @@ The user can swipe a conversation left/right or long-press it to open a context 
 
 This section covers specific features related to managing messages, including message deletion, recall, editing, quoting, translation, emoji reply, topic, and forwarding. You can turn these features on or off.
 
-### Copy message
+### Copy a message
 
 Users can copy a message to the clipboard to save it somewhere else or paste it into other applications.
 
-### Delete message
+### Delete a message
 
 Users can delete messages that they do not want to keep. This feature is included in the message components such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
 
@@ -131,7 +131,7 @@ The message deletion feature is enabled by default. You can disable it in the gl
 features.chat.message.delete = false;
 ```
 
-### Recall message
+### Recall a message
 
 Users can recall messages that were sent by mistake. This feature is included in the message components such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
 
@@ -141,7 +141,7 @@ The message recall feature is enabled by default. You can disable it in the glob
 features.chat.message.recall = false;
 ```
 
-### Edit sent message
+### Edit a sent message
 
 Users can edit sent messages to correct mistakes. This feature is in the UIKit `TextMessage` component. 
 
@@ -151,7 +151,7 @@ The message editing feature is enabled by default. You can disable it in the glo
 features.chat.message.edit = false;
 ```
 
-### Quote message
+### Quote a message
 
 Users can quote a specific message to reply to it or emphasize its importance. This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and others. 
 
@@ -161,11 +161,9 @@ The quoting feature is enabled by default. You can disable it in the global conf
 features.chat.message.reply = false;
 ```
 
-### Translate message
+### Translate a message
 
 Users can translate messages into other languages for easier communication. This feature is in the UIKit `TextMessage` component.
-
-Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
@@ -186,8 +184,6 @@ Users can long-press a single message to open the context menu and reply with an
 
 This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
 
-Before using this feature, enable it in Agora Console.
-
 The emoji reply feature is enabled by default. You can disable it in the global configuration:
 
 ```javascript
@@ -199,8 +195,6 @@ features.chat.message.reaction = false;
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
 The thread page is implemented in the UIKit `AgoraChatThreadActivity`. You only need to call `AgoraChatThreadActivity.actionStart` to start the page and pass in the required parameters. This feature is in the UIKit `TextMessage` component.
-
-Before using this feature, enable it in Agora Console.
 
 The message thread feature is enabled by default. Disable it in the global configuration:
 
@@ -295,7 +289,7 @@ Sample code:
 // The contact component is the same as that of combined forwarding
 ```
 
-### Pin message
+### Pin a message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 

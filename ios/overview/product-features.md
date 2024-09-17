@@ -18,12 +18,12 @@ one-to-one conversation or a group chat.
 
 A user initiates communication with one or more users by starting a conversation.
 
-### Create group chat
+### Create a group chat
 
 A group chat is a conversation that allows multiple users to join. Users can invite other users to join the group and 
 manage it.
 
-### Manage group chat
+### Manage a group chat
 
 Group chat administrators have all permissions to the group, which includes adding or deleting members, 
 modifying the group name, description, and avatar, banning or deleting group members, and others.
@@ -59,7 +59,7 @@ Users can quickly add a contact or start a conversation through the contact card
 
 Users can send and receive voice messages in addition to text ones. 
 
-### Content moderation
+### Message reporting
 
 Messages sent by users are examined to determine whether they comply with the platform's 
 community guidelines, terms of service, and relevant laws and regulations.
@@ -73,7 +73,7 @@ This section covers specific features related to managing conversations.
 Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or 
 long-press it to open a context menu and mark the conversation as read. 
 
-### Pin a conversation
+### Pin a conversation (sticky conversation
 
 The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the 
 top for easy access.
@@ -83,7 +83,7 @@ top for easy access.
 The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND 
 mode. 
 
-### Delete conversation
+### Delete a conversation
 
 The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
 
@@ -123,23 +123,23 @@ Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAv
     }
 ```
 
-### Copy message
+### Copy a message
 
 Users can copy a message to the clipboard to save it somewhere else or paste it into other applications.
 
-### Delete message
+### Delete a message
 
 Users can delete messages that they do not want to keep.
 
-### Recall message
+### Recall a message
 
 Users can recall messages that were sent by mistake.
 
-### Edit sent message
+### Edit a sent message
 
 Users can edit sent messages to correct mistakes. 
 
-### Quote message
+### Quote a message
 
 Users can quote a specific message to reply to it or emphasize its importance. The quoting feature is enabled by default.
 
@@ -153,12 +153,10 @@ Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAv
     }
 ```
 
-### Translate message
+### Translate a message
 
 Users can translate messages into other languages for easier communication. The UI and logic structure are in 
 `Appearance.swift`.
-
-Before using this feature, enable it in Agora Console.
 
 1. Enable message translation
 
@@ -183,8 +181,6 @@ Users can long-press a single message to open the context menu and reply with an
 (reactions) can help express emotions or attitudes, conduct surveys or votes. Currently, the UIKit supports 
 reactions only for group chats, which can be turned on and off in `Appearance.swift`.
 
-Before using this feature, enable it in Agora Console.
-
 The emoji reply feature is disabled by default in `Appearance.swift`. That is, `.withMessageReaction` is not 
 included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling.
 
@@ -196,8 +192,6 @@ Appearance.chat.contentStyle.append(.withMessageReaction)
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-Before using this feature, enable it in Agora Console.
-
 The message thread feature is disabled by default in `Appearance.swift`. That is, `.withMessageThread` is not
 included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling. 
 The sample code is as follows:
@@ -206,7 +200,7 @@ The sample code is as follows:
 Appearance.chat.contentStyle.append(.withMessageThread)
 ```
 
-### Forward message
+### Forward a message
 
 Users can forward a single or multiple combined messages to other users. 
 
@@ -216,7 +210,7 @@ The UI and logic structure are as follows:
 - `MessageListController.swift`: Handles UI layout changes and logic for forwarding and deleting.
 - `MessageListController.swift`: The message selection helper class used to record the selected message information and provide acquisition methods.
 
-### Pin message
+### Pin a message
 
 Users can pin important messages to the top of a conversation. This feature is particularly useful for handling urgent matters or ongoing projects, helping to efficiently manage important matters.
 
