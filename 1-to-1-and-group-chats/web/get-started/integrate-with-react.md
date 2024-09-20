@@ -4,8 +4,9 @@ Before using UIKit, you need to integrate it into your app. This page explains h
 
 Before you start, make sure your development environment meets the following conditions:
 
-- React 16.8.0 or above
-- React DOM 16.8.0 or above
+- React 16.8.0 or above;
+- React DOM 16.8.0 or above;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKIt
 
@@ -30,10 +31,10 @@ Take the following steps:
       Chat,
       ConversationList,
       // ...
-    } from "agora-chat-uikit";
+    } from "easemob-chat-uikit";
    
     // Import styles
-    import "agora-chat-uikit/style.css";
+    import "easemob-chat-uikit/style.css";
     ```
 
 1. Initialize 
@@ -42,12 +43,10 @@ Take the following steps:
 
     To implement automated login, pass in `userId` and `password` or `token` during initialization.
 
-    Create a Chat user in Agora Console and obtain a user ID and password. If you use a token, obtain it from your app server. For more details, see [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication?platform=web).
-
     ```javascript
     import React from 'react';
-    import { UIKitProvider } from 'agora-chat-uikit';
-    import 'agora-chat-uikit/style.css';
+    import { UIKitProvider } from 'easemob-chat-uikit';
+    import 'easemob-chat-uikit/style.css';
     ReactDOM.createRoot(document.getElementById('root') as Element).render(
       <div>
         <UIKitProvider
@@ -79,8 +78,8 @@ Take the following steps:
 
     ```javascript
    import React from "react";
-   import { Chat, MessageList, TextMessage } from "agora-chat-uikit";
-   import "agora-chat-uikit/style.css";
+   import { Chat, MessageList, TextMessage } from "easemob-chat-uikit";
+   import "easemob-chat-uikit/style.css";
    
    const App = () => {
      return (

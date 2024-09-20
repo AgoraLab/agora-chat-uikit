@@ -8,7 +8,8 @@ Before you start, make sure your development environment meets the following con
 - React Native 0.71 or above;
 - NodeJs 16.18 or above;
 - For iOS, Xcode 14 or above;
-- For Android, Android Studio 2022 or above.
+- For Android, Android Studio 2022 or above;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 

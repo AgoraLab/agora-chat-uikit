@@ -10,8 +10,8 @@ For details about message-related functions, see [Product features](../overview/
 
 ```javascript
 import React from "react";
-import { Chat } from "agora-chat-uikit";
-import "agora-chat-uikit/style.css";
+import { Chat } from "easemob-chat-uikit";
+import "easemob-chat-uikit/style.css";
 
 const ChatContainer = () => {
   return (
@@ -74,8 +74,8 @@ Add a custom icon to the message editor to implement the specified function:
 
 ```javascript
 import React from "react";
-import { Chat, Icon, MessageInput } from "agora-chat-uikit";
-import "agora-chat-uikit/style.css";
+import { Chat, Icon, MessageInput } from "easemob-chat-uikit";
+import "easemob-chat-uikit/style.css";
 
 const ChatContainer = () => {
   // Add an icon in the message editor
@@ -156,7 +156,7 @@ const ChatContainer = () => {
 
   // Implement sending custom messages
   const sendCustomMessage = () => {
-    const customMsg = AgoraChat.message.create({
+    const customMsg = EaseChat.message.create({
       type: "custom",
       to: "targetId", // Message recipient: Peer user ID for a one-to-one chat and group ID for a group chat.
       chatType: "singleChat",

@@ -2,12 +2,12 @@ User information is used across UIKit and needs to be provided by developers. Th
 
 ## Logged-in user information
 
-When a user calls the `ChatIM.login` method to log in, they need to pass in an `EaseProfile` object, which contains three properties: `id`, `name`, and `avatar`. `id` is a required parameter used to display the logged-in user's nickname and avatar. When sending a message, set the `name` and `avatar` properties to facilitate the display to other users.
+When a user calls the `EaseIM.login` method to log in, they need to pass in an `EaseProfile` object, which contains three properties: `id`, `name`, and `avatar`. `id` is a required parameter used to display the logged-in user's nickname and avatar. When sending a message, set the `name` and `avatar` properties to facilitate the display to other users.
 
-If the `name` and `avatar` properties are not passed in during login, you can call the `ChatIM.updateCurrentUser` method to update the user information after login.
+If the `name` and `avatar` properties are not passed in during login, you can call the `EaseIM.updateCurrentUser` method to update the user information after login.
 
 ```kotlin
-ChatIM.login(
+EaseIM.login(
     user = EaseProfile(
         id = "",
         name = "",
@@ -25,7 +25,7 @@ ChatIM.login(
 
 ## User information
 
-UIKit provides an `ChatIM.setUserProfileProvider` interface to provide user information, including contact and group member information. The `EaseUserProfileProvider` interface is as follows:
+UIKit provides an `EaseIM.setUserProfileProvider` interface to provide user information, including contact and group member information. The `EaseUserProfileProvider` interface is as follows:
 
 ```kotlin
 interface EaseUserProfileProvider {
@@ -40,7 +40,7 @@ interface EaseUserProfileProvider {
 The usage example is as follows:
 
 ```kotlin
-ChatIM.setUserProfileProvider(object : EaseUserProfileProvider {
+EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
     override fun getUser(userId: String?): EaseProfile? {
         return getLocalUserInfo(userId)
     }
@@ -57,7 +57,7 @@ ChatIM.setUserProfileProvider(object : EaseUserProfileProvider {
 
 ## Group information
 
-UIKit provides an `ChatIM.setGroupProfileProvider` interface to provide group information. The `EaseGroupProfileProvider` interface is as follows:
+UIKit provides an `EaseIM.setGroupProfileProvider` interface to provide group information. The `EaseGroupProfileProvider` interface is as follows:
 
 ```kotlin
 interface EaseGroupProfileProvider {
@@ -72,7 +72,7 @@ fun fetchGroups(groupIds: List<String>, onValueSuccess: OnValueSuccess<List<Ease
 The usage example is as follows:
 
 ```kotlin
-ChatIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
+EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
     override fun getGroup(id: String?): EaseGroupProfile? {
         ChatClient.getInstance().groupManager().getGroup(id)?.let {
             return EaseGroupProfile(it.groupId, it.groupName, it.extension)
@@ -108,7 +108,7 @@ You can update the cached information through the methods provided by UIKit:
 
 ```kotlin
 // Update current user information
-ChatIM.updateCurrentUser(currentUserProfile)
+EaseIM.updateCurrentUser(currentUserProfile)
 // Update one-to-one chat user/group member information
-ChatIM.updateUsersInfo(userProfileList)
+EaseIM.updateUsersInfo(userProfileList)
 ```

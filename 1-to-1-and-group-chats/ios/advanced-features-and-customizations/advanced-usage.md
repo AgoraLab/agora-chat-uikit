@@ -5,12 +5,12 @@ The following are examples of advanced usage of UIKit. The conversation list pag
 Compared to the initialization in the quickstart, additional `ChatOptions` parameters are added, including the switch configuration of whether to print logs in the SDK, whether to log in automatically, and whether to use user attributes by default.
 
 ```swift
-let error = AgoraChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
+let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
 ```
 
 ## Login
 
-Use the user information of the current user object that conforms to `AgoraProfileProtocol` to log in to `AgoraChatUIKit`.
+Use the user information of the current user object that conforms to `EaseProfileProtocol` to log in to `EaseChatUIKit`.
 
 Create a user on Agora Console and pass in the user ID into the `userId` field in the following code. 
 
@@ -20,7 +20,7 @@ If you have integrated Chat SDK, all user IDs can be used to log in with the UIK
 public final class YourAppUser: NSObject, ChatProfileProtocol {
 
     public func toJsonObject() -> Dictionary<String, Any>? {
-        ["agora_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
+        ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
     }
 
     public var userId: String = <#T##String#>
@@ -30,11 +30,11 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
     public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
 
 }
- AgoraChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
+ EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
  }
 ```
 
-## Provider in AgoraChatUIKitContext
+## Provider in EaseChatUIKitContext
 
 <Admonition type="tip" title="Note">Provider is only used for the conversation list and contact list. If you only enter the chat page through quickstart, you do not need to implement the Provider.</Admonition>
 
@@ -45,22 +45,22 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
     ```swift
        
         //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
-        AgoraChatUIKitContext.shared?.userProfileProvider = self
-        AgoraChatUIKitContext.shared?.userProfileProviderOC = nil
+        EaseChatUIKitContext.shared?.userProfileProvider = self
+        EaseChatUIKitContext.shared?.userProfileProviderOC = nil
         //The principle of groupProvider is the same as above
-        AgoraChatUIKitContext.shared?.groupProfileProvider = self
-        AgoraChatUIKitContext.shared?.groupProfileProviderOC = nil
+        EaseChatUIKitContext.shared?.groupProfileProvider = self
+        EaseChatUIKitContext.shared?.groupProfileProviderOC = nil
     ```
 
     - Use closure to return information about the conversation list. It can be used in both Swift and OC.
 
     ```swift
            //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
-           AgoraChatUIKitContext.shared?.userProfileProvider = nil
-           AgoraChatUIKitContext.shared?.userProfileProviderOC = self
+           EaseChatUIKitContext.shared?.userProfileProvider = nil
+           EaseChatUIKitContext.shared?.userProfileProviderOC = self
            //The principle of groupProvider is the same as above
-           AgoraChatUIKitContext.shared?.groupProfileProvider = nil
-           AgoraChatUIKitContext.shared?.groupProfileProviderOC = self
+           EaseChatUIKitContext.shared?.groupProfileProvider = nil
+           EaseChatUIKitContext.shared?.groupProfileProviderOC = self
     ```
    
 1. Implement the conversation list Provider.
@@ -72,11 +72,11 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
        //For example, using conversations controller as follows:
        extension MainViewController: ChatProfileProvider,ChatGroupProfileProvider {
            //MARK: - ChatProfileProvider
-           func fetchProfiles(profileIds: [String]) async -> [any AgoraChatUIKit.ChatProfileProtocol] {
-               return await withTaskGroup(of: [AgoraChatUIKit.ChatProfileProtocol].self, returning: [AgoraChatUIKit.ChatProfileProtocol].self) { group in
-                   var resultProfiles: [AgoraChatUIKit.ChatProfileProtocol] = []
+           func fetchProfiles(profileIds: [String]) async -> [any EaseChatUIKit.ChatProfileProtocol] {
+               return await withTaskGroup(of: [EaseChatUIKit.ChatProfileProtocol].self, returning: [EaseChatUIKit.ChatProfileProtocol].self) { group in
+                   var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
                    group.addTask {
-                       var resultProfiles: [AgoraChatUIKit.ChatProfileProtocol] = []
+                       var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
                        let result = await self.requestUserInfos(profileIds: profileIds)
                        if let infos = result {
                            resultProfiles.append(contentsOf: infos)
@@ -91,12 +91,12 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                }
            }
            //MARK: - ChatGroupProfileProvider
-           func fetchGroupProfiles(profileIds: [String]) async -> [any AgoraChatUIKit.ChatProfileProtocol] {
+           func fetchGroupProfiles(profileIds: [String]) async -> [any EaseChatUIKit.ChatProfileProtocol] {
                
-               return await withTaskGroup(of: [AgoraChatUIKit.ChatProfileProtocol].self, returning: [AgoraChatUIKit.ChatProfileProtocol].self) { group in
-                   var resultProfiles: [AgoraChatUIKit.ChatProfileProtocol] = []
+               return await withTaskGroup(of: [EaseChatUIKit.ChatProfileProtocol].self, returning: [EaseChatUIKit.ChatProfileProtocol].self) { group in
+                   var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
                    group.addTask {
-                       var resultProfiles: [AgoraChatUIKit.ChatProfileProtocol] = []
+                       var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
                        let result = await self.requestGroupsInfo(groupIds: profileIds)
                        if let infos = result {
                            resultProfiles.append(contentsOf: infos)
@@ -115,7 +115,7 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                var unknownIds = [String]()
                var resultProfiles = [ChatProfileProtocol]()
                for profileId in profileIds {
-                   if let profile = AgoraChatUIKitContext.shared?.userCache?[profileId] {
+                   if let profile = EaseChatUIKitContext.shared?.userCache?[profileId] {
                        if profile.nickname.isEmpty {
                            unknownIds.append(profile.id)
                        } else {
@@ -131,7 +131,7 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                let result = await ChatClient.shared().userInfoManager?.fetchUserInfo(byId: unknownIds)
                if result?.1 == nil,let infoMap = result?.0 {
                    for (userId,info) in infoMap {
-                       let profile = AgoraChatProfile()
+                       let profile = EaseChatProfile()
                        let nickname = info.nickname ?? ""
                        profile.id = userId
                        profile.nickname = nickname
@@ -140,12 +140,12 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                        }
                        profile.avatarURL = info.avatarUrl ?? ""
                        resultProfiles.append(profile)
-                       if (AgoraChatUIKitContext.shared?.userCache?[userId]) != nil {
+                       if (EaseChatUIKitContext.shared?.userCache?[userId]) != nil {
                            profile.updateFFDB()
                        } else {
                            profile.insert()
                        }
-                       AgoraChatUIKitContext.shared?.userCache?[userId] = profile
+                       EaseChatUIKitContext.shared?.userCache?[userId] = profile
                    }
                    return resultProfiles
                }
@@ -157,12 +157,12 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                let groups = ChatClient.shared().groupManager?.getJoinedGroups() ?? []
                for groupId in groupIds {
                    if let group = groups.first(where: { $0.groupId == groupId }) {
-                       let profile = AgoraChatProfile()
+                       let profile = EaseChatProfile()
                        profile.id = groupId
                        profile.nickname = group.groupName
                        profile.avatarURL = group.settings.ext
                        resultProfiles.append(profile)
-                       AgoraChatUIKitContext.shared?.groupCache?[groupId] = profile
+                       EaseChatUIKitContext.shared?.groupCache?[groupId] = profile
                    }
        
                }
@@ -177,7 +177,7 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
 
     ```swift
        
-        let vc = AgoraChatUIKit.ComponentsRegister.shared.ConversationsController.init()
+        let vc = EaseChatUIKit.ComponentsRegister.shared.ConversationsController.init()
         vc.tabBarItem.tag = 0
     ```
    
@@ -196,7 +196,7 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
     The custom class that inherits the contact list page class provided by UIKit can call ViewModel's methods to listen to related events after registering `ContactViewController().viewModel.registerEventsListener`.
 
     ```swift
-           let vc = AgoraChatUIKit.ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
+           let vc = EaseChatUIKit.ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
     ```
 
 1.  Listen for contact list page events
@@ -219,16 +219,16 @@ ControllerStack.toDestination(vc: vc)
 
 ## Monitor user and server connection events
 
-You can call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and AgoraChatUIKit.
+You can call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and EaseChatUIKit.
 
 ```
-AgoraChatUIKitClient.shared.registerUserStateListener(self)
+EaseChatUIKitClient.shared.registerUserStateListener(self)
 ```
 
 When the listener is not used, you can call `unregisterUserStateListener` to remove it:
 
 ```
-AgoraChatUIKitClient.shared.unregisterUserStateListener(self)
+EaseChatUIKitClient.shared.unregisterUserStateListener(self)
 ```
 
 ## More

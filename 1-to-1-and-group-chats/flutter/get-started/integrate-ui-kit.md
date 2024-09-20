@@ -5,8 +5,8 @@ Before using UIKit, you need to integrate it into your app. This page explains t
 Before you start, make sure your development environment meets the following conditions:
 
 - Flutter 3.3.0 or above;
-- iOS 11 or above;
-- Android 21 or above.
+- iOS 11 or above or Android 21 or above;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKIt
 

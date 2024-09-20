@@ -15,7 +15,7 @@ class CustomLocationMessageCell: LocationMessageCell {
         UIView(frame: .zero).backgroundColor(.clear).tag(bubbleTag)
     }
 }
-// Register a custom class that inherits the original class in AgoraChatUIKit to replace the original class.
+// Register a custom class that inherits the original class in EaseChatUIKit to replace the original class.
 // Call this method before creating a message page or using other UI components.
 ComponentsRegister.shared.ChatLocationCell = CustomLocationMessageCell.self
 ```

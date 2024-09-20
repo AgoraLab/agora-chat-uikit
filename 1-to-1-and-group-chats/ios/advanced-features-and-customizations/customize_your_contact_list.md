@@ -2,12 +2,12 @@
 
 ## 1. Customize the header navigation bar of the contact list (ContactViewController.swift)
 
-- In the demo, inherit the `AgoraChatNavigationBar` class in `AgoraChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
+- In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation. In this example, it is called `CustomConversationNavigationBar`.
 
 - Override the `createNavigation()` method and return the object you created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ```Swift
-        override func createNavigationBar() -> AgoraChatNavigationBar {
+        override func createNavigationBar() -> EaseChatNavigationBar {
             CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)
         }
     ```
@@ -17,7 +17,7 @@
 - To customize navigation and listen to the original navigation click event, override the `navigationClick` method and then perform the processing according to the corresponding click area. The sample code is as follows:
 
     ```
-        override func navigationClick(type: AgoraChatNavigationBarClickEvent, indexPath: IndexPath?) {
+        override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
             switch type {
             case .back: self.backAction()
             case .avatar: self.avatarAction()
@@ -40,7 +40,7 @@
 
 ## 2. Customize the list and list items in the contact list page
 
-- To customize the contact list `TableView`, override the `createContactList` method and return the `ContactView` class object that you inherited from `AgoraChatUIKit`. Find and take a closer look at the `ContactView.swift` class to implement the business logic. The sample code is as follows:
+- To customize the contact list `TableView`, override the `createContactList` method and return the `ContactView` class object that you inherited from `EaseChatUIKit`. Find and take a closer look at the `ContactView.swift` class to implement the business logic. The sample code is as follows:
 
     ```Swift
         override open func createContactList() -> ContactView {
@@ -48,7 +48,7 @@
         }
     ```
 
-- To customize the contents of the list items in the `ContactCell`, create a new custom class `CustomContactCell` by inheriting the `ContactCell` class in `AgoraChatUIKit`, and then set it up with the following code:
+- To customize the contents of the list items in the `ContactCell`, create a new custom class `CustomContactCell` by inheriting the `ContactCell` class in `EaseChatUIKit`, and then set it up with the following code:
 
     ```Swift
         ComponentsRegister.shared.ContactsCell = CustomContactCell.self

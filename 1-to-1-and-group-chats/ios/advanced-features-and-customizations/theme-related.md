@@ -37,9 +37,9 @@ Appearance.neutralSpecialHue = 199/360.0
 Theme.switchTheme(style: .custom)
 ```
 
-## Switch the theme of other views in the app except AgoraChatUIKit
+## Switch the theme of other views in the app except EaseChatUIKit
 
-After setting the theme of AgoraChatUIKit, if you want other parts of the app to use the same theme, you can use the following method to ensure that the app uses a unified theme:
+After setting the theme of EaseChatUIKit, if you want other parts of the app to use the same theme, you can use the following method to ensure that the app uses a unified theme:
 
 1. Register your views in the `Theme` class.
 

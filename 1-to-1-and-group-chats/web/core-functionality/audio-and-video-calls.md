@@ -5,7 +5,7 @@ UIKit integrates the Agora Video SDK, which enables audio and video calls in sin
 You need to configure the following parameters. Refer to the [Callkit integration document](https://www.npmjs.com/package/chat-callkit).
 
 ```javascript
-import { Chat } from "agora-chat-uikit";
+import { Chat } from "easemob-chat-uikit";
 
 const ChatApp = () => {
   return (

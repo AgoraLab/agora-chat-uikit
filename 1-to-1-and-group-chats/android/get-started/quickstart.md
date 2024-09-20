@@ -4,11 +4,12 @@ With UIKit, you can easily implement messaging in one-to-one chats and group cha
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Android Studio 4.0 and above
-- Gradle 4.10.x and above
-- targetVersion 26 and above
-- Android SDK API 21 and above
-- JDK 11 and above
+- Android Studio 4.0 and above;
+- Gradle 4.10.x and above;
+- targetVersion 26 and above;
+- Android SDK API 21 and above;
+- JDK 11 and above;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Project setup
 
@@ -56,7 +57,7 @@ Once the project is created successfully, make sure the project is synchronized.
     - Add the remote dependencies in the app project `build.gradle.kts`:
 
     ```kotlin
-   implementation("io.hyphenate:agora-chat-kit:4.7.0")
+   implementation("io.hyphenate:ease-chat-kit:4.7.0")
     ```
 
     - Add local dependencies:
@@ -164,8 +165,7 @@ This section explains how send a message to a one-to-one conversation or a group
 
     1. Implement the login and logout pages
 
-       If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit. Create a Chat user in  
-       Agora Console and enter the user ID and password when logging in.
+       If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit. 
 
        Open the `MainActivity` file and replace the code with the following:
 
@@ -178,12 +178,12 @@ This section explains how send a message to a one-to-one conversation or a group
    import android.view.View
    import android.widget.Toast
    import com.easemob.quickstart.databinding.ActivityMainBinding
-   import com.hyphenate.chatui.ChatIM
+   import com.hyphenate.chatui.EaseIM
    import com.hyphenate.chatui.common.ChatConnectionListener
    import com.hyphenate.chatui.common.ChatLog
    import com.hyphenate.chatui.common.ChatOptions
-   import com.hyphenate.chatui.feature.messages.AgoraChatType
-   import com.hyphenate.chatui.feature.messages.activities.AgoraChatActivity
+   import com.hyphenate.chatui.feature.messages.EaseChatType
+   import com.hyphenate.chatui.feature.messages.activities.EaseChatActivity
    import kotlinx.coroutines.CoroutineScope
    import kotlinx.coroutines.Dispatchers
    import kotlinx.coroutines.launch
@@ -212,11 +212,11 @@ This section explains how send a message to a one-to-one conversation or a group
             //Set whether the receiver is required to send a delivery receipt. The default is `false`, which is not required.
             this.requireDeliveryAck = true
          }.let {
-            ChatIM.init(applicationContext, it)
+            EaseIM.init(applicationContext, it)
          }
       }
       private fun initListener() {
-         ChatIM.subscribeConnectionDelegates(this)
+         EaseIM.subscribeConnectionDelegates(this)
       }
    
       fun login(view: View) {
@@ -227,12 +227,12 @@ This section explains how send a message to a one-to-one conversation or a group
             ChatLog.e(TAG, "Username or password cannot be empty!")
             return
          }
-         if (!ChatIM.isInited()) {
+         if (!EaseIM.isInited()) {
             showToast("Please init first!")
             ChatLog.e(TAG, "Please init first!")
             return
          }
-         ChatIM.login(username, password
+         EaseIM.login(username, password
                  , onSuccess = {
             showToast("Login successfully!")
             ChatLog.e(TAG, "Login successfully!")
@@ -243,12 +243,12 @@ This section explains how send a message to a one-to-one conversation or a group
          )
       }
       fun logout(view: View) {
-         if (!ChatIM.isInited()) {
+         if (!EaseIM.isInited()) {
             showToast("Please init first!")
             ChatLog.e(TAG, "Please init first!")
             return
          }
-         ChatIM.logout(false
+         EaseIM.logout(false
                  , onSuccess = {
             showToast("Logout successfully!")
             ChatLog.e(TAG, "Logout successfully!")
@@ -263,12 +263,12 @@ This section explains how send a message to a one-to-one conversation or a group
             ChatLog.e(TAG, "Peer id cannot be empty!")
             return
          }
-         if (!ChatIM.isLoggedIn()) {
+         if (!EaseIM.isLoggedIn()) {
             showToast("Please login first!")
             ChatLog.e(TAG, "Please login first!")
             return
          }
-         AgoraChatActivity.actionStart(this, username, AgoraChatType.SINGLE_CHAT)
+         EaseChatActivity.actionStart(this, username, EaseChatType.SINGLE_CHAT)
       }
    
       override fun onConnected() {}
@@ -283,7 +283,7 @@ This section explains how send a message to a one-to-one conversation or a group
    
       override fun onDestroy() {
          super.onDestroy()
-         ChatIM.unsubscribeConnectionDelegates(this)
+         EaseIM.unsubscribeConnectionDelegates(this)
       }
    
       companion object {

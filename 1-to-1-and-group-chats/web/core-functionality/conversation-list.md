@@ -70,7 +70,7 @@ You can customize the header element of the `ConversationList` component, for ex
 ```javascript
 import React from 'react';
 import { ConversationList, Header, Avatar } from 'easemob-chat-uikit';
-import 'agora-chat-uikit/style.css';
+import 'easemob-chat-uikit/style.css';
 
 const Conversation = () => {
   return (

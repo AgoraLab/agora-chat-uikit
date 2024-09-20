@@ -96,20 +96,20 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `ChatTitleBar` displays the user's status and input status. After receiving the input status, the input status will be displayed first. After the user cancels the input status, the user's status will be displayed and the input status will disappear.
+- The `subtitle` control in `EaseTitleBar` displays the user's status and input status. After receiving the input status, the input status will be displayed first. After the user cancels the input status, the user's status will be displayed and the input status will disappear.
 
 - Input-status-related callbacks and methods:
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `AgoraChatFragment.Builder`.
-  - The input state callback is `onPeerTyping(action: String?)`, where `action` represents the state `AgoraChatLayout.ACTION_TYPING_BEGI| AgoraChatLayout.ACTION_TYPING_END`.
+  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `EaseChatFragment.Builder`.
+  - The input state callback is `onPeerTyping(action: String?)`, where `action` represents the state `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END`.
 
-The input status indication feature is enabled by default in `ChatIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable this feature, set this parameter to `false`.
+The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable this feature, set this parameter to `false`.
 
-This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `AgoraChatFragment.Builder`, which has a higher priority.
+This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `EaseChatFragment.Builder`, which has a higher priority.
 
 The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableChatTyping = true
+EaseIM.getConfig()?.chatConfig?.enableChatTyping = true
 ```
 
 ### Local search
@@ -118,18 +118,16 @@ Users can search contacts (with or without a selection box), conversations, mess
 
 ![Search](../../assets/images/search.png)
 
-UIKit provides an encapsulated `ChatSearchActivity` search page. After the user enters keywords, the search data is searched according to `ChatSearchType` and the search results are displayed.
+UIKit provides an encapsulated `EaseSearchActivity` search page. After the user enters keywords, the search data is searched according to `EaseSearchType` and the search results are displayed.
 
-Jump to the `ChatSearchActivity` page and enter the required parameters according to the type of search you need. UIKit will match the keywords and display the search results according to `ChatSearchType`: `USER`, `SELECT_USER`, `CONVERSATION`, `MESSAGE`, and `BLOCK_USER`.
+Jump to the `EaseSearchActivity` page and enter the required parameters according to the type of search you need. UIKit will match the keywords and display the search results according to `EaseSearchType`: `USER`, `SELECT_USER`, `CONVERSATION`, `MESSAGE`, and `BLOCK_USER`.
 
 For example, the sample code for searching the blacklist is as follows:
 
 ```kotlin
-    
-    private val returnSearchClickResult: ActivityResultLauncher<Intent> = registerForActivityResult(
+private val returnSearchClickResult: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result -> onClickResult(result) }
-
     returnSearchClickResult.launch(
         ChatSearchActivity.createIntent(
             context = mContext,
@@ -145,11 +143,9 @@ For example, the sample code for searching the blacklist is as follows:
             }
         }
     }
-
 ```
 
-
-UIKit also provides a search base class `ChatBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()implement` method in `ChatBaseSearchFragment` to implement your own adapters for data processing and display.
+UIKit also provides a search base class `EaseBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()implement` method in `EaseBaseSearchFragment` to implement your own adapters for data processing and display.
 
 ## Conversation-related 
 
@@ -214,49 +210,49 @@ Users can quote a specific message to reply to it or emphasize its importance.
 
 The message quoting UI and logic structure are as follows:
 
-- `AgoraChatMessageReplyView`: A custom View for the quoted message of the message bubble.
-- `AgoraChatExtendMessageReplyView`: A custom View for the reference message displayed above the bottom input box 
+- `EaseChatMessageReplyView`: A custom View for the quoted message of the message bubble.
+- `EaseChatExtendMessageReplyView`: A custom View for the reference message displayed above the bottom input box 
   component.
-- `AgoraChatMessageReplyController`: Controls the display, hiding, scrolling, and other logic of reference functions.
+- `EaseChatMessageReplyController`: Controls the display, hiding, scrolling, and other logic of reference functions.
 
-The quoting feature is enabled by default in `AgoraChatConfig`, that is, the default value of `enableReplyMessage` 
+The quoting feature is enabled by default in `EaseChatConfig`, that is, the default value of `enableReplyMessage` 
 is `true`. To disable this feature, set it to `false`.
 
 The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableReplyMessage
+EaseIM.getConfig()?.chatConfig?.enableReplyMessage
 ```
 
 ### Translate a message
 
 Users can translate messages into other languages for easier communication. The UI and logic structure are as follows:
 
-- The UI layout of message translation is a custom `AgoraChatMessageTranslationView` layout.
+- The UI layout of message translation is a custom `EaseChatMessageTranslationView` layout.
 - The logic for adding views to the message bubble and showing and hiding the translation layout is in the 
-  `addTranslationViewToMessage` method in `AgoraChatAddExtendFunctionViewController`.
+  `addTranslationViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
 - The logic for showing and hiding the translation menu that pops up when long-pressing a message bubble is in 
-  `AgoraChatMessageTranslationController`.
+  `EaseChatMessageTranslationController`.
 
 1. Enable message translation
 
   The message translation feature is disabled by default, that is, the default value of 
      `enableTranslationMessage` in 
-  `AgoraChatConfig` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
+  `EaseChatConfig` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
   
   ```kotlin
-  ChatIM.getConfig()?.chatConfig?.enableTranslationMessage
+  EaseIM.getConfig()?.chatConfig?.enableTranslationMessage
   ```
 
 1. Set the target language
 
-  The `AgoraChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
+  The `EaseChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
   English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 
   ```kotlin
-  val builder = AgoraChatFragment.Builder
+  val builder = EaseChatFragment.Builder
   builder.setTargetTranslation(ChatTranslationLanguageType.English)
   ```
 
@@ -269,39 +265,38 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- Reaction implements a custom layout `AgoraChatMessageReactionView` in the message list. 
-- Reaction implements a custom layout `ChatMessageMenuReactionView` in the message long-press menu `RecyclerView`.
-- The reaction popup window `AgoraChatReactionsDialog` is inherited from `ChatBaseSheetFragmentDialog`.
-- Reaction member list is `ChatReactionUserListFragment`.
+- `EaseChatMessageReactionView` implements a custom reaction layout in the message list. 
+- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`.
+- The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
+- Reaction member list is `EaseReactionUserListFragment`.
 
 The logic for adding views to message bubbles and showing and hiding React layouts is in the 
-`addReactionViewToMessage` method in `AgoraChatAddExtendFunctionViewController`.
+`addReactionViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
 
-The emoji reply feature is disabled by default. That is, the default value of `enableMessageReaction` in `AgoraChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+The emoji reply feature is disabled by default. That is, the default value of `enableMessageReaction` in `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableMessageReaction
+EaseIM.getConfig()?.chatConfig?.enableMessageReaction
 ```
 
 ### Message thread
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-The thread page is implemented in `AgoraChatThreadActivity`. Call `AgoraChatThreadActivity.actionStart` and pass in the required parameters.
+The thread page is implemented in `EaseChatThreadActivity`. Call `EaseChatThreadActivity.actionStart` and pass in the required parameters.
 
 The message thread feature is disabled by default. That is, the default value of `enableChatThreadMessage` in 
-`AgoraChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+`EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableChatThreadMessage
+EaseIM.getConfig()?.chatConfig?.enableChatThreadMessage
 ```
 
-You can add your own logic by inheriting `AgoraChatThreadActivity`. For example:
+You can add your own logic by inheriting `EaseChatThreadActivity`. For example:
 
 ```kotlin
-
-class ChatThreadActivity:AgoraChatThreadActivity() {
-    override fun setChildSettings(builder: AgoraChatFragment.Builder) {
+class ChatThreadActivity:EaseChatThreadActivity() {
+    override fun setChildSettings(builder: EaseChatFragment.Builder) {
         super.setChildSettings(builder)
     }
 }
@@ -313,15 +308,15 @@ Users can forward a single or multiple combined messages to other users.
 
 The UI and logic structure are as follows:
 
-- `Forward AgoraChatMultipleSelectMenuView`: Bottom menu view.
-- `Forward AgoraChatMessageMultipleSelectController`: Handles UI layout changes (hiding/showing `AgoraChatInputMenu` in `AgoraChatLayout`) and logic for forwarding and deleting.
-- `Forward AgoraChatMessageMultiSelectHelper`: The message selection helper class used to record the selected message information and provide acquisition methods.
+- `Forward EaseChatMultipleSelectMenuView`: Bottom menu view.
+- `Forward EaseChatMessageMultipleSelectController`: Handles UI layout changes (hiding/showing `EaseChatInputMenu` in `EaseChatLayout`) and logic for forwarding and deleting.
+- `Forward EaseChatMessageMultiSelectHelper`: The message selection helper class used to record the selected message information and provide acquisition methods.
 
 The message forwarding feature is enabled by default. That is, the default value of `enableSendCombineMessage` in
-`AgoraChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
+`EaseChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableSendCombineMessage
+EaseIM.getConfig()?.chatConfig?.enableSendCombineMessage
 ```
 
 ### Pin a message
@@ -330,22 +325,22 @@ Users can pin important messages to the top of a conversation. This feature is p
 
 The UI and logic structure are as follows:
 
-- `AgoraChatPinMessageListViewGroup`: A custom View for the message pinning area.
-- `AgoraChatPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
-- `AgoraChatPinMessageListAdapter`: The message pinned list adapter.
-- `AgoraChatPinDefaultViewHolder`: The default display style of pinned messages.
-- `AgoraChatPinTextMessageViewHolder`: The text type display style of the pinned message.
-- `AgoraChatPinImageMessageViewHolder`: The display style of the pinned message image type.
+- `EaseChatPinMessageListViewGroup`: A custom View for the message pinning area.
+- `EaseChatPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
+- `EaseChatPinMessageListAdapter`: The message pinned list adapter.
+- `EaseChatPinDefaultViewHolder`: The default display style of pinned messages.
+- `EaseChatPinTextMessageViewHolder`: The text type display style of the pinned message.
+- `EaseChatPinImageMessageViewHolder`: The display style of the pinned message image type.
 
 The message pinning feature is enabled by default. That is, the default value of `enableChatPingMessage` in
-`AgoraChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
+`EaseChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
 
 ```kotlin
-ChatIM.getConfig()?.chatConfig?.enableChatPingMessage
+EaseIM.getConfig()?.chatConfig?.enableChatPingMessage
 
 // Define the controller of the pin message
-val chatPinMessageController:AgoraChatPinMessageController by lazy {
-  AgoraChatPinMessageController(mContext,this@AgoraChatLayout, conversationId, viewModel)
+val chatPinMessageController:EaseChatPinMessageController by lazy {
+  EaseChatPinMessageController(mContext,this@EaseChatLayout, conversationId, viewModel)
 }
 // Initialize the controller that contains pin list entries and built-in click event listening callbacks
 // When the original message exists, the list scrolls to the original message position by default
@@ -367,7 +362,7 @@ chatPinMessageController.pinMessage(message,true)
 
 // Update the pinned message
 // Add the message listening callback
-private val chatMessageListener = object : ChatMessageListener() {
+private val chatMessageListener = object : EaseMessageListener() {
   // Pinned message change callback
   override fun onMessagePinChanged(
           messageId: String?,
@@ -387,7 +382,7 @@ private val chatMessageListener = object : ChatMessageListener() {
   }
 }
 
-ChatIM.addChatMessageListener(chatMessageListener)
+EaseIM.addChatMessageListener(chatMessageListener)
 
 // Show pin view
 chatPinMessageController.showPinInfoView()

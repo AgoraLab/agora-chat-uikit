@@ -4,7 +4,7 @@
 
 ```javascript
 import React, { useEffect } from "react";
-import { eventHandler } from "agora-chat-uikit";
+import { eventHandler } from "ease-chat-uikit";
 
 const ChatApp = () => {
   useEffect(() => {

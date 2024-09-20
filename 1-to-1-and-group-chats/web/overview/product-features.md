@@ -194,7 +194,7 @@ features.chat.message.reaction = false;
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-The thread page is implemented in the UIKit `AgoraChatThreadActivity`. You only need to call `AgoraChatThreadActivity.actionStart` to start the page and pass in the required parameters. This feature is in the UIKit `TextMessage` component.
+The thread page is implemented in the UIKit `EaseChatThreadActivity`. You only need to call `EaseChatThreadActivity.actionStart` to start the page and pass in the required parameters. This feature is in the UIKit `TextMessage` component.
 
 The message thread feature is enabled by default. Disable it in the global configuration:
 

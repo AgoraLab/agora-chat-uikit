@@ -4,9 +4,10 @@ Before using UIKit, you need to integrate it into your app. This page explains t
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Xcode 15.0 or above
-- iOS 13.0 or above
-- A project signed with a developer signature
+- Xcode 15.0 or above;
+- iOS 13.0 or above;
+- A project signed with a developer signature;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKit
 
@@ -23,7 +24,7 @@ You can use CocoaPods to install UIKit as a dependency in your Xcode project.
    target 'YourTarget' do
      use_frameworks!
      
-     pod 'AgoraChatUIKit'
+     pod 'EaseChatUIKit'
    end
    
    post_install do |installer|

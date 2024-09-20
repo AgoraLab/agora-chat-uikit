@@ -83,7 +83,7 @@ This custom hook can return message-related data and data management methods.
 
 ```javascript
 import React from "react";
-import { useChatContext, useSDK } from "agora-chat-uikit";
+import { useChatContext, useSDK } from "easemob-chat-uikit";
 
 const ChatAPP = () => {
   const { easemobChat } = useSDK(); // Get Chat SDK
@@ -114,7 +114,7 @@ const ChatAPP = () => {
 | Name | Property or method | Type | Description |
 |---|---|---|---|
 | `messages` | Property | Message | All message data in UIKit. |
-| `repliedMessage` | Property | `agoraChat.MessagesType` | Replying message. |
+| `repliedMessage` | Property | `easemobChat.MessagesType` | Replying message. |
 | `typing` | Property | Typing | The user object being entered. |
 | `sendMessage` | Method | `(message: easemobChat.MessageBody) => Promise<void>` | Send a message. |
 | `deleteMessage` | Method |<code>deleteMessage: (cvs: CurrentConversation, messageId: string &#124; string[]) => void &#124; Promise<void></code> | Delete a message. |

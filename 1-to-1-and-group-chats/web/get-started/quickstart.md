@@ -4,8 +4,9 @@ With UIKit, you can easily implement messaging in one-to-one chats and group cha
 
 Before you start, make sure your development environment meets the following conditions:
 
-- React 16.8.0 or above
-- React DOM 16.8.0 or above
+- React 16.8.0 or above;
+- React DOM 16.8.0 or above;
+- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Supported browsers
 
@@ -54,20 +55,18 @@ Project directory:
     - Install via npm:
     
     ```
-    npm install agora-chat-uikit --save
+    npm install easemob-chat-uikit --save
     ```
     
     - Install via yarn:
     
     ```
-    yarn add agora-chat-uikit
+    yarn add easemob-chat-uikit
     ```
    
 1. Build an app using UIKit components
-
-    In a development environment, you need to create a Chat user in Agora Console and obtain a user token from your app server. 
     
-    Import the agora-chat-uikit library:
+    Import the `easemob-chat-uikit` library:
     
     ```javascript
     // App.js
@@ -78,8 +77,8 @@ Project directory:
       ConversationList,
       useClient,
       rootStore,
-    } from "agora-chat-uikit";
-    import "agora-chat-uikit/style.css";
+    } from "easemob-chat-uikit";
+    import "easemob-chat-uikit/style.css";
     
     const ChatApp = () => {
       const client = useClient();

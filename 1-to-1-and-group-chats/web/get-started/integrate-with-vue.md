@@ -104,7 +104,7 @@ Take the following steps:
     1. Install UIKit:
 
         ```javascript
-        npm i agora-chat-uikit --save;
+        npm i easemob-chat-uikit --save;
         ```
 
     1. Create a  `react_app/chat.jsx` file, import UIKit, and initialize UIKit using the app key and user information.
@@ -115,15 +115,15 @@ Take the following steps:
 
        ```javascript
        // Import react_app/chat.jsx component
-       import { UIKitProvider, Chat, ConversationList } from "agora-chat-uikit";
+       import { UIKitProvider, Chat, ConversationList } from "easemob-chat-uikit";
        // Introduce UIKit styles
-       import 'agora-chat-uikit/style.css'
+       import 'easemob-chat-uikit/style.css'
        
        const appKey = "your appkey";
        const userId = "userId";
        const password = "password";
        
-       const AgoraChat = (props) => {
+       const EaseChat = (props) => {
          // The theme attribute passed in by the parent component
          const { theme } = props;
          return (
@@ -149,21 +149,21 @@ Take the following steps:
          );
        };
        
-       export default AgoraChat;
+       export default EaseChat;
        ```
    
 1. Add UIKit to the Vue page
 
-    Add AgoraChat to the Vue page, delete all code in `views/HomeView.vue`, and add the following:
+    Add `EaseChat` to the Vue page, delete all code in `views/HomeView.vue`, and add the following:
 
     ```javascript
     <script setup>
     import { ref } from "vue";
     import { applyPureReactInVue } from "veaury";
-    import AgoraChat from "../react_app/chat";
+    import EaseChat from "../react_app/chat";
     import Logo from "../assets/logo.svg";
     
-    const Chat = applyPureReactInVue(AgoraChat);
+    const Chat = applyPureReactInVue(EaseChat);
     
     const theme = ref("light");
     
@@ -226,9 +226,9 @@ Take the following steps:
    
     The code does the following:
     
-    1. Import the Veaury and AgoraChat chat components.
+    1. Import the Veaury and `EaseChat` components.
     1. Use Veaury's `applyPureReactInVue` function to convert the React component into a Vue component.
-    1. Define theme variables and pass them to the AgoraChat component to switch the UIKit theme.
+    1. Define theme variables and pass them to the `EaseChat` component to switch the UIKit theme.
     1. Add some styles to beautify the interface.
 
     Delete the irrelevant code in `App.vue` and keep only `RouterView`. When you visit http://localhost:5173, the `template` interface is as follows:
