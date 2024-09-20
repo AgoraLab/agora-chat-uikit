@@ -44,7 +44,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
     Log in to `EaseChatUIKit` with a user ID and token. If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit.
 
    ```
-   public final class YourAppUser: NSObject, ChatProfileProtocol {
+   public final class YourAppUser: NSObject, EaseProfileProtocol {
    
                public func toJsonObject() -> Dictionary<String, Any>? {
            ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
@@ -64,7 +64,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
        public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
    
    }
-   // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `ChatProfileProtocol` protocol
+   // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `EaseProfileProtocol` protocol
     EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
     }
     ```

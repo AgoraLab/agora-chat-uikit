@@ -14,10 +14,10 @@ Use the user information of the current user object that conforms to `EaseProfil
 
 Create a user on Agora Console and pass in the user ID into the `userId` field in the following code. 
 
-If you have integrated Chat SDK, all user IDs can be used to log in with the UIKit. 
+If you have integrated Chat SDK, all user IDs can be used to log in to UIKit. 
 
 ```swift
-public final class YourAppUser: NSObject, ChatProfileProtocol {
+public final class YourAppUser: NSObject, EaseProfileProtocol {
 
     public func toJsonObject() -> Dictionary<String, Any>? {
         ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
@@ -65,18 +65,18 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
    
 1. Implement the conversation list Provider.
 
-    For Objective-C, implement `ChatProfileProviderOC`. The following sample code implements a Swift-specific provider with the coroutine functionality.
+    For Objective-C, implement `EaseProfileProviderOC`. The following sample code implements a Swift-specific provider with the coroutine functionality.
 
     ```
-       //MARK: - ChatProfileProvider for conversations&contacts usage.
+       //MARK: - EaseProfileProvider for conversations&contacts usage.
        //For example, using conversations controller as follows:
-       extension MainViewController: ChatProfileProvider,ChatGroupProfileProvider {
-           //MARK: - ChatProfileProvider
-           func fetchProfiles(profileIds: [String]) async -> [any EaseChatUIKit.ChatProfileProtocol] {
-               return await withTaskGroup(of: [EaseChatUIKit.ChatProfileProtocol].self, returning: [EaseChatUIKit.ChatProfileProtocol].self) { group in
-                   var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
+       extension MainViewController: EaseProfileProvider,EaseGroupProfileProvider {
+           //MARK: - EaseProfileProvider
+           func fetchProfiles(profileIds: [String]) async -> [any EaseChatUIKit.EaseProfileProtocol] {
+               return await withTaskGroup(of: [EaseChatUIKit.EaseProfileProtocol].self, returning: [EaseChatUIKit.EaseProfileProtocol].self) { group in
+                   var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
                    group.addTask {
-                       var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
+                       var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
                        let result = await self.requestUserInfos(profileIds: profileIds)
                        if let infos = result {
                            resultProfiles.append(contentsOf: infos)
@@ -90,13 +90,13 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                    return resultProfiles
                }
            }
-           //MARK: - ChatGroupProfileProvider
-           func fetchGroupProfiles(profileIds: [String]) async -> [any EaseChatUIKit.ChatProfileProtocol] {
+           //MARK: - EaseGroupProfileProvider
+           func fetchGroupProfiles(profileIds: [String]) async -> [any EaseChatUIKit.EaseProfileProtocol] {
                
-               return await withTaskGroup(of: [EaseChatUIKit.ChatProfileProtocol].self, returning: [EaseChatUIKit.ChatProfileProtocol].self) { group in
-                   var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
+               return await withTaskGroup(of: [EaseChatUIKit.EaseProfileProtocol].self, returning: [EaseChatUIKit.EaseProfileProtocol].self) { group in
+                   var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
                    group.addTask {
-                       var resultProfiles: [EaseChatUIKit.ChatProfileProtocol] = []
+                       var resultProfiles: [EaseChatUIKit.EaseProfileProtocol] = []
                        let result = await self.requestGroupsInfo(groupIds: profileIds)
                        if let infos = result {
                            resultProfiles.append(contentsOf: infos)
@@ -111,9 +111,9 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                }
            }
            
-           private func requestUserInfos(profileIds: [String]) async -> [ChatProfileProtocol]? {
+           private func requestUserInfos(profileIds: [String]) async -> [EaseProfileProtocol]? {
                var unknownIds = [String]()
-               var resultProfiles = [ChatProfileProtocol]()
+               var resultProfiles = [EaseProfileProtocol]()
                for profileId in profileIds {
                    if let profile = EaseChatUIKitContext.shared?.userCache?[profileId] {
                        if profile.nickname.isEmpty {
@@ -152,8 +152,8 @@ public final class YourAppUser: NSObject, ChatProfileProtocol {
                return []
            }
            
-           private func requestGroupsInfo(groupIds: [String]) async -> [ChatProfileProtocol]? {
-               var resultProfiles = [ChatProfileProtocol]()
+           private func requestGroupsInfo(groupIds: [String]) async -> [EaseProfileProtocol]? {
+               var resultProfiles = [EaseProfileProtocol]()
                let groups = ChatClient.shared().groupManager?.getJoinedGroups() ?? []
                for groupId in groupIds {
                    if let group = groups.first(where: { $0.groupId == groupId }) {
