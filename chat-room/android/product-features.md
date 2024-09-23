@@ -123,3 +123,30 @@ When a member is banned, they will be added to the banned list. If the user want
 
 
 ## Membership management
+
+The member roles in a chat room are divided into chat room owners and ordinary members. Ordinary members can send, view, translate, report, and recall messages, view the member list, search for members, and more. In addition to the permissions of ordinary members, chat room owners can ban and remove members.
+
+### View member list
+
+The chat room member list shows the current online users in the chat room. By viewing the member list, users can see which members in the chat room are participating in the conversation and take some actions on them.
+
+In UIKit, by default, clicking the member button in the upper right corner of the chat room interface triggers the member list pop-up window. In the member list, users can view the current online members of the chat room, including their identities, avatars, and nicknames. At the same time, they can click the button on the right side of each member to trigger the muting and removal options.
+
+![View member list](../assets/images/member_list.png)
+
+### Search members
+
+The member search feature in UIKit is built into the member list. When there are many members in the chat room, users can quickly find the specified member by entering their nickname in the search box. This feature supports local search and fuzzy match.
+
+![Member search](../assets/images/member_search.png)
+
+### Remove members
+
+Usually, the chat room owner removes a member if the member violates the chat room rules or makes inappropriate comments.
+
+![Remove member](../assets/images/member_mute.png)
+
+
+
+
+
