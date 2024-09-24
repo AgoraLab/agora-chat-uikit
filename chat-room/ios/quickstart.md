@@ -7,8 +7,7 @@ With UIKit, you can easily implement user interaction in a chat room. This page 
 - Xcode (latest version recommended);
 - An iOS simulator or Apple device with iOS 13.0 or later installed;
 - The `ChatroomUIKit` dependency added using CocoaPods;
-- A valid Agora account;
-- An app key and a user token generated on your app server. See [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication).
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 

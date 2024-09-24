@@ -10,9 +10,8 @@ Before you start, make sure your development environment meets the following req
 - Android API level 21 or above;
 - Developed using Kotlin language, version 1.5.21 or above;
 - JDK 1.8 or above;
-- Gradle 7.0.0 or above
-- A valid Agora account;
-- An app key and a user token generated on your app server. See [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication).
+- Gradle 7.0.0 or above;
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 

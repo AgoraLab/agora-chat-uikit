@@ -9,8 +9,7 @@ Before you start, make sure your development environment meets the following req
 - Xcode 14.0 or above;
 - iOS 13.0 or above;
 - A project with a valid developer signature;
-- A valid Agora account;
-- An app key and a user token generated on your app server. See [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication).
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 
 ## Implementation

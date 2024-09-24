@@ -41,5 +41,4 @@ UIKit provides the following groups of features:
 |:---:|---|
 | View members | The chat room member list shows the current online users in the chat room. |
 | Search members | Supports local search and fuzzy matching. |
-| Mute members | The chat room owner can mute specific members in the chat room. |
-| Remove member | The chat room owner can remove the specified member out of the chat room. |
+| Remove members | The chat room owner can remove the specified member out of the chat room. |

@@ -82,7 +82,7 @@ UIKit supports one-click switching to the dark mode. The default style of UIKit 
 
 ![Muted list](../assets/images/dark_mode.png)
 
-## Message extension
+## Message extensions
 
 In addition to sending and viewing messages in the chat room, a user can also long-press a message to report, translate, and recall it, as well as muting chat room members.
 
