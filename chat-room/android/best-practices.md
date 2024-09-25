@@ -61,4 +61,4 @@ You can call the `registerRoomResultListener` method to add listeners for `Chatr
 ChatroomUIKitClient.getInstance().registerRoomResultListener(this)
 ```
 
-See more best practices [here](https://github.com/easemob/ChatroomDemo/tree/dev/Android/ChatroomDemo). 
+To learn more about the best practices above, click [here](https://github.com/easemob/ChatroomDemo/tree/dev/Android/ChatroomDemo). 

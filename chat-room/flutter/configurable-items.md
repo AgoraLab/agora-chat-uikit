@@ -257,3 +257,92 @@ Widget build(BuildContext context) {
 | `Icon` | Optional | Sets the icon for when a broadcast is received. |
 | `textStyle` | Optional | Sets the broadcast content font. |
 | `backgroundColor` | Optional | Sets the broadcast background color. |
+
+## ChatInputBar
+
+`ChatInputBar` can send messages such as text and emojis, and can be dynamically switched with the toolbar area at the bottom of the chat room. When a user clicks the toolbar area component at the bottom of the chat room, it switches to the input state. When a user sends a message or closes the input box, it switches to the toolbar area component at the bottom of the chat room.
+
+The sample code is as follows:
+
+```dart
+ Widget build(BuildContext context) {
+    Widget content = ChatRoomUIKit(
+      controller: controller,
+      inputBar: ChatInputBar( // Add a gift button
+        actions: [
+          InkWell(
+            onTap: () => controller.showGiftSelectPages(),
+            child: Padding(
+              padding: const EdgeInsets.all(3),
+              child: Image.asset('assets/images/send_gift.png'),
+            ),
+          ),
+        ],
+      ),
+    );
+ }
+```
+
+`ChatInputBar` provides the following properties:
+
+| Property | Required/Optional | Description |
+|:---:|:---:|:---:|
+| `inputIcon` | no | The display icons. |
+| `inputHint` | no | The placeholder character when no input is given. |
+| `leading` | no | The left input area widget. |
+| `actions` | no | The widget array for the right input area. A maximum of 3 widgets is allowed. |
+| `textDirection` | no | The direction of the input area. |
+| `onSend` | no | The callback for clicking the **Send** button. |
+
+## ChatRoomGiftListView
+
+The gift list component `ChatRoomGiftListView` provides a custom gift list. The content can be filled in through the `ChatroomController#giftControllers` configuration.
+
+The gift list component is an independent component that requires application developers to implement operations such as display and loading by themselves.
+
+The sample code is as follows:
+
+```dart
+ChatroomController controller = ChatroomController(
+      roomId: widget.room.id,
+      ownerId: widget.room.ownerId,
+      giftControllers: () async {
+        List<DefaultGiftPageController> service = [];
+        final value = await rootBundle.loadString('assets/data/Gifts_cn.json'); // Parse JSON and assign it to giftControllers.
+        Map<String, dynamic> map = json.decode(value);
+        for (var element in map.keys.toList()) {
+          service.add(
+            DefaultGiftPageController(
+              title: element,
+              gifts: () {
+                List<GiftEntityProtocol> list = [];
+                map[element].forEach((element) {
+                  GiftEntityProtocol? gift = ChatroomUIKitClient
+                      .instance.giftService
+                      .giftFromJson(element);
+                  if (gift != null) {
+                    list.add(gift);
+                  }
+                });
+                return list;
+              }(),
+            ),
+          );
+        }
+        return service;
+      }(),
+    );
+```
+
+
+## ChatroomReportListView
+
+The message reporting component `ChatroomReportListView` does not provide a custom part in the default interface, but the content can be modified through configuration.
+
+The sample code is as follows:
+
+```dart
+// Modify the report content:
+ChatRoomSettings.reportMap = {'tag': 'reason'};
+```
+

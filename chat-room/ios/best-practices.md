@@ -68,4 +68,4 @@ You can call the `registerRoomEventsListener` method to add listeners for `Chatr
 ChatroomUIKitClient.shared.registerRoomEventsListener(self)
 ```
 
-See more best practices [here](https://github.com/easemob/ChatroomDemo/tree/dev/iOS/ChatroomDemo). 
+To learn more about the best practices above, click [here](https://github.com/easemob/ChatroomDemo/tree/dev/iOS/ChatroomDemo). 
