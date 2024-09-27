@@ -27,4 +27,4 @@ fun ChatroomUIKitTheme(
 )
 ```
 
-See also [Design guide](../design-guide.md) and design resources. 
+See also [Design guide](../design-guide.md) and [design resources](https://www.figma.com/community/file/1322495388317476706/chatroom-uikit). 

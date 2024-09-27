@@ -73,7 +73,9 @@ Setting the primary hue to 203, secondary hue to 155, and error hue to 350 gener
 
 #### 1.1.3. Primary gradient color
 
-The gradient theme color is a gradient color derived from the primary color. It is a linear gradient with 8 possible directions.
+The gradient theme color is a gradient color derived from the primary color. It is a linear gradient with 8 possible directions:
+
+![Gradient Directions](/assets/images/cruk113.png)
 
 ##### 1.1.3.1. Start color
 

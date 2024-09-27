@@ -2,7 +2,7 @@ Agora UIKit for one-to-one chats and group chats is an instant messaging React U
 Agora Chat SDK. It provides various components to implement features such as a conversation list, chat interface, 
 contact list, group settings, and others. The CHat SDK is integrated into a component, which helps you to quickly build instant messaging applications including UI interfaces based on the particular business needs. There is no need to worry about internal implementation and data management.
 
-To access the source code, [click here](https://github.com/easemob/chatuikit-android).
+To access the source code, [click here](https://github.com/easemob/easemob-uikit-react).
 
 ## Understand the tech
 
