@@ -2,6 +2,8 @@ The `ContactList` component displays and manages the contact list. By default, i
 
 Contacts are sorted by the first letter of their names. If there is no nickname, the user ID is used.
 
+![Contact list](../../assets/images/contact_list_highlighted.jpg)
+
 The default usage examples are as follows:
 
 ```typescript

@@ -1,5 +1,13 @@
 UIKit has built-in light (default) and dark themes. 
 
+- Light theme
+
+  ![Light theme](../../assets/images/light_theme.png)
+
+- Dark theme
+
+  ![Dark theme](../../assets/images/dark_theme.png)
+
 ```dart
   @override
   Widget build(BuildContext context) {

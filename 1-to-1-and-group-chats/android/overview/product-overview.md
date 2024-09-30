@@ -48,5 +48,13 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-and
 The business-related UI controls are mainly included in the following three fragments:
 
 - Chat fragment provides a container for all chat views.
+
+    ![Group chat](../../assets/images/group_chat.png)
+
 - Conversation fragment provides a conversation list container.
+
+    ![Conversation list](../../assets/images/conversation_list.png)
+
 - Contact fragment provides a container for contacts, groups, and their details.
+
+    ![Contacts](../../assets/images/contacts.png)

@@ -262,6 +262,8 @@ After obtaining a `chatExtendMenu` object, you can add, remove, sort, and handle
 | `setMenuOrder()` | Sort the specified menu items. |
 | `registerMenuItem()` | Add a new menu item. |
 
+![CMessage types](../../assets/images/message_types.png)
+
 ## Listen for extension item click events
 
 You can use `EaseChatFragment#Builder#setOnChatExtendMenuItemClickListener` for monitoring or override the `ChatExtendMenuItemClick` method in a custom Fragment.

@@ -62,6 +62,8 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 A sent receipt informs the sender whether the message has been sent successfully to the server or 
 recipient.
 
+![Sent and read receipt](../../assets/images/sent_receipt.png)
+
 ### Message read receipt
 
 A read receipt informs the sender that the receiver has read the message.

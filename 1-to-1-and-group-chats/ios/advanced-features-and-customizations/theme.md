@@ -1,5 +1,13 @@
 UIKit has built-in light (default) and dark themes. 
 
+- Light theme
+
+  ![Light theme](../../assets/images/light_theme.png)
+
+- Dark theme
+
+  ![Dark theme](../../assets/images/dark_theme.png)
+
 ## Switch to a built-in theme
 
 To switch from the current theme to the built-in light or dark theme, use the `switchTheme` method. Call it before initializing the UIKit view to modify the default theme.
