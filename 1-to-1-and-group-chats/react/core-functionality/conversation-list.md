@@ -14,6 +14,8 @@ For group chats, the conversation name is the name of the current group and the 
 
 For details about the features related to the conversation list, see [Product features](../overview/product-features.md).
 
+![Conversation list](../../assets/images/conversation_list_highlighted.jpg)
+
 The following is a sample code using the default parameters:
 
 ```typescript

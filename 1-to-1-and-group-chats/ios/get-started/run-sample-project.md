@@ -4,9 +4,10 @@ Agora provides an open source sample project that demonstrates how to quickly bu
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Xcode 15.0 or above
-- iOS 13.0 or above
-- A project signed with a developer signature
+- Xcode 15.0 or above;
+- iOS 13.0 or above;
+- A project signed with a developer signature;
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 
@@ -31,9 +32,13 @@ Take the following steps to download and run the sample project:
 
    1. Press `cmd+B` on the keyboard to compile. The compilation will result in an error.
 
-   1. In Agora Console, create a valid developer account and receive an app key. Then fill in the `appKey` field and re-compile the project.
+        ![Compilation error](../../assets/images/buildError.png)
 
-   1. Create a Chat user, fill in the user ID and token, and click **Login**.
+   1. Fill in the `appKey` field with your app key and re-compile the project.
+
+   1. Log in with the created user ID and token. 
+
+        ![Log in](../../assets/images/login.png)
 
 1. Test the project
 

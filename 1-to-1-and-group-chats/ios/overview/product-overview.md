@@ -39,5 +39,13 @@ group information, and others
 The business-related UI controls are mainly included in the following three modules:
 
 - Chat module provides a container for all chat views.
+
+    ![Group chat](../../assets/images/group_chat.png) 
+
 - Conversation module provides a conversation list container.
+
+    ![Conversation list](../../assets/images/conversation_list.png)
+
 - Contact module provides a container for contacts, groups, and their details.
+
+    ![Contacts](../../assets/images/contacts.png)

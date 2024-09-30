@@ -2,6 +2,8 @@
 
 Nicknames can be sorted by the first letter.
 
+![Contacts](../../assets/images/contacts.png)
+
 ## Usage example
 
 ```kotlin
@@ -104,6 +106,8 @@ For example, if you need to add multiple users when creating a group, you can cl
 ```kotlin
 builder.setSearchType(EaseSearchType.SELECT_USER)  
 ```
+
+![Multiple selection](../../assets/images/multiple_selection.jpg)
 
 ## Event listening
 

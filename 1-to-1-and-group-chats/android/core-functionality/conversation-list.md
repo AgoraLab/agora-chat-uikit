@@ -12,6 +12,8 @@ For group chats, the conversation name is the name of the current group and the 
 
 For details about the features related to the conversation list, see [Product features](./overview/product-features.md).
 
+![Conversation list](../../assets/images/conversation_list.png)
+
 ## Usage examples
 
 ```kotlin
@@ -164,6 +166,8 @@ Mark a conversation read using the `makeConversionRead` method provided in `Ease
 ### Delete a conversation
 
 Use the `deleteConversation` method provided in `EaseConversationListViewModel` to delete a conversation.
+
+![Conversation deletion](../../assets/images/delete_conversation.jpg)
 
 ## Event listening
 

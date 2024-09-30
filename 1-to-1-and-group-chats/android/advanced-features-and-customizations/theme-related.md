@@ -1,5 +1,13 @@
 UIKit has built-in light (default) and dark themes. 
 
+- Light theme
+
+  ![Light theme](../../assets/images/light_theme.png)
+
+- Dark theme
+
+  ![Dark theme](../../assets/images/dark_theme.png)
+
 ## Implementation and customization
 
 Android uses its own platform features to create `values-night` resource files in the `res` directory. The Android system will use the corresponding resource package as the system switches between light and dark colors.
