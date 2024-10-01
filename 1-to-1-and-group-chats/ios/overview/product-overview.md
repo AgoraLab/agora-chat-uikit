@@ -1,6 +1,6 @@
-Agora UIKit for one-to-one chats and group chats is an instant messaging UI component library developed based on 
+Agora UIKit for one-to-one and group chats is an instant messaging UI component library developed based on 
 Agora Chat SDK. It provides various components to implement features such as a conversation list, chat interface, 
-contact list and interface, and others. This helps you to quickly build instant messaging applications based 
+contact list and interface, and others. This helps you to quickly build instant messaging applications, including UI, based 
 on the particular business needs.
 
 To access the source code, [click here](https://github.com/easemob/chatuikit-ios).
@@ -9,43 +9,43 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-ios
 
 ```
 Classes
-├─ Service // Basic service component.
-│ ├─ Client // Main user initialization, login, cache, and other usage APIs
-│ ├─ Protocol // Business protocol
-│ │ ├─ ConversationService // Conversation protocol, including various processing operations on the conversation
-│ │ ├─ ContactService // Contact protocol, including contact addition and deletion operations
-│ │ ├─ ChatService // Chat protocol, including various processing operations on messages
-│ │ ├─ UserService // User login protocol, including user login and socket connection status change
-│ │ ├─ MultiService // Multi-device notification protocol
-│ │ └─ GroupService // Implement group chat management protocol, including joining and leaving the group, modifying 
-group information, and others
-│ └─ Implement // Implementation component of the corresponding protocol
+├─ Service // The basic service component.
+│ ├─ Client // The main user initialization, login, cache, and other usage APIs.
+│ ├─ Protocol // The business protocol.
+│ │ ├─ ConversationService // The conversation protocol, including conversation processing actions.
+│ │ ├─ ContactService // The contact protocol, including contact adding and deletion.
+│ │ ├─ ChatService // The chat protocol, including message processing actions.
+│ │ ├─ UserService // The user login protocol, including user login and socket connection status change.
+│ │ ├─ MultiService // The multi-device notification protocol.
+│ │ └─ GroupService // The group management implementation protocol, including joining and leaving the group, modifying 
+group information, and others.
+│ └─ Implement // The implementation component of the corresponding protocol.
 │
-└─ UI // Basic UI components without business logic
-├─ Resource // Images or localization files
-├─ Component // UI modules containing specific business logic. Some functional UI components
-│ ├─ Chat // Container for all chat views
-│ ├─ Contact // Container for contacts, groups, and their details
-│ └─ Conversation // Container for the conversation list
+└─ UI // The basic UI components without business logic.
+├─ Resource // The images and localization files.
+├─ Component // The UI modules containing specific business logic. Some functional UI components.
+│ ├─ Chat // The container for all chat views.
+│ ├─ Contact // The container for contacts, groups, and their details.
+│ └─ Conversation // The container for the conversation list.
 └─ Core
-├─ UIKit // Common UIKit components, custom components, and some UI-related tool classes
-├─ Foundation // Logs and audio conversion tool classes
-├─ Theme // Theme-related components, including colors, fonts, skin protocols, and their components
-└─ Extension // System class extensions
+├─ UIKit // The common UIKit components, custom components, and some UI-related tool classes.
+├─ Foundation // The logs and audio conversion tool classes.
+├─ Theme // The theme-related components, including colors, fonts, skin protocols, and their components.
+└─ Extension // The system class extensions.
 ```
 
-## Functions
+## Features
 
-The business-related UI controls are mainly included in the following three modules:
+The business-related UI controls are mainly included in the following modules:
 
-- Chat module provides a container for all chat views.
+- The chat module provides a container for all chat views.
 
     ![Group chat](../../assets/images/group_chat.png) 
 
-- Conversation module provides a conversation list container.
+- The conversation module provides a conversation list container.
 
     ![Conversation list](../../assets/images/conversation_list.png)
 
-- Contact module provides a container for contacts, groups, and their details.
+- The contact module provides a container for contacts, groups, and their details.
 
     ![Contacts](../../assets/images/contacts.png)

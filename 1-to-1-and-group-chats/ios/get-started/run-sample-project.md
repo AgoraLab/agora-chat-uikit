@@ -42,8 +42,8 @@ Take the following steps to download and run the sample project:
 
 1. Test the project
 
-Double-click the `.xcworkspace` file to open the project, and press `cmd+R` on the keyboard to run the project. UIKit supports the x86_64 architecture simulator, but not the M1 simulator, because it uses a static library of FFmpeg that converts audio files into the AMR format.
+    Double-click the `.xcworkspace` file to open the project, and press `cmd+R` on the keyboard to run it. UIKit supports the x86_64 architecture simulator, but not the M1 simulator, because it uses a static FFmpeg library that converts audio files into the AMR format.
 
 ## Precautions
 
-The sample project is only used to quickly run through the process and experience all the functions of single-group chat UIKit.
+The sample project is only used to quickly run through the process and test the features of UIKit.

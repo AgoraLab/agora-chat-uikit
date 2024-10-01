@@ -1,8 +1,8 @@
-The following are examples of advanced usage of UIKit. The conversation list page, message list page, and contact list page can all be used separately.
+The following are examples of advanced usage of UIKit. The conversation list, message list page, and contact list can all be used separately.
 
 ## Initialization
 
-Compared to the initialization in the quickstart, additional `ChatOptions` parameters are added, including the switch configuration of whether to print logs in the SDK, whether to log in automatically, and whether to use user attributes by default.
+Compared to the initialization in the quickstart, additional `ChatOptions` parameter is added here, including switches for whether to print logs in the SDK, to log in automatically, and to use user attributes by default.
 
 ```swift
 let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
@@ -10,11 +10,7 @@ let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey)
 
 ## Login
 
-Use the user information of the current user object that conforms to `EaseProfileProtocol` to log in to `EaseChatUIKit`.
-
-Create a user on Agora Console and pass in the user ID into the `userId` field in the following code. 
-
-If you have integrated Chat SDK, all user IDs can be used to log in to UIKit. 
+Use the information of the current user object that conforms to `EaseProfileProtocol` to log in to UIKIt. Pass in the user ID into the `userId` field in the following code: 
 
 ```swift
 public final class YourAppUser: NSObject, EaseProfileProtocol {
@@ -34,16 +30,17 @@ public final class YourAppUser: NSObject, EaseProfileProtocol {
  }
 ```
 
+If you have integrated Chat SDK, all user IDs can be used to log in to UIKit. 
+
 ## Provider in EaseChatUIKitContext
 
-<Admonition type="tip" title="Note">Provider is only used for the conversation list and contact list. If you only enter the chat page through quickstart, you do not need to implement the Provider.</Admonition>
+<Admonition type="tip" title="Note">Provider is only used for the conversation list and contact list. If you enter the chat page through quickstart, you do not need to implement the Provider.</Admonition>
 
-1. Set the Provider implementation class
+1. Set the Provider implementation class.
 
-    - Use coroutines to asynchronously return information about the conversation list. This is limited to Swift.
+    - Use coroutines to asynchronously return information about the conversation list. This is limited to Swift:
 
     ```swift
-       
         //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
         EaseChatUIKitContext.shared?.userProfileProvider = self
         EaseChatUIKitContext.shared?.userProfileProviderOC = nil
@@ -52,7 +49,7 @@ public final class YourAppUser: NSObject, EaseProfileProtocol {
         EaseChatUIKitContext.shared?.groupProfileProviderOC = nil
     ```
 
-    - Use closure to return information about the conversation list. It can be used in both Swift and OC.
+    - Use closure to return information about the conversation list. This can be used in both Swift and OC:
 
     ```swift
            //userProfileProvider is the provider of user data. Coroutine implementation and userProfileProviderOC cannot coexist at the same time. userProfileProviderOC is implemented using closures.
@@ -67,7 +64,7 @@ public final class YourAppUser: NSObject, EaseProfileProtocol {
 
     For Objective-C, implement `EaseProfileProviderOC`. The following sample code implements a Swift-specific provider with the coroutine functionality.
 
-    ```
+    ```swift
        //MARK: - EaseProfileProvider for conversations&contacts usage.
        //For example, using conversations controller as follows:
        extension MainViewController: EaseProfileProvider,EaseGroupProfileProvider {
@@ -173,43 +170,40 @@ public final class YourAppUser: NSObject, EaseProfileProtocol {
 
 ## Conversation list
 
-1. Create a conversation list 
+1. Create a conversation list:
 
     ```swift
-       
-        let vc = EaseChatUIKit.ComponentsRegister.shared.ConversationsController.init()
-        vc.tabBarItem.tag = 0
+    let vc = EaseChatUIKit.ComponentsRegister.shared.ConversationsController.init()
+    vc.tabBarItem.tag = 0
     ```
    
-1. Listen for events on the conversation list page
+1. Listen for conversation list events:
 
     ```swift
-           
-        vc.viewModel?.registerEventsListener(listener: self)
+    vc.viewModel?.registerEventsListener(listener: self)
     ```
-
 
 ## Contact list
 
-1. Create a contact list page
+1. Create a contact list page. 
 
-    The custom class that inherits the contact list page class provided by UIKit can call ViewModel's methods to listen to related events after registering `ContactViewController().viewModel.registerEventsListener`.
-
-    ```swift
-           let vc = EaseChatUIKit.ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
-    ```
-
-1.  Listen for contact list page events
+    A custom class that inherits the contact list page class can call ViewModel's methods to listen to related events after registering it with `ContactViewController().viewModel.registerEventsListener`:
 
     ```swift
-            vc.viewModel?.registerEventsListener(listener: self)
+    let vc = EaseChatUIKit.ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
     ```
 
-## Initialize chat page
+1.  Listen for contact list page events:
 
-Most of the message processing and page processing logic in the chat page can be overridden, including ViewModel.
+    ```swift
+    vc.viewModel?.registerEventsListener(listener: self)
+    ```
 
-```
+## Initialize the chat page
+
+Most of the message and page processing logic in the chat page can be overridden, including ViewModel:
+
+```swift
 //Create a new user in the Agora Console, pass the user ID into the following construction method parameters, and jump to the chat page.
 let vc = ComponentsRegister.shared.MessageViewController.init(conversationId: <#ID of the user just created#>, chatType: .chat)
 // Custom classes after inheritance and registration can also call the registerEventsListener method of ViewModel to listen for chat message-related events, such as message reception, long press, click, etc. 
@@ -219,15 +213,15 @@ ControllerStack.toDestination(vc: vc)
 
 ## Monitor user and server connection events
 
-You can call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and EaseChatUIKit.
+Call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and UIKit:
 
-```
+```swift
 EaseChatUIKitClient.shared.registerUserStateListener(self)
 ```
 
-When the listener is not used, you can call `unregisterUserStateListener` to remove it:
+When the listener is not used, call `unregisterUserStateListener` to remove it:
 
-```
+```swift
 EaseChatUIKitClient.shared.unregisterUserStateListener(self)
 ```
 
