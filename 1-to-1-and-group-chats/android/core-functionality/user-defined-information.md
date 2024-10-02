@@ -1,4 +1,6 @@
-User information is used across UIKit and needs to be provided by developers. This page describes how developers can provide user information to UIKit.
+# User-defined information
+
+You must provide user information that is used across UIKit. This page describes how to do it.
 
 ## Logged-in user information
 
@@ -25,7 +27,7 @@ EaseIM.login(
 
 ## User information
 
-UIKit provides an `EaseIM.setUserProfileProvider` interface to provide user information, including contact and group member information. The `EaseUserProfileProvider` interface is as follows:
+UIKit offers an `EaseIM.setUserProfileProvider` interface to provide user information, including contact and group member information. The `EaseUserProfileProvider` interface is as follows:
 
 ```kotlin
 interface EaseUserProfileProvider {
@@ -57,7 +59,7 @@ EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
 
 ## Group information
 
-UIKit provides an `EaseIM.setGroupProfileProvider` interface to provide group information. The `EaseGroupProfileProvider` interface is as follows:
+UIKit provides an `EaseIM.setGroupProfileProvider` interface to provide group information. The sample code is as follows:
 
 ```kotlin
 interface EaseGroupProfileProvider {
@@ -85,6 +87,45 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
             onValueSuccess: OnValueSuccess<List<EaseGroupProfile>>
     ) {
 // Get group-related information based on the groupId list, return it through onValueSuccess(), and update the cache information.
+    }
+})
+```
+
+## Set the chat avatar and nickname
+
+
+```kotlin
+
+ // Chat type settings setUserProfileProvider
+ EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
+     override fun getUser(userId: String?): EaseProfile? {
+         // Return the information corresponding to userId from the local query
+         return DemoHelper.getInstance().getDataModel().getAllContacts()[userId]?.toProfile()
+     }
+
+     override fun fetchUsers(
+         userIds: List<String>,
+         onValueSuccess: OnValueSuccess<List<EaseProfile>>
+     ) {
+         // Provider. Users can obtain the Profile information of the corresponding ID from their own server according to the userId list and return it through onValueSuccess().
+         // At the same time, the acquired information can be updated to the cache through EaseIM.updateUsersInfo(). When obtaining the Profile, UIKit will query from the cache first.
+     }
+ })
+ // Group type setting setGroupProfileProvider
+ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
+
+    override fun getGroup(id: String?): EaseGroupProfile? {
+        ChatClient.getInstance().groupManager().getGroup(id)?.let {
+            return EaseGroupProfile(it.groupId, it.groupName, it.extension)
+        }
+        return null
+    }
+
+    override fun fetchGroups(
+        groupIds: List<String>,
+        onValueSuccess: OnValueSuccess<List<EaseGroupProfile>>
+    ) {
+        // Get group-related information based on the groupId list through onValueSuccess() and update the cached information.
     }
 })
 ```

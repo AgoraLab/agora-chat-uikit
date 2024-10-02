@@ -1,4 +1,4 @@
-# Customize the group details page
+# Customize the group details
 
 You can configure the navigation bar, group actions, group details, and other items. For details, see [GroupInfoViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/groupinfoviewcontroller).
 

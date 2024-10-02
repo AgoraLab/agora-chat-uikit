@@ -1,3 +1,5 @@
+# Product features
+
 This page introduces the common UIKit features for the one-to-one and group chat.
 
 ## General
@@ -13,7 +15,7 @@ they need.
 
 ### Message chat
 
-Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
+The message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
 one-to-one conversation or a group chat.
 
 ![Group chat](../../assets/images/group_chat.png)
@@ -59,7 +61,7 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 
 ### Sent receipt
 
-A sent receipt informs the sender whether the message has been sent successfully to the server or 
+A sent receipt informs the sender whether the message has been sent successfully to the server or the 
 recipient.
 
 ![Sent and read receipt](../../assets/images/sent_receipt.png)
@@ -96,7 +98,8 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and input status indication. After receiving the input status, the input status will be displayed first. After the user cancels the input status, the user's status will be displayed and the input status will disappear.
+- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+
 - Input status-related callbacks and methods are as follows:
   - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
   - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.

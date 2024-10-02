@@ -1,3 +1,5 @@
+# Product features
+
 This page introduces the common UIKit features for the one-to-one and group chat.
 
 ## General
@@ -13,7 +15,7 @@ they need.
 
 ### Message chat
 
-Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
+The message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
 one-to-one or group chat.
 
 ![Group chat](../../assets/images/group_chat.png)
@@ -98,13 +100,14 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `EaseTitleBar` displays the user's status and input status. After receiving the input status, the input status will be displayed first. After the user cancels the input status, the user's status will be displayed and the input status will disappear.
+- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
 
-- Input-status-related callbacks and methods:
+- The input-status-related callbacks and methods are as follows:
+
   - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `EaseChatFragment.Builder`.
-  - The input state callback is `onPeerTyping(action: String?)`, where `action` represents the state `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END`.
+  - The input status callback is `onPeerTyping(action: String?)`, where `action` represents the `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END` state .
 
-The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable this feature, set this parameter to `false`.
+The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable, set this parameter to `false`.
 
 This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `EaseChatFragment.Builder`, which has a higher priority.
 
@@ -194,7 +197,7 @@ Users can delete messages that they do not want to keep.
 
 ### Recall a message
 
-Users can recall messages that were sent by mistake.
+Users can recall messages that have been sent by mistake.
 
 ![Recall message](../../assets/images/recall_message.png)
 
@@ -212,10 +215,10 @@ Users can quote a specific message to reply to it or emphasize its importance.
 
 The message quoting UI and logic structure are as follows:
 
-- `EaseChatMessageReplyView`: A custom View for the quoted message of the message bubble.
-- `EaseChatExtendMessageReplyView`: A custom View for the reference message displayed above the bottom input box 
+- `EaseChatMessageReplyView`: The custom view for the quoted message.
+- `EaseChatExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box 
   component.
-- `EaseChatMessageReplyController`: Controls the display, hiding, scrolling, and other logic of reference functions.
+- `EaseChatMessageReplyController`: The controls for the display, hiding, scrolling, and other logic of the quoting feature.
 
 The quoting feature is enabled by default in `EaseChatConfig`, that is, the default value of `enableReplyMessage` 
 is `true`. To disable this feature, set it to `false`.
@@ -310,12 +313,12 @@ Users can forward a single or multiple combined messages to other users.
 
 The UI and logic structure are as follows:
 
-- `Forward EaseChatMultipleSelectMenuView`: Bottom menu view.
-- `Forward EaseChatMessageMultipleSelectController`: Handles UI layout changes (hiding/showing `EaseChatInputMenu` in `EaseChatLayout`) and logic for forwarding and deleting.
+- `Forward EaseChatMultipleSelectMenuView`: The bottom menu view.
+- `Forward EaseChatMessageMultipleSelectController`: Handles the UI layout changes (hiding/showing `EaseChatInputMenu` in `EaseChatLayout`) and logic for forwarding and deleting.
 - `Forward EaseChatMessageMultiSelectHelper`: The message selection helper class used to record the selected message information and provide acquisition methods.
 
 The message forwarding feature is enabled by default. That is, the default value of `enableSendCombineMessage` in
-`EaseChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
+`EaseChatConfig` is `true`. To disable, set it to `false`. The sample code is as follows:
 
 ```kotlin
 EaseIM.getConfig()?.chatConfig?.enableSendCombineMessage

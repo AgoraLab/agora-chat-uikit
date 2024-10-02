@@ -1,3 +1,5 @@
+# General configurable items
+
 The `Appearance.swift` class that contains all configurable items. These configurable items have default values. If you want to modify some configuration items, you need to modify the properties before initializing the corresponding UI controls, so that the configuration items will take effect.
 
 ## General configurable items

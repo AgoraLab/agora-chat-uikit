@@ -1,6 +1,8 @@
+# Advanced usage
+
 ## Activity jump path setting
 
-If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify the jump of the Activity.
+If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify its jump.
 
 For example, if `EaseChatActivity` cannot meet the current needs, inherit `EaseChatActivity` to implement a new `EaseActivity`. When calling `EaseChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `EaseActivity`.
 
@@ -43,7 +45,7 @@ EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
 
 ## Global configuration
 
-The UIKit provides some global configurations that can be set during initialization. The sample code is as follows:
+UIKit provides some global configurations that can be set during initialization. The sample code is as follows:
 
 ```kotlin
 val avatarConfig = EaseAvatarConfig()
@@ -57,8 +59,8 @@ EaseIM.init(this, options, config)
 
 | Property | Description |
 |:---:|:---:|
-| `avatarShape` | There are three avatar styles: Default, circular, and rectangular. |
-| `avatarRadius` | The avatar corner radius is only valid when the avatar style is set to rectangular. |
+| `avatarShape` | Avatar styles: Default, round, and rectangular. |
+| `avatarRadius` | The avatar corner radius. Only valid when the avatar style is set to rectangular. |
 | `avatarBorderColor` | The color of the avatar border. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
@@ -66,8 +68,8 @@ EaseIM.init(this, options, config)
 
 | Property | Description |
 |:---:|:---:|
-| `enableReplyMessage` | Whether the message reply function is available. Enabled by default. |
-| `enableModifyMessageAfterSent` | Whether the message editing function is available. Enabled by default. |
+| `enableReplyMessage` | Whether the message reply feature is available. Enabled by default. |
+| `enableModifyMessageAfterSent` | Whether the message editing feature is available. Enabled by default. |
 | `timePeriodCanRecallMessage` | Set the time within which a message can be recalled. The default is 2 minutes. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
@@ -76,18 +78,18 @@ EaseIM.init(this, options, config)
 | Property | Description |
 |:---:|:---:|
 | `convTodayFormat` | The current date format of the conversation list. The default format is `HH:mm`. |
-| `convOtherDayFormat` | The format of other dates in the conversation list. The default format is `MM:dd`. |
-| `convOtherYearFormat` | The format of other dates with year in the conversation list. The default format is `MM:dd:yyyy`. |
+| `convOtherDayFormat` | The format for dates other than the current date. The default format is `MM:dd`. |
+| `convOtherYearFormat` | The format for years other than the current year. The default format is `MM:dd:yyyy`. |
 
 `EaseSystemMsgConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
-| `useDefaultContactInvitedSystemMsg` | Whether to enable the system message function. Enabled by default.|
+| `useDefaultContactInvitedSystemMsg` | Whether to enable the system message feature. Enabled by default.|
 
 `EaseMultiDeviceEventConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
-|`useDefaultMultiDeviceContactEvent` |	Whether to enable default the multi-device contact event handling. |
-|`useDefaultMultiDeviceGroupEvent`	| Whether to enable the default multi-device group event processing.|
+|`useDefaultMultiDeviceContactEvent` |	Whether to use the default multi-device contact event handling. |
+|`useDefaultMultiDeviceGroupEvent`	| Whether to use the default multi-device group event processing.|

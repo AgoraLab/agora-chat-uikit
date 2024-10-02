@@ -1,3 +1,5 @@
+# Integrate UIKit
+
 Before using UIKit, you need to integrate it into your app. This page explains the necessary steps. 
 
 ## Prerequisites
@@ -9,39 +11,39 @@ Before you start, make sure your development environment meets the following con
 - targetVersion 26 and above;
 - Android SDK API 21 and above;
 - JDK 11 and above;
-- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKIt
 
 Take the following steps to integrate UIKit:
 
-1. Add remote dependency
+1. Add remote dependencies.
 
-   Add the following dependencies in the app project build.gradle.kts:
+   Add the following dependencies in `project build.gradle.kts`:
 
    ```kotlin
    implementation("io.hyphenate:ease-chat-kit:4.7.0")
    ```
 
-1. Add local dependencies
+1. Add local dependencies.
 
-   Download UIKit from the [GitHub repository](https://github.com/easemob/chatuikit-android) and integrate it as follows:
+   1. Download UIKit from the [GitHub repository](https://github.com/easemob/chatuikit-android).
 
    1. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
 
-   ```kotlin
-   include(":ease-im-kit")
-   project(":ease-im-kit").projectDir = File("../chatuikit-android/ease-im-kit")
-   ```
+      ```kotlin
+      include(":ease-im-kit")
+      project(":ease-im-kit").projectDir = File("../chatuikit-android/ease-im-kit")
+      ```
    
-   1. Add the following code to the `/Gradle Scripts/build.gradle` file:
+   1. Add the following code to the `/Gradle Scripts/build.gradle,kts` file:
 
-   ```kotlin
-   //chatuikit-android
-   implementation(project(mapOf("path" to ":ease-im-kit")))
-   ```
+      ```kotlin
+      //chatuikit-android
+      implementation(project(mapOf("path" to ":ease-im-kit")))
+      ```
 
-1. Prevent code obfuscation
+1. Prevent code obfuscation.
 
    Add the following line to `app/proguard-rules.pro`:
 
@@ -51,6 +53,8 @@ Take the following steps to integrate UIKit:
    ```
 
 ## Build a page
+
+Take the following steps to build a page.
 
 ### Create a chat page
 
@@ -64,9 +68,9 @@ Use either of the following:
    EaseChatActivity.actionStart(mContext, conversationId, chatType)
    ```
 
-   The `EaseChatActivity` page mainly requests permissions, such as camera permissions, voice permissions, and other.
+   The `EaseChatActivity` page requests permissions, such as camera permissions, voice permissions, and other.
 
-- `useEaseChatFragment`. The sample code is as follows:
+- The `EaseChatFragment`. The sample code is as follows:
 
    ```kotlin
    class ChatActivity: AppCompactActivity() {
@@ -74,7 +78,7 @@ Use either of the following:
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         // conversationID: Peer user ID for a one-to-one chat and group ID for a group chat
-        // chatType can be EaseChatType#SINGLE_CHAT or EaseChatType#GROUP_CHAT
+        // chatType: EaseChatType#SINGLE_CHAT or EaseChatType#GROUP_CHAT
         EaseChatFragment.Builder(conversationId, chatType)
                         .build()?.let { fragment ->
                             supportFragmentManager.beginTransaction()
@@ -86,7 +90,7 @@ Use either of the following:
 
 ### Create a conversation list page
 
-UIKit provides `EaseConversationListFragment` that can be used by adding it to Activity. The sample code is as follows:
+UIKit provides `EaseConversationListFragment` that can be added to Activity. The sample code is as follows:
 
 ```kotlin
 class ConversationListActivity: AppCompactActivity() {
@@ -102,7 +106,6 @@ class ConversationListActivity: AppCompactActivity() {
    }
 }
 ```
-
 
 ### Create a contact list page
 
