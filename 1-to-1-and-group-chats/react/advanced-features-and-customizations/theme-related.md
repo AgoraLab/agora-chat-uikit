@@ -40,14 +40,14 @@ The interface is as follows:
 
 | Property | Description |
 |:---:|:---:|
-| `style` | Theme type: Light or dark. |
-| `button` | Button theme, supports custom styles and sizes. |
-| `shadow` | Shadow theme, supports custom styles. |
-| `cornerRadius` | Border rounding: Supports custom rounded corners for avatars, warning boxes, input boxes, and message bubbles. |
+| `style` | The theme type: Light or dark. |
+| `button` | The button theme, supports custom styles and sizes. |
+| `shadow` | The shadow theme, supports custom styles. |
+| `cornerRadius` | The border rounding: Supports custom rounded corners for avatars, warning boxes, input boxes, and message bubbles. |
 
 ### Modify theme colors
 
-Get the custom color palette through the `useCreatePalette` hook method, and then create a `Theme` object through the `useCreateTheme` hook method.
+Get the custom color palette with the `useCreatePalette` method, and then create a `Theme` object with the `useCreateTheme` method.
 
 For example:
 
@@ -73,11 +73,9 @@ export function App() {
 }
 ```
 
-### Modify theme style
+### Modify the theme style
 
-In addition to colors, you can also modify fonts, border radius, and other styles.
-
-For example:
+In addition to colors, you can also modify fonts, border radius, and other styles:
 
 ```typescript
 export function App() {
