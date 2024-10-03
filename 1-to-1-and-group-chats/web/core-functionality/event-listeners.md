@@ -1,6 +1,8 @@
- UIKit provides `eventHandler` to register and monitor events. It can monitor all API calls inside UIKit. The event name is the name of the corresponding API provided by the SDK.
+# Event listeners
+
+UIKit provides `eventHandler` to register and listen to events. It can listen to all API calls inside UIKit. The event name is the name of the corresponding API provided by the SDK.
  
-## Usage examples
+The sample code is as follows:
 
 ```javascript
 import React, { useEffect } from "react";

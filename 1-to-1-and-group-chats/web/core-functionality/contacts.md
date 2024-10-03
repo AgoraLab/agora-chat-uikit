@@ -1,4 +1,6 @@
-The `ContactList` component is used to display the address book, including the contact list, group list, and friend request list. Nicknames can be sorted by first letter.
+# Contacts
+
+The `ContactList` component is used to display the address book, including the contact list, group list, and friend request list. Nicknames can be sorted by the first letter.
 
 ## Usage examples
 
@@ -16,11 +18,11 @@ const ContactList = () => {
 };
 ```
 
-## Customize contact list
+## Customize the contact list
 
-### Customize the contact list Header
+### Customize the contact list header
 
-For example, change the default title name of the address book page. The sample code is as follows:
+For example, change the default title name of the contact list page. The sample code is as follows:
 
 ```javascript
 import React, { useEffect, useState } from "react";
@@ -74,7 +76,7 @@ const ContactList = () => {
 
 ### Set as a selectable contact list
 
-For example, if you need to add multiple users when creating a group, you can click the checkboxes corresponding to the contacts to select them.
+For example, if a user needs to add multiple users when creating a group, they can click the checkboxes corresponding to the contacts to select them.
 
 ```javascript
 import React, { useEffect, useState } from "react";
@@ -105,13 +107,13 @@ const ContactListContainer = () => {
 | Property | Type | Description |
 |---|---|---|
 | `className` | `String` | The class name of the component. |
-| `prefix` | `String` | The prefix for CSS class names. |
-| `style` | `React.CSSProperties` | Styles for the `ContactList` component. |
-| `onItemClick` | <code>(info: { id: string; type: 'contact' &#124; 'group' &#124; 'request'; name: string }) => void;</code> | Click callback of each item. |
-| `hasMenu` | `boolean` | Whether to display the category menu item, the default value is `true`. It can be set to `false` when there is only one menu item in the address book. |
+| `prefix` | `String` | The prefix for the CSS class names. |
+| `style` | `React.CSSProperties` | The styles for the `ContactList` component. |
+| `onItemClick` | <code>(info: { id: string; type: 'contact' &#124; 'group' &#124; 'request'; name: string }) => void;</code> | The click callback of each item. |
+| `hasMenu` | `boolean` | Whether to display the category menu item, the default value is `true`. It can be set to `false` when there is only one menu item in the contact list. |
 | `checkable` | `boolean` | Whether to display a checkbox after the contact. |
-| `onCheckboxChange` | `(checked: boolean, data: UserInfoData) => void;` | A callback that displays a checkbox after clicking a contact. |
+| `onCheckboxChange` | `(checked: boolean, data: UserInfoData) => void;` | The callback that displays a checkbox after clicking a contact. |
 | `header` | `React.ReactNode;` | The component's `Header`. |
-| `checkedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | If checkable is true, set the item to be checked. |
-| `defaultCheckedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | If checkable is true, set the default selected item. |
+| `checkedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | For a selectable contact list, set the item to be selected. |
+| `defaultCheckedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | For a selectable contact list, set the default selected item. |
 | `menu` | <code>( &#124; 'contacts' &#124; 'groups' &#124; 'requests' &#124; { title: string; data: ({ remark?: string; userId: string } &#124; { groupname: string; groupid: string })[]; } )[] ;</code> | Customize the menu items of `ContactList`. |

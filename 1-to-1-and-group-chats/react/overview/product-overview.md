@@ -42,10 +42,18 @@ To access the source code, [click here](https://github.com/easemob/react-native-
 └── tsconfig.json // Compile configuration
 ```
 
-## Functions
+## Features
 
 The business-related UI controls are mainly included in the following three Views:
 
 - `ConversationDetail` provides a view of all chats.
+
+    ![Group chat](../../assets/images/group_chat.png)
+
 - `ConversationList` provides a list of conversations.
+
+    ![Conversation list](../../assets/images/conversation_list.png)
+
 - `ContactList` provides contacts, groups, and their details.
+
+    ![Contacts](../../assets/images/contacts.png)

@@ -1,6 +1,8 @@
-Single group chat UIKit has built-in light and dark themes, and the default is light theme.
+# Theme
 
-## Switch built-in themes
+UIKit has built-in light (default) and dark themes.
+
+## Switch to a built-in theme
 
 You can switch to a light or dark theme in the following way:
 
@@ -20,7 +22,7 @@ const App = () => {
 
 ## Customize the theme colors
 
-In UIKit, the theme color is used for the default avatar color, message bubble color, button color, etc. The default theme color is shown in the figure below, and you can customize it to other colors.
+In UIKit, the theme color is used for the default avatar color, message bubble color, button color, and other elements. You can customize it in the following way:
 
 ```javascript
 import { UIKitProvider } from 'agora-chat-uikit';
@@ -38,7 +40,7 @@ const App = () => {
 
 ## Set the component shape
 
-By default, components have large rounded corners. You can modify the rounded corners of message bubbles, avatars, and input boxes with `componentsShape`. 
+By default, components have large rounded corners. You can modify the rounded corners of the message bubbles, avatars, and input boxes with `componentsShape`:
 
 ```javascript
 import { UIKitProvider } from 'easemob-chat-uikit';
@@ -60,42 +62,42 @@ UIKit uses SCSS internally and defines some global variables. If your project al
 
 View the defined variables [here](https://github.com/easemob/Easemob-UIKit-web/blob/dev/common/style/themes/default.scss).
 
-The following sections describe how to modify these variables.
+Modify these variables in the following way:
 
-### Modify SCSS variables when Create React App projects
+- Modify SCSS variables in Create React App projects.
 
-In a project created with Create React App, you can create a SCSS file to override the default variables. In the following example, we name the created file `your-theme.scss` and then import the files in the following order.
+    In a project created with Create React App, you can create a SCSS file to override the default variables. In the example, we call the created file `your-theme.scss` and then import the files in the following order:
+    
+    ```scss
+    @import 'easemob-chat-uikit/style.scss'; // easemob-chat-uikit theme
+    @import 'your-theme.scss'; // Your theme files
+    @import 'easemob-chat-uikit/components.scss'; // UIKit component styles
+    ```
 
-```scss
-@import 'easemob-chat-uikit/style.scss'; // easemob-chat-uikit theme
-@import 'your-theme.scss'; // Your theme files
-@import 'easemob-chat-uikit/components.scss'; // UIKit component styles
-```
+- Override SCSS variables by modifying the Webpack config.
 
-### Override SCSS variables by modifying the Webpack config
-
-By configuring the SCSS loader to automatically import custom `style.scss` files, you can override the SCSS variables inside UIKit.
-
-```javascript
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
+    Configure the SCSS loader to automatically import custom `style.scss` files:
+    
+    ```javascript
+    module.exports = {
+      module: {
+        rules: [
           {
-            loader: 'sass-loader',
-            options: {
-              additionalData: `@import "@/styles/index.scss";`,
-            },
+            test: /\.s[ac]ss$/i,
+            use: [
+              'style-loader',
+              'css-loader',
+              {
+                loader: 'sass-loader',
+                options: {
+                  additionalData: `@import "@/styles/index.scss";`,
+                },
+              },
+            ],
           },
         ],
       },
-    ],
-  },
-};
-```
+    };
+    ```
 
 

@@ -1,8 +1,8 @@
-UIKit integrates the Agora Video SDK, which enables audio and video calls in single chats or group conversations. 
+# Audio and video calls
 
-## Usage examples
+UIKit integrates the Agora Video SDK, which enables audio and video calls in one-to-one and group chats. 
 
-You need to configure the following parameters. Refer to the [Callkit integration document](https://www.npmjs.com/package/chat-callkit).
+Configure the following parameters to use it:
 
 ```javascript
 import { Chat } from "easemob-chat-uikit";
@@ -23,3 +23,5 @@ const ChatApp = () => {
   );
 };
 ```
+
+Refer to the [Callkit integration document](https://www.npmjs.com/package/chat-callkit).

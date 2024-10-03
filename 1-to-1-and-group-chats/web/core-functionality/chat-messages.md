@@ -1,7 +1,9 @@
+# Message chat
+
 The `Chat` component provides the following functionality:
 
 - Send and receive messages, including text, emojis, pictures, voice, video, files, and business card messages.
-- Copy, quote, recall, delete, edit, resend, and review messages.
+- Copy, quote, reply with emoji, pin, translate, recall, delete, edit, resend, and report messages.
 - Pull roaming messages from the server.
 
 For details about message-related functions, see [Product features](../overview/product-features.md).
@@ -22,7 +24,7 @@ const ChatContainer = () => {
 };
 ```
 
-## Customize
+## Custom components
 
 ### Modify the message bubble style
 
@@ -31,6 +33,7 @@ Taking text messages as an example, you can modify the message bubble style as f
 - Use the `renderMessageList` method to customize the rendered message list.
 - Use the `renderMessage` method to customize the rendered message.
 - Customize the text message through the properties of `TextMessage`.
+
 ```javascript
 import React from "react";
 import { Chat, MessageList, TextMessage } from "easemob-chat-uikit";
@@ -65,12 +68,141 @@ const ChatContainer = () => {
 };
 ```
 
+### Set the message date and time format
+
+Use the `formatDateTime` method to set the format of the displayed message date and time:
+
+```javascript
+<Chat
+  messageListProps={{
+    messageProps: {
+      formatDateTime: (time: number) => {
+        // Custom display date and time
+        return new Date(time).toLocaleString();
+      },
+    },
+  }}
+/>
+```
+
+### Set the display message operation
+
+Use the `customAction` property of `messageProps` to set the message action button to be displayed after clicking **⋮** next to the message list item:
+
+```javascript
+<Chat
+  messageListProps={{
+    messageProps: {
+      visible: true,
+      icon: null,
+      actions: [
+        {
+          // Display a single forwarding
+          content: 'FORWARD',
+        },
+        {
+          // Display message reference
+          content: 'REPLY',
+        },
+        {
+          // Display message withdrawal
+          content: 'UNSEND',
+        },
+        {
+          // Display message editing
+          content: 'Modify',
+        },
+        {
+          // Display message multiple selection
+          content: 'SELECT',
+        },
+        {
+          // Display message fixed
+          content: 'PIN',
+        },
+        {
+          // Display message translation
+          content: 'TRANSLATE',
+        },
+        {
+          // Display message report
+          content: 'REPORT',
+        },
+        {
+          // Display message deletion
+          content: 'DELETE',
+        },
+        {
+          content: 'Custom button',
+          // Custom icon
+          icon: <Icon type="STAR"/>
+          onClick: () => {},
+        },
+      ],
+    },
+  }}
+/>
+```
+
+### Configure the input box features
+
+You can configure the features of the message input box, including whether to display the voice message button, emojis, the send button, and elements:
+
+```javascript
+import React from 'react';
+import { Chat, Icon, MessageInput } from 'easemob-chat-uikit';
+import 'easemob-chat-uikit/style.css';
+
+const ChatContainer = () => {
+  return (
+    <div style={{ width: '70%', height: '100%' }}>
+      <Chat
+        renderMessageInput={() => (
+          <MessageInput
+            actions={[
+              {
+                // Send voice function
+                name: 'RECORDER',
+                visible: true,
+              },
+              {
+                //Message input box
+                name: 'TEXTAREA',
+                visible: true,
+              },
+              {
+                // expression
+                name: 'EMOJI',
+                visible: true,
+              },
+              {
+                // More operations
+                name: 'MORE',
+                visible: true,
+              },
+            ]}
+            enabledTyping={true} // Whether to enable the typing function
+            showSendButton={true} // Whether to display the send button
+            sendButtonIcon={<Icon type="AIR_PLANE" />} // Send button Icon
+            row={1} // Input row number
+            placeHolder="Please enter content" // default placeholder
+            enabledMention={true} // Whether to enable the @ function
+            onSendMessage={message => {}} //Callback for sending message
+            onBeforeSendMessage={message => {}} // Callback before message sending. The callback returns promise. If the status of the returned promise is resolved, the message is sent; if the status of the returned promise is rejected, the message is not sent.
+          />
+        )}
+      />
+    </div>
+  );
+};
+```
+
 ### Add custom icons in the message editor
 
-Add a custom icon to the message editor to implement the specified function:
+Add a custom icon to the message editor in the following way:
 
 1. Use the `renderMessageInput` method to customize the rendered message editor.
-1. Use custom `MessageInput` `actions` components.
+1. Use custom `actions` components of `MessageInput`.
 
 ```javascript
 import React from "react";
@@ -103,7 +235,7 @@ const ChatContainer = () => {
 };
 ```
 
-### Sending custom messages
+### Send custom messages
 
 1. Use the `sendMessage` method provided in `messageStore` to send a custom message.
 1. Use `renderMessage` to render a custom message.
@@ -226,11 +358,11 @@ The `Chat` component contains the following properties:
 | Property | Type | Description |
 |---|---|---|
 | `className` | `String` | The class name of the component. |
-| `prefix` | `String` | CSS class name prefix. |
-| `headerProps` | `HeaderProps` | Properties in the `Header` component. |
-| `messageListProps` | `MsgListProps` | Property in the `MessageList` component. |
-| `messageInputProps` | `MessageInputProps` | Properties in the `MessageInput` component. |
-| `renderHeader` | `(cvs: CurrentCvs) => React.ReactNode` | Customize the method for rendering the `Header` component. |
+| `prefix` | `String` | The CSS class name prefix. |
+| `headerProps` | `HeaderProps` | The properties in the header component. |
+| `messageListProps` | `MsgListProps` | The properties of the `MessageList` component. |
+| `messageInputProps` | `MessageInputProps` | The properties of the `MessageInput` component. |
+| `renderHeader` | `(cvs: CurrentCvs) => React.ReactNode` | Customize the method for rendering the header component. |
 | `renderMessageList` | `() => ReactNode;` | Customize the method for rendering the `MessageList` component. |
 | `renderMessageInput` | `() => ReactNode;` | Customize the method for rendering the `MessageInput` component. |
-| `renderEmpty` | `() => ReactNode;` | Customize the method for rendering empty content components. |
+| `renderEmpty` | `() => ReactNode;` | Customize the method for rendering the empty content components. |

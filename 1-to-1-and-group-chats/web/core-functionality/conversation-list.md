@@ -1,4 +1,6 @@
-The 'ConversationList' component is used to display all conversations of the current user in one-to-one chats and group chats. It provides conversation search, deletion, pinning, and do not disturb features.
+# Conversation list
+
+The `ConversationList` component is used to display all conversations of the current user in one-to-one and group chats. It provides conversation search, deletion, pinning, and do not disturb features.
 
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
@@ -7,7 +9,7 @@ The 'ConversationList' component is used to display all conversations of the cur
 
 A single conversation displays the conversation name, the last message, the time of the last message, and the pinned and muted status.
 
-- For one-on-one chats, the name displayed in the conversation is the nickname of the other party. If the other party has not set a nickname, the other party's user ID is displayed. The conversation avatar is the other party's avatar. If it is not set, the default avatar is used.
+- For one-on-one chats, the name displayed in the conversation is the nickname of the other user. If the other user has not set a nickname, the other party's user ID is displayed. The conversation avatar is the other party's avatar. If it is not set, the default avatar is used.
 - For group chats, the conversation name is the name of the current group and the avatar is the default avatar.
 
 For details about the features related to the conversation list, see [Product features](../overview/product-features.md).
@@ -34,9 +36,9 @@ If the default conversation list page does not meet your needs, you can customiz
 
 ### Customize the style of the conversation list area
 
-You can customize the background color, size, and other styles of the conversation list area.
+You can customize the background color, size, and other styles of the conversation list.
 
-1. Add defined styles to the `className` component.
+1. Add defined styles to the `className` component:
 
     ```javascript
     import React from 'react';
@@ -99,10 +101,12 @@ const Conversation = () => {
 };
 ```
 
-### Set the user's avatar and nickname
+## Customize a conversation list item
 
-- Use the `renderItem` method to render each conversation entry.
-- Use the `ConversationItem` component's properties to customize the component.
+### Set the user's nickname
+
+- Use the `renderItem` method to render each conversation.
+- Use the `ConversationItem` component's properties to customize it.
 
 ```javascript
 import React from 'react';
@@ -144,6 +148,77 @@ const Conversation = () => {
     </div>
   );
 };
+```
+
+### Set the date and time format
+
+```javascript
+<ConversationList
+  itemProps={{
+    formatDateTime: (time: number) => {
+      //Format the timestamp
+      return new Date(time).toLocaleString();
+    },
+  }}
+/>
+```
+
+### Set up more actions
+
+You can configure the `moreAction` property of `itemProps` to control which features are displayed, or add custom features.
+
+```javascript
+<ConversationList
+  itemProps={{
+    moreAction: {
+      visible: true, // Whether to display more operations
+      actions: [
+        {
+          content: 'DELETE', // delete session
+        },
+        {
+          content: 'PIN', // Pin the conversation
+        },
+        {
+          content: 'SILENT', // Session Do Not Disturb
+        },
+        {
+          content: 'Custom function',
+          onClick: () => {},
+          icon: <Icon type="STAR" />,
+        },
+      ],
+    },
+  }}
+/>
+```
+
+### Set the content of the latest message in the conversation
+
+Set the `renderMessageContent` method in `itemProps` to customize the content of the latest message:
+
+```javascript
+<ConversationList
+  itemProps={{
+    renderMessageContent: message => {
+      return <div>Custom message content</div>;
+    },
+  }}
+/>
+```
+
+### Set the message bubble color and avatar
+
+Control the style of the `ConversationItem` by setting the `itemProps` property, including the bubble color and the avatar size and shape.
+
+```javascript
+<ConversationList
+  itemProps={{
+    badgeColor: 'red', // bubble color
+    avatarSize: 50, // avatar size  
+    avatarShape: 'circle', // avatar shape
+  }}
+/>
 ```
 
 ### Add and pin conversations
@@ -213,7 +288,7 @@ const Conversation = () => {
 The `ConversationList` component provides variables related to the theme of the conversation list page, as shown below. For how to modify the theme, see [here](theme.md).
 
 ```javascript
-// Variable used to set the topic of the conversation.
+// Variables used to set the topic of the conversation.
 $cvs-background: $component-background;
 $cvs-search-margin: $margin-xs $margin-sm;
 $cvs-item-height: 74px;
@@ -239,18 +314,16 @@ $cvs-item-time-color: $gray-5;
 $cvs-item-time-margin-bottom: 9px;
 ```
 
-## ConversationList property overview
-
 The `ConversationList` component contains the following properties:
 
-| Parameter | Type | Description |
+| Property | Type | Description |
 |---|---|---|
 | `className` | `String` | The class name of the component. |
-| `prefix` | `String` | CSS class name prefix. |
-| `headerProps` | `HeaderProps` | Header component parameters. |
-| `itemProps` | `ConversationItemProps` | `ConversationItem` component parameters. |
-| `renderHeader` | `() => React.ReactNode` | Customize the rendering of the `Header` component |
-| `renderSearch` | `() => React.ReactNode` | Customize the rendering of the `Search` component |
+| `prefix` | `String` | The CSS class name prefix. |
+| `headerProps` | `HeaderProps` | The header component parameters. |
+| `itemProps` | `ConversationItemProps` | The `ConversationItem` component parameters. |
+| `renderHeader` | `() => React.ReactNode` | Customize the rendering of the header component. |
+| `renderSearch` | `() => React.ReactNode` | Customize the rendering of the search component. |
 | `onItemClick` | `(data: ConversationData[0]) => void` | Click on the callback event for each conversation in the conversation list. |
 | `onSearch` | `(e: React.ChangeEvent<HTMLInputElement>) => boolean` | The change event of the search input box. When the function returns `false`, the default search behavior will be overriden. You can use your own search criteria to search. |
 

@@ -1,3 +1,5 @@
+# Product features
+
 This page introduces the common UIKit features for the one-to-one and group chat.
 
 ## General
@@ -66,17 +68,15 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ### Input status indication
 
-The input status indicator means real-time display of the input status of one party in a one-to-one chat, which enhances the real-time nature of communication interaction. This feature helps users understand whether the other party is replying.
+The input status indicator helps users understand whether the other party is replying in real time.
 
-This functionality is in the UIKit `Typing` component.
-
-The input status indicator feature is enabled by default. To disable it in the global configuration, you can set it as follows:
+This feature is in the `Typing` component and enabled by default. Disable it in the global configuration as follows:
 
 ```javascript
 features.chat.messageInput.typing = false;
 ```
 
-This feature is implemented using the SDK's transparent message transmission. For details, see [the SDK documentation](https://docs.agora.io/en/agora-chat/client-api/messages/send-receive-messages?platform=web).
+This feature is implemented using the SDK's transparent message transmission. 
 
 ### Group mention
 
@@ -175,7 +175,7 @@ Users can translate messages into other languages for easier communication. This
    
 1. Set the target language
 
-Initialize UIKit configuration `initConfig.translationTargetLanguage` and set it to the target language for translation. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+    Initialize UIKit configuration `initConfig.translationTargetLanguage` and set it to the target language for translation. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
 
 ### Reply with emoji
 
@@ -259,7 +259,7 @@ Sample code:
 
 ### Forward a single message
 
-Users can forward a single message. This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
+Users can forward a single message. This feature is in the message components, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
 
 The single message forwarding feature is enabled by default. You can disable it in the global configuration:
 
@@ -269,7 +269,7 @@ features.chat.message.forward = false;
 
 The logic is as follows: Listen for `onForwardMessage` events in the `Chat` component, display the contact component, select the target user to forward the message to, and then send the message.
 
-Sample code:
+The sample code is as follows:
 
 ```javascript
 // ...

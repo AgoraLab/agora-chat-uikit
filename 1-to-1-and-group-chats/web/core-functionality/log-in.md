@@ -1,4 +1,8 @@
-If `userId` `and` token are set during initialization, UIKit will automatically log in when the Provider is loaded and automatically log out when the Provider is unloaded.
+# Log in to UIKit
+
+If `userId` and `token` are set during initialization, UIKit will automatically log in when the Provider is loaded and automatically log out when the Provider is unloaded.
+
+The sample code is as follows:
 
 ```javascript
 import { UIKitProvider } from "easemob-chat-uikit";
@@ -16,7 +20,7 @@ const App = () => {
 };
 ```
 
-To log in and out manually, you can obtain the Chat SDK connection instance and then call the SDK API to log in and out.
+To log in and out manually, you can obtain the Chat SDK connection instance and then call the SDK API:
 
 ```javascript
 import { useClient } from "easemob-chat-uikit";

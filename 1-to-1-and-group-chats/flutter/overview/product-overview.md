@@ -192,10 +192,18 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
     └── defines.dart // UIKit internal use key
 ```
 
-## Functions
+## Features
 
 The business-related UI controls are mainly included in the following three Views:
 
 - `MessagesView` provides a view of all chats.
+
+    ![Group chat](../../assets/images/group_chat.png)
+
 - `ConversationsView` provides a list of conversations.
+
+    ![Conversation list](../../assets/images/conversation_list.png)
+
 - `ContactsView` provides contacts, groups, and their details.
+
+    ![Contacts](../../assets/images/contacts.png)
