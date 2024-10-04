@@ -1,3 +1,5 @@
+# Run a sample project
+
 Agora provides an open source sample project that demonstrates how to quickly build a chat page with UIKit. This page explains how to compile and run it. 
 
 ## Prerequisites
@@ -26,7 +28,7 @@ Take the following steps to download and run the sample project:
     ```
     pod install --repo-update
     ```
-1. Compile the project
+1. Compile the project.
 
    1. Open the `.xcworkspace` file in Xcode.
 
@@ -40,10 +42,10 @@ Take the following steps to download and run the sample project:
 
         ![Log in](../../assets/images/login.png)
 
-1. Test the project
+1. Test the project.
 
-Double-click the `.xcworkspace` file to open the project, and press `cmd+R` on the keyboard to run the project. UIKit supports the x86_64 architecture simulator, but not the M1 simulator, because it uses a static library of FFmpeg that converts audio files into the AMR format.
+    Double-click the `.xcworkspace` file to open the project, and press `cmd+R` on the keyboard to run it. UIKit supports the x86_64 architecture simulator, but not the M1 simulator, because it uses a static FFmpeg library that converts audio files into the AMR format.
 
 ## Precautions
 
-The sample project is only used to quickly run through the process and experience all the functions of single-group chat UIKit.
+The sample project is only used to quickly run through the process and test the features of UIKit.

@@ -1,6 +1,8 @@
+# Integrate UIKit
+
 Before using UIKit, you need to integrate it into your app. This page explains the necessary steps. 
 
-Unlike the procedure described in the quickstart, UIKit requires the use of routing in the application, to achieve switching and jumping between pages. `react-native` does not have routing features by itself and needs to use a third-party library. It is recommended to use `react-navigation`, since it is more popular than `react-native-navigation`. 
+Unlike the procedure described in the quickstart, UIKit requires the use of routing in the application, to achieve switching and jumping between pages. `react-native` does not have routing features and needs to use a third-party library. It is recommended to use `react-navigation`, since it is more popular than `react-native-navigation`. 
 
 ## Prerequisites
 
@@ -9,12 +11,13 @@ Before you start, make sure your development environment meets the following con
 - MacOS 12 or above;
 - React Native 0.71 or above;
 - NodeJs 16.18 or above;
-- For iOS, Xcode 14 or above;
-- For Android, Android Studio 2022 or above.
+- For iOS: Xcode 14 or above;
+- For Android: Android Studio 2022 or abov;
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Existing projects
 
-Existing projects need to meet certain conditions. If the React Native, Xcode, or Android Studio version is too old, compilation or running problems may occur. Tools and components of the same period are usually recommended. 
+Existing projects must meet certain conditions. If the React Native, Xcode, or Android Studio version is too old, compilation or running problems may occur. Tools and components of the same period are usually recommended. 
 
 Compatibility is also a common problem of React Native.
 
@@ -51,11 +54,11 @@ react-native-web@~0.19.6 \
 react-native-webview@13.2.2 \
 twemoji@>=14.0.2
 ```
-   - iOS 
+- iOS 
 
-      Update the `ProjectName/Info.plist` file to add the following permissions:
+    Update the `ProjectName/Info.plist` file to add the following permissions:
 
-      ```xml
+    ```xml
       <dict>
         <!-- Start of append section -->
               <key>NSCameraUsageDescription</key>
@@ -66,11 +69,11 @@ twemoji@>=14.0.2
               <string></string>
         <!-- End of additional section -->
       </dict>
-      ```
+    ```
       
-   - Android
+- Android
 
-     Update the `AndroidManifest.xml` file:
+    Update the `AndroidManifest.xml` file:
 
     ```xml
     <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -86,7 +89,7 @@ twemoji@>=14.0.2
 
 The component library provides themes, internationalization, contact list, conversation list, and conversation details pages. These pages support default and customized settings.
 
-1. Initialize the components
+1. Initialize the components.
 
    Before using any UI component, it must be initialized. Components can complete global configuration and initialization.
 
@@ -102,7 +105,7 @@ The component library provides themes, internationalization, contact list, conve
    }
    ```
    
-1. Set the theme
+1. Set the theme.
 
    Set the theme through the `Container` properties provided by the component. The sample code is as follows:
 
@@ -134,7 +137,7 @@ function App(): React.JSX.Element {
 
 ## Use routes
 
-To jump between pages, you need to set up routing component on the root page. Put the pages you need to jump to in the component.
+To jump between pages, set up the routing component on the root page. Put the pages you need to jump to in the component.
 
 For example:
 

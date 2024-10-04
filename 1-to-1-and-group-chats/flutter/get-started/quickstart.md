@@ -1,3 +1,5 @@
+# Quickstart
+
 With UIKit, you can easily implement messaging in one-to-one chats and group chats. This page explains how do this for a one-to-one chat.
 
 UIKit for Flutter supports iOS and Android. 
@@ -6,10 +8,10 @@ UIKit for Flutter supports iOS and Android.
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Flutter v3.3.0 and above
-- Permissions are granted in the following way:
+- Flutter v3.3.0 and above;
+- Permissions granted in the following way:
 
-    - iOS: Add the following permissions in `<project root>/ios/Runner/Info.plist`.
+    - iOS: Add the following permissions in `<project root>/ios/Runner/Info.plist`:
   
       ```xml
       NSPhotoLibraryUsageDescription
@@ -17,23 +19,25 @@ Before you start, make sure your development environment meets the following con
       NSMicrophoneUsageDescription
       ```
       
-    - Android: The following permissions have been added in `AndroidManifest.xml`, you don't need to add them again.
+    - Android: The following permissions have been added in `AndroidManifest.xml`, you don't need to add them again:
+  
       ```xml
       <uses-permission android:name="android.permission.CAMERA" />
       <uses-permission android:name="android.permission.RECORD_AUDIO" />
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
       ```
-You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 
-1. Create a new project
+1. Create a new project:
 
     ```
     flutter create chat_uikit_demo --platforms=android,ios
     ```
 
-1. Add dependencies
+1. Add dependencies.
 
     Enter the project directory and add the latest `em_chat_uikit` version:
 
@@ -43,7 +47,7 @@ You have a valid Agora project with users and tokens generated. See [Enable and 
     flutter pub get
     ```
    
-1. Add a theme
+1. Add a theme.
 
     Open the newly created project and add the `ChatUIKitTheme` theme dependency.
     
@@ -66,9 +70,9 @@ You have a valid Agora project with users and tokens generated. See [Enable and 
     }
     ```
 
-1. Initialize
+1. Initialize UIKit.
 
-   Initialize `ChatUIKit`, replace `appkey` with your own app key.
+   Initialize UIKit, replace `appkey` with your own app key:
 
    ```dart
     // Import header file
@@ -84,25 +88,25 @@ You have a valid Agora project with users and tokens generated. See [Enable and 
     }
    ```
 
-1. Log in
+1. Log in.
 
     The following login methods are provided: User ID and password and user ID and token. If you have integrated the Chat SDK, all user IDs of the SDK can be used to log in to the UIKit.
 
     - Log in with the user ID and password:
 
-    ```dart
-    ChatUIKit.instance.loginWithPassword(userId: userId, password: password);
-    ```
+      ```dart
+      ChatUIKit.instance.loginWithPassword(userId: userId, password: password);
+      ```
    
     - Log in with the user ID and token:
 
-    ```dart
-    ChatUIKit.instance.loginWithToken(userId: userId, token: token);
-    ```
+      ```dart
+      ChatUIKit.instance.loginWithToken(userId: userId, token: token);
+      ```
    
-1. Add a chat page
+1. Add a chat page.
 
-   `ChatUIKit` provides `MessagesView` to display the chat page after a successful login.
+   UIKit provides `MessagesView` to display the chat page after a successful login:
 
     ```dart
       @override
@@ -112,9 +116,9 @@ You have a valid Agora project with users and tokens generated. See [Enable and 
       }
     ```
    
-1.  Send the first message
+1.  Send the first message.
    
-    Type your message at the bottom of the chat page and click **Send** to send it.
+    Type your message at the bottom of the chat page and click **Send**.
     
 ## Reference
 

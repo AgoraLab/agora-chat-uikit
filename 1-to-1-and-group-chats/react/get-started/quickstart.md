@@ -1,3 +1,5 @@
+# Quickstart
+
 With UIKit, you can easily implement messaging in one-to-one chats and group chats. This page explains how do this for a one-to-one chat.
 
 ## Prerequisites
@@ -7,13 +9,13 @@ Before you start, make sure your development environment meets the following con
 - MacOS 12 or above;
 - React Native 0.71 or above;
 - NodeJs 16.18 or above;
-- For iOS, Xcode 14 or above;
-- For Android, Android Studio 2022 or above;
-- You have a valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+- For iOS: Xcode 14 or above;
+- For Android: Android Studio 2022 or above;
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Implementation
 
-1. Create a new project 
+1. Create a new project.
    
    Run the following command to create a project: 
 
@@ -25,9 +27,9 @@ Before you start, make sure your development environment meets the following con
 
    Once the creation is completed, the project will be initialized by default, `node_modules` dependencies will be installed, and `package-lock.json` file will be generated. If you use yarn initialization, `yarn.lock` file will be generated.
    
-1. Add dependencies
+1. Add dependencies.
 
-   UIKit requires additional dependencies. Add them to the `package.json` file.
+   UIKit requires additional dependencies. Add them to the `package.json` file:
 
    ```json
    {
@@ -63,9 +65,7 @@ Before you start, make sure your development environment meets the following con
    }
     ```
    
-    - iOS 
-
-      Update the `ProjectName/Info.plist` file to add the following permissions:
+    - For iOS, update the `ProjectName/Info.plist` file to add the following permissions:
 
       ```xml
       <dict>
@@ -80,23 +80,21 @@ Before you start, make sure your development environment meets the following con
       </dict>
       ```
       
-    - Android
+    - For Android, update the `AndroidManifest.xml` file:
 
-     Update the `AndroidManifest.xml` file:
-
-    ```xml
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-        <uses-permission android:name="android.permission.INTERNET"/>
-        <uses-permission android:name="android.permission.CAMERA" />
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    </manifest>
-    ```
+      ```xml
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+          <uses-permission android:name="android.permission.INTERNET"/>
+          <uses-permission android:name="android.permission.CAMERA" />
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.RECORD_AUDIO" />
+      </manifest>
+      ```
    
-1. Add code
+1. Add code.
 
-   The main code added includes logging in, logging out, and sending messages.
+   The main code added includes logging in, logging out, and sending messages:
 
    ```typescript
    import * as React from "react";
@@ -206,17 +204,12 @@ Before you start, make sure your development environment meets the following con
    export default App;
    ```
 
-1. Compile and run
+1. Compile and run the project.
 
-   - For iOS: Run `yarn run ios`;
+   - For iOS: Run `yarn run ios`.
    - For Android: Run `yarn run android`.
-    #Step 5: Send the first message
 
+1. Send the first message.
 
-1. Send the first message 
+   Click **Login** to enter the chat page, enter the text, and click **Send**.
 
-   Click **Login** to enter the chat page, enter the text content, and click **Send**.
-
-## Sample project
-
-See [UIKit sample project](https://github.com/easemob/easemob-uikit-reactnative).

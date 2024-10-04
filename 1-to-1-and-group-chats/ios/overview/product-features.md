@@ -1,3 +1,5 @@
+# Product features
+
 This page introduces the common UIKit features for the one-to-one and group chat.
 
 ## General
@@ -13,7 +15,7 @@ they need.
 
 ### Message chat
 
-Message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
+The message chat allows users to communicate with each other in real time. This is usually carried out in the form of a 
 one-to-one conversation or a group chat.
 
 ![Group chat](../../assets/images/group_chat.png)
@@ -59,7 +61,7 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 
 ### Sent receipt
 
-A sent receipt informs the sender whether the message has been sent successfully to the server or 
+A sent receipt informs the sender whether the message has been sent successfully to the server or the 
 recipient.
 
 ![Sent and read receipt](../../assets/images/sent_receipt.png)
@@ -90,6 +92,72 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
 
+## Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+The UI and logic structure of the input status indication are as follows:
+
+- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+
+- Input status-related callbacks and methods are as follows:
+  - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
+  - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.
+
+The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
+
+The sample code is as follows:
+
+```swift
+    Appearance.chat.enableTyping = false
+
+```
+
+This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback to process navigation-related effects.
+
+## Local search
+
+Users can search for messages within a conversation, with support for keyword matching.
+
+The UI and logic of the local message search are as follows:
+
+- `SearchHistoryMessagesViewController`: The search page. After the user enters a keyword, the keyword will be matched in the message history and the search results will be displayed.
+- `SearchResultMessagesController`: The search results page.
+- `SearchHistoryMessageCell`: The cell for searching the message history.
+
+To implement local search, jump to the `SearchHistoryMessagesViewController` page. The input parameter is the conversation ID. After entering the keyword, it will be matched and the search results will be displayed.
+
+The local message search feature is enabled by default in contact details and group details. `Appearance.contact.detailExtensionActionItems` contains `ContactListHeaderItem(featureIdentify: "SearchMessages", featureName: "SearchMessages".chat.localize, featureIcon: UIImage(named: "search_history_messages", in: .chatBundle, with: nil))`. If you don't need the search feature, delete this item.
+
+The sample code is as follows:
+
+```swift
+    Appearance.contact.detailExtensionActionItems.removeAll { $0.featureIdentify == "SearchMessages" }
+
+```
+
+## Group mentions
+
+Uses can directly mention specific members in a group chat using the @ symbol, and the mentioned members will receive a special notification. 
+
+The UI and logic of the group mention feature are as follows: Enter the `@` character in `MessageInputBar` of `MessageListView` of  `MessageListController`. This will inform `ViewModel` and `Controller` that the user has entered the `@` character. After selecting the user with the `@` character, the name or nickname of that user will be displayed in the input box.
+
+The group mention feature is enabled by default. To disable it, ignore the `MessageListController#onInputBoxEventsOccur` method. Override this method without handling the mention event.
+
+The sample code is as follows:
+
+```swift
+    public func onInputBoxEventsOccur(action type: MessageInputBarActionType, attributeText: NSAttributedString?) {
+        switch type {
+        case .audio: self.audioDialog()
+        case .mention: self.mentionAction()
+        case .attachment: self.attachmentDialog()
+        default:
+            break
+        }
+  }
+```
+
 ## Conversation-related 
 
 This section covers specific features related to managing conversations. 
@@ -99,7 +167,7 @@ This section covers specific features related to managing conversations.
 Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or 
 long-press it to open a context menu and mark the conversation as read. 
 
-### Pin a conversation (sticky conversation
+### Pin a conversation (sticky conversation)
 
 The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the 
 top for easy access.
@@ -192,7 +260,7 @@ Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAv
 ### Translate a message
 
 Users can translate messages into other languages for easier communication. The UI and logic structure are in 
-`Appearance.swift`.
+`Appearance.swift`:
 
 1. Enable message translation
 
@@ -220,7 +288,7 @@ reactions only for group chats, which can be turned on and off in `Appearance.sw
 ![Emoji reply](../../assets/images/emoji_reply.png)
 
 The emoji reply feature is disabled by default in `Appearance.swift`. That is, `.withMessageReaction` is not 
-included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling.
+included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly** when enabling.
 
 ```swift
 Appearance.chat.contentStyle.append(.withMessageReaction)
@@ -231,7 +299,7 @@ Appearance.chat.contentStyle.append(.withMessageReaction)
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
 The message thread feature is disabled by default in `Appearance.swift`. That is, `.withMessageThread` is not
-included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly**, when enabling. 
+included in `Appearance.chat.contentStyle` by default. Make sure **not to include it repeatedly** when enabling. 
 The sample code is as follows:
 
 ```swift

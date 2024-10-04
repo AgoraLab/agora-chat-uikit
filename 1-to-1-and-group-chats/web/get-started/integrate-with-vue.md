@@ -1,20 +1,24 @@
+# Integrate UIKit with Vue
+
 Before using UIKit, you need to integrate it into your app. This page explains how to integrate it into a Vue project.
 
 ## Prerequisites
 
 Before you start, make sure your development environment meets the following conditions:
 
-- [Node.js](https://nodejs.org/en)
+- [Node.js](https://nodejs.org/en);
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+
 
 ## Integrate UIKIt
 
 Take the following steps:
 
-1. Create a Vue project
+1. Create a Vue project.
 
     Vue provides a convenient command line tool to quickly build applications. Make sure your current working directory is the directory where you created the project.
     
-    Run the following command in the command line to create the project:
+    Run the following command to create the project:
 
     ```
     npm init vue@latest
@@ -23,32 +27,32 @@ Take the following steps:
     The above command will walk you through the options when creating a new project. The settings used in this tutorial are listed below.
 
     ```
-   Vue.js - The Progressive JavaScript Framework
-   
-   ✔ Project name: … vue-project
-   ✔ Add TypeScript? … No
-   ✔ Add JSX Support? … Yes
-   ✔ Add Vue Router for Single Page Application development? … Yes
-   ✔ Add Pinia for state management? … No
-   ✔ Add Vitest for Unit Testing? … No
-   ✔ Add an End-to-End Testing Solution? › No
-   ✔ Add ESLint for code quality? … No
-   ✔ Add Vue DevTools 7 extension for debugging? (experimental) … No
+    Vue.js - The Progressive JavaScript Framework
+       
+       ✔ Project name: … vue-project
+       ✔ Add TypeScript? … No
+       ✔ Add JSX Support? … Yes
+       ✔ Add Vue Router for Single Page Application development? … Yes
+       ✔ Add Pinia for state management? … No
+       ✔ Add Vitest for Unit Testing? … No
+       ✔ Add an End-to-End Testing Solution? › No
+       ✔ Add ESLint for code quality? … No
+       ✔ Add Vue DevTools 7 extension for debugging? (experimental) … No
     ```
    
     Run in the development mode:
 
     ```
-   cd vue-project
-   npm install
-   npm run dev
+    cd vue-project
+       npm install
+       npm run dev
     ```
    
-   After successful operation, open "http://localhost:5173/" and you can see the interface shown below:
+   After running, open "http://localhost:5173/" to see the interface shown below:
 
     ![Create a Vue project](../../assets/images/vue-project-create.png)
 
-1. Install and configure Veaury
+1. Install and configure Veaury.
 
     [Veaury](https://github.com/gloriasoft/veaury#readme) is a tool library based on React and Vue, mainly used in scenarios where React and Vue are used together in a project. Veaury is suitable for Vue 3 and Vue 2.
 
@@ -60,44 +64,44 @@ Take the following steps:
        
     1. Install the `@vitejs/plugin-react` plugin: 
 
-    ```
-    npm i @vitejs/plugin-react
-    ```
+       ```
+       npm i @vitejs/plugin-react
+       ```
    
-    1. In order for your Vue application to be able to import and render React components, update the files in your project `vite.config.js` to use the Veaury plugin.
+    1. In order for your Vue application to be able to import and render React components, update the `vite.config.js` file in your project to use the Veaury plugin.
 
-    ```javascript
-    import { fileURLToPath, URL } from "node:url";
-    import { defineConfig } from "vite";
-    import vue from "@vitejs/plugin-vue";
-    import vueJsx from "@vitejs/plugin-vue-jsx";
-    // >= veaury@2.1.1
-    import veauryVitePlugins from "veaury/vite/index.js";
-    // If it is vite 6, you should use `veaury/vite/esm`
-    // import veauryVitePlugins from 'veaury/vite/esm'
-    
-    // https://vitejs.dev/config/
-    export default defineConfig({
-      plugins: [
-        // Close vue and vuejsx plugins
-        // vue(),
-        // vueJsx(),
-        // When type is set to vue, all .jsx files in the directory named `react_app` will be compiled by react jsx, and .jsx in other directories will be compiled by vue jsx.
-        veauryVitePlugins({
-          type: "vue"
-        })
-      ],
-      resolve: {
-        alias: {
-          "@": fileURLToPath(new URL("./src", import.meta.url))
-        }
-      }
-    });
-    ```
+       ```javascript
+       import { fileURLToPath, URL } from "node:url";
+       import { defineConfig } from "vite";
+       import vue from "@vitejs/plugin-vue";
+       import vueJsx from "@vitejs/plugin-vue-jsx";
+       // >= veaury@2.1.1
+       import veauryVitePlugins from "veaury/vite/index.js";
+       // If it is vite 6, you should use `veaury/vite/esm`
+       // import veauryVitePlugins from 'veaury/vite/esm'
+       
+       // https://vitejs.dev/config/
+       export default defineConfig({
+         plugins: [
+           // Close vue and vuejsx plugins
+           // vue(),
+           // vueJsx(),
+           // When type is set to vue, all .jsx files in the directory named `react_app` will be compiled by react jsx, and .jsx in other directories will be compiled by vue jsx.
+           veauryVitePlugins({
+             type: "vue"
+           })
+         ],
+         resolve: {
+           alias: {
+             "@": fileURLToPath(new URL("./src", import.meta.url))
+           }
+         }
+       });
+       ```
    
     1. Any React components can be added to the `react_app` directory, which can then be imported into the `.vue` file and rendered in a standard Vue component.
 
-1. Integrate React components in the Vue project
+1. Integrate React components in the Vue project.
 
      Create a new React component in `react_app`. This component is responsible for importing, configuring, and rendering UIKit.
 
@@ -107,11 +111,9 @@ Take the following steps:
         npm i easemob-chat-uikit --save;
         ```
 
-    1. Create a  `react_app/chat.jsx` file, import UIKit, and initialize UIKit using the app key and user information.
+    1. Create a `react_app/chat.jsx` file, import UIKit, and initialize it using the app key and user information.
 
        ![Initialize a Vue project](../../assets/images/vue-initialization.png)
-
-       The code is as follows:
 
        ```javascript
        // Import react_app/chat.jsx component
@@ -152,7 +154,7 @@ Take the following steps:
        export default EaseChat;
        ```
    
-1. Add UIKit to the Vue page
+1. Add UIKit to the Vue page.
 
     Add `EaseChat` to the Vue page, delete all code in `views/HomeView.vue`, and add the following:
 
@@ -226,11 +228,9 @@ Take the following steps:
    
     The code does the following:
     
-    1. Import the Veaury and `EaseChat` components.
-    1. Use Veaury's `applyPureReactInVue` function to convert the React component into a Vue component.
-    1. Define theme variables and pass them to the `EaseChat` component to switch the UIKit theme.
-    1. Add some styles to beautify the interface.
+    1. Imports the Veaury and `EaseChat` components.
+    1. Uses Veaury's `applyPureReactInVue` function to convert the React component into a Vue component.
+    1. Defines theme variables and passes them to the `EaseChat` component to switch the theme.
+    1. Adds styles to beautify the interface.
 
-    Delete the irrelevant code in `App.vue` and keep only `RouterView`. When you visit http://localhost:5173, the `template` interface is as follows:
-
-    Click **Switch Theme** in the upper right corner to switch the theme.
+    Delete the irrelevant code in `App.vue` and keep only `RouterView`. Visit http://localhost:5173 to see the interface. Click **Switch Theme** in the upper right corner to switch the theme.

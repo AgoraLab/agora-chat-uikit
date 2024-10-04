@@ -1,3 +1,5 @@
+# Integrate UIKit
+
 Before using UIKit, you need to integrate it into your app. This page explains the necessary steps. 
 
 ## Prerequisites
@@ -13,9 +15,7 @@ Before you start, make sure your development environment meets the following con
 
 You can use CocoaPods to install UIKit as a dependency in your Xcode project.
 
-1. Add the following in `Podfile` dependencies:
-
-   Add the following dependencies in the app project build.gradle.kts:
+1. Add the following dependencies in `Podfile` :
 
    ```
    source 'https://github.com/CocoaPods/Specs.git'
@@ -37,10 +37,10 @@ You can use CocoaPods to install UIKit as a dependency in your Xcode project.
    end
    ```
 
-1. Go to the podfile directory in the terminal and run the following command:
+1. Run the following command from the `Podfile` directory:
 
     ```
     pod install --repo-update
     ```
    
-If you see the `Sandbox: rsync.samba(47334) deny(1) file-write-create...` error when compiling with Xcode 15, you can search for `ENABLE_USER_SCRIPT_SANDBOXING` in **Build Settings** and change the **User Script Sandboxing** setting to **NO**.
+If you see the `Sandbox: rsync.samba(47334) deny(1) file-write-create...` error when compiling with Xcode 15, search for `ENABLE_USER_SCRIPT_SANDBOXING` in **Build Settings** and change the **User Script Sandboxing** setting to **NO**.
