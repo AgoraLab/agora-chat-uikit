@@ -1,6 +1,8 @@
+# Advanced usage
+
 ## Implement custom pages through routing jumps
 
-Internally, the `Navigator.of(context).pushNamed` method is used for redirects, and each available View is provided. When you need to customize the View or intercept the jump page, you can use the routing parameter method to intercept and customize it.
+Internally, the `Navigator.of(context).pushNamed` method is used for redirects, and each available View and `routeName` are provided. When you need to customize the View or intercept the jump page, you can use the routing method to intercept and customize it.
 
 | `routeName` | Corresponding string | Description |
 |:---:|:---:|:---:|
@@ -11,7 +13,7 @@ Internally, the `Navigator.of(context).pushNamed` method is used for redirects, 
 | `ChatUIKitRouteNames.createGroupView` | `/CreateGroupView` | The member selection page when creating a group. |
 | `ChatUIKitRouteNames.currentUserInfoView` | `/CurrentUserInfoView` | The current user details page. |
 | `ChatUIKitRouteNames.forwardMessageSelectView` | `/forwardMessageSelectView` | The message forwarding selection page. |
-| `ChatUIKitRouteNames.forwardMessagesView` | `/forwardMessagesView` | The message forwarding display page. |
+| `ChatUIKitRouteNames.forwardMessagesView` | `/forwardMessagesView` | The message forwarding page. |
 | `ChatUIKitRouteNames.groupChangeOwnerView` | `/GroupChangeOwnerView` | The modify the group owner page. |
 | `ChatUIKitRouteNames.groupDetailsView` | `/GroupDetailsView` | The group details page. |
 | `ChatUIKitRouteNames.groupsView` | `/GroupsView` | The group list page. |
@@ -22,13 +24,13 @@ Internally, the `Navigator.of(context).pushNamed` method is used for redirects, 
 | `ChatUIKitRouteNames.messagesView` | `/MessagesView` | The message page. |
 | `ChatUIKitRouteNames.newRequestDetailsView` | `/NewRequestDetailsView` | The new friend request details page. |
 | `ChatUIKitRouteNames.newRequestsView` | `/NewRequestsView` | The new requests page. |
-| `ChatUIKitRouteNames.reportMessageView` | `/ReportMessageView` | The report message page. |
+| `ChatUIKitRouteNames.reportMessageView` | `/ReportMessageView` | The report a message page. |
 | `ChatUIKitRouteNames.searchUsersView` | `/SearchUsersView` | The search the contacts page. |
 | `ChatUIKitRouteNames.searchGroupMembersView` | `/SearchGroupMembersView` | The search group members page. |
 | `ChatUIKitRouteNames.selectContactsView` | `/SelectContactsView` | The select a contact page. |
-| `ChatUIKitRouteNames.showImageView` | `/ShowImageView` | The view images page. |
-| `ChatUIKitRouteNames.showVideoView` | `/ShowVideoView` | The check out the video page. |
-| `ChatUIKitRouteNames.searchHistoryView` | `/SearchHistoryView` | The search history message page. |
+| `ChatUIKitRouteNames.showImageView` | `/ShowImageView` | The view image page. |
+| `ChatUIKitRouteNames.showVideoView` | `/ShowVideoView` | The view video page. |
+| `ChatUIKitRouteNames.searchHistoryView` | `/SearchHistoryView` | The search message history page. |
 | `ChatUIKitRouteNames.threadMessagesView` | `/ThreadMessagesView` | The message thread page. |
 | `ChatUIKitRouteNames.threadMembersView` | `/ThreadMembersView` | The thread members page. |
 | `ChatUIKitRouteNames.threadsView` | `/ThreadsView` | The thread list page. |
@@ -55,14 +57,13 @@ Widget build(BuildContext context) {
 }
 ```
 
-First use `ChatUIKitRoute.generateRoute` to intercept. If it returns null, continue to use the default logic in your app.
+First use `ChatUIKitRoute.generateRoute` to intercept. If it returns `null`, continue to use the default logic in your app.
 
 ### Route interception
 
 If you need to intercept the conversation list page to jump to the message page and modify the bubble style, use `settings.name == ChatUIKitRouteNames.messagesView` and reset the intercepted `MessagesViewArgumentsattributes`.
 
 ```dart
-
 @override
 Widget build(BuildContext context) {
   return MaterialApp(
@@ -93,7 +94,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-In addition to `MessagesViewArguments`, each View provides a corresponding `ViewArguments`.
+In addition to `MessagesViewArguments`, each View provides the corresponding `ViewArguments`.
 
 | Type | Corresponding page |
 |:---:|:---:|
@@ -115,18 +116,18 @@ In addition to `MessagesViewArguments`, each View provides a corresponding `View
 | `MessagesViewArguments` | The message page. |
 | `NewRequestDetailsViewArguments` | The friend request details page. |
 | `NewRequestsViewArguments` | The friend request list page. |
-| `ReportMessageViewArguments` | The report message page. |
-| `SearchGroupMembersViewArguments` | The search group member page. |
-| `SearchHistoryViewArguments` | The search message page. |
-| `SearchViewArguments` | The search user page. |
+| `ReportMessageViewArguments` | The report a message page. |
+| `SearchGroupMembersViewArguments` | The search group members page. |
+| `SearchHistoryViewArguments` | The search messages page. |
+| `SearchViewArguments` | The search users page. |
 | `SelectContactViewArguments` | The select a contact page. |
-| `ShowImageViewArguments` | The image display page. |
-| `ShowVideoViewArguments` | The video display page. |
+| `ShowImageViewArguments` | The show image page. |
+| `ShowVideoViewArguments` | The show video page. |
 | `ThreadMembersViewArguments` | The thread members page. |
 | `ThreadMessagesViewArguments` | The thread message list page. |
 | `ThreadsViewArguments` | The thread list page. |
 
-## Configure the time format for message and conversation display
+## Configure the message and conversation time formats
 
 ```dart
 ChatUIKitTimeFormatter.instance.formatterHandler = (context, type, time) {
@@ -141,11 +142,11 @@ ChatUIKitTimeFormatter.instance.formatterHandler = (context, type, time) {
 
 ## Monitor chat events
 
-Chat SDK provides two types of event callbacks.
+Two types of event callbacks are available.
 
-After implementing `ChatSDKEventsObserver`, when a Chat SDK (`im_flutter_sdk`) method call starts, it will notify you through the `void onChatSDKEventBegin(ChatSDKEvent event)` callback, and when it ends, it will notify you through the void `onChatSDKEventEnd(ChatSDKEvent event, ChatError? error)` method. Errors will be reported through `error`.
+After implementing `ChatSDKEventsObserver`, when a Chat SDK method call starts, it will notify you through the `void onChatSDKEventBegin(ChatSDKEvent event)` callback; when it ends, it will notify you through the `void onChatSDKEventEnd(ChatSDKEvent event, ChatError? error)` method. Errors will be reported through `error`.
 
-After implementing `ChatUIKitEventsObservers`, you will get notified of UIKit-related events though `void onChatUIKitEventsReceived(ChatUIKitEvent event)` callbacks.
+After implementing `ChatUIKitEventsObservers`, you will get notified of UIKit-related events though `void onChatUIKitEventsReceived(ChatUIKitEvent event)` callbacks:
 
 ```dart
 class _ToastPageState extends State<ToastPage> with ChatSDKEventsObserver, ChatUIKitEventsObservers {
@@ -186,7 +187,7 @@ The default configuration items must be configured when the application starts.
 
 ### Configure the avatar corner rounding
 
-The default is `CornerRadius.medium`.
+The default is `CornerRadius.medium`:
 
 ```dart
 ChatUIKitSettings.avatarRadius = CornerRadius.large;
@@ -194,7 +195,7 @@ ChatUIKitSettings.avatarRadius = CornerRadius.large;
 
 ### Configure the search box corner radius
 
-The default is `CornerRadius.small`.
+The default is `CornerRadius.small`:
 
 ```dart
 ChatUIKitSettings.searchBarRadius = CornerRadius.large;
@@ -202,7 +203,7 @@ ChatUIKitSettings.searchBarRadius = CornerRadius.large;
 
 ### Configure the default avatar
 
-The default is` packages/em_chat_uikit/assets/images/default_avatar.png`.
+The default is` packages/em_chat_uikit/assets/images/default_avatar.png`:
 
 ```dart
 ChatUIKitSettings.avatarPlaceholder = const AssetImage(
@@ -212,7 +213,7 @@ ChatUIKitSettings.avatarPlaceholder = const AssetImage(
 
 ### Configure the dialog rounded corners
 
-The default is `ChatUIKitDialogRectangleType.filletCorner`.
+The default is `ChatUIKitDialogRectangleType.filletCorner`:
 
 ```dart
 ChatUIKitSettings.dialogRectangleType = ChatUIKitDialogRectangleType.circular;
@@ -236,7 +237,7 @@ ChatUIKitSettings.showConversationListUnreadCount = true;
 
 ### Configure the mute icon displayed in the conversation list
 
-The default is `packages/em_chat_uikit/assets/images/no_disturb.png`.
+The default is `packages/em_chat_uikit/assets/images/no_disturb.png`:
 
 ```dart
 ChatUIKitSettings.conversationListMuteImage = const AssetImage(
@@ -246,7 +247,7 @@ ChatUIKitSettings.conversationListMuteImage = const AssetImage(
 
 ### Set the order of the long-press message menu
 
-When you long-press a message, a message menu will pop up. You can modify the default value through `ChatUIKitSettings.msgItemLongPressActions` . The default settings are as follows:
+When a user long-presses a message, a menu will pop up. You can modify its default value through `ChatUIKitSettings.msgItemLongPressActions`. The default settings are as follows:
 
 ```dart
   static List<MessageLongPressActionType> msgItemLongPressActions = [
@@ -264,7 +265,7 @@ When you long-press a message, a message menu will pop up. You can modify the de
   ];
 ```
 
-When you long-press a message, you can modify the pop-up menu by adjusting the order and content. For example, you can remove the copy option (`MessageLongPressActionType.copy`) in the `ChatUIKitSettings.msgItemLongPressActions` menu. When you long-press a text message, copying will no longer be available.
+You can modify the pop-up menu by adjusting the order and content. For example, you can remove the copy option (`MessageLongPressActionType.copy`) in the `ChatUIKitSettings.msgItemLongPressActions` menu. 
 
 ### Set whether to open the message thread
 
@@ -275,14 +276,14 @@ The message topic feature is provided as a switch in `ChatUIKitSettings.enableCh
 The sample code is as follows:
 
 ```dart
-    ChatUIKitSettings.enableMessageThread = true;
+ChatUIKitSettings.enableMessageThread = true;
 ```
 
 ### Set whether to enable message translation
 
 1. Enable message translation.
 
-   `ChatUIKitSettings` provides a `ChatUIKitSettings.enableMessageTranslation` setting to enable the message translation function. The default value is `false`. To enable this feature, set this parameter to `true`. The sample code is as follows:
+   `ChatUIKitSettings` provides a `ChatUIKitSettings.enableMessageTranslation` setting to enable the message translation feature. The default value is `false`. To enable this feature, set this parameter to `true`. The sample code is as follows:
 
     ```dart
       ChatUIKitSettings.enableMessageTranslation = true;
@@ -290,13 +291,13 @@ The sample code is as follows:
 
 1. Set the target language for translation.
 
-    `ChatUIKitSettings` provides a `translateTargetLanguage` property to set the target translation language.
+    `ChatUIKitSettings` provides a `translateTargetLanguage` property to set the target language:
 
     ```dart
        ChatUIKitSettings.translateTargetLanguage = 'zh-Hans';
     ```
 
-    If the target language for the translation is not set, English is used by default. 
+    If the target language is not set, English is used by default. 
 
     For more target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
 
@@ -312,7 +313,7 @@ Users can reply to messages with emojis to express emotions and attitudes, or to
 
 ### Set whether to enable message quoting
 
-Users can long-press a message to reply to it, with the original message content quoted in the reply. This feature is enabled by default. To disable, set the `enableMessageReply` property to `false`. 
+Users can long-press a message to reply to it, with the original message content quoted in the reply. This feature is enabled by default. To disable, set the `enableMessageReply` property to `false`:
 
 ```dart
 ChatUIKitSettings.enableMessageReply = false;
@@ -320,13 +321,13 @@ ChatUIKitSettings.enableMessageReply = false;
 
 ### Set whether to enable message recall
 
-The sender of a message can recall it within a specified time. This feature is enabled by default. To disable, set the `enableMessageRecall` property to `false`. 
+The sender of a message can recall it within a specified time. This feature is enabled by default. To disable, set the `enableMessageRecall` property to `false`:
 
 ```dart
 ChatUIKitSettings.enableMessageRecall = false;
 ```
 
-You can also configure the duration of the recall option display. The default is 120 seconds. Upon expiration, the recall option will no longer be available. 
+You can also configure the duration of the recall option display. The default is 120 seconds. Upon expiration, the recall option will no longer be available:
 
 ```dart
 ChatUIKitSettings.recallExpandTime = 120;
@@ -334,7 +335,7 @@ ChatUIKitSettings.recallExpandTime = 120;
 
 ### Set whether to enable message editing
 
-Users can edit message they have already sent. This feature is enabled by default. To disable, set the `enableMessageEdit` property to `false`. 
+Users can edit a message they have already sent. This feature is enabled by default. To disable, set the `enableMessageEdit` property to `false`:
 
 ```dart
 ChatUIKitSettings.enableMessageEdit = false;
@@ -344,7 +345,7 @@ ChatUIKitSettings.enableMessageEdit = false;
 
 Users can report messages they have sent or received. This feature is enabled by default. To disable, set the `enableMessageReport` property to `false`. 
 
-Set the report content. The report content is a set of key-value pairs (`Map<String, String>` structure), that is, the label of the reported message and the reason for the report. UIKit provides a way to set the label of reported messages. The corresponding report reason needs to be filled in the internationalization file. The sample code is as follows:
+Set the report content. The report content is a set of key-value pairs (`Map<String, String>`), that is, the label of the reported message and the reason for the report. UIKit provides a way to set the label of reported messages. The corresponding report reason needs to be filled in the internationalization file. The sample code is as follows:
 
 ```dart
   /// The label of reported messages can be customized.
@@ -364,7 +365,7 @@ Set the report content. The report content is a set of key-value pairs (`Map<Str
 
 ### Set whether to enable multiple message forwarding
 
-Users can combine multiple messages and forward them. This feature is enabled by default. To disable, set the `enableMessageMultiSelect` property to `false`. 
+Users can combine multiple messages and forward them. This feature is enabled by default. To disable, set the `enableMessageMultiSelect` property to `false`:
 
 ```dart
 ChatUIKitSettings.enableMessageMultiSelect = false;
@@ -372,7 +373,7 @@ ChatUIKitSettings.enableMessageMultiSelect = false;
 
 ### Set whether to enable single message forwarding
 
-Users can forward single messages. This feature is enabled by default. To disable, set the `enableMessageForward ` property to `false`. 
+Users can forward single messages. This feature is enabled by default. To disable, set the `enableMessageForward ` property to `false`:
 
 ```dart
 ChatUIKitSettings.enableMessageForward = false;
@@ -385,4 +386,88 @@ The default order of contacts is `ABCDEFGHIJKLMNOPQRSTUVWXYZ#`. If you need to m
 ```dart
 // Move # to the top
 ChatUIKitSettings.sortAlphabetical = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+```
+
+## Customize AppBar
+
+Customize AppBar through `appBarModel`:
+
+```dart
+  /// ChatUIKitAppBarModel constructor
+  /// [title] Title
+  /// [centerWidget] The middle control has a higher priority than title and subtitle. If centerWidget is set, title and subtitle will not be displayed
+  /// [titleTextStyle] Title style
+  /// [subtitle] Subtitle
+  /// [subTitleTextStyle] Subtitle style
+  /// [leadingActions] left control
+  /// [leadingActionsBuilder] The left control builder will be called back when a default value exists
+  /// [trailingActions] right side controls
+  /// [trailingActionsBuilder] The right control builder will be called back when a default value exists
+  /// [showBackButton] Whether to display the back button
+  /// [onBackButtonPressed] Back button click event, if not set, it will return to the previous page by default
+  /// [centerTitle] Whether to display the title in the center
+  /// [systemOverlayStyle] Status bar style
+  /// [backgroundColor] Status bar style
+  /// [bottomLine] Whether to display the bottom dividing line
+  /// [bottomLineColor] bottom dividing line color
+
+  ChatUIKitAppBarModel({
+    this.title,
+    this.centerWidget,
+    this.titleTextStyle,
+    this.subtitle,
+    this.subTitleTextStyle,
+    this.leadingActions,
+    this.leadingActionsBuilder,
+    this.trailingActions,
+    this.trailingActionsBuilder,
+    this.showBackButton = true,
+    this.onBackButtonPressed,
+    this.centerTitle = false,
+    this.systemOverlayStyle,
+    this.backgroundColor,
+    this.bottomLine,
+    this.bottomLineColor,
+  });
+```
+
+For example:
+
+```dart
+appBarModel: ChatUIKitAppBarModel(
+  title: "Chat",
+  leadingActions: ["return"].map((e) {
+    return ChatUIKitAppBarAction(
+      child: Text(
+        e,
+        style: const TextStyle(fontSize: 18),
+      ),
+      onTap: (context) {
+        Navigator.of(context).pop();
+      },
+    );
+  }).toList(),
+  showBackButton: false,
+  centerTitle: true,
+),
+```
+
+## Custom ListItemBuilder
+
+Customize individual `items` of components including lists through `itemBuilder`:
+
+```dart
+itemBuilder: (context, model) {
+  return ListTile(
+    title: Text(model.showName),
+    subtitle: const Text('subtitle'),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute
+            builder: (context) => MessagesView(profile: model.profile)),
+      );
+    },
+  );
+},
 ```

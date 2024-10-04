@@ -1,3 +1,5 @@
+# Run the sample project
+
 Agora provides an open-source sample project that demonstrates how to quickly build a chat page with UIKit. This page explains how to compile and run it. 
 
 ## Prerequisites
@@ -64,7 +66,7 @@ Take the following steps to download and run the sample project:
       export const release_area = "china"; // 'china' or 'global'
       ```
 
-1. Compile and runю
+1. Compile and run.
 
     Run the local service in the debug mode. During debugging, you can modify the JavaScript file and view the effect of the modification.
     

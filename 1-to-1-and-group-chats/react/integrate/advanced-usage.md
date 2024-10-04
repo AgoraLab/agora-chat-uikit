@@ -1,41 +1,43 @@
-The UI component library `Chat UIKit SDK` provides themes, internationalization, common UI components, and other elements. In addition to providing default usage, the component library supports custom component styles and behaviors.
+# Advanced usage
 
-## Entry component Container
+UIKit provides themes, internationalization, common UI components, and other elements. In addition to providing default options, it also supports custom component styles and behaviors.
+
+## The Container component
 
 `Container` provides global configuration and initialization. If this component is not used, other UI components may not work properly. Its custom parameters are as follows:
 
 | Property | Type | Required/Optional | Description |
 |:---:|:---:|:---:|:---:|
 | `options` | `ChatOptionsType` | Required | A composite parameter set, consistent with `ChatOptions`, with `appKey` as the only required parameter. |
-| `language` | `LanguageCode` | Optional | Language code. Specifies the language in which the UI component displays content. For example, English. |
-| `translateLanguage` | `LanguageCode` | Optional | Language code. Specifies the target language for message translation. For example, English. |
-| `palette` | palette | Optional | Theme color palette. The theme will select colors and styles from the palette to form the theme. |
-| `theme` | theme | Optional | Theme. Light and dark are provided by default. |
+| `language` | `LanguageCode` | Optional | The language code. Specifies the language in which the UI component displays content. For example, English. |
+| `translateLanguage` | `LanguageCode` | Optional | The language code. Specifies the target language for message translation. For example, English. |
+| `palette` | palette | Optional | The theme color palette. UIKit selects colors and styles from the palette to form the theme. |
+| `theme` | theme | Optional | The theme: Light and dark are provided by default. |
 | `fontFamily` | string | Optional | Customize the font style of UI components. |
 | `emojiFontFamily` | string | Optional | Customize the emoji font style. |
 | `headerFontFamily` | string | Optional | Customize the font style of the navigation bar. |
-| `releaseArea` | `ReleaseArea` | Optional | Set the release region. For example, Global. |
-| `formatTime` | object | Optional | Time formatting callback notification for the conversation list and chat page. If not provided, the default formatting is used. |
-| `recallTimeout` | number | Optional | Callback timeout. The unit is milliseconds. The default value is 120. |
-| `group` | object | Optional | The maximum number of members to select when creating a group. Default is 1000. |
+| `releaseArea` | `ReleaseArea` | Optional | Set the release region. For example, `Global`. |
+| `formatTime` | object | Optional | The time formatting callback for the conversation list and chat page. If not provided, the default formatting is used. |
+| `recallTimeout` | number | Optional | The callback timeout in milliseconds. The default is `120`. |
+| `group` | object | Optional | The maximum number of members to select when creating a group. The default is `1000`. |
 | `conversationDetail` | `ConversationDetailType` | Optional | A collection of chat page configurations. See the corresponding definition for details. |
-| `avatar` | object | Optional | Global avatar style settings. Supports border rounding settings. |
-| `input` | object | Optional | Global input component style settings. Supports border radius settings. |
-| `alert` | object | Optional | Global warning box component style settings. Supports border radius settings. |
-| `onInitLanguageSet` | function | Optional | Register callback notification for the language pack. You can customize the language pack. |
-| `onInitialized` | function | Optional | Register the callback notification when initialization is completed. |
-| `onUsersHandler` | function | Optional | Register the callback notification for obtaining user data. If the user provides this interface, the user's avatar and nickname are obtained through this interface. If not provided, the default is used. |
-| `onGroupsHandler` | function | Optional | Register the callback notification for obtaining group data. If the user provides this interface, the group's avatar and nickname are obtained through this interface. If not provided, the default is used. |
-| `onChangeStatus` | function | Optional | Register the presence status callback notification. If the user provides this interface, the user's status change notification will be received. |
-| `enableTranslate` | boolean | Optional | Whether to enable the translation feature. If enabled, it also needs to be turned on in the background. |
-| `enableThread` | boolean | Optional | Whether to enable the thread feature. If enabled, it also needs to be enabled in the background. |
-| `enableReaction` | boolean | Optional | Whether to enable the emoji reply feature. If enabled, it also needs to be turned on in the background. |
-| `enablePresence` | boolean | Optional | Whether to enable the status subscription feature. If enabled, it also needs to be enabled in the background. |
-| `enableAVMeeting` | boolean | Optional | Whether to enable the audio and video call feature. If enabled, it also needs to be enabled in the background. Enabled by default. |
+| `avatar` | object | Optional | The global avatar style settings. Supports border rounding settings. |
+| `input` | object | Optional | The global input style settings. Supports border radius settings. |
+| `alert` | object | Optional | The global warning box style settings. Supports border radius settings. |
+| `onInitLanguageSet` | function | Optional | Register the callback for the language pack. You can customize the language pack. |
+| `onInitialized` | function | Optional | Register the callback for when initialization is completed. |
+| `onUsersHandler` | function | Optional | Register the callback for obtaining the user data. If the user provides this interface, the user's avatar and nickname are obtained through it. If not provided, the default is used. |
+| `onGroupsHandler` | function | Optional | Register the callback for obtaining the group data. If the user provides this interface, the group's avatar and nickname are obtained through it. If not provided, the default is used. |
+| `onChangeStatus` | function | Optional | Register the presence status callback. If the user provides this interface, the user's status change will be received. |
+| `enableTranslate` | boolean | Optional | Whether to enable the translation feature.  |
+| `enableThread` | boolean | Optional | Whether to enable the thread feature.  |
+| `enableReaction` | boolean | Optional | Whether to enable the emoji reply feature.  |
+| `enablePresence` | boolean | Optional | Whether to enable the presense subscription feature.  |
+| `enableAVMeeting` | boolean | Optional | Whether to enable the audio and video call feature. Enabled by default. |
 
-## Chat SDK component ChatService
+## The ChatService component
 
-`ChatServiceComponents` are encapsulations of Chat SDK, which can simplify calling logic, return standardized results, trigger UI change events, and so on.
+The `ChatService` components are encapsulations of Chat SDK, which can simplify the calling logic, return standardized results, trigger UI change events, and so on.
 
 Commonly used interfaces include login, logout, adding and deleting event listeners, adding and deleting Chat SDK event listeners, and others.
 
@@ -47,8 +49,8 @@ The core common methods are as follows:
 | `logout` | Function | Log out. |  
 | `autoLogin` | Function | Automatically log in. |  
 | `loginState` | Function | Current login status. |  
-| `userId` | get | Get the ID of the currently logged in user. |  
-| `updateDataList` | Function | Actively update the avatar and nickname of the specified data. Will trigger the refresh of the loaded UI components. |  
+| `userId` | get | Get the ID of the logged-in user. |  
+| `updateDataList` | Function | Actively update the avatar and nickname with the specified data. Triggers the refresh of the loaded UI components. |  
 
 For more methods, see the [corresponding definitions](https://github.com/easemob/react-native-chat-library).
 
@@ -67,9 +69,9 @@ For more methods, see the [corresponding definitions](https://github.com/easemob
 
    | Method | Description |
    |:---:|:---:|
-   | `onBefore` | Notification before the interface is called. |
-   | `onFinished` | Notification of the interface call completion. |
-   | `onError` | Notification of an error in an interface call. |
+   | `onBefore` | The notification before the interface is called. |
+   | `onFinished` | The notification of the call completion. |
+   | `onError` | The notification of an error in an interface call. |
 
 ## Custom hooks
 
@@ -77,7 +79,7 @@ This section introduces common hooks.
 
 ### useColors
 
-Usually `usePaletteContext` is used with custom color objects to change component colors.
+Usually used with the `usePaletteContext` custom color objects to change component colors.
 
 For example:
 
@@ -102,7 +104,7 @@ export function SomeView() {
 
 ### useDelayExecTask
 
-Delays the execution of a task. If called again before the timeout occurs, the delay continues until timeout while executing the task.
+Delays the execution of a task. If called again before the timeout occurs, the delay continues until the timeout while executing the task.
 
 For example:
 
@@ -130,7 +132,7 @@ export function SomeView() {
 
 ### useForceUpdate
 
-`useForceUpdate` provides forced updates. This hook can be used if the component has no state or needs to be updated manually.
+`useForceUpdate` provides forced updates. Use this hook if the component has no state or needs to be updated manually.
 
 For example:
 
@@ -197,7 +199,7 @@ export function SomeView() {
 
 ## Event notifications
 
-Currently, the UI component library mainly provides two event notification methods:
+UIKit provides two event notification methods:
 
 - SDK event notifications: Forwarded Chat SDK events, focusing on data changes: 
 

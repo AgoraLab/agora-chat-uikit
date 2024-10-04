@@ -1,3 +1,5 @@
+# Integrate UIKit
+
 Before using UIKit, you need to integrate it into your app. This page explains the necessary steps. 
 
 Unlike the procedure described in the quickstart, UIKit requires the use of routing in the application, to achieve switching and jumping between pages. `react-native` does not have routing features and needs to use a third-party library. It is recommended to use `react-navigation`, since it is more popular than `react-native-navigation`. 

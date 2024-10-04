@@ -1,4 +1,6 @@
-`ChatUIKit` provides internationalization features, supporting English by default.
+# Internationalization
+
+`ChatUIKit` provides internationalization features, supporting English and Chinese by default.
 
 ## Add internationalization files
    
@@ -26,7 +28,7 @@ _localization.displayLanguageWhenNotSupported = const Locale('en');
 
 ## Add a new language
 
-You can use the `ChatUIKitLocalizations.addLocales` method to expand the languages supported by internationalization. The corresponding text constants are defined in the `ChatUIKitLocal` file. You can add your own `ChatLocalobject` to `ChatUIKitLocalizations` to implement internationalization.
+Use the `ChatUIKitLocalizations.addLocales` method to expand the languages supported by internationalization. The corresponding text constants are defined in the `ChatUIKitLocal` file. You can add your own `ChatLocalobject` to `ChatUIKitLocalizations` to implement internationalization.
 
 For example, you can add support for French in the following way:
 

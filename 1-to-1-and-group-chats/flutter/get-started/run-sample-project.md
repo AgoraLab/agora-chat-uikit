@@ -1,10 +1,12 @@
-Agora provides an open source sample project that demonstrates how to quickly build a chat page with UIKit. This page explains how to compile and run it.
+# Run a sample project
+
+Agora provides an open-source sample project that demonstrates how to quickly build a chat page with UIKit. This page explains how to compile and run it.
 
 ## Prerequisites
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Flutter v3.3.0 and above
+- Flutter v3.3.0 and above.
 
 ## Implementation
 

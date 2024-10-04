@@ -1,6 +1,8 @@
+# User information
+
 You need to provide an avatar and nickname when using UIKit. The `ChatUIKitProvider` class is provided to facilitate this.
 
-`ChatUIKitProfile` encapsulates avatar and nickname information.
+`ChatUIKitProfile` encapsulates the avatar and nickname information:
 
 ```dart
 /// Profile type, used to distinguish between contacts and groups
@@ -121,11 +123,11 @@ class ChatUIKitProfile {
 }
 ```
 
-When the avatar nickname information is displayed in `ChatUIKit`, it will be obtained from the data you passed in `ChatUIKitProvider`. If it is not obtained, `ChatUIKitProvider` will ask for data through `ChatUIKitProviderProfileHandler`. If you return the required `ChatUIKitProfile`, it will cache your return to reduce the number of requests. If not, it will continue to ask for data the next time it is used.
+When the avatar nickname information is displayed in UIKit, it will be obtained from the data you passed in `ChatUIKitProvider`. If it is not obtained, `ChatUIKitProvider` will ask for data through `ChatUIKitProviderProfileHandler`. If you return the required data, it will cache your return to reduce the number of requests. If not, it will continue to ask for data the next time it is used.
 
 ## Set user information
 
-If you have your own app and user information, you can pass your user information to the `ChatUIKitProvider.instance.addProfiles(list)` method when the app starts.
+If you have your own app and user information, you can pass your user information to the `ChatUIKitProvider.instance.addProfiles(list` method when the app starts:
 
 ```dart
 ChatUIKitProvider.instance.addProfiles(list);
@@ -133,9 +135,9 @@ ChatUIKitProvider.instance.addProfiles(list);
 
 ## Implement Provider callbacks
 
-If there is no avatar or nickname that needs to be displayed, the system will ask for data when it needs to be displayed.
+If there is no avatar or nickname, the system will ask for data when it needs to be displayed.
 
-The definition is as follows:
+The `ChatUIKitProviderProfileHandler` definition is as follows:
 
 ```dart
 typedef ChatUIKitProviderProfileHandler = List<ChatUIKitProfile>? Function(
@@ -144,7 +146,7 @@ typedef ChatUIKitProviderProfileHandler = List<ChatUIKitProfile>? Function(
 );
 ```
 
-The profiles needed for the current chat will be called back to you. You need to respond accordingly and return the `ChatUIKitProfile` data. If no data is returned, you will be asked for it the next time it is used.
+The profiles needed for the current chat will be called back. You need to respond accordingly and return the `ChatUIKitProfile` data. If no data is returned, you will be asked for it the next time it is used.
 
 The `ChatUIKitProviderProfileHandler` usage is as follows:
 
@@ -162,9 +164,9 @@ ChatUIKitProvider.instance.profilesHandler = (profiles) {
 
 ### Update information based on group-related callbacks
 
-`ChatUIKitProfile` refers not only to user attributes, but also to the group's avatar and display name in the conversation list. When using group chat, you need to listen to the callback of creating a group/modifying the group name, and update `ChatUIKitProfile` to ensure that the correct group name is obtained in the conversation list.
+`ChatUIKitProfile` contains not only user attributes, but also to the group avatar and display name in a conversation list. When using a group chat, listen to the callback of creating a group/modifying the group name and update `ChatUIKitProfile` to ensure that the correct group name is obtained in the conversation list.
 
-Add listeners and update `ChatUIKitProfile` based on group-related callbacks.
+Add listeners and update `ChatUIKitProfile` based on group-related callbacks:
 
 ```dart
 // Add GroupObserver

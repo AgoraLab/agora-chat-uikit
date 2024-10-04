@@ -1,3 +1,5 @@
+# Conversation list
+
 The `ConversationList` component handles display and management of the conversation list. By default, the component provides features such as creating a new conversation, deleting a conversation, setting the DND mode, and pinning conversations to the top, specifically:
 
 - Click **Search** to go to the search page and search for conversations.

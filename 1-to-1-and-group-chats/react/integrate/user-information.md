@@ -1,6 +1,8 @@
-The data categories of UIKit include the following: Conversation list, contact list, group list, group member list, new request list, and chat page. These UI components need to display avatars and nicknames but do not have this data by default. The user provides data, and the UI component library uses the provided data to display avatars and nicknames. If the user does not provide this data, the default avatar and ID are used.
+# User information
 
-`DataProfileProvider` can be used to implement the initialization, update, and acquisition of avatars and nicknames.
+The data categories of UIKit include the following: the Conversation list, contact list, group list, group member list, new request list, and chat page. These UI components display avatars and nicknames but do not have this data by default. The user provides data, and the UI component library uses the provided data to display avatars and nicknames. If the user does not provide this data, the default avatar and ID are used.
+
+You can use `DataProfileProvider` to implement the initialization, update, and acquisition of avatars and nicknames.
 
 There are two main implementation methods: Registering data to provide callbacks and actively updating data.
 
@@ -160,11 +162,11 @@ export function SomeComponent() {
 }
 ```
 
-There is also a public `ChatService.getDataModel` interface, through which you can obtain the avatar and nickname of a specified user. It is convenient for usage in custom components.
+There is also a public `ChatService.getDataModel` interface, through which you can obtain the avatar and nickname of a specified user. It is more convenient for custom components.
 
-## Conversation list page and group list page
+## Conversation list and group list 
 
-Both components have list items of the group type, and groups have names. Therefore, users need to pay attention to notifications of group name changes to ensure data consistency.
+Both components have list items of the group type, and groups have names. Therefore, pay attention to notifications of group name changes to ensure data consistency.
 
 ## Chat page
 
@@ -173,4 +175,4 @@ In addition to using `DataProfileProvider` to obtain avatars and nicknames, the 
 ## Avatar and nickname usage rules
 
 - If provided in `DataProfileProvider`, use the provided data. If not, use the default avatar and ID for a user and the default avatar and name for a group.
-- For a chat page, use the avatar and nickname carried in the message first, otherwise use `DataProfileProvider`.
+- For a chat page, use the avatar and nickname carried in the message first; otherwise use `DataProfileProvider`.

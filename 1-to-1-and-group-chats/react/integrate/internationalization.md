@@ -1,10 +1,12 @@
-The UI component library `Chat UIKit SDK` provides internationalization services, with Chinese and English language packs provided by default.
+# Internationalization
+
+UI provides internationalization services, with Chinese and English language packs provided by default.
 
 For example:
 
 ```typescript
 export function App() {
-  // If no language is specified, the default language is obtained from the system
+  // If no language is specified, UIKIt obtains the default language from the system
   const [language] = React.useState<LanguageCode>("zh-Hans");
 
   return (
@@ -17,7 +19,7 @@ export function App() {
 
 ## Set up the language pack
 
-If you set a language other than Chinese or English, you need to provide a language pack for the specified language. The language pack is registered through the `onInitLanguageSet` callback.
+If you set a language to other than Chinese or English, provide a language pack for the specified language. The language pack is registered through the `onInitLanguageSet` callback.
 
 For example: 
 

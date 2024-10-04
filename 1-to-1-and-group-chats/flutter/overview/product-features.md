@@ -1,3 +1,5 @@
+# Product features
+
 This page introduces the common UIKit features for the one-to-one and group chat.
 
 ## General
@@ -92,11 +94,11 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ### Input status indication
 
-The input status indicator means real-time display of the input status of one party in a one-to-one chat, which enhances the real-time nature of communication interaction. This feature helps users understand whether the other party is replying.
+The input status indicator helps users understand whether the other party is replying in real time.
 
 ![Message status indication](../../assets/images/message_status_indication.png)
 
-This feature is implemented using the SDK's transparent message transmission. For details, see [the SDK documentation](https://docs.agora.io/en/agora-chat/client-api/messages/send-receive-messages?platform=web).
+This feature is implemented using the SDK's transparent message transmission. 
 
 The input status indication feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableTypingIndicator` is `true`. To disable this feature, set this parameter to `false`.
 

@@ -1,3 +1,5 @@
+# Chat messages
+
 The `ConversationDetail` component consists of the input component, message list component, menu component, and the navigation bar component. It supports the following features:
 
 - Send and receive messages, including text, emojis, pictures, voice, video, files, and business card messages.
