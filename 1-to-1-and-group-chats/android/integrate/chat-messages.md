@@ -418,7 +418,7 @@ You can configure the title bar, message list items, and other elements. The fol
 
 The title bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `EaseTitleBar`. If the title bar does not meet your requirements, customize it. For details about the title, background color, button image, and avatar, see [Conversation list](conversation-list.md).
 
-### Message list items
+### Set message list items
 
 #### Set the message list control functions
 

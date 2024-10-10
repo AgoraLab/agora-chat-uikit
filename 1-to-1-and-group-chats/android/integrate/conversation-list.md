@@ -4,7 +4,7 @@
 
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
-- Click the expand button in the navigation bar and select **New conversation** to start a conversation.
+- Click the expand button in the title bar and select **New conversation** to start a conversation.
 - Long-press a conversation in the list to display the menu, where you can delete the conversation, pin the conversation, or disable messages.
 
 A single conversation displays the conversation name, the last message, the time of the last message, the pinned and muted status, and other information.
@@ -286,6 +286,8 @@ To configure the content of a conversation list item, get the `EaseConversationL
 For details on setting the chat avatar and nickname, see [User-defined information](user-defined-information.md).
 
 ## Default functions implemented in EaseConversationListFragment
+
+`EaseConversationListFragment` implements the conversation do not disturb mode, conversation pinning, marking a conversation read, and conversation deletion features by default.
 
 ### Do Not Disturb
 

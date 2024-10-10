@@ -1,5 +1,14 @@
 # Customize the message chat
 
+The UIKit message chat page provides the following features:
+
+- Send and receive messages, including text, emojis, images, voice, video, files, and business card messages.
+- Copy, quote, recall, delete, edit, resend, and report messages.
+- Pull roaming messages from the server.
+- Clear local messages.
+
+For details about message-related functions, see [Product features](../overview/product-features.md).
+
 You can configure the chat page navigation bar, message list items, input box, jump events, and other elements. See [MessageListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Chat/Controllers/MessageListController.swift) for details.
 
 ## Customize the navigation bar

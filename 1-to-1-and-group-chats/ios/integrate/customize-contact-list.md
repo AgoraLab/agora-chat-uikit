@@ -1,8 +1,8 @@
 # Customize the contact list
 
-You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/contactviewcontroller) for details.
+The contact list provides contacts with the contact search, contact addition, friend request list entry, and group list entry features. You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/contactviewcontroller) for details.
 
-## Customize the header navigation bar
+## Customize the navigation bar
 
 The navigation bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar of the contact list page (`ContactViewController.swift`) does not meet your requirements, customize it and pass in the customized navigation class by overriding the method. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 

@@ -1,6 +1,20 @@
 # Customize the conversation list
 
-You can configure the head navigation bar and conversation list items on the conversation list page. See [ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
+The conversation list page is used to display all conversations of the current user, including single chats and group chats. It provides conversation search, deletion, pinning, and do not disturb features:
+
+- Click **Search** to jump to the search page and search for conversations.
+- Click a conversation list item to jump to the conversation details page.
+- Click the expand button in the navigation bar and select **New Conversation** to create a new conversation.
+- Swipe left, swipe right, or long-press a conversation to trigger the conversation extended function menu, where you can delete the conversation, pin the conversation, or turn on the do not disturb mode.
+
+A single conversation displays the conversation name, the last message, the time of the last message, the pinned and muted status, and others.
+
+- For one-on-one chats, the name displayed in the conversation is the nickname of the other user. If the other user has not set a nickname, the other user's ID is displayed. The conversation avatar is the other user's avatar. If not set, the default avatar is used.
+- For group chats, the conversation name is the name of the current group and the avatar is the default avatar.
+
+For details about the conversation list features, see [Product features](../overview/product-features.md).
+
+You can configure the navigation bar and conversation list items on the conversation list page. See [ ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
 
 ![Customize Conversation List](../../assets/images/conversation_list_highlighted.jpg)
 
