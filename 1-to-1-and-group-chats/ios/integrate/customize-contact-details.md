@@ -21,12 +21,12 @@ Get the click event of a single item in the array:
 
 ```Swift
         if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
         if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
