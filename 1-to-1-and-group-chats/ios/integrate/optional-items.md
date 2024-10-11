@@ -13,7 +13,7 @@ Note that the following are values to be set, which will change the UI style or 
     - `Appearance.alertContainerConstraintsSize = value`: The width and height of the center type pop-up window of an alert. The main usage class is in `XcodeAlertController.swift`.
     - `Appearance.alertStyle = value`: The rounded corner style of the pop-up window, that is, large rounded corners or small rounded corners.
   
-- `Appearance.primaryHue = value`: Main color, used for the background color of buttons, input boxes, and other controls.
+- `Appearance.primaryHue = value`: Main color, used for the message bubble color of buttons, input boxes, and other controls.
 - `Appearance.secondaryHue = value`: Secondary color, used for the background color of buttons, input boxes, and other controls.
 - `Appearance.errorHue = value`: Wrong color tone.
 - `Appearance.neutralHue = value`: Neutral tone.
