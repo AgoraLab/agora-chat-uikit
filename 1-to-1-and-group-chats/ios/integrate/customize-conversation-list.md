@@ -150,12 +150,12 @@ Get the click event of an item in the array:
 
 ```swift
         if let item = Appearance.conversation.listMoreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
         if let item = Appearance.conversation.listMoreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
