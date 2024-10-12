@@ -44,11 +44,11 @@ Before you start, make sure your development environment meets the following req
    - To install via npm, run the following command:
 
     ```shell
-    npm install easemob-chat-uikit --save
+    npm install agora-chat-uikit
     ```
    
    - To install via yarn, run the following command:
 
     ```shell
-    yarn add easemob-chat-uikit
+    yarn add agora-chat-uikit
     ```

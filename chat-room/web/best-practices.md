@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 
 UIKit provides two login methods:
 
-- Specify `userId` and `password/token` for automatic login during initialization.
+- Specify `userId` and `token` for automatic login during initialization.
 - Use `useClient` to get an SDK instance to log in manually.
 
 ```typescript
@@ -60,7 +60,7 @@ UIKit provides a chatroom event listening interface. You can register a chatroom
 The event listeners for actively calling API in UIKit are as follows:
 
 ```javascript
-import { eventHandler } from "easemob-chat-uikit";
+import { eventHandler } from "agora-chat-uikit";
 
 eventHandler.addEventHandler("chatroom", {
   onError: (error) => {
@@ -99,7 +99,7 @@ Get the Chat SDK instance from UIKit to listen for incoming chat room events:
 
 ```javascript
 import React, { useEffect } from "react";
-import { useClient } from "easemob-chat-uikit";
+import { useClient } from "agora-chat-uikit";
 
 const ChatroomApp = () => {
   const client = useClient();
@@ -116,4 +116,5 @@ const ChatroomApp = () => {
 };
 ```
 
-To learn more about the best practices above, click [here](https://github.com/AsteriskZuo/react-native-chat-room-demo). 
+// todo: Put the code into Agora's repository
+To learn more about the best practices above, click [here](https://github.com/easemob/ChatroomDemo/tree/dev/WEB/ChatroomDemo). 

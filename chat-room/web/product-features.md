@@ -58,13 +58,6 @@ In UIKit, you can customize the global broadcast logo and content. The default d
 
 You can also call the [REST API](https://docs.agora.io/en/agora-chat/restful-api/message-management#send-a-chat-room-message) to send global broadcasts.
 
-### Unread messages
-
-In UIKit, when the user slides the screen to view messages, the position of the message area will change, and the new messages generated at this time will be marked as unread messages. At the same time, an unread message button will appear in the lower right corner of the message area. This button displays the number of unread messages. After the user taps it, the message chain is scrolled to the latest message (usually the bottom of the message area) to ensure that unread messages are not missed.
-
-If the number of unread messages does not exceed 99, the button will display the actual number. If it reaches 100 or more, it will display **99+**.
-
-![Unread messages](../assets/images/message_unread.png)
 
 ### Muted list
 
@@ -90,7 +83,7 @@ In addition to sending and viewing messages in the chat room, a user can also lo
 
 In a chat room, when users discover that others have posted messages that may violate the chat room's rules or code of ethics, they can report the message, prompting the chat room owner to take appropriate action.
 
-In UIKit, by default, a user can trigger the report option by long-pressing a single message to report it. Users can choose the reason for the report, such as pornographic content, malicious attacks, hate speech, spam ads, or others. You can also modify the report reason option according to your scenario.
+In UIKit, by default, a user can trigger the report option by clicking **⋮** next to the message to report it. Users can choose the reason for the report, such as pornographic content, malicious attacks, hate speech, spam ads, or others. You can also modify the report reason option according to your scenario.
 
 ![Report a message](../assets/images/msg_report.png)
 
@@ -98,13 +91,13 @@ In UIKit, by default, a user can trigger the report option by long-pressing a si
 
 Users can translate a single message in a chat room from one language to another. The translation feature can help members in a chat room overcome language barriers and facilitate cross-language communication and exchange.
 
-In UIKit, by default, a user can long-press a single message to trigger the translation option. The default translated language is consistent with the system setting of the user's device. For example, if your phone's system language is English, the target language of the message translation is also English. The translated message is displayed in place of the original message.
+In UIKit, by default, a user can click **⋮** next to the message to trigger the translation option. The default translated language is the default language of the browser. For example, if your browser's language is English, the target language of the message translation is also English. The translated message is displayed in place of the original message.
 
 ![Translate a message](../assets/images/msg_translate.png)
 
 ### Recall a message
 
-After a user sends a message, they may find that the content of the message is incorrect or inappropriate. They can use the message recall feature to delete the message from the chat window of the chat room, so that other users can no longer see it. In UIKit, by default, a user can long-press a single message to trigger the recall option. The default recall limit is 2 minutes, and it can no longer be recalled after the timeout. The time limit can be adjusted through Agora Console, to a maximum of 7 days.
+After a user sends a message, they may find that the content of the message is incorrect or inappropriate. They can use the message recall feature to delete the message from the chat window of the chat room, so that other users can no longer see it. In UIKit, by default, a user can click **⋮** next to the message to trigger the recall option. The default recall limit is 2 minutes, and it can no longer be recalled after the timeout. The time limit can be adjusted through Agora Console, to a maximum of 7 days.
 
 Users can only recall their own messages. Even the chat room owner cannot recall messages sent by other members.
 
@@ -115,7 +108,7 @@ Users can only recall their own messages. Even the chat room owner cannot recall
 
 Banning is usually applied to members who violate the chat room rules, make inappropriate remarks, or constantly disrupt the order of the chat room.
 
-In UIKit, the mute option is available when long-pressing a single message. Users can also directly mute a specified member through the member list.
+In UIKit, the mute option is available when clicking **⋮** next to the message. Users can also directly mute a specified member through the member list.
 
 When a member is banned, they will be added to the banned list. If the user wants to unban a member, they need to find the member in the banned list, click the management function button to the right, trigger the unban option, and unban the member.
 
