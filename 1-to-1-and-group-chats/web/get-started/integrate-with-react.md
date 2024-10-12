@@ -19,7 +19,7 @@ Take the following steps:
     Use npm or yarn to install:
 
     ```
-    npm i easemob-chat-uikit --save;
+    npm i agora-chat-uikit
     ```
 
 1. Import the required components.
@@ -33,17 +33,17 @@ Take the following steps:
       Chat,
       ConversationList,
       // ...
-    } from "easemob-chat-uikit";
+    } from "agora-chat-uikit";
    
     // Import styles
-    import "easemob-chat-uikit/style.css";
+    import "agora-chat-uikit/style.css";
     ```
 
 1. Initialize UIKit.
 
     All components used in the project need `UIKitProvider`. When using UIKit, first configure the `UIKitProvider` parameters, as shown below.
 
-    To implement automated login, pass in `userId` and `password` or `token` during initialization.
+    To implement automated login, pass in `userId` and `token` during initialization.
 
     ```javascript
     import React from 'react';
@@ -55,7 +55,7 @@ Take the following steps:
           initConfig={{
             appKey: 'your app key', // Your app key
             userId: 'user ID', // User ID
-            password: 'password', // If you use a password to log in, pass it in .
+            token: 'token', // User token
           }}
         />
       </div>
@@ -80,8 +80,8 @@ Take the following steps:
 
     ```javascript
     import React from "react";
-       import { Chat, MessageList, TextMessage } from "easemob-chat-uikit";
-       import "easemob-chat-uikit/style.css";
+       import { ConversationList, Chat } from "agora-chat-uikit";
+       import "agora-chat-uikit/style.css";
        
        const App = () => {
          return (

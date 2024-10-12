@@ -6,7 +6,7 @@ The sample code is as follows:
 
 ```javascript
 import React, { useEffect } from "react";
-import { eventHandler } from "ease-chat-uikit";
+import { eventHandler } from "agora-chat-uikit";
 
 const ChatApp = () => {
   useEffect(() => {

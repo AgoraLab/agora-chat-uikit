@@ -59,13 +59,13 @@ Take the following steps to implement the project:
        - Install via npm:
     
            ```
-           npm install easemob-chat-uikit --save
+           npm install agora-chat-uikit
            ```
     
        - Install via yarn:
     
            ```
-           yarn add easemob-chat-uikit
+           yarn add agora-chat-uikit
            ```
    
    1. Build an app using UIKit components,
@@ -81,8 +81,8 @@ Take the following steps to implement the project:
             ConversationList,
             useClient,
             rootStore,
-          } from "easemob-chat-uikit";
-          import "easemob-chat-uikit/style.css";
+          } from "agora-chat-uikit";
+          import "agora-chat-uikit/style.css";
     
           const ChatApp = () => {
             const client = useClient();

@@ -5,7 +5,7 @@ UIKit integrates the Agora Video SDK, which enables audio and video calls in one
 Configure the following parameters to use it:
 
 ```javascript
-import { Chat } from "easemob-chat-uikit";
+import { Chat } from "agora-chat-uikit";
 
 const ChatApp = () => {
   return (

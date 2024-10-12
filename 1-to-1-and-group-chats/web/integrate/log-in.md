@@ -5,7 +5,7 @@ If `userId` and `token` are set during initialization, UIKit will automatically 
 The sample code is as follows:
 
 ```javascript
-import { UIKitProvider } from "easemob-chat-uikit";
+import { UIKitProvider } from "agora-chat-uikit";
 
 const App = () => {
   return (
@@ -23,14 +23,14 @@ const App = () => {
 To log in and out manually, you can obtain the Chat SDK connection instance and then call the SDK API:
 
 ```javascript
-import { useClient } from "easemob-chat-uikit";
+import { useClient } from "agora-chat-uikit";
 
 const ChatApp = () => {
   const client = useClient();
   const login = () => {
     client.open({
       user: "userId",
-      token: "chat token",
+      accessToken: "chat token",
     });
   };
   const logout = () => {

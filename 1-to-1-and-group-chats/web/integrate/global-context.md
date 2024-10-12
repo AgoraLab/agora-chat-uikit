@@ -32,7 +32,7 @@ All internal state data of UIKit is stored in `rootStore`. The `rootStore` data 
 ## Usage example
 
 ```javascript
-import { rootStore } from "easemob-chat-uikit";
+import { rootStore } from "agora-chat-uikit";
 ```
 
 ## Call API to change the global state
@@ -47,7 +47,7 @@ The sample code is as follows:
 
 ```javascript
 import React from "react";
-import { useConversationContext } from "easemob-chat-uikit";
+import { useConversationContext } from "agora-chat-uikit";
 
 const ChatAPP = () => {
   const { conversationList, setCurrentConversation } = useConversationContext();
@@ -85,13 +85,13 @@ The sample code is as follows:
 
 ```javascript
 import React from "react";
-import { useChatContext, useSDK } from "easemob-chat-uikit";
+import { useChatContext, useSDK } from "agora-chat-uikit";
 
 const ChatAPP = () => {
-  const { easemobChat } = useSDK(); // Get Chat SDK
+  const { agoraChat } = useSDK(); // Get Chat SDK
   const { messages, sendMessage } = useChatContext();
   const sendCustomMessage = () => {
-    const customMsg = easemobChat.message.create({
+    const customMsg = agoraChat.message.create({
       type: "custom",
       to: "targetId", // Peer user ID for a one-to-one chat, group ID for a group chat.
       chatType: "singleChat",
@@ -137,7 +137,7 @@ The sample code is as follows:
 
 ```javascript
 import React from "react";
-import { useAddressContext } from "easemob-chat-uikit";
+import { useAddressContext } from "agoraChat-chat-uikit";
 
 const ChatAPP = () => {
   const { appUsersInfo } = useAddressContext();

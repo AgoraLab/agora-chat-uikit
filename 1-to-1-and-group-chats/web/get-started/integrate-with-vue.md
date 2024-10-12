@@ -107,8 +107,8 @@ Take the following steps:
 
     1. Install UIKit:
 
-        ```javascript
-        npm i easemob-chat-uikit --save;
+        ```
+        npm i agora-chat-uikit
         ```
 
     1. Create a `react_app/chat.jsx` file, import UIKit, and initialize it using the app key and user information.
@@ -117,13 +117,13 @@ Take the following steps:
 
        ```javascript
        // Import react_app/chat.jsx component
-       import { UIKitProvider, Chat, ConversationList } from "easemob-chat-uikit";
+       import { UIKitProvider, Chat, ConversationList } from "agora-chat-uikit";
        // Introduce UIKit styles
-       import 'easemob-chat-uikit/style.css'
+       import 'agora-chat-uikit/style.css'
        
        const appKey = "your appkey";
        const userId = "userId";
-       const password = "password";
+       const token = "token";
        
        const EaseChat = (props) => {
          // The theme attribute passed in by the parent component
@@ -133,7 +133,7 @@ Take the following steps:
              initConfig={{
                appKey,
                userId,
-               password
+               token
              }}
              theme={{
                mode: theme

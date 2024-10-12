@@ -6,8 +6,8 @@ UIKit provides a `Provider` component for data management. It does not render an
 
 ```javascript
 import React from 'react';
-import { UIKitProvider } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { UIKitProvider } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 import ChatApp from './ChatApp'
 ReactDOM.createRoot(document.getElementById('root') as Element).render(
   <div>
