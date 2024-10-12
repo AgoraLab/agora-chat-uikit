@@ -104,4 +104,4 @@ Take the following steps to implement message sending:
 
    Enter the message content at the bottom of the screen and click **Send** to send the message.
 
-   ![Send a message](../assets/images/click_chat.png)
+   ![Send a message](../assets/images/click_chat_2.png)
