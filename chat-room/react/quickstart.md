@@ -40,7 +40,7 @@ Take the following steps to implement message sending:
    ```typescript
     export function App() {
       const appKey = '<your app key>';
-      return <Container appKey={appKey}>{/* // todo: 在这里添加组件 */}</Container>;
+      return <Container appKey={appKey}>{/* // todo: add component here */}</Container>;
     }
    ```
 
