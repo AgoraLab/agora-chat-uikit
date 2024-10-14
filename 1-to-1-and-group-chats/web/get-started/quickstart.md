@@ -40,7 +40,7 @@ Take the following steps to implement the project:
     Project directory:
     ├── package.json
     ├── vite.config.js  
-    ├── public                  # Webpack's static directory.
+    ├── public                  # Vite's static directory.
     ├── src
     │   ├── assets
     │   ├── App.css             # CSS for the App root component.
