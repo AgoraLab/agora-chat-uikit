@@ -16,27 +16,26 @@ Before you start, make sure your development environment meets the following req
 
     ```shell
     # Install the CLI tools.
-    npm install create-react-app
+    npm install -g create-vite
     # Build a my-app project.
-    npx create-react-app my-app
+    create-vite my-app --template react 
     cd my-app
+    # Install dependencies
+    npm install
     ```
 
     ```
     Project directory:
     ├── package.json
+    ├── vite.config.js  
     ├── public                  # Webpack's static directory.
-    │   ├── favicon.ico
-    │   ├── index.html          # The default single page application.
-    │   └── manifest.json
     ├── src
+    │   ├── assets
     │   ├── App.css             # CSS for the App root component.
     │   ├── App.js              # App component code.
-    │   ├── App.test.js
     │   ├── index.css           # Startup file style.
-    │   ├── index.js            # Startup file.
-    │   ├── logo.svg
-    │   └── serviceWorker.js
+    │   └── main.jsx            # Startup file.
+    ├── index.html
     └── yarn.lock
     ```
 1. Install UIKit into your project:

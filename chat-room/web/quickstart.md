@@ -26,27 +26,26 @@ Take the following steps to implement message sending:
 
     ```
     # Install the CLI tools.
-    npm install create-react-app
+    npm install -g create-vite
     # Build a my-app project.
-    npx create-react-app my-app
+    create-vite my-app --template react 
     cd my-app
+    # Install dependencies
+    npm install
     ```
 
     ```
     Project directory:
     ├── package.json
+    ├── vite.config.js  
     ├── public                  # Webpack's static directory.
-    │   ├── favicon.ico
-    │   ├── index.html          # The default single page application.
-    │   └── manifest.json
     ├── src
+    │   ├── assets
     │   ├── App.css             # CSS for the App root component.
     │   ├── App.js              # App component code.
-    │   ├── App.test.js
     │   ├── index.css           # Startup file style.
-    │   ├── index.js            # Startup file.
-    │   ├── logo.svg
-    │   └── serviceWorker.js
+    │   └── main.jsx            # Startup file.
+    ├── index.html
     └── yarn.lock
     ```
 
@@ -118,6 +117,10 @@ Take the following steps to implement message sending:
         <div style={{
           display: 'flex',
           height: '100vh',
+          gap: '1px',
+          width: '100%',
+          position: 'fixed',
+          top: '0'
         }}>
           <Provider
             theme={{
@@ -127,7 +130,7 @@ Take the following steps to implement message sending:
               appKey: appKey,
             }}
           >
-            <div>
+            <div style={{ flex: "1" }}>
               <div>
                 <label>userID</label>
                 <input
@@ -149,10 +152,10 @@ Take the following steps to implement message sending:
               </div>
             </div>
     
-            <div style={{ width: "350px" }}>
+            <div style={{ flex: "1" }}>
               <Chatroom chatroomId={chatroomId}></Chatroom>
             </div>
-            <div style={{ width: "350px" }}>
+            <div style={{ flex: "1" }}>
               <ChatroomMember chatroomId={chatroomId}></ChatroomMember>
             </div>
           </Provider>
@@ -174,7 +177,7 @@ Take the following steps to implement message sending:
 1. Run the project:
 
     ```
-    npm run start
+    npm run dev
     ```
 
 1. Send a message
