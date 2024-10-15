@@ -66,18 +66,6 @@ Users can send and receive voice messages in addition to text ones.
 Messages sent by users are examined to determine whether they comply with the platform's
 community guidelines, terms of service, and relevant laws and regulations.
 
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-This feature is in the `Typing` component and enabled by default. Disable it in the global configuration as follows:
-
-```javascript
-features.chat.messageInput.typing = false;
-```
-
-This feature is implemented using the SDK's transparent message transmission. 
-
 ### Group mention
 
 The group mention feature allows users to directly mention specific members in a group chat using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates the efficient delivery of important information and ensures that key messages receive timely attention and response.
@@ -96,22 +84,19 @@ This section covers specific features related to managing conversations.
 
 ### Conversation marked as read
 
-Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
-long-press it to open a context menu and mark the conversation as read.
+Shows whether the user has read a conversation with unread messages. The user can click **⋮** next to a conversation list item and select **Mark as Read**.
 
 ### Pin a conversation (sticky conversation)
 
-The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the
-top for easy access.
+The user can click **⋮** next to a conversation list item and pin it to the top for easy access.
 
 ### Do not disturb
 
-The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND
-mode.
+The user can click **⋮** next to a conversation list item and turn on the DND mode.
 
 ### Delete a conversation
 
-The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
+The user can click **⋮** next to a conversation list item and delete the conversation.
 
 ## Message-related
 
@@ -301,3 +286,15 @@ This feature is enabled by default. You can disable it in the global configurati
 features.chat.header.pinMessage = false;
 features.chat.message.pin = false;
 ```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+This feature is in the `Typing` component and enabled by default. Disable it in the global configuration as follows:
+
+```javascript
+features.chat.messageInput.typing = false;
+```
+
+This feature is implemented using the SDK's transparent message transmission. 
