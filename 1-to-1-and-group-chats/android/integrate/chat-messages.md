@@ -95,8 +95,8 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 | `setOnChatRecordTouchListener()` | Set the touch event listener for the recording button. |
 | `setOnModifyMessageListener()` | Set the result callback listener for editing a message. |
 | `setOnReportMessageListener()` | Set the result callback listener for reporting a message. |
-| `setMsgTimeTextColor()` | Set the color of the message time indication. |
-| `setMsgTimeTextSize()` | Set the font size of the message time indication. |
+| `setMsgTimeTextColor()` | Set the color of the message time. |
+| `setMsgTimeTextSize()` | Set the font size of the message time. |
 | `setReceivedMsgBubbleBackground()` | Set the background of the received message bubble area. |
 | `setSentBubbleBackground()` | Set the background of the sent message bubble area. |
 | `showNickname()` | Set whether to display the nickname. Set to `true` for yes, `false` (default) for no. |
@@ -194,7 +194,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
       }
   
       override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
-          // If you want to use the default, return super.getItemNotEmptyViewType(position).
+          // Return ViewHolder according to the returned viewType.
           if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
               CustomChatTypeViewViewHolder(
                   CustomTypeChatRow(parent.context, isSender = viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME)
@@ -234,9 +234,9 @@ val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chat
 | `addHeaderAdapter()` | Add an adapter for the header layout of the message list. |
 | `addFooterAdapter()` | Add an adapter for the footer layout of the message list. |
 | `removeAdapter()` | Remove the specified adapter. |
-| `addItemDecoration()` | The decorator that adds a list of messages. |
+| `addItemDecoration()` | Add a message list decorator. |// TODO：是消息列表项的装饰器？
 | `removeItemDecoration()` | Remove the message list decorator. |
-| `setAvatarDefaultSrc()` | Sets the default avatar for an entry. |
+| `setAvatarDefaultSrc()` | Set the default avatar for an entry. |
 | `setAvatarShapeType()` | Set the style of the avatar: Default, round, and rectangular. |
 | `showNickname()` | Whether to display the nickname of the entry. `EaseChatFragment#Builder` also provides a setting method for this feature. |
 | `setItemSenderBackground()` | Set the background of the sender. `EaseChatFragment#Builder` also provides a setting method for this feature. |
@@ -441,7 +441,7 @@ EaseChatFragment.Builder(conversationID, easeChatType)
     .setReceivedMsgBubbleBackground() //Set the background of the received message bubble area.
     .setSentBubbleBackground() //Set the background of the sent message bubble area.     
     .hideReceiverAvatar() //Set not hide the receiver's avatar. Displayed by default.
-    .hideSenderAvatar() //Set to hude the sender's avatar. Displayed by default.
+    .hideSenderAvatar() //Set to hide the sender's avatar. Displayed by default.
     .setChatBackground() //Set the background of the chat list area.
     .sendMessageByOriginalImage() //Set whether to send the original image when sending image messages: true: Yes; (default) false: No.
     .setEmptyLayout() //Set the blank page of the chat list.   
@@ -591,7 +591,7 @@ For details on setting avatars and nicknames, see [User-defined information](use
 | `chatOtherYearFormat` | The format for years other than the current year in the message list. The default is `MMM dd, yyyy HH:mm`. |
 
 ```kotlin
-    // Date language region switch (follow the mobile phone regional language setting). The default value is false and uses ENGLISH.
+    // Date/language region switch (follow the mobile phone regional language setting). The default value is false and uses ENGLISH.
     EaseIM.getConfig()?.dateFormatConfig?.useDefaultLocale = true  
     // Today's date format in the message
     EaseIM.getConfig()?.dateFormatConfig?.chatTodayFormat = "HH:mm"

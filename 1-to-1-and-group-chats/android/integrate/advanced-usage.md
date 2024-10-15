@@ -1,15 +1,18 @@
 # Advanced usage
 
-## Activity jump path setting
+## Activity jump path setting   // TODO： Activity routing setting?
 
-If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify its jump.
+If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify its jump. // TODO： 最后一句：you can modify its route.
 
 For example, if `EaseChatActivity` cannot meet the current needs, inherit `EaseChatActivity` to implement a new `EaseActivity`. When calling `EaseChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `EaseActivity`.
+
+// TODO：第二行的 `EaseActivity` 是否改为 `ChatActivity`
+// TODO:第二句 When calling `EaseChatActivity.actionStart` for page redirection, it will intercept the redirection to `EaseActivity` via `getActivityRoute()`.
 
 Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// Jump implementation in EaseChatActivity
+// Jump implementation in EaseChatActivity     // TODO: Routing implementation in EaseChatActivity
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
@@ -49,7 +52,7 @@ UIKit provides some global configurations that can be set during initialization.
 
 ```kotlin
 val avatarConfig = EaseAvatarConfig()
-// Set avatar to rounded corners
+// Set avatar with rounded corners
 avatarConfig.avatarShape = EaseImageView.ShapeType.ROUND
 val config = EaseIMConfig(avatarConfig = avatarConfig)
 EaseIM.init(this, options, config)

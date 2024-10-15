@@ -88,9 +88,9 @@ Set up your environment in the following way:
 
 ## Implementation
 
-Take the following steps to send a message to a one-to-one or group chat.
+Take the following steps to send a message to a one-to-one or group chat. // 下面这个是发送单聊消息吧，因此需要删除 "or group"
 
-1. Create a quick start page.
+1. Create a quick start page.// TODO：可以说创建快速开始页面吗？是创建单聊页面用于快速开始？
 
     1. Open the `app/res/values/strings.xml` file and replace the content with the following:
 
@@ -310,5 +310,5 @@ Take the following steps to send a message to a one-to-one or group chat.
 1. Enter the user ID and password and click **Login**. There will be a `Toast` prompt whether the login was
    successful or failed. You can also view it through Logcat.
 1. Log in to another account on another device or simulator.
-1. Click **Start** to start chatting.
+1. Click **Start** to start chatting. // TODO：是 Start 还是 Start Chat?
 

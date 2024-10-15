@@ -5,6 +5,8 @@ Agora Chat SDK. It provides various components to implement features such as a c
 contact list and interface, and others. This helps you to quickly build instant messaging applications based 
 on the particular business needs.
 
+// TODO：It provides various components to implement features such as a conversation list, chat, a contact list, and related pages.
+
 To access the source code, [click here](https://github.com/easemob/chatuikit-android).
 
 ## UIKit basic project structure
