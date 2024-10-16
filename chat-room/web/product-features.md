@@ -83,7 +83,7 @@ In addition to sending and viewing messages in the chat room, a user can also lo
 
 In a chat room, when users discover that others have posted messages that may violate the chat room's rules or code of ethics, they can report the message, prompting the chat room owner to take appropriate action.
 
-In UIKit, by default, a user can trigger the report option by clicking **⋮** next to the message to report it. Users can choose the reason for the report, such as pornographic content, malicious attacks, hate speech, spam ads, or others. You can also modify the report reason option according to your scenario.
+In UIKit, by default, users can report a message by selecting the ⋮ icon next to it. They can choose a reason for the report, such as pornographic content, malicious attacks, hate speech, spam ads, or others. You can also modify the available report reasons to fit your scenario.
 
 ![Report a message](../assets/images/msg_report.png)
 
@@ -91,13 +91,13 @@ In UIKit, by default, a user can trigger the report option by clicking **⋮** n
 
 Users can translate a single message in a chat room from one language to another. The translation feature can help members in a chat room overcome language barriers and facilitate cross-language communication and exchange.
 
-In UIKit, by default, a user can click **⋮** next to the message to trigger the translation option. The default translated language is the default language of the browser. For example, if your browser's language is English, the target language of the message translation is also English. The translated message is displayed in place of the original message.
+In UIKit, by default, users can click the ⋮ icon next to a message to trigger the translation option. The default translation language is the browser’s default language. For example, if your browser’s language is English, the target language for the message translation will also be English. The translated message is displayed in place of the original message.
 
 ![Translate a message](../assets/images/msg_translate.png)
 
 ### Recall a message
 
-After a user sends a message, they may find that the content of the message is incorrect or inappropriate. They can use the message recall feature to delete the message from the chat window of the chat room, so that other users can no longer see it. In UIKit, by default, a user can click **⋮** next to the message to trigger the recall option. The default recall limit is 2 minutes, and it can no longer be recalled after the timeout. The time limit can be adjusted through Agora Console, to a maximum of 7 days.
+After sending a message, users may find that its content is incorrect or inappropriate. They can use the message recall feature to delete the message from the chat window, so other users can no longer see it. In UIKit, by default, users can click the ⋮ icon next to a message to trigger the recall option. The default recall limit is 2 minutes, after which the message can no longer be recalled. This time limit can be adjusted through the Agora Console, up to a maximum of 7 days.
 
 Users can only recall their own messages. Even the chat room owner cannot recall messages sent by other members.
 

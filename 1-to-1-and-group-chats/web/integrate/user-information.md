@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as Element).render(
         appKey: 'your app key',
         userId: 'userId',
         token: 'token',
-        translationTargetLanguage: 'zh-Hans', // Translation target language
+        translationTargetLanguage: 'es', // Translation target language
         useUserInfo: true, // Whether to use the user attribute feature to display the avatar nickname (UIKit will obtain user attributes internally and must be set by the user)
       }}
       local={{

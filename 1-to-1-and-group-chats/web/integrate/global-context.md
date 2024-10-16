@@ -116,17 +116,17 @@ const ChatAPP = () => {
 | Name | Property or method | Type | Description |
 |---|---|---|---|
 | `messages` | Property | Message | All message data in UIKit. |
-| `repliedMessage` | Property | `easemobChat.MessagesType` | The message reply. |
+| `repliedMessage` | Property | `AgoraChat.MessagesType` | The message reply. |
 | `typing` | Property | Typing | The user object being entered. |
-| `sendMessage` | Method | `(message: easemobChat.MessageBody) => Promise<void>` | Send a message. |
+| `sendMessage` | Method | `(message: AgoraChat.MessageBody) => Promise<void>` | Send a message. |
 | `deleteMessage` | Method |<code>deleteMessage: (cvs: CurrentConversation, messageId: string &#124; string[]) => void &#124; Promise<void></code> | Delete a message. |
 | `recallMessage` | Method |`(cvs: CurrentConversation, messageId: string, isChatThread?: boolean) => Promise<void>` | Recall a message. |
 | `translateMessage` |Method | `(cvs: CurrentConversation, messageId: string, language: string) => Promise<boolean>` | Translate text messages. |
-| `modifyMessage` | Method |`(messageId: string, msg: easemobChat.TextMsgBody) => Promise<void>` | Edit a message on the server. After editing, the modified message will be displayed to the peer user. This method is only valid for text messages. |
-| `modifyLocalMessage` | Method |<code>(id: string, message: easemobChat.MessageBody &#124; RecallMessage) => void</code> | Edit a local message. This method is valid for any type of message. |
+| `modifyMessage` | Method |`(messageId: string, msg: AgoraChat.TextMsgBody) => Promise<void>` | Edit a message on the server. After editing, the modified message will be displayed to the peer user. This method is only valid for text messages. |
+| `modifyLocalMessage` | Method |<code>(id: string, message: AgoraChat.MessageBody &#124; RecallMessage) => void</code> | Edit a local message. This method is valid for any type of message. |
 | `updateMessageStatus` | Method |<code>(msgId: string, status: 'received' &#124; 'read' &#124; 'unread' &#124; 'sent' &#124; 'failed' &#124; 'sending' &#124; 'default') => void</code> | Update a message status. |
 | `sendTypingCommand` | Method |`(cvs: CurrentConversation) => void` | Send the typing indication. |
-| `setRepliedMessage` | Method |<code>(message: easemobChat.MessageBody &#124; null) => void</code> | Set a  message reply. |
+| `setRepliedMessage` | Method |<code>(message: AgoraChat.MessageBody &#124; null) => void</code> | Set a  message reply. |
 | `clearMessages` | Method |`(cvs: CurrentConversation) => void` | Clear the local messages of a conversation. |
 
 ## useAddressContext
@@ -154,7 +154,7 @@ const ChatAPP = () => {
 | `groups` | Property | `GroupItem[]` | All groups. |
 | `setAppUserInfo` | Method | `(appUsersInfo: Record<string, AppUserInfo>) => void` | Set the user information. |
 | `setGroups` | Method | `(groups: GroupItem[]) => void` | Set the group data. |
-| `setGroupMemberAttributes` | Method | `(groupId: string, userId: string, attributes: easemobChat.MemberAttributes) => void` | Set the group member attributes. |
+| `setGroupMemberAttributes` | Method | `(groupId: string, userId: string, attributes: AgoraChat.MemberAttributes) => void` | Set the group member attributes. |
 
 
 

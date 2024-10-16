@@ -79,10 +79,10 @@ const ChatApp = () => {
             giftConfig: {
               gifts: [
                 {
-                  giftId: "giftId",
-                  giftIcon: "https://example.com/pictures/gift/Gift1.png",
-                  giftName: "Heart",
-                  giftPrice: "giftPrice",
+                  giftId: "giftId", // The ID of the gift
+                  giftIcon: "https://example.com/pictures/gift/Gift1.png", // The URL of the gift image
+                  giftName: "Heart", // The name of the gift
+                  giftPrice: "1", // The price of the gift
                 },
               ],
             },

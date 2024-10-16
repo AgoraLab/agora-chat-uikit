@@ -47,8 +47,8 @@ Take the following steps:
 
     ```javascript
     import React from 'react';
-    import { UIKitProvider } from 'easemob-chat-uikit';
-    import 'easemob-chat-uikit/style.css';
+    import { UIKitProvider } from 'agora-chat-uikit';
+    import 'agora-chat-uikit/style.css';
     ReactDOM.createRoot(document.getElementById('root') as Element).render(
       <div>
         <UIKitProvider

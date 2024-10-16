@@ -4,14 +4,14 @@
 
 The `Chatroom` and `ChatroomMember` components need to be wrapped in the `UIKitProvider` component for use. If you use `useClient` to obtain the SDK inside the `UIKitProvider` component before initialization is completed, the acquisition will fail, so it is recommended to put `UIKitProvider` in the parent component that uses the `Chatroom` or `ChatroomMember` component.
 
-```typescript
+```javascript
 // App.ts
 // ...
 const App = () => {
     return <Chatroom />
 }
 
-// idnex.ts
+// index.ts
 // ...
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <UIKitProvider>
@@ -106,7 +106,7 @@ const ChatroomApp = () => {
 
   useEffect(() => {
     client.addEventHandler("chatroom", {
-      onChatroomEvent: (event: EasemobChat.EventData) => {
+      onChatroomEvent: (event) => {
         if (event.operation === "muteMember") {
           // console.log('You have been banned')
         }
@@ -116,5 +116,3 @@ const ChatroomApp = () => {
 };
 ```
 
-// todo: Put the code into Agora's repository
-To learn more about the best practices above, click [here](https://github.com/easemob/ChatroomDemo/tree/dev/WEB/ChatroomDemo). 

@@ -4,8 +4,6 @@ UIKit provides various components to quickly build chat room applications for yo
 
 The source code is available [here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-web).
 
-// todo: Update Agora chat room demo
-Try out UIKit demo [here](https://webim-live.easemob.com/login). 
 
 ## Feature overview
 

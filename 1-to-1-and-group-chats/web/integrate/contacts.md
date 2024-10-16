@@ -32,7 +32,7 @@ import "agora-chat-uikit/style.css";
 const ContactList = () => {
   return (
     <div style={{ width: "30%", height: "100%" }}>
-      <ContactList header={<div>自定义 Header</div>} />
+      <ContactList header={<div>Custom Header</div>} />
     </div>
   );
 };

@@ -31,7 +31,7 @@ const App = () => {
   return (
     <UIKitProvider
       theme={{
-        primaryColor: '#00CE76', // 16 binary color value
+        primaryColor: '#00CE76', // hexidecimal color value
       }}
     ></UIKitProvider>
   );
@@ -69,9 +69,9 @@ Modify these variables in the following way:
     In a project created with Create React App, you can create a SCSS file to override the default variables. In the example, we call the created file `your-theme.scss` and then import the files in the following order:
     
     ```scss
-    @import 'round-chat-uikit/style.scss'; // round-chat-uikit theme
+    @import 'agora-chat-uikit/style.scss'; // agora-chat-uikit theme
     @import 'your-theme.scss'; // Your theme files
-    @import 'round-chat-uikit/components.scss'; // UIKit component styles
+    @import 'agora-chat-uikit/components.scss'; // UIKit component styles
     ```
 
 - Override SCSS variables by modifying the Webpack config.
