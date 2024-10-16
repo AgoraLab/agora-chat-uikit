@@ -14,7 +14,7 @@ UIKit has built-in light (default) and dark themes.
 
 Android uses its own platform features to create `values-night` resource files in the `res` directory. The Android system will use the corresponding resource package as the system switches between light and dark colors.
 
-UIKit defines a set of basic colors to meet the needs of the UIKit's own theme colors. If you want to customize the colors, create a new `values-night` folder in your project, copy the `ease_colors.xml` file into this folder, and then modify the basic colors in it.
+UIKit defines a set of basic colors to meet its theme color requirements. If you want to customize the colors, create a new `values-night` folder in your project, copy the `ease_colors.xml` file to this folder, and then modify the basic colors in it.
 
 ## Switch to a built-in theme
 

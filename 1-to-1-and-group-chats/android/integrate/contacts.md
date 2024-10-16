@@ -71,7 +71,7 @@ EaseContactsListFragment.Builder()
 | `setOnContactSelectedListener()` | Set the item selection event listener. |
 | `setEmptyLayout()` | Set a blank page for the contact list. |
 | `setCustomAdapter()` | Set a custom adapter. The default is `EaseContactListAdapter`. |
-| `setCustomFragment()` | Set a custom chat fragment. Iherit from `EaseContactsListFragment`. |
+| `setCustomFragment()` | Set a custom chat fragment. Inherit from `EaseContactsListFragment`. |
 
 ### Set the title bar
 
@@ -121,7 +121,7 @@ Inherit from `EaseContactListAdapter` to implement your own `CustomContactListAd
    class CustomContactListAdapter : EaseContactListAdapter() {
        override fun getItemNotEmptyViewType(position: Int): Int {
             // Set a custom itemViewType based on the message type.
-            // If the default itemViewTyp is used, return super.getItemNotEmptyViewType(position).
+            // If the default itemViewType is used, return super.getItemNotEmptyViewType(position).
            return CUSTOM_YOUR_CONTACT_TYPE
        }
    
@@ -171,7 +171,7 @@ EaseContactsListFragment.Builder()
 
 Other methods marked as open can be overridden to implement a custom logic. 
 
-### Get the number of unread contacts' system notifications
+### Get the number of unread contacts' system notifications // TODO:获取联系人系统通知未读数
 
 ```kotlin
 val systemConversation = EaseNotificationMsgManager.getInstance().getConversation() 
