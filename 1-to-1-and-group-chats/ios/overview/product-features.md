@@ -92,30 +92,7 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
 
-## Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-The UI and logic structure of the input status indication are as follows:
-
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
-
-- Input status-related callbacks and methods are as follows:
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
-  - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.
-
-The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
-
-The sample code is as follows:
-
-```swift
-    Appearance.chat.enableTyping = false
-
-```
-
-This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback to process navigation-related effects.
-
-## Local search
+### Local search
 
 Users can search for messages within a conversation, with support for keyword matching.
 
@@ -136,7 +113,7 @@ The sample code is as follows:
 
 ```
 
-## Group mentions
+### Group mentions
 
 Uses can directly mention specific members in a group chat using the @ symbol, and the mentioned members will receive a special notification. 
 
@@ -334,3 +311,26 @@ The message pinning feature is enabled by default in `Appearance.chat`. That is,
 Appearance.chat.enablePinMessage = false
 Appearance.chat.messageLongPressedActions.removeAll { $0.tag == "Pin" }
 ```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+The UI and logic structure of the input status indication are as follows:
+
+- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+
+- Input status-related callbacks and methods are as follows:
+  - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
+  - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.
+
+The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
+
+The sample code is as follows:
+
+```swift
+    Appearance.chat.enableTyping = false
+
+```
+
+This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback to process navigation-related effects.

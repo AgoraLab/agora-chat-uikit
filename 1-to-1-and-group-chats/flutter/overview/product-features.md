@@ -92,22 +92,6 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
 
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-![Message status indication](../../assets/images/message_status_indication.png)
-
-This feature is implemented using the SDK's transparent message transmission. 
-
-The input status indication feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableTypingIndicator` is `true`. To disable this feature, set this parameter to `false`.
-
-The sample code is as follows:
-
-```dart
-ChatUIKitSettings.enableTypingIndicator = false;
-```
-
 ### Local message search
 
 The local message search feature allows users to quickly search for messages within a conversation, supporting keyword matching. This helps users efficiently find the information they need, improving work efficiency and the convenience of information management.
@@ -299,4 +283,20 @@ The message pinning feature is enabled by default. That is, the default value of
 
 ```dart
 ChatUIKitSettings.enablePinMsg = false;
+```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+![Message status indication](../../assets/images/message_status_indication.png)
+
+This feature is implemented using the SDK's transparent message transmission. 
+
+The input status indication feature is enabled by default, that is, the default value of `ChatUIKitSettings.enableTypingIndicator` is `true`. To disable this feature, set this parameter to `false`.
+
+The sample code is as follows:
+
+```dart
+ChatUIKitSettings.enableTypingIndicator = false;
 ```
