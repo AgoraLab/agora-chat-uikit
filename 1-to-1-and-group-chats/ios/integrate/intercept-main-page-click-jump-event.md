@@ -41,8 +41,8 @@ Inherit `MessageListController` and register it in `ComponentsRegister.shared.Me
 | `filterMessageActions` | Filter pop-up menu items after long-pressing. | Yes |
 | `showMessageLongPressedDialog` | Display the menu after long-pressing a message. | Yes |
 | `processMessage` | Process the pop-up window click event after long-pressing a message. | Yes |
-| `editAction` | Click on the message and long-press it. The edit window will pop up. | Yes |
-| `reportAction` | Click and hold the report button in the menu to call the report window. | Yes |
+| `editAction` | Display the message edit window when a click `Edit` of the message long-pressing menu.| Yes |
+| `reportAction` | Display the message edit window when a user long-press a message and click `Edit`. | Yes |
 | `messageAttachmentLoading` | Display the loading page after clicking on pictures, videos, and attachments. | Yes |
 | `messageBubbleClicked` | Message bubble click.  | Yes |
 | `viewContact` | View contacts.  | Yes |

@@ -2,7 +2,7 @@
 
 The UIKit message chat page provides the following features:
 
-- Send and receive messages, including text, emojis, images, voice, video, files, and business card messages.
+- Send and receive messages, including text, emojis, images, voice, video, files, business card messages and combined messages.
 - Copy, quote, recall, delete, edit, resend, and report messages.
 - Pull roaming messages from the server.
 - Clear local messages.
@@ -15,7 +15,7 @@ You can configure the chat page navigation bar, message list items, input box, j
 
 The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 
-## Customize the message list items
+## Customize the message list cells
 
 To customize the contents of list items in the message table, that is, cells of various message types, take the following steps:
 
@@ -35,7 +35,7 @@ If you need to reuse the existing logic and add new logic, override the correspo
 
 If you need to modify the previous logic, copy the code in the previous `refresh` method and modify it without calling it `super.xxxx`.
 
-| Message cell class | Description | Override the corresponding properties |
+| Message cell class | Description | Properties to register and override |
 | ------------------------ | ------------------ | -------- -------------------------------------------------- -- |
 | `TextMessageCell` | Text message | `ComponentsRegister.shared.ChatTextMessageCell = YourTextMessageCell.self` |
 | `ImageMessageCell` | Image message | `ComponentsRegister.shared.ChatImageMessageCell = YourImageMessageCell.self` |
@@ -44,7 +44,7 @@ If you need to modify the previous logic, copy the code in the previous `refresh
 | `FileMessageCell` | File message | `ComponentsRegister.shared.ChatFileMessageCell = YourFileMessageCell.self` |
 | `ContactCardCell` | Contact card message | `ComponentsRegister.shared.ChatContactMessageCell = YourContactCardCell.self` |
 | `LocationMessageCell` | Location message | `ComponentsRegister.shared.ChatLocationCell = YourLocationMessageCell.self` |
-| `CombineMessageCell` | Combine forwarded messages | `ComponentsRegister.shared.ChatCombineCell = YourCombineMessageCell.self` |
+| `CombineMessageCell` | Combined messages | `ComponentsRegister.shared.ChatCombineCell = YourCombineMessageCell.self` |
 | `AlertMessageCell` | Prompt message | `ComponentsRegister.shared.ChatAlertCell = YourAlertMessageCell.self` |
 | `CustomMessageCell` | Custom message | `ComponentsRegister.shared.ChatCustomMessageCell = YourCustomMessageCell.self` |
 
@@ -76,7 +76,7 @@ Set the message text color of the receiver/sender on the chat page with `Appeara
 
 ### Set the message date
 
-- `Appearance.chat.dateFormatToday = "HH:mm"`: Set the message time format.
+- `Appearance.chat.dateFormatToday = "HH:mm"`: Set the message time format for the current day.
 - `Appearance.chat.dateFormatOtherDay = "MM-dd HH:mm"`: Set the message date format for days other than today.
 
 ### Set the attachment message
@@ -109,14 +109,14 @@ Set the path of the audio file that plays when the chat page receives a new mess
 
 ### Set message translation
 
-- `Appearance.chat.enableTranslation = value`: Whether to enable the long-press translation feature for text messages. The default value is `false`, which means that the feature is disabled by default. 
+- `Appearance.chat.enableTranslation = value`: Whether to enable the text message feature when long pressing a message. The default value is `false`, which means that the feature is disabled by default. 
 - `Appearance.chat.targetLanguage= .English`: The target language for translation. After long-pressing a text message, the **Translation** menu appears. Click **Translate** to set the target language for translation. Before using, set `Appearance.chat.enableTranslation` to `true`.
-- `Appearance.chat.receiveTranslationColor = value`: The message receiver translation text color.
-- `Appearance.chat.sendTranslationColor = value`: The message sender translation text color.
+- `Appearance.chat.receiveTranslationColor = value`: The translation text color of the message receiver.
+- `Appearance.chat.sendTranslationColor = value`: The translation text color of the message sender.
 
 ### Set the action displayed after long-pressing a message
 
-Set the `ActionSheet` menu items after long-pressing a message on the chat page through `Appearance.chat.messageLongPressedActions = value`. You can inherit `MessageListController`, override the methods in the page, and remove or add actions in the menu.
+Set the `ActionSheet` menu items after long-pressing a message on the chat page through `Appearance.chat.messageLongPressedActions = value`. You can inherit `MessageListController` and override the methods in the page to remove or add actions in the menu.
 
 ```swift
 override func filterMessageActions(message: MessageEntity) -> [ActionSheetItemProtocol] {
@@ -177,7 +177,7 @@ For custom redirect events, check the overridable methods marked as open in the 
 
 ## Intercept the original component click event
 
-You need to fully implement the business and UI refresh logic after interception. It is recommended to use registration inheritance.
+You need to fully implement the business and UI refresh logic after interception. It is recommended that you register new events by inheriting the original ones.
 
 The message list events are as follows:
 
