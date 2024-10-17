@@ -218,7 +218,7 @@ The message quoting UI and logic structure are as follows:
 - `EaseChatMessageReplyView`: The custom view for the quoted message.
 - `EaseChatExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box. 
   component.
-- `EaseChatMessageReplyController`: The controls for the display, hiding, scrolling, and other logic of the quoting feature.
+- `EaseChatMessageReplyController`: Control the display, hiding, scrolling, and other logic of the quoting feature.
 
 The quoting feature is enabled by default in `EaseChatConfig`, that is, the default value of `enableReplyMessage` 
 is `true`. To disable this feature, set it to `false`.
@@ -271,7 +271,7 @@ Users can long-press a single message to open the context menu and reply with an
 The structure of the reaction UI and logic is as follows:
 
 - `EaseChatMessageReactionView` implements a custom reaction layout in the message list. // TODO：是否正确
-- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. // TODO：原英文没有体现出 Reaction `EaseMessageMenuReactionView` implements a custom layout in the reaction long-press menu `RecyclerView`.
+- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. 
 - The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
 - Reaction member list is `EaseReactionUserListFragment`. // TODO：`EaseReactionUserListFragment` implements the reaction member list.
 
