@@ -1,18 +1,15 @@
 # Advanced usage
 
-## Activity jump path setting   // TODO： Activity routing setting?
+## Activity route setting
 
-If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify its jump. // TODO： 最后一句：you can modify its route.
+If the default Activity and its configurable items do not meet your needs, you can inherit the default Activity and add additional logics. If the Activity is an internally called page in the UIKit, you can modify its route.
 
-For example, if `EaseChatActivity` cannot meet the current needs, inherit `EaseChatActivity` to implement a new `EaseActivity`. When calling `EaseChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `EaseActivity`.
-
-// TODO：第二行的 `EaseActivity` 是否改为 `ChatActivity`
-// TODO:第二句 When calling `EaseChatActivity.actionStart` for page redirection, it will intercept the redirection to `EaseActivity` via `getActivityRoute()`.
+For example, if `EaseChatActivity` fails to meet your needs, you can implement `ChatActivity` by inheriting `EaseChatActivity`. In this case, when calling `EaseChatActivity.actionStart` for activity routing, the UIKit, via `getActivityRoute()`, intercepts the default route and redirects the activity to `ChatActivity`.
 
 Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// Jump implementation in EaseChatActivity     // TODO: Routing implementation in EaseChatActivity
+// EaseChatActivity route
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
