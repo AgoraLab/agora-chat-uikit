@@ -41,9 +41,9 @@ Inherit `MessageListController` and register it in `ComponentsRegister.shared.Me
 | `filterMessageActions` | Filter pop-up menu items after long-pressing. | Yes |
 | `showMessageLongPressedDialog` | Display the menu after long-pressing a message. | Yes |
 | `processMessage` | Process the pop-up window click event after long-pressing a message. | Yes |
-| `editAction` | Display the message edit window when a click `Edit` of the message long-pressing menu.| Yes |
-| `reportAction` | Display the message edit window when a user long-press a message and click `Edit`. | Yes |
-| `messageAttachmentLoading` | Display the loading page after clicking on pictures, videos, and attachments. | Yes |
+| `editAction` | Display the message edit window upon a click of `Edit` on the menu that is shown after long pressing a message.| Yes |
+| `reportAction` | Display the message reporting window upon a click of `Report` on the menu that is shown after long pressing a message. | Yes |
+| `messageAttachmentLoading` | Display the loading page after clicking pictures, videos, and attachments. | Yes |
 | `messageBubbleClicked` | Message bubble click.  | Yes |
 | `viewContact` | View contacts.  | Yes |
 | `messageAvatarClick` | Message avatar click. | Yes |
@@ -70,10 +70,10 @@ Inherit `ContactViewController` and register it in `ComponentsRegister.shared.Co
 | `rightItemsAction` | Click the button on the right side of the navigation. | Yes |
 | `pop` | Return to the previous page. | Yes |
 | `setupTitle` | Set navigation titles for different types of contact pages. | Yes |
-| `receiveContactHeaderAction` | The header cell click. | Yes |
-| `searchAction` | Click the search box. | Yes |
+| `receiveContactHeaderAction` | Click on the contact list header cell. | Yes |
+| `searchAction` | Click in the search box. | Yes |
 | `addContact` | Add a contact.  | Yes |
-| `confirmAction` | Confirm action.  | Yes |
-| `viewNewFriendRequest` | View the new friend requests page. | Yes |
+| `confirmAction` | Click on text button on the right side of the navigation bar.  | Yes |
+| `viewNewFriendRequest` | View the new friend requests. | Yes |
 | `viewJoinedGroups` | View the list of joined groups. | Yes |
 

@@ -10,7 +10,7 @@ UIKit has built-in light (default) and dark themes.
 
 ## Switch to a built-in theme
 
-To switch from the current theme to the other built-in light or dark theme, use the `switchTheme` method. Call it before initializing the UIKit view:
+To switch from the current theme to the built-in light or dark theme, use the `switchTheme` method. Call it before initializing the UIKit view:
 
 ```swift
 Theme.switchTheme(style: .dark)

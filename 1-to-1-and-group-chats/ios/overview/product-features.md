@@ -101,8 +101,8 @@ The UI and logic structure of the input status indication are as follows:
 - The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
 
 - Input status-related callbacks and methods are as follows:
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
-  - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.
+  - One party in a one-to-one conversation that is typing texts will call `MessageListViewModel#notifyTypingState()` to notify the other party that he or she is typing.
+  - The other party receives the `MessageListViewModel#onOtherPartyTypingText` callback and will update the typing status of the peer user.
 
 The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
 
@@ -113,7 +113,7 @@ The sample code is as follows:
 
 ```
 
-This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback to process navigation-related effects.
+This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback and determine how to display the typing status in the navigation bar.
 
 ## Local search
 
@@ -121,13 +121,13 @@ Users can search for messages within a conversation, with support for keyword ma
 
 The UI and logic of the local message search are as follows:
 
-- `SearchHistoryMessagesViewController`: The search page. After the user enters a keyword, the keyword will be matched in the message history and the search results will be displayed.
+- `SearchHistoryMessagesViewController`: The search page. After the user enters a keyword, messages that include it will be displayed.
 - `SearchResultMessagesController`: The search results page.
-- `SearchHistoryMessageCell`: The cell for searching the message history.
+- `SearchHistoryMessageCell`: The message cell in where the historical message contains the keyword.
 
-To implement local search, jump to the `SearchHistoryMessagesViewController` page. The input parameter is the conversation ID. After entering the keyword, it will be matched and the search results will be displayed.
+For local search, go to the `SearchHistoryMessagesViewController` page, pass in the conversation ID, and type the keyword. Then historical messages that contain the keyword will be displayed.
 
-The local message search feature is enabled by default in contact details and group details. `Appearance.contact.detailExtensionActionItems` contains `ContactListHeaderItem(featureIdentify: "SearchMessages", featureName: "SearchMessages".chat.localize, featureIcon: UIImage(named: "search_history_messages", in: .chatBundle, with: nil))`. If you don't need the search feature, delete this item.
+The local message search feature is enabled by default on the contact details page and group details page. `Appearance.contact.detailExtensionActionItems` contains `ContactListHeaderItem(featureIdentify: "SearchMessages", featureName: "SearchMessages".chat.localize, featureIcon: UIImage(named: "search_history_messages", in: .chatBundle, with: nil))`. If you don't need the search feature, delete this item.
 
 The sample code is as follows:
 
@@ -140,9 +140,9 @@ The sample code is as follows:
 
 Uses can directly mention specific members in a group chat using the @ symbol, and the mentioned members will receive a special notification. 
 
-The UI and logic of the group mention feature are as follows: Enter the `@` character in `MessageInputBar` of `MessageListView` of  `MessageListController`. This will inform `ViewModel` and `Controller` that the user has entered the `@` character. After selecting the user with the `@` character, the name or nickname of that user will be displayed in the input box.
+The UI and logic of the group mention feature are as follows: Enter the `@` character in `MessageInputBar` of `MessageListView` of  `MessageListController`. This will inform `ViewModel` and `Controller` that the user has entered the `@` character. After selecting the user with the `@` character, the name or nickname of the mentioned user will be displayed in the input box.
 
-The group mention feature is enabled by default. To disable it, ignore the `MessageListController#onInputBoxEventsOccur` method. Override this method without handling the mention event.
+The group mention feature is enabled by default. To disable it, ignore the `MessageListController#onInputBoxEventsOccur` method. That is to say, override this method without handling the mention event.
 
 The sample code is as follows:
 
@@ -265,12 +265,12 @@ Users can translate messages into other languages for easier communication. The 
 1. Enable message translation
 
   The message translation feature is disabled by default, that is, the default value of `Appearance.chat.enableTranslation` in 
-  `Appearance.swift` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
+  `Appearance.swift` is `false`. To enable this feature, set is to `true`. 
 
 1. Set the target language
 
   `Appearance.swift` provides the `Appearance.chat.targetLanguage` function to set the target language. If the target 
-  language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+  language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 
@@ -282,8 +282,7 @@ Users can translate messages into other languages for easier communication. The 
 ### Reply with emoji
 
 Users can long-press a single message to open the context menu and reply with an emoji. Emoji replies 
-(reactions) can help express emotions or attitudes, conduct surveys or votes. Currently, the UIKit supports 
-reactions only for group chats, which can be turned on and off in `Appearance.swift`.
+(reactions) can help express emotions or attitudes, conduct surveys or votes. 
 
 ![Emoji reply](../../assets/images/emoji_reply.png)
 
@@ -308,7 +307,7 @@ Appearance.chat.contentStyle.append(.withMessageThread)
 
 ### Forward a message
 
-Users can forward a single or multiple combined messages to other users. 
+Users can forward a single message to other users or forward multiple messages by sending a combined messages. 
 
 The UI and logic structure are as follows:
 
@@ -323,8 +322,7 @@ Users can pin important messages to the top of a conversation. This feature is p
 The UI and logic structure are as follows:
 
 - `Appearance.chat.enablePinMessage`: Controls the display and hiding of the message pin feature.
-- `Appearance.chat.messageLongPressedActions`: Contains all items in the long-press menu of the message. If you do 
-  not need the ability to pin messages, delete the corresponding item. 
+- `Appearance.chat.messageLongPressedActions`: Contains all items in the long-press menu of the message. This message pin feature is displayed on the menu by default. If this feature is unnecessary, remove the menu item. If this feature is disabled, the menu item is hidden.
 - `MessageListController#showPinnedMessages`: Display the pinned message list.
 
 The message pinning feature is enabled by default in `Appearance.chat`. That is, the default value of 

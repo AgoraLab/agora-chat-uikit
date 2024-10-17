@@ -12,7 +12,7 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-ios
 ```
 Classes
 ├─ Service // The basic service component.
-│ ├─ Client // The main user initialization, login, cache, and other usage APIs.
+│ ├─ Client // The main user initialization, login, cache, and other usage APIs. // TODO：Involving APIs for main initialization, login, and caching.
 │ ├─ Protocol // The business protocol.
 │ │ ├─ ConversationService // The conversation protocol, including conversation processing actions.
 │ │ ├─ ContactService // The contact protocol, including contact adding and deletion.
@@ -25,7 +25,7 @@ group information, and others.
 │
 └─ UI // The basic UI components without business logic.
 ├─ Resource // The images and localization files.
-├─ Component // The UI modules containing specific business logic. Some functional UI components.
+├─ Component // The UI modules containing specific business logic, i.e., some functional UI components.
 │ ├─ Chat // The container for all chat views.
 │ ├─ Contact // The container for contacts, groups, and their details.
 │ └─ Conversation // The container for the conversation list.

@@ -95,8 +95,8 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 | `setOnChatRecordTouchListener()` | Set the touch event listener for the recording button. |
 | `setOnModifyMessageListener()` | Set the result callback listener for editing a message. |
 | `setOnReportMessageListener()` | Set the result callback listener for reporting a message. |
-| `setMsgTimeTextColor()` | Set the color of the message time. |
-| `setMsgTimeTextSize()` | Set the font size of the message time. |
+| `setMsgTimeTextColor()` | Set the color of the message time indication. |
+| `setMsgTimeTextSize()` | Set the font size of the message time indication. |
 | `setReceivedMsgBubbleBackground()` | Set the background of the received message bubble area. |
 | `setSentBubbleBackground()` | Set the background of the sent message bubble area. |
 | `showNickname()` | Set whether to display the nickname. Set to `true` for yes, `false` (default) for no. |
