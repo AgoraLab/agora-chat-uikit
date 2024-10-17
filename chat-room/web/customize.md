@@ -28,11 +28,10 @@ import { Chatroom, MessageList } from "agora-chat-uikit";
 
 const ChatApp = () => {
   const renderMessage = (message) => {
-    switch (message.type) {
-      case "txt":
-        return <div>{message.msg}</div>;
-      default: 
-        return null;
+    if(message.type === 'txt') {
+      return <div>{message.msg}</div>;
+    } else {
+      return null
     }
   };
   return (
@@ -63,11 +62,10 @@ import { Chatroom, MessageList } from "agora-chat-uikit";
 
 const ChatApp = () => {
   const renderMessage = (message) => {
-    switch (message.type) {
-      case "txt":
-        return <div>{message.msg}</div>;
-      default: 
-        return null;
+    if(message.type === 'txt') {
+      return <div>{message.msg}</div>;
+    } else {
+      return null
     }
   };
   return (
@@ -80,7 +78,7 @@ const ChatApp = () => {
               gifts: [
                 {
                   giftId: "giftId", // The ID of the gift
-                  giftIcon: "https://example.com/pictures/gift/Gift1.png", // The URL of the gift image
+                  giftIcon: "https://cdn.pixabay.com/photo/2014/04/02/10/47/red-304570_1280.png", // The URL of the gift image
                   giftName: "Heart", // The name of the gift
                   giftPrice: "1", // The price of the gift
                 },
