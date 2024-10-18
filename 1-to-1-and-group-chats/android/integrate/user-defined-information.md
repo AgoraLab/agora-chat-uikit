@@ -135,19 +135,11 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
 1. If the information has been cached in memory, when the page needs to display it, UIKit gets the cached data and render it. 
 
-1. If the cache is not there, UIKit calls the synchronization method to obtain information from the local app. You can obtain and provide the corresponding information from the local database or app memory. Once UIKit obtains the information, it renders the page and caches the information.
+If no data is cached, you can obtain data from the local database or memory of the app, build the `EaseProfile` object and use the `getUser` method to return the `EaseProfile` object. Then the UIKit will use the `EaseProfile` object to update the information on the UI.   
 
-// TODO: 上面的一段改为这样？开发者从应用本地的数据库或者内存中获取数据，UIKit 通过 provider 的同步方法获取开发者提供的信息，并将信息缓存？If no data is cached, you can obtain data from the local database or memory of the app and provide the data to the UIKit. Once obtaining the data using the synchronous method of the provider, the UIKit renders the data on the page and caches it.   
-// TODO：provider 同步方法，synchronous method of the provider.
-
-1. If the data obtained by the synchronous method is empty, when the list page stops sliding, UIKit will do the following:
-
-   1. Exclude the data provided by the cache and synchronous methods. 
-   2. Return the data required for the items visible on the current page through the asynchronous method.
-
-// TODO： If the data obtained with the synchronous method is empty, when the list page stops sliding, the UIKit returns the data required for the items visible on the current page through the asynchronous method of the provider.
-
-   Once you obtain the corresponding information from the server, you can provide it to UIKit through `onValueSuccess`, enabling the UIKit to refresh and update the list.
+1. If no data is obtained via the `getUser` method, the UIKit provider will get data from your server using the `fetchUsers` method:
+   
+   When the list page stops sliding, UIKit will first obtain user data from the cache, provide a list of user IDs with no cached data, and then query user information for such users from the server. You can build the `List<EaseProfile>` object. When the `fetchUsers` method is called, it will return data via `onValueSuccess(List<EaseProfile>)`. 
 
 ## Update cached information for UIKit
 
