@@ -99,7 +99,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
  // Use setUserProfileProvider to set profile for users in one-to-one chats, including the user avatar and nickname.
  EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
      override fun getUser(userId: String?): EaseProfile? {
-         // TODO: Return the local user profile of the userId
+         // Return the local user profile of the userId
          return DemoHelper.getInstance().getDataModel().getAllContacts()[userId]?.toProfile()
      }
 
