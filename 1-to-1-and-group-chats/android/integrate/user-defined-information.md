@@ -149,7 +149,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
    Once you obtain the corresponding information from the server, you can provide it to UIKit through `onValueSuccess`, enabling the UIKit to refresh and update the list.
 
-## Update cached UIKit information  // 这样可否，或者 Update cached information for UIKit
+## Update cached information for UIKit
 
 You can update the cached information using the `update` method provided by UIKit:
 
