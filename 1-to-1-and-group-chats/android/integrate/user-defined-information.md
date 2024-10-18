@@ -138,7 +138,7 @@ If no data is cached, you can obtain data from the local database or memory of t
 
 1. If no data is obtained via the `getUser` method, the UIKit provider will get data from your server using the `fetchUsers` method:
    
-   When the list page stops sliding, UIKit will first obtain user data from the cache, provide a list of user IDs with no cached data, and then query user information for such users from the server. You can build the `List<EaseProfile>` object. When the `fetchUsers` method is called, it will return data via `onValueSuccess(List<EaseProfile>)`. 
+When the list page stops sliding, UIKit will first obtain user data from the cache, provide a list of user IDs with no cached data, and then query user information for such users from the server. You can build the `List<EaseProfile>` object. When the `fetchUsers` method is called, it will return data via `onValueSuccess(List<EaseProfile>)`. 
 
 ## Update cached information for UIKit
 
