@@ -171,7 +171,9 @@ EaseContactsListFragment.Builder()
 
 Other methods marked as open can be overridden to implement a custom logic. 
 
-### Get the number of unread contacts' system notifications // TODO:获取联系人系统通知未读数
+### Get the number of unread friend requests 
+
+You can get the number of unread friend requests shown on the top of contact list page:
 
 ```kotlin
 val systemConversation = EaseNotificationMsgManager.getInstance().getConversation() 

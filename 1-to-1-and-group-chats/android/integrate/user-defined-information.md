@@ -99,8 +99,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
  // Use setUserProfileProvider to set profile for users in one-to-one chats, including the user avatar and nickname.
  EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
      override fun getUser(userId: String?): EaseProfile? {
-         // Return the information corresponding to userId from the local query  // TODO：本地指本地数据库？
-         // TODO: Return the user profile matching the userId from the local database
+         // TODO: Return the local user profile of the userId
          return DemoHelper.getInstance().getDataModel().getAllContacts()[userId]?.toProfile()
      }
 
@@ -112,7 +111,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
          // At the same time, the acquired information can be updated to the cache through EaseIM.updateUsersInfo(). When obtaining the Profile, UIKit will query from the cache first.
      }
  })
- // Use setGroupProfileProvider to set profile for users in group chats, including the user avatar and nickname.
+ // Use setGroupProfileProvider to set group profile.
  EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
     override fun getGroup(id: String?): EaseGroupProfile? {

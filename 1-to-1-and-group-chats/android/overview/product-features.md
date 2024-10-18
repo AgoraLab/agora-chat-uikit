@@ -59,7 +59,7 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 
 ![Unread messages](../../assets/images/unread_messages.png)
 
-### Message sent receipt  // TODO：跟SDK 的送达回执一样吗？
+### Message sent receipt  // TODO：跟SDK 的送达回执一样吗？一样
 
 A sent receipt informs the sender whether the message has been sent successfully to the server or 
 recipient.
@@ -75,7 +75,7 @@ A read receipt informs the sender that the receiver has read the message.
 ### Contact card
 
 A contact card contains detailed information about a contact, usually including their profile picture and nickname. 
-Users can quickly add a contact or start a conversation through the contact card. // TODO：profile picture 替换为 avatar?
+Users can quickly add a contact or start a conversation through the contact card. // TODO：profile picture 替换为 avatar? 统一
 
 ![Contact card](../../assets/images/contact_card.png)
 
@@ -100,7 +100,7 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed. // TODO：`EaseChatNavigationBar` 替换为 `EaseTitleBar`
+- The `subtitle` control in `EaseTitleBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
  
 - The input-status-related callbacks and methods are as follows:
 
@@ -270,10 +270,10 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- `EaseChatMessageReactionView` implements a custom reaction layout in the message list. // TODO：是否正确
+- `EaseChatMessageReactionView` implements a custom reaction layout in the message item.
 - `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. 
 - The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
-- Reaction member list is `EaseReactionUserListFragment`. // TODO：`EaseReactionUserListFragment` implements the reaction member list.
+- `EaseReactionUserListFragment` implements the list of users that add or remove a reaction for a message. 
 
 The logic for adding views to message bubbles and showing and hiding React layouts is in the 
 `addReactionViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
@@ -347,15 +347,12 @@ EaseIM.getConfig()?.chatConfig?.enableChatPingMessage
 val chatPinMessageController:EaseChatPinMessageController by lazy {
   EaseChatPinMessageController(mContext,this@EaseChatLayout, conversationId, viewModel)
 }
-// Initialize the controller that contains pin list entries and built-in click event listening callbacks
-// When the original message exists, the list scrolls to the original message position by default
-TODO：以上两行是不是可以这样：
-Initialize the controller, including embedding the click event in the entry of the list of pinned messages to allow the list to scroll to the original message position by default upon a click on the entry if the original message exists.
+// Initialize the controller.
 chatPinMessageController.initPinInfoView()
-// Display the list of pinned messages
+// Display the list of pinned messages.
 // Get the message pinning data from the server
 chatPinMessageController.fetchPinnedMessagesFromServer() 
-// After successful acquisition, call the setData method to set the data source for the controller value: MutableList<ChatMessage>?    // TODO: for the controller? 要删掉 value 吗？
+// After successful acquisition, call the setData method to set the data source for the controller: MutableList<ChatMessage>? 
 override fun onFetchPinMessageFromServerSuccess(value: MutableList<ChatMessage>?) {
   if (value.isNullOrEmpty()){
     chatPinMessageController.hidePinInfoView()

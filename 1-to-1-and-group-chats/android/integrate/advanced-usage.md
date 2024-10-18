@@ -9,7 +9,7 @@ For example, if `EaseChatActivity` fails to meet your needs, you can implement `
 Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// EaseChatActivity route
+// Implement getActivityRoute for the EaseChatActivity page
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
@@ -32,7 +32,7 @@ companion object {
 }
 
 
-// Implementation of the routing interception 
+// Implementation of the routing interception for the application
 EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
     override fun getActivityRoute(intent: Intent): Intent {
         if (intent.component?.className == EaseChatActivity::class.java.name) {

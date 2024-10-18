@@ -19,9 +19,7 @@ Take the following steps to integrate UIKit:
 
 1. Add remote dependencies.
 
-   Add the following dependencies in `project build.gradle.kts`: 
-
-   // TODO：上面的要改为这样吧， Add the following dependencies in `build.gradle.kts` of the app project: 
+   Add the following dependencies in `build.gradle.kts` of the app project: 
 
    ```kotlin
    implementation("io.hyphenate:ease-chat-kit:4.7.0")
