@@ -214,13 +214,43 @@ The methods of object reference are as follows:
 
 ## Avatar and nickname in the message list
 
-There is no default value in the `MessageList` component for the avatar and nickname that need to be provided by the user. If not provided, the default avatar and user ID will be displayed.
+UIKit components provide the opportunity to modify nickname and avatar. This is mainly done through passive registration and active call.
 
-Avatars and nicknames can be provided in the following ways:
+### Passive registration
 
-- Register callbacks: Use the `onRequestMultiDataproperty` property of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
-- Message-carried: The avatar and nickname carried in the message will be used first.
+Register callbacks through `onUsersHandler` and `onGroupsHandler` during the initialization phase. When calling, pass the default value and return the new value to complete the customization.
+
+```typescript
+  const onUsersHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+  const onGroupsHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      if (data.size === 0) return data;
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+```
+
+### Active call
+
+Where needed, update the custom data through `ChatService.updateDataList` and notify the concerned components.
 
 ### Set the background color of the message list
 
@@ -382,7 +412,7 @@ The core of the implementation is to customize the menu of the input component, 
 
 For example:
 
-```javascript
+```typescript
 export function MyMessageContent(props: MessageContentProps) {
   const { msg } = props;
   if (msg.body.type === ChatMessageType.CUSTOM) {

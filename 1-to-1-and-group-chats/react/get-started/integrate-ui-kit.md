@@ -10,9 +10,9 @@ Before you start, make sure your development environment meets the following con
 
 - MacOS 12 or above;
 - React Native 0.71 or above;
-- NodeJs 16.18 or above;
+- NodeJs 18.16 or above;
 - For iOS: Xcode 14 or above;
-- For Android: Android Studio 2022 or abov;
+- For Android: Android Studio 2022 or above;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Existing projects
@@ -35,8 +35,8 @@ pure-uuid@^1.6.3 \
 react@18.2.0 \
 react-native@0.73.2 \
 react-native-agora@^4.2.6 \
-react-native-chat-uikit@2.1.0 \
-react-native-chat-sdk@1.3.1 \
+react-native-chat-uikit@2.3.0 \
+react-native-chat-sdk@1.5.1 \
 react-native-audio-recorder-player@^3.5.3 \
 @easemob/react-native-create-thumbnail@^1.6.6 \
 react-native-device-info@^10.6.0 \

@@ -32,7 +32,7 @@ UIKit provides themes, internationalization, common UI components, and other ele
 | `enableTranslate` | boolean | Optional | Whether to enable the translation feature.  |
 | `enableThread` | boolean | Optional | Whether to enable the thread feature.  |
 | `enableReaction` | boolean | Optional | Whether to enable the emoji reply feature.  |
-| `enablePresence` | boolean | Optional | Whether to enable the presense subscription feature.  |
+| `enablePresence` | boolean | Optional | Whether to enable the presence subscription feature.  |
 | `enableAVMeeting` | boolean | Optional | Whether to enable the audio and video call feature. Enabled by default. |
 
 ## The ChatService component
@@ -183,7 +183,7 @@ Gets the user's keyboard height. The keyboard needs to be popped up at least onc
 
 Request the permissions required by the UI component library. For example:
 
-```javascript
+```typescript
 export function SomeView() {
   const { getPermission } = usePermissions();
   React.useEffect(() => {

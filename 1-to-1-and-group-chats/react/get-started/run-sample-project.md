@@ -8,7 +8,7 @@ Before you start, make sure your development environment meets the following con
 
 - MacOS 12 or above;
 - React Native 0.71 or above;
-- NodeJs 16.18 or above;
+- NodeJs 18.16 or above;
 - For iOS: Xcode 14 or above;
 - For Android: Android Studio 2022 or above;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
@@ -32,7 +32,7 @@ Take the following steps to download and run the sample project:
    1. After the download is complete, open the file directory and run the following command:
       
       ```
-      yarn && yarn uikit-prepack
+      yarn && yarn yarn-prepack
       ```
 
    1. Add the dependencies.
@@ -49,21 +49,21 @@ Take the following steps to download and run the sample project:
 
    Fill in your user ID, app ID, and token in `example/src/env.ts`:
 
-      ```javascript
+      ```typescript
       export const useSendBox = false;
       export const isDevMode = true;
-      export const appKey = "xxx";
-      export const accountType = "easemob"; 
-      export const agoraAppId = "xxx";
-      export const fcmSenderId = "xxx";
-      export const account = [{ id: "xxx", token: "xxx" }];
+      export const appKey = "<your app key>";
+      export const accountType = "agora"; 
+      export const agoraAppId = "<agora app id>";
+      export const fcmSenderId = "<fcm sender id>";
+      export const account = [{ id: "foo", token: "bar" }];
       ```
    
       Manually set the region in `packages/react-native-chat-uikit/src/config.local.ts`. The currently supported ones are domestic and overseas. 
 
-      ```javascript
-      export const language = "zh-Hans"; // 'en' or 'zh-Hans'
-      export const release_area = "china"; // 'china' or 'global'
+      ```typescript
+      export const language = "en"; // 'en' or 'zh-Hans'
+      export const release_area = "global"; // 'china' or 'global'
       ```
 
 1. Compile and run.

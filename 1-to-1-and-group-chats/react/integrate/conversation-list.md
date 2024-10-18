@@ -189,10 +189,10 @@ function MyConversationListScreen(props: MyConversationListScreenProps) {
               backgroundColor: 'orange',
             }}
             onPress={() => {
-              console.log('test:zuoyu: onPress');
+              console.log('onPress');
             }}
             onLongPress={() => {
-              console.log('test:zuoyu: onLongPress');
+              console.log('onLongPress');
             }}
           >
             <View
@@ -229,14 +229,43 @@ function MyConversationListScreen(props: MyConversationListScreenProps) {
 
 ## Configure the avatar and nickname
 
-`ConversationList` items are divided into users and groups. For avatars and nicknames, the priority is given to the data provided by the user. Otherwise, default avatars and IDs are used. For groups, the default avatars and IDs are used by default. 
+UIKit components provide the opportunity to modify nickname and avatar. This is mainly done through passive registration and active call.
 
-Avatars and nicknames can be provided in the following ways:
+### Passive registration
 
-- Register callbacks: Use the `onUsersHandler` and `onGroupsHandler` properties of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
+Register callbacks through `onUsersHandler` and `onGroupsHandler` during the initialization phase. When calling, pass the default value and return the new value to complete the customization.
 
-Regardless of the update method, the cached data will be updated, and active updates will also trigger UI component refreshes.
+```typescript
+  const onUsersHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+  const onGroupsHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      if (data.size === 0) return data;
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+```
+
+### Active call
+
+Where needed, update the custom data through `ChatService.updateDataList` and notify the concerned components.
 
 ## Event notifications
 

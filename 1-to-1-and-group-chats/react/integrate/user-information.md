@@ -96,7 +96,7 @@ Data is updated by using the `ChatService.updateDataList` interface.
 
 For example:
 
-```javascript
+```typescript
 // Suppose the group name is updated
 export function SomeComponent() {
   const im = useChatContext();
@@ -174,5 +174,40 @@ In addition to using `DataProfileProvider` to obtain avatars and nicknames, the 
 
 ## Avatar and nickname usage rules
 
-- If provided in `DataProfileProvider`, use the provided data. If not, use the default avatar and ID for a user and the default avatar and name for a group.
-- For a chat page, use the avatar and nickname carried in the message first; otherwise use `DataProfileProvider`.
+UIKit components provide the opportunity to modify nickname and avatar. This is mainly done through passive registration and active call.
+
+### Passive registration
+
+Register callbacks through `onUsersHandler` and `onGroupsHandler` during the initialization phase. When calling, pass the default value and return the new value to complete the customization.
+
+```typescript
+  const onUsersHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+  const onGroupsHandler = React.useCallback(
+    async (data: Map<string, DataModel>) => {
+      if (data.size === 0) return data;
+      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+        // todo: if success
+        resolve(new Map());
+        // todo: if fail
+        reject(new Map());
+      });
+      return ret;
+    },
+    []
+  );
+```
+
+### Active call
+
+Where needed, update the custom data through `ChatService.updateDataList` and notify the concerned components.
