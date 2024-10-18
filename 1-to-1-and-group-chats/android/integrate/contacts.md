@@ -71,7 +71,7 @@ EaseContactsListFragment.Builder()
 | `setOnContactSelectedListener()` | Set the item selection event listener. |
 | `setEmptyLayout()` | Set a blank page for the contact list. |
 | `setCustomAdapter()` | Set a custom adapter. The default is `EaseContactListAdapter`. |
-| `setCustomFragment()` | Set a custom chat fragment. Inherit from `EaseContactsListFragment`. |
+| `setCustomFragment()` | Set a custom chat fragment by inheriting from `EaseContactsListFragment`. |
 
 ### Set the title bar
 
