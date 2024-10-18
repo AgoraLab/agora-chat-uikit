@@ -66,7 +66,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
        public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
    
     }
-    // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `EaseProfileProtocol` protocol // TODO：是符合这个协议的用户信息，还是符合这个协议的用户对象。
+    // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `EaseProfileProtocol` protocol
     EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
     }
     ```
