@@ -140,13 +140,13 @@ Get the click event of an action:
         }
 ```
 
-### Set the chat page input box
+### Set the input box of the chat page 
 
-- `Appearance.chat.maxInputHeight = value`: The maximum input height of the chat page input box.
+- `Appearance.chat.maxInputHeight = value`: The maximum input height of the input box of the chat page.
 
-- `Appearance.chat.inputPlaceHolder = value`: The default placeholder for the chat page input box.
+- `Appearance.chat.inputPlaceHolder = value`: The default placeholder for input box of the chat page.
 
-- `Appearance.chat.inputBarCorner = value`: The rounded corners of the chat page input box.
+- `Appearance.chat.inputBarCorner = value`: The rounded corners of the input box of the chat page.
 
 - `Appearance.chat.inputExtendActions = value`: The `ActionSheet` menu items that appear after clicking the **+** button on the right.
     

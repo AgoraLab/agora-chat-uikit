@@ -59,9 +59,9 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 
 ![Unread messages](../../assets/images/unread_messages.png)
 
-### Message sent receipt  // TODO：跟SDK 的送达回执一样吗？一样
+### Message delivery receipt 
 
-A sent receipt informs the sender whether the message has been sent successfully to the server or 
+A delivery receipt informs the sender whether the message has been sent successfully to the server or 
 recipient.
 
 ![Sent and read receipt](../../assets/images/sent_receipt.png)
@@ -74,8 +74,8 @@ A read receipt informs the sender that the receiver has read the message.
 
 ### Contact card
 
-A contact card contains detailed information about a contact, usually including their profile picture and nickname. 
-Users can quickly add a contact or start a conversation through the contact card. // TODO：profile picture 替换为 avatar? 统一
+A contact card contains detailed information about a contact, usually including their avatar and nickname. 
+Users can quickly add a contact or start a conversation through the contact card. 
 
 ![Contact card](../../assets/images/contact_card.png)
 
@@ -332,7 +332,7 @@ The UI and logic structure are as follows:
 
 - `EaseChatPinMessageListViewGroup`: A custom View for the message pinning area.
 - `EaseChatPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
-- `EaseChatPinMessageListAdapter`: The message pinned list adapter. // Todo: The adapter of the list of pinned messages.
+- `EaseChatPinMessageListAdapter`: The adapter of the list of pinned messages.
 - `EaseChatPinDefaultViewHolder`: The default display style of pinned messages.
 - `EaseChatPinTextMessageViewHolder`: The display style of the pinned text message.
 - `EaseChatPinImageMessageViewHolder`: The display style of the pinned image message.
