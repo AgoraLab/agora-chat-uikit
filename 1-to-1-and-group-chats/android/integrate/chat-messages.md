@@ -234,7 +234,7 @@ val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chat
 | `addHeaderAdapter()` | Add an adapter for the header layout of the message list. |
 | `addFooterAdapter()` | Add an adapter for the footer layout of the message list. |
 | `removeAdapter()` | Remove the specified adapter. |
-| `addItemDecoration()` | Add a message list decorator. |// TODO：是消息列表项的装饰器？
+| `addItemDecoration()` | Add a message list decorator. |
 | `removeItemDecoration()` | Remove the message list decorator. |
 | `setAvatarDefaultSrc()` | Set the default avatar for an entry. |
 | `setAvatarShapeType()` | Set the style of the avatar: Default, round, and rectangular. |
