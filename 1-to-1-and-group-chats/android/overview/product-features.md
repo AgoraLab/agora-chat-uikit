@@ -363,25 +363,24 @@ override fun onFetchPinMessageFromServerSuccess(value: MutableList<ChatMessage>?
     chatPinMessageController.setData(value)
   }
 }
-// Actively operate pin messages // TODO：还分主动或被动，直接用 Pin or unpin messages
+// Pin or unpin messages
 // Setting isPinned to true pins the message or false unpins the message.
 chatPinMessageController.pinMessage(message,true)
 
-// Update the pinned message // TODO：是 PIN 消息的状态变更了？
-// Add the message listening callback // TODO：是添加PIN 消息状态监听回调，这两行直接写成 Add a listener for listening for the message pinning state changes.
+// Add a listener for listening for the message pinning state changes.
 private val chatMessageListener = object : EaseMessageListener() {
-  // Pinned message change callback // TODO：改成 message pinning status change event?
+  // Message pinning status change event
   override fun onMessagePinChanged(
           messageId: String?,
           conversationId: String?,
           pinOperation: ChatMessagePinOperation?,
           pinInfo: ChatMessagePinInfo?
   ) {
-    // Get the local message object based on messageId. If there is no local message object, get it from the server
+    // Get the local message object based on messageId. If there is no local message object, get it from the server.
     val message = ChatClient.getInstance().chatManager().getMessage(messageId)
     message?.let{
-      // Update the pinned message list   // TODO：Update the list of pinned messages
-      // pinInfo?.operatorId() manages the ID of the pinned message   // TODO：The user ID of the operator that pins or unpins the message. 
+      Update the list of pinned messages
+      // pinInfo?.operatorId(): The user ID of the operator that pins or unpins the message. 
       chatPinMessageController.updatePinMessage(it,pinInfo?.operatorId())
     }?:kotlin.run{
       chatPinMessageController.fetchPinnedMessagesFromServer()
