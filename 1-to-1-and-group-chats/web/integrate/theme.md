@@ -7,7 +7,7 @@ UIKit has built-in light (default) and dark themes.
 You can switch to a light or dark theme in the following way:
 
 ```javascript
-import { UIKitProvider } from 'easemob-chat-uikit';
+import { UIKitProvider } from 'agora-chat-uikit';
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <UIKitProvider
       theme={{
-        primaryColor: '#00CE76', // 16 binary color value
+        primaryColor: '#00CE76', // hexidecimal color value
       }}
     ></UIKitProvider>
   );
@@ -43,13 +43,13 @@ const App = () => {
 By default, components have large rounded corners. You can modify the rounded corners of the message bubbles, avatars, and input boxes with `componentsShape`:
 
 ```javascript
-import { UIKitProvider } from 'easemob-chat-uikit';
+import { UIKitProvider } from 'agora-chat-uikit';
 
 const App = () => {
   return (
     <UIKitProvider
       theme={{
-        componentsShape: 'square', // Small rounded corners (square) or large rounded corners (ground)
+        componentsShape: 'square', // Small rounded corners (square) or large rounded corners (round)
       }}
     ></UIKitProvider>
   );
@@ -60,7 +60,7 @@ const App = () => {
 
 UIKit uses SCSS internally and defines some global variables. If your project also uses SCSS, you can modify the theme by overwriting these global variables. This is not recommended.
 
-View the defined variables [here](https://github.com/easemob/Easemob-UIKit-web/blob/dev/common/style/themes/default.scss).
+View the defined variables [here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-web/blob/main/common/style/themes/default.scss).
 
 Modify these variables in the following way:
 
@@ -69,9 +69,9 @@ Modify these variables in the following way:
     In a project created with Create React App, you can create a SCSS file to override the default variables. In the example, we call the created file `your-theme.scss` and then import the files in the following order:
     
     ```scss
-    @import 'easemob-chat-uikit/style.scss'; // easemob-chat-uikit theme
+    @import 'agora-chat-uikit/style.scss'; // agora-chat-uikit theme
     @import 'your-theme.scss'; // Your theme files
-    @import 'easemob-chat-uikit/components.scss'; // UIKit component styles
+    @import 'agora-chat-uikit/components.scss'; // UIKit component styles
     ```
 
 - Override SCSS variables by modifying the Webpack config.

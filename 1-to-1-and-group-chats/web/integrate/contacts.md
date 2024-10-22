@@ -5,9 +5,9 @@ The `ContactList` component is used to display the address book, including the c
 ## Usage examples
 
 ```javascript
-import React, { useEffect, useState } from "react";
-import { ContactList } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import React from "react";
+import { ContactList } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ContactList = () => {
   return (
@@ -25,14 +25,14 @@ const ContactList = () => {
 For example, change the default title name of the contact list page. The sample code is as follows:
 
 ```javascript
-import React, { useEffect, useState } from "react";
-import { ContactList } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import React from "react";
+import { ContactList } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ContactList = () => {
   return (
     <div style={{ width: "30%", height: "100%" }}>
-      <ContactList header={<div>自定义 Header</div>} />
+      <ContactList header={<div>Custom Header</div>} />
     </div>
   );
 };
@@ -43,9 +43,9 @@ const ContactList = () => {
 Add a contact blacklist in the contact list. The sample code is as follows:
 
 ```javascript
-import React, { useEffect, useState } from "react";
-import { ContactList } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import React from "react";
+import { ContactList } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ContactList = () => {
   return (
@@ -79,9 +79,9 @@ const ContactList = () => {
 For example, if a user needs to add multiple users when creating a group, they can click the checkboxes corresponding to the contacts to select them.
 
 ```javascript
-import React, { useEffect, useState } from "react";
-import { ContactList } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import React from "react";
+import { ContactList } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ContactListContainer = () => {
   return (

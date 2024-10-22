@@ -6,8 +6,8 @@ UIKit provides a `Provider` component for data management. It does not render an
 
 ```javascript
 import React from 'react';
-import { UIKitProvider } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { UIKitProvider } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 import ChatApp from './ChatApp'
 ReactDOM.createRoot(document.getElementById('root') as Element).render(
   <div>
@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as Element).render(
         appKey: 'your app key',
         userId: 'userId',
         token: 'token',
-        translationTargetLanguage: 'zh-Hans', // Translation target language
+        translationTargetLanguage: 'es', // Translation target language
         useUserInfo: true, // Whether to use the user attribute feature to display the avatar nickname (UIKit will obtain user attributes internally and must be set by the user)
       }}
       local={{
