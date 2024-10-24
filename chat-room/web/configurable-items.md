@@ -25,7 +25,7 @@ UIKit provides `Chatroom` and `ChatroomMember` components, which contain various
 For example, you can pass `className` and modify styles through the `style` and `prefix` component properties.
 
 ```javascript
-import { Chatroom, Button } from "easemob-chat-uikit";
+import { Chatroom, Button } from "agora-chat-uikit";
 
 const ChatApp = () => {
   return (
@@ -53,7 +53,7 @@ ChatroomMember is used to display the chat room owner and chat room members, as 
 | `muteListProps` | Optional | `{ search?: boolean; placeholder?: string; renderEmpty?: () => ReactNode; renderItem?: (item: AppUserInfo) => ReactNode; UserItemProps?: UserItemProps; }` | Properties of the mute list component. |
 
 ```javascript
-import { ChatroomMember } from "easemob-chat-uikit";
+import { ChatroomMember } from "agora-chat-uikit";
 
 const ChatApp = () => {
   return (

@@ -16,27 +16,26 @@ Before you start, make sure your development environment meets the following req
 
     ```shell
     # Install the CLI tools.
-    npm install create-react-app
+    npm install -g create-vite
     # Build a my-app project.
-    npx create-react-app my-app
+    create-vite my-app --template react 
     cd my-app
+    # Install dependencies
+    npm install
     ```
 
     ```
     Project directory:
     ├── package.json
-    ├── public                  # Webpack's static directory.
-    │   ├── favicon.ico
-    │   ├── index.html          # The default single page application.
-    │   └── manifest.json
+    ├── vite.config.js  
+    ├── public                  # Vite's static directory.
     ├── src
+    │   ├── assets
     │   ├── App.css             # CSS for the App root component.
     │   ├── App.js              # App component code.
-    │   ├── App.test.js
     │   ├── index.css           # Startup file style.
-    │   ├── index.js            # Startup file.
-    │   ├── logo.svg
-    │   └── serviceWorker.js
+    │   └── main.jsx            # Startup file.
+    ├── index.html
     └── yarn.lock
     ```
 1. Install UIKit into your project:
@@ -44,11 +43,11 @@ Before you start, make sure your development environment meets the following req
    - To install via npm, run the following command:
 
     ```shell
-    npm install easemob-chat-uikit --save
+    npm install agora-chat-uikit
     ```
    
    - To install via yarn, run the following command:
 
     ```shell
-    yarn add easemob-chat-uikit
+    yarn add agora-chat-uikit
     ```

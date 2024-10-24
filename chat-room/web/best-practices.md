@@ -4,14 +4,14 @@
 
 The `Chatroom` and `ChatroomMember` components need to be wrapped in the `UIKitProvider` component for use. If you use `useClient` to obtain the SDK inside the `UIKitProvider` component before initialization is completed, the acquisition will fail, so it is recommended to put `UIKitProvider` in the parent component that uses the `Chatroom` or `ChatroomMember` component.
 
-```typescript
+```javascript
 // App.ts
 // ...
 const App = () => {
     return <Chatroom />
 }
 
-// idnex.ts
+// index.ts
 // ...
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <UIKitProvider>
@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 
 UIKit provides two login methods:
 
-- Specify `userId` and `password/token` for automatic login during initialization.
+- Specify `userId` and `token` for automatic login during initialization.
 - Use `useClient` to get an SDK instance to log in manually.
 
 ```typescript
@@ -60,7 +60,7 @@ UIKit provides a chatroom event listening interface. You can register a chatroom
 The event listeners for actively calling API in UIKit are as follows:
 
 ```javascript
-import { eventHandler } from "easemob-chat-uikit";
+import { eventHandler } from "agora-chat-uikit";
 
 eventHandler.addEventHandler("chatroom", {
   onError: (error) => {
@@ -99,14 +99,14 @@ Get the Chat SDK instance from UIKit to listen for incoming chat room events:
 
 ```javascript
 import React, { useEffect } from "react";
-import { useClient } from "easemob-chat-uikit";
+import { useClient } from "agora-chat-uikit";
 
 const ChatroomApp = () => {
   const client = useClient();
 
   useEffect(() => {
     client.addEventHandler("chatroom", {
-      onChatroomEvent: (event: EasemobChat.EventData) => {
+      onChatroomEvent: (event) => {
         if (event.operation === "muteMember") {
           // console.log('You have been banned')
         }
@@ -116,4 +116,3 @@ const ChatroomApp = () => {
 };
 ```
 
-To learn more about the best practices above, click [here](https://github.com/AsteriskZuo/react-native-chat-room-demo). 

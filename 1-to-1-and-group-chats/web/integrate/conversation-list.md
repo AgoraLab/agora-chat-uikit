@@ -5,7 +5,7 @@ The `ConversationList` component is used to display all conversations of the cur
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
 - Click the expand button in the navigation bar and select **New Conversation** to create a new conversation.
-- Long-press a conversation list item to display the menu where you can delete the conversation, pin the conversation, or disable messages.
+- Click the action button of conversation list item to display the menu where you can delete the conversation, pin the conversation, or disable messages.
 
 A single conversation displays the conversation name, the last message, the time of the last message, and the pinned and muted status.
 
@@ -17,9 +17,9 @@ For details about the features related to the conversation list, see [Product fe
 ## Usage examples
 
 ```javascript
-import React, { useEffect, useState } from 'react';
-import { ConversationList } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import React from 'react';
+import { ConversationList } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 
 const Conversation = () => {
   return (
@@ -42,8 +42,8 @@ You can customize the background color, size, and other styles of the conversati
 
     ```javascript
     import React from 'react';
-    import { ConversationList } from 'easemob-chat-uikit';
-    import 'easemob-chat-uikit/style.css';
+    import { ConversationList } from 'agora-chat-uikit';
+    import 'agora-chat-uikit/style.css';
     import './index.css';
    
     const Conversation = () => {
@@ -71,8 +71,8 @@ You can customize the header element of the `ConversationList` component, for ex
 
 ```javascript
 import React from 'react';
-import { ConversationList, Header, Avatar } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { ConversationList, Header, Avatar } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 
 const Conversation = () => {
   return (
@@ -110,8 +110,8 @@ const Conversation = () => {
 
 ```javascript
 import React from 'react';
-import { ConversationList, ConversationItem, Avatar } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { ConversationList, ConversationItem, Avatar } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 import './index.css';
 
 const Conversation = () => {
@@ -230,8 +230,8 @@ Use the methods provided in `conversationStore`, for example:
 
 ```javascript
 import React from 'react';
-import { ConversationList, ConversationItem, rootStore, Button } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { ConversationList, ConversationItem, rootStore, Button } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 
 const Conversation = () => {
   // Pin a conversation

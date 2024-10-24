@@ -26,27 +26,26 @@ Take the following steps to implement message sending:
 
     ```
     # Install the CLI tools.
-    npm install create-react-app
+    npm install -g create-vite
     # Build a my-app project.
-    npx create-react-app my-app
+    create-vite my-app --template react 
     cd my-app
+    # Install dependencies
+    npm install
     ```
 
     ```
     Project directory:
     ├── package.json
-    ├── public                  # Webpack's static directory.
-    │   ├── favicon.ico
-    │   ├── index.html          # The default single page application.
-    │   └── manifest.json
+    ├── vite.config.js  
+    ├── public                  # Vite's static directory.
     ├── src
+    │   ├── assets
     │   ├── App.css             # CSS for the App root component.
     │   ├── App.js              # App component code.
-    │   ├── App.test.js
     │   ├── index.css           # Startup file style.
-    │   ├── index.js            # Startup file.
-    │   ├── logo.svg
-    │   └── serviceWorker.js
+    │   └── main.jsx            # Startup file.
+    ├── index.html
     └── yarn.lock
     ```
 
@@ -55,30 +54,37 @@ Take the following steps to implement message sending:
    - To install via npm, run the following command:
 
     ```
-    npm install easemob-chat-uikit --save
+    npm install agora-chat-uikit
     ```
    
    - To install via yarn, run the following command:
 
     ```
-    yarn add easemob-chat-uikit
+    yarn add agora-chat-uikit
+    ```
+
+  - To install dependencies, run the following command:
+
+    ```
+    npm install mobx-react-lite
     ```
    
 1. Build an application.
 
-   Import the `easemob-chat-uikit` library into your code:
+   Import the `agora-chat-uikit` library into your code:
 
     ```javascript
     // App.js
-    import React, { Component, useEffect } from "react";
+    import React, { useState, useEffect, Component } from "react";
     import {
       Provider,
       Chatroom,
       useClient,
       rootStore,
       ChatroomMember,
-    } from "easemob-chat-uikit";
-    import "easemob-chat-uikit/style.css";
+    } from "agora-chat-uikit";
+    import "agora-chat-uikit/style.css";
+    import { observer } from "mobx-react-lite";
     
     const ChatroomApp = observer(() => {
       const client = useClient();
@@ -96,20 +102,26 @@ Take the following steps to implement message sending:
       }, [client]);
     
       const [userId, setUserId] = useState("");
-      const [password, setPassword] = useState("");
+      const [accessToken, setAccessToken] = useState("");
       const login = () => {
         client
           .open({
             user: userId,
-            pwd: password,
-            //accessToken: '',
+            accessToken: accessToken,
           })
           .then((res) => {
             console.log("Get token successfully");
           });
       };
       return (
-        <>
+        <div style={{
+          display: 'flex',
+          height: '100vh',
+          gap: '1px',
+          width: '100%',
+          position: 'fixed',
+          top: '0'
+        }}>
           <Provider
             theme={{
               mode: "dark",
@@ -118,7 +130,7 @@ Take the following steps to implement message sending:
               appKey: appKey,
             }}
           >
-            <div>
+            <div style={{ flex: "1" }}>
               <div>
                 <label>userID</label>
                 <input
@@ -128,10 +140,10 @@ Take the following steps to implement message sending:
                 ></input>
               </div>
               <div>
-                <label>password</label>
+                <label>AccessToken</label>
                 <input
                   onChange={(e) => {
-                    setPassword(e.target.value);
+                    setAccessToken(e.target.value);
                   }}
                 ></input>
               </div>
@@ -140,23 +152,32 @@ Take the following steps to implement message sending:
               </div>
             </div>
     
-            <div style={{ width: "350px" }}>
+            <div style={{ flex: "1" }}>
               <Chatroom chatroomId={chatroomId}></Chatroom>
             </div>
-            <div style={{ width: "350px" }}>
+            <div style={{ flex: "1" }}>
               <ChatroomMember chatroomId={chatroomId}></ChatroomMember>
             </div>
           </Provider>
-        </>
+        </div>
       );
     });
-    export default ChatroomApp;
+
+    class App extends Component {
+      render() {
+        return (
+          <ChatroomApp />
+        );
+      }
+    }
+
+    export default App;
     ```
 
 1. Run the project:
 
     ```
-    npm run start
+    npm run dev
     ```
 
 1. Send a message

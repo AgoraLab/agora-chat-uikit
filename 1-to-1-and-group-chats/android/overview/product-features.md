@@ -92,31 +92,6 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
 
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-![Message status indication](../../assets/images/message_status_indication.png)
-
-The UI and logic structure of the input status indication are as follows:
-
-- The `subtitle` control in `EaseTitleBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
- 
-- The input-status-related callbacks and methods are as follows:
-
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `EaseChatFragment.Builder`.
-  - The input status callback is `onPeerTyping(action: String?)`, where `action` represents the `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END` state.
-
-The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable, set this parameter to `false`.
-
-This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `EaseChatFragment.Builder`, which has a higher priority.
-
-The sample code is as follows:
-
-```kotlin
-EaseIM.getConfig()?.chatConfig?.enableChatTyping = true
-```
-
 ### Local search
 
 Users can search contacts (with or without a selection box), conversations, message history, and blacklists, with support for keyword matching. 
@@ -162,18 +137,13 @@ This section covers specific features related to managing conversations.
 
 ### Conversation marked as read
 
-Shows whether the user has read a conversation with unread messages. The user can
-long-press a conversation to open a context menu and mark the conversation as read.
+Shows whether the user has read a conversation with unread messages. The user can long-press a conversation to open a context menu and mark the conversation as read.
 
 ### Pin a conversation (sticky conversation)
 
-The user can long-press a conversation to open a context menu and pin it to the 
-top for easy access.
+The user can long-press a conversation to open a context menu and pin it to the top for easy access.
 
 ### Do not disturb
-
-The user can long-press a conversation a conversation to open a context menu and turn on the DND 
-mode. 
 
 ### Delete a conversation
 
@@ -391,4 +361,29 @@ EaseIM.addChatMessageListener(chatMessageListener)
 chatPinMessageController.showPinInfoView()
 // Hide pin view
 chatPinMessageController.hidePinInfoView()
+```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+![Message status indication](../../assets/images/message_status_indication.png)
+
+The UI and logic structure of the input status indication are as follows:
+
+- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+
+- The input-status-related callbacks and methods are as follows:
+
+  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `EaseChatFragment.Builder`.
+  - The input status callback is `onPeerTyping(action: String?)`, where `action` represents the `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END` state .
+
+The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable, set this parameter to `false`.
+
+This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `EaseChatFragment.Builder`, which has a higher priority.
+
+The sample code is as follows:
+
+```kotlin
+EaseIM.getConfig()?.chatConfig?.enableChatTyping = true
 ```
