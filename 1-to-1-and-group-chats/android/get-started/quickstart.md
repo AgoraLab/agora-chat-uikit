@@ -90,7 +90,7 @@ Set up your environment in the following way:
 
 Take the following steps to send a message to a one-to-one or group chat.
 
-1. Create a quick start page.
+1. Create a quick start page. 
 
     1. Open the `app/res/values/strings.xml` file and replace the content with the following:
 
@@ -104,7 +104,7 @@ Take the following steps to send a message to a one-to-one or group chat.
 
        Replace `app_key` with your app key.
 
-    1. Open the `app/res/layout/activity_main.xml` file and replace the content with the following:
+    2. Open the `app/res/layout/activity_main.xml` file and replace the content with the following:
 
        ```xml
        <?xml version="1.0" encoding="utf-8"?>
@@ -163,7 +163,7 @@ Take the following steps to send a message to a one-to-one or group chat.
        </LinearLayout>
        ```
 
-1. Implement the logic.
+2. Implement the logic.
 
       1. Implement the login and logout pages.
 
@@ -267,7 +267,7 @@ Take the following steps to send a message to a one-to-one or group chat.
                    showToast("Please log in first!")
                    ChatLog.e(TAG, "Please log in first!")
                    return
-                }
+                } // For group chat, `username` is replaced by group ID and `EaseChatType.SINGLE_CHAT` by `EaseChatType.GROUP_CHAT`.
                 EaseChatActivity.actionStart(this, username, EaseChatType.SINGLE_CHAT)
              }
    
@@ -298,9 +298,9 @@ Take the following steps to send a message to a one-to-one or group chat.
           }
           ```
 
-      1. Click **Sync Project with Gradle Files**. You can now test your application.
+      2. Click **Sync Project with Gradle Files**. You can now test your application.
 
-1. Send a message.
+3. Send a message.
 
    Type your message at the bottom of the chat page and click **Send**.
 
@@ -310,5 +310,5 @@ Take the following steps to send a message to a one-to-one or group chat.
 1. Enter the user ID and password and click **Login**. There will be a `Toast` prompt whether the login was
    successful or failed. You can also view it through Logcat.
 1. Log in to another account on another device or simulator.
-1. Click **Start** to start chatting.
+2. Click **Start Chat** to start chatting.
 

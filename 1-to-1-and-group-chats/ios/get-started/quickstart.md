@@ -11,7 +11,7 @@ Before you start, make sure your development environment meets the following con
 - CocoaPods installed and integrated;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
-If your network environment has a firewall deployed, contact [Agora technical support](mailto:support@agora.io) to set up a whitelist.
+If your network environment has a firewall deployed, contact [Agora technical support](mailto:support@agora.io) to set up a allow list.
 
 ## Implementation
 
@@ -24,7 +24,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
 
 1. Initialize UIKit.
 
-   You can initialize UIKit before or when the app loads. During initialization, pass the app key you have obtained in Agora Console:
+   You can initialize UIKit when the app loads before EaseChatUIKit is used. During initialization, pass the app key you have obtained in Agora Console:
 
     ```
     import EaseChatUIKit
@@ -41,7 +41,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
     }
     ```
 
-1. Log in to UIKit.
+2. Log in to UIKit.
 
     Log in to UIKit with a user ID and token. If you have integrated Chat SDK, all user IDs can be used to log in to UIKit:
 
@@ -71,10 +71,10 @@ If your network environment has a firewall deployed, contact [Agora technical su
     }
     ```
 
-1. Create a chat page,
+3. Create a chat page,
 
-   1. Turn off the friend check feature, which means you can chat without adding friends.
-   1. Call the `init` method and pass the user ID of the user created in the Console into the `conversationId` parameter to send a message to the user:
+   1. Turn off the friend check feature, which means you can chat with strangers without adding them to the contact list.
+   2. Call the `init` method and pass the user ID of the user created in the Console into the `conversationId` parameter to send a message to the user:
 
     ```swift
     let vc = ComponentsRegister.shared.MessageViewController.init(conversationId: <#Create user's id#>, chatType: .chat)
@@ -82,6 +82,6 @@ If your network environment has a firewall deployed, contact [Agora technical su
      ControllerStack.toDestination(vc: vc)
     ```
    
-1. Send the first message
+4. Send the first message
 
     Type your message at the bottom of the chat page and click **Send** to send the message.

@@ -74,7 +74,7 @@ A read receipt informs the sender that the receiver has read the message.
 
 ### Contact card
 
-A contact card contains detailed information about a contact, usually including their profile picture and nickname. 
+A contact card contains detailed information about a contact, usually including their avatar and nickname. 
 Users can quickly add a contact or start a conversation through the contact card.
 
 ![Contact card](../../assets/images/contact_card.png)

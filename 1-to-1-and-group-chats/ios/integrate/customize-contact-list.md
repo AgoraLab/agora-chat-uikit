@@ -50,9 +50,9 @@ To customize the contact list `TableView`, override the `createContactList` meth
     }
 ```
 
-## Customize contact list items
+## Customize contact list cells
 
-To customize the content of a contact cell item in the contact list, take the following steps:
+To customize the content of a contact cell in the contact list, take the following steps:
 
 1. Inherit the `ContactCell` class in `EaseChatUIKit` to create a new custom class `CustomContactCell`, then set it with the following code:
 
@@ -71,11 +71,11 @@ To customize the content of a contact cell item in the contact list, take the fo
     }
 ```
 
-If you want to modify the previous logic, copy the code of the previous `refresh` method and modify it without calling it `super.xxxx`. The initialization method and some UI creation methods can also be overridden.
+If you want to modify the previous logic, copy the code of the previous `refresh` method and modify it without calling `super.xxxx`. The initialization method and some UI creation methods can also be overridden.
 
 ### Set the height of the contact list cell
 
-Set the height of the contact list item with `Appearance.contact.rowHeight = value`.
+Set the height of the contact list cell with `Appearance.contact.rowHeight = value`.
 
 ### Set the contact avatar
 

@@ -4,7 +4,7 @@ You must provide user information that is used across UIKit. This page describes
 
 ## Logged-in user information
 
-When a user calls the `EaseIM.login` method to log in, they need to pass in an `EaseProfile` object, which contains three properties: `id`, `name`, and `avatar`. `id` is a required parameter used to display the logged-in user's nickname and avatar. When sending a message, set the `name` and `avatar` properties to facilitate the display to other users.
+When a user calls the `EaseIM.login` method to log in, they need to pass in an `EaseProfile` object, which contains three properties: `id`, `name`, and `avatar`. `id` is a required parameter. `name` and `avatar` display the logged-in user's nickname and avatar. When sending a message, set the `name` and `avatar` properties to facilitate the display to other users.
 
 If the `name` and `avatar` properties are not passed in during login, you can call the `EaseIM.updateCurrentUser` method to update the user information after login.
 
@@ -96,10 +96,10 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
 ```kotlin
 
- // Chat type settings setUserProfileProvider
+ // Use setUserProfileProvider to set profile for users in one-to-one chats, including the user avatar and nickname.
  EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
      override fun getUser(userId: String?): EaseProfile? {
-         // Return the information corresponding to userId from the local query
+         // Return the local user profile of the userId
          return DemoHelper.getInstance().getDataModel().getAllContacts()[userId]?.toProfile()
      }
 
@@ -111,7 +111,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
          // At the same time, the acquired information can be updated to the cache through EaseIM.updateUsersInfo(). When obtaining the Profile, UIKit will query from the cache first.
      }
  })
- // Group type setting setGroupProfileProvider
+ // Use setGroupProfileProvider to set group profile.
  EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
     override fun getGroup(id: String?): EaseGroupProfile? {
@@ -132,20 +132,17 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
 ## Information processing logic
 
-1. If the information has been cached in memory, when the page needs to display it, UIKit gets the cached data. 
+1. If the information has been cached in memory, when the page needs to display it, UIKit gets the cached data and render it. 
 
-1. If the cache is not there, UIKit calls the synchronization method to obtain information from the local app. You can obtain and provide the corresponding information from the local database or app memory. Once UIKit obtains the information, it renders the page and caches the information.
+If no data is cached, you can obtain data from the local database or memory of the app, build the `EaseProfile` object and use the `getUser` method to return the `EaseProfile` object. Then the UIKit will use the `EaseProfile` object to update the information on the UI.   
 
-1. If the data obtained by the synchronous method is empty, when the list page stops sliding, UIKit will do the following:
+1. If no data is obtained via the `getUser` method, the UIKit provider will get data from your server using the `fetchUsers` method:
+   
+When the list page stops sliding, UIKit will first obtain user data from the cache, provide a list of user IDs with no cached data, and then query user information for such users from the server. You can build the `List<EaseProfile>` object. When the `fetchUsers` method is called, it will return data via `onValueSuccess(List<EaseProfile>)`. 
 
-   1. Exclude the data provided by the cache and synchronous methods.
-   1. Return the data required for the items visible on the current page through the asynchronous method.
+## Update cached information for UIKit
 
-   Once you obtain the corresponding information from the server, you can provide it to UIKit through `onValueSuccess`. Once UIKit receives the data, it refreshes and updates the list.
-
-## Update UIKit cache information
-
-You can update the cached information through the methods provided by UIKit:
+You can update the cached information using the `update` method provided by UIKit:
 
 ```kotlin
 // Update current user information

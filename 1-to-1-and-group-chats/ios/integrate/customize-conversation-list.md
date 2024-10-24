@@ -1,9 +1,9 @@
 # Customize the conversation list
 
-The conversation list page is used to display all conversations of the current user, including single chats and group chats. It provides conversation search, deletion, pinning, and do not disturb features:
+The conversation list page is used to display all conversations of the current user, including one-to-one chats and group chats. It provides conversation search, deletion, pinning, and do not disturb features:
 
 - Click **Search** to jump to the search page and search for conversations.
-- Click a conversation list item to jump to the conversation details page.
+- Click a conversation list cell to jump to the conversation details page.
 - Click the expand button in the navigation bar and select **New Conversation** to create a new conversation.
 - Swipe left, swipe right, or long-press a conversation to trigger the conversation extended function menu, where you can delete the conversation, pin the conversation, or turn on the do not disturb mode.
 
@@ -14,7 +14,7 @@ A single conversation displays the conversation name, the last message, the time
 
 For details about the conversation list features, see [Product features](../overview/product-features.md).
 
-You can configure the navigation bar and conversation list items on the conversation list page. See [ ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
+You can configure the navigation bar and conversation list cells on the conversation list page. See [ ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
 
 ![Customize Conversation List](../../assets/images/conversation_list_highlighted.jpg)
 
@@ -22,13 +22,13 @@ You can configure the navigation bar and conversation list items on the conversa
 
 The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class.
 
-1. In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation. For example, `CustomConversationNavigationBar`.
+1. In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation bar. For example, `CustomConversationNavigationBar`.
 
 1. Override the `createNavigation()` method and return the object you have created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ```swift
     override func createNavigationBar() -> EaseChatNavigationBar {
-                CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)
+                CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)])
             }
     ```
 
@@ -56,7 +56,7 @@ Set the `rightImages` parameters to customize the look of the button on the righ
 
 ### Customize the menu displayed when clicking the button at the top
 
-Use `Appearance.conversation.listMoreActions = value` to customize the menu called by clicking the **+** button at the top right. You can add or delete menu items. The sample code is as follows:
+Use `Appearance.conversation.listMoreActions = value` to customize the menu displayed by clicking the **+** button at the top right. You can add or delete menu items. The sample code is as follows:
 
 ```swift
    //Add a new menu item
@@ -67,7 +67,7 @@ Use `Appearance.conversation.listMoreActions = value` to customize the menu call
 
 ### Set up click listener events
 
-To customize navigation and listen to the original navigation click event, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
+To set the click events in the navigation bar, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
 
 ```swift
 override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
@@ -85,7 +85,7 @@ override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: 
 
 ## Customize the conversation list
 
-To customize the conversation list `TableView`, override the `createList` method in the conversation list page and return the `ConversationList` class object that you inherited from `EaseChatUIKit`. Find and take a closer look at the `ConversationList.swift` class to implement the business logic. The sample code is as follows:
+To customize the conversation list `TableView`, override the `createList` method in the conversation list page and return the class object that you inherited from `ConversationList` class in `EaseChatUIKit`. Find and take a closer look at the `ConversationList.swift` class to implement the business logic. The sample code is as follows:
 
 ```swift
 override open func createList() -> ConversationList {
@@ -93,9 +93,9 @@ override open func createList() -> ConversationList {
         }
 ```
 
-## Customize the conversation list item
+## Customize the conversation list cell
 
-To customize the contents of the list items, take the following steps:
+To customize the contents of the list cells, take the following steps:
  
 1. Create a new custom class `CustomConversationCell` by inheriting the `ConversationCell` class in `EaseChatUIKit` and set it up with the following code:
 
@@ -114,9 +114,9 @@ To customize the contents of the list items, take the following steps:
 
     If you need to make changes to the previous logic, copy the code from the previous `refresh` method and make changes without calling `super.xxxx`. Initialization methods and some UI creation methods can be overridden.
 
-### Set the height of the conversation list item
+### Set the row height of the conversation list cell
 
-Use `Appearance.conversation.rowHeight = value` to set the height of the conversation list item (cell).
+Use `Appearance.conversation.rowHeight = value` to set the row height of the conversation list.
 
 ### Set a chat avatar
 
@@ -170,7 +170,7 @@ Set the conversation time using two parameters:
 
 ### Intercept the original component click event
 
-You need to fully implement the business and UI refresh logic after interception. It is recommended to use registration inheritance.
+You need to fully implement the business and UI refresh logic after interception. It is recommended that you register new events by inheriting the original ones.
 
 The conversation list events are as follows:
 

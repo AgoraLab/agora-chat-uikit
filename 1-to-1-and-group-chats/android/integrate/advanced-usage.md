@@ -1,15 +1,15 @@
 # Advanced usage
 
-## Activity jump path setting
+## Activity route setting
 
-If the default Activity and the configurable items it provides do not meet your needs, inherit the default Activity and add the required logic. If the Activity is a page called internally by UIKit, you can modify its jump.
+If the default Activity and its configurable items do not meet your needs, you can inherit the default Activity and add additional logics. If the Activity is an internally called page in the UIKit, you can modify its route.
 
-For example, if `EaseChatActivity` cannot meet the current needs, inherit `EaseChatActivity` to implement a new `EaseActivity`. When calling `EaseChatActivity.actionStart`, it will intercept `getActivityRoute()` jump direction through `EaseActivity`.
+For example, if `EaseChatActivity` fails to meet your needs, you can implement `ChatActivity` by inheriting `EaseChatActivity`. In this case, when calling `EaseChatActivity.actionStart` for activity routing, the UIKit, via `getActivityRoute()`, intercepts the default route and redirects the activity to `ChatActivity`.
 
 Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// Jump implementation in EaseChatActivity
+// Implement getActivityRoute for the EaseChatActivity page
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
@@ -32,7 +32,7 @@ companion object {
 }
 
 
-// Implementation of the routing interception 
+// Implementation of the routing interception for the application
 EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
     override fun getActivityRoute(intent: Intent): Intent {
         if (intent.component?.className == EaseChatActivity::class.java.name) {
@@ -49,7 +49,7 @@ UIKit provides some global configurations that can be set during initialization.
 
 ```kotlin
 val avatarConfig = EaseAvatarConfig()
-// Set avatar to rounded corners
+// Set avatar with rounded corners
 avatarConfig.avatarShape = EaseImageView.ShapeType.ROUND
 val config = EaseIMConfig(avatarConfig = avatarConfig)
 EaseIM.init(this, options, config)

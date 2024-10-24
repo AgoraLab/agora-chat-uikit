@@ -1,8 +1,8 @@
 # General configurable items
 
-The `Appearance.swift` class that contains all configurable items. These items have default values. If you want to modify some configuration items, modify the properties before initializing the corresponding UI controls, so that the configuration items take effect.
+The `Appearance.swift` class contains all configurable items. These items have default values. If you want to modify some of them, you need to modify the properties of the related UI control before initializing it for the configurable items to take effect.
 
-Note that `value` in the examples below is the value to be set, which will change the UI style or data source of the corresponding configuration item. Check the [source code](https://github.com/easemob/chatuikit-ios) before use.
+Note that `value` in the examples below indicates the configured UI style or data source of the corresponding configurable item. Check the [source code](https://github.com/easemob/chatuikit-ios) before use.
 
 ## Set the bottom pop-up page style
 

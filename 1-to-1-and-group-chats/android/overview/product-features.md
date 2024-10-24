@@ -42,7 +42,7 @@ modifying the group name, description, and avatar, banning or deleting group mem
 
 ### User list
 
-The user list displays the logged-in user's contacts, group members, blacklist, and so on.
+The user list displays the logged-in user's contacts, group members, block list, and so on. 
 
 ![Contacts](../../assets/images/contacts.png)
 
@@ -59,9 +59,9 @@ Unread messages are messages that the logged-in user has received but hasn't yet
 
 ![Unread messages](../../assets/images/unread_messages.png)
 
-### Message sent receipt
+### Message delivery receipt 
 
-A sent receipt informs the sender whether the message has been sent successfully to the server or 
+A delivery receipt informs the sender whether the message has been sent successfully to the server or 
 recipient.
 
 ![Sent and read receipt](../../assets/images/sent_receipt.png)
@@ -74,8 +74,8 @@ A read receipt informs the sender that the receiver has read the message.
 
 ### Contact card
 
-A contact card contains detailed information about a contact, usually including their profile picture and nickname. 
-Users can quickly add a contact or start a conversation through the contact card.
+A contact card contains detailed information about a contact, usually including their avatar and nickname. 
+Users can quickly add a contact or start a conversation through the contact card. 
 
 ![Contact card](../../assets/images/contact_card.png)
 
@@ -125,7 +125,7 @@ private val returnSearchClickResult: ActivityResultLauncher<Intent> = registerFo
     }
 ```
 
-UIKit also provides a search base class `EaseBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()implement` method in `EaseBaseSearchFragment` to implement your own adapters for data processing and display.
+UIKit also provides a search base class `EaseBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()` method in `EaseBaseSearchFragment` to implement your own adapters for data processing and display. 
 
 ## Conversation-related 
 
@@ -144,8 +144,6 @@ Shows whether the user has read a conversation with unread messages. The user ca
 The user can long-press a conversation to open a context menu and pin it to the top for easy access.
 
 ### Do not disturb
-
-The user can long-press a conversation to open a context menu and turn on the DND mode. 
 
 ### Delete a conversation
 
@@ -188,9 +186,9 @@ Users can quote a specific message to reply to it or emphasize its importance.
 The message quoting UI and logic structure are as follows:
 
 - `EaseChatMessageReplyView`: The custom view for the quoted message.
-- `EaseChatExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box 
+- `EaseChatExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box. 
   component.
-- `EaseChatMessageReplyController`: The controls for the display, hiding, scrolling, and other logic of the quoting feature.
+- `EaseChatMessageReplyController`: Control the display, hiding, scrolling, and other logic of the quoting feature.
 
 The quoting feature is enabled by default in `EaseChatConfig`, that is, the default value of `enableReplyMessage` 
 is `true`. To disable this feature, set it to `false`.
@@ -215,7 +213,7 @@ Users can translate messages into other languages for easier communication. The 
 
   The message translation feature is disabled by default, that is, the default value of 
      `enableTranslationMessage` in 
-  `EaseChatConfig` is `false`. To enable this feature, set is to `true`. The sample code is as follows:
+  `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
   
   ```kotlin
   EaseIM.getConfig()?.chatConfig?.enableTranslationMessage
@@ -242,15 +240,15 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- `EaseChatMessageReactionView` implements a custom reaction layout in the message list. 
-- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`.
+- `EaseChatMessageReactionView` implements a custom reaction layout in the message item.
+- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. 
 - The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
-- Reaction member list is `EaseReactionUserListFragment`.
+- `EaseReactionUserListFragment` implements the list of users that add or remove a reaction for a message. 
 
 The logic for adding views to message bubbles and showing and hiding React layouts is in the 
 `addReactionViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
 
-The emoji reply feature is disabled by default. That is, the default value of `enableMessageReaction` in `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+The reaction feature is disabled by default. That is, the default value of `enableMessageReaction` in `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
 EaseIM.getConfig()?.chatConfig?.enableMessageReaction
@@ -304,10 +302,10 @@ The UI and logic structure are as follows:
 
 - `EaseChatPinMessageListViewGroup`: A custom View for the message pinning area.
 - `EaseChatPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
-- `EaseChatPinMessageListAdapter`: The message pinned list adapter.
+- `EaseChatPinMessageListAdapter`: The adapter of the list of pinned messages.
 - `EaseChatPinDefaultViewHolder`: The default display style of pinned messages.
-- `EaseChatPinTextMessageViewHolder`: The text type display style of the pinned message.
-- `EaseChatPinImageMessageViewHolder`: The display style of the pinned message image type.
+- `EaseChatPinTextMessageViewHolder`: The display style of the pinned text message.
+- `EaseChatPinImageMessageViewHolder`: The display style of the pinned image message.
 
 The message pinning feature is enabled by default. That is, the default value of `enableChatPingMessage` in
 `EaseChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
@@ -315,17 +313,16 @@ The message pinning feature is enabled by default. That is, the default value of
 ```kotlin
 EaseIM.getConfig()?.chatConfig?.enableChatPingMessage
 
-// Define the controller of the pin message
+// Define the message pinning controller
 val chatPinMessageController:EaseChatPinMessageController by lazy {
   EaseChatPinMessageController(mContext,this@EaseChatLayout, conversationId, viewModel)
 }
-// Initialize the controller that contains pin list entries and built-in click event listening callbacks
-// When the original message exists, the list scrolls to the original message position by default
+// Initialize the controller.
 chatPinMessageController.initPinInfoView()
-// Display pin message list
-// Get the pin message data from the server
-chatPinMessageController.fetchPinnedMessagesFromServer()
-// After successful acquisition, call the setData method to set the data source for the controller value: MutableList<ChatMessage>?
+// Display the list of pinned messages.
+// Get the message pinning data from the server
+chatPinMessageController.fetchPinnedMessagesFromServer() 
+// After successful acquisition, call the setData method to set the data source for the controller: MutableList<ChatMessage>? 
 override fun onFetchPinMessageFromServerSuccess(value: MutableList<ChatMessage>?) {
   if (value.isNullOrEmpty()){
     chatPinMessageController.hidePinInfoView()
@@ -333,25 +330,24 @@ override fun onFetchPinMessageFromServerSuccess(value: MutableList<ChatMessage>?
     chatPinMessageController.setData(value)
   }
 }
-// Actively operate pin messages
-// Setting isPinned to true pins the message to the top, setting to false cancels the pin
+// Pin or unpin messages
+// Setting isPinned to true pins the message or false unpins the message.
 chatPinMessageController.pinMessage(message,true)
 
-// Update the pinned message
-// Add the message listening callback
+// Add a listener for listening for the message pinning state changes.
 private val chatMessageListener = object : EaseMessageListener() {
-  // Pinned message change callback
+  // Message pinning status change event
   override fun onMessagePinChanged(
           messageId: String?,
           conversationId: String?,
           pinOperation: ChatMessagePinOperation?,
           pinInfo: ChatMessagePinInfo?
   ) {
-    // Get the local message object based on messageId. If there is no local message object, get it from the server
+    // Get the local message object based on messageId. If there is no local message object, get it from the server.
     val message = ChatClient.getInstance().chatManager().getMessage(messageId)
     message?.let{
-      // Update the pinned message list 
-      // pinInfo?.operatorId() manages the ID of the pinned message
+      Update the list of pinned messages
+      // pinInfo?.operatorId(): The user ID of the operator that pins or unpins the message. 
       chatPinMessageController.updatePinMessage(it,pinInfo?.operatorId())
     }?:kotlin.run{
       chatPinMessageController.fetchPinnedMessagesFromServer()

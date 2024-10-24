@@ -32,17 +32,17 @@ Take the following steps to download and run the sample project:
 
    1. Open the `.xcworkspace` file in Xcode.
 
-   1. Press `cmd+B` on the keyboard to compile. The compilation will result in an error.
+   2. Press `cmd+B` on the keyboard to compile. A compilation error will be reported.
 
         ![Compilation error](../../assets/images/buildError.png)
 
-   1. Fill in the `appKey` field with your app key and re-compile the project.
+   3. Fill in the `appKey` field with your app key and re-compile the project.
 
-   1. Log in with the created user ID and token. 
+   4. Log in with the created user ID and token. 
 
         ![Log in](../../assets/images/login.png)
 
-1. Test the project.
+2. Test the project.
 
     Double-click the `.xcworkspace` file to open the project, and press `cmd+R` on the keyboard to run it. UIKit supports the x86_64 architecture simulator, but not the M1 simulator, because it uses a static FFmpeg library that converts audio files into the AMR format.
 
