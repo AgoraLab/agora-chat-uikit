@@ -17,7 +17,7 @@ Take the following steps to integrate UIKit:
 1. Install UIKit:
 
    ```
-   flutter pub add em_chat_uikit
+   flutter pub add agora_chat_uikit
    ```
 
 1. Add permissions.
@@ -44,7 +44,7 @@ Take the following steps to integrate UIKit:
 
     ```dart
     // Import the header file
-    import 'package:em_chat_uikit/chat_uikit.dart';
+    import 'package:agora_chat_uikit/chat_uikit.dart';
     ```
 
 1. Initialize UIKit.
@@ -98,7 +98,7 @@ Take the following steps to integrate UIKit:
    The following is an example of an interface consisting of a conversation list and a chat component:
 
    ```dart
-   import 'package:em_chat_uikit/chat_uikit.dart';
+   import 'package:agora_chat_uikit/chat_uikit.dart';
    import 'package:flutter/material.dart';
    
    class Conversations extends StatefulWidget {

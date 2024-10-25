@@ -39,11 +39,11 @@ Before you start, make sure your development environment meets the following con
 
 1. Add dependencies.
 
-    Enter the project directory and add the latest `em_chat_uikit` version:
+    Enter the project directory and add the latest `agora_chat_uikit` version:
 
     ```
     cd chat_uikit_demo
-    flutter pub add em_chat_uikit
+    flutter pub add agora_chat_uikit
     flutter pub get
     ```
    
@@ -76,7 +76,7 @@ Before you start, make sure your development environment meets the following con
 
    ```dart
     // Import header file
-    import 'package:em_chat_uikit/chat_uikit.dart';
+    import 'package:agora_chat_uikit/chat_uikit.dart';
     ...
     
     void main() {
@@ -125,7 +125,7 @@ Before you start, make sure your development environment meets the following con
 The complete code to quickly start the entire process is as follows: 
 
 ```dart
-import 'package:em_chat_uikit/chat_uikit.dart';
+import 'package:agora_chat_uikit/chat_uikit.dart';
 import 'package:flutter/material.dart';
 
 const appkey = '';
