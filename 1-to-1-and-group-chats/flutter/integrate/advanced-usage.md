@@ -203,11 +203,11 @@ ChatUIKitSettings.searchBarRadius = CornerRadius.large;
 
 ### Configure the default avatar
 
-The default is` packages/em_chat_uikit/assets/images/default_avatar.png`:
+The default is` packages/agora_chat_uikit/assets/images/default_avatar.png`:
 
 ```dart
 ChatUIKitSettings.avatarPlaceholder = const AssetImage(
-  'packages/em_chat_uikit/assets/images/default_avatar.png',
+  'packages/agora_chat_uikit/assets/images/default_avatar.png',
 );
 ```
 
@@ -237,11 +237,11 @@ ChatUIKitSettings.showConversationListUnreadCount = true;
 
 ### Configure the mute icon displayed in the conversation list
 
-The default is `packages/em_chat_uikit/assets/images/no_disturb.png`:
+The default is `packages/agora_chat_uikit/assets/images/no_disturb.png`:
 
 ```dart
 ChatUIKitSettings.conversationListMuteImage = const AssetImage(
-  'packages/em_chat_uikit/assets/images/no_disturb.png',
+  'packages/agora_chat_uikit/assets/images/no_disturb.png',
 )
 ```
 
