@@ -141,43 +141,7 @@ function MyContactListScreen(props: MyContactListScreenProps) {
 
 ## Avatar and nickname
 
-UIKit components provide the opportunity to modify nickname and avatar. This is mainly done through passive registration and active call.
-
-### Passive registration
-
-Register callbacks through `onUsersHandler` and `onGroupsHandler` during the initialization phase. When calling, pass the default value and return the new value to complete the customization.
-
-```typescript
-  const onUsersHandler = React.useCallback(
-    async (data: Map<string, DataModel>) => {
-      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
-        // todo: if success
-        resolve(new Map());
-        // todo: if fail
-        reject(new Map());
-      });
-      return ret;
-    },
-    []
-  );
-  const onGroupsHandler = React.useCallback(
-    async (data: Map<string, DataModel>) => {
-      if (data.size === 0) return data;
-      const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
-        // todo: if success
-        resolve(new Map());
-        // todo: if fail
-        reject(new Map());
-      });
-      return ret;
-    },
-    []
-  );
-```
-
-### Active call
-
-Where needed, update the custom data through `ChatService.updateDataList` and notify the concerned components.
+Please refer to `user-information.md` for instructions.
 
 ## Event notification
 

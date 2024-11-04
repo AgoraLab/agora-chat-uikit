@@ -40,7 +40,7 @@ Take the following steps to download and run the sample project:
       - For iOS, Run `pod install` to initialize the native dependency configuration:
         
          ```
-         cd example/ios && pod install
+         cd examples/uikit-example/ios && pod install
          ```
 
       - For Android, use the Android Studio to open the `example/android` directory and sync the sample project.
@@ -50,23 +50,11 @@ Take the following steps to download and run the sample project:
    Fill in your user ID, app ID, and token in `example/src/env.ts`:
 
       ```typescript
-      export const useSendBox = false;
-      export const isDevMode = true;
       export const appKey = "<your app key>";
-      export const accountType = "agora"; 
-      export const agoraAppId = "<agora app id>";
-      export const fcmSenderId = "<fcm sender id>";
-      export const account = [{ id: "foo", token: "bar" }];
-      ```
-   
-      Manually set the region in `packages/react-native-chat-uikit/src/config.local.ts`. The currently supported ones are domestic and overseas. 
-
-      ```typescript
-      export const language = "en"; // 'en' or 'zh-Hans'
-      export const release_area = "global"; // 'china' or 'global'
+      export const account = [{ id: "<your user id>", token: "<your user token>" }];
       ```
 
-1. Compile and run.
+2. Compile and run.
 
     Run the local service in the debug mode. During debugging, you can modify the JavaScript file and view the effect of the modification.
     
@@ -79,9 +67,4 @@ Take the following steps to download and run the sample project:
     ```
     yarn run android
     ```
-
-## FAQ
-
-Q: Why won't the app compile on Android? 
-A: You may need a `cmake 3.10.2` plugin for Android Studio.
 

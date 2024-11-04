@@ -20,10 +20,10 @@ Before you start, make sure your development environment meets the following con
    Run the following command to create a project:
 
    ```
-   # old version cli
+   # old cli
    npx react-native --version 0.73.2 init ProjectName
 
-   # new version cli
+   # latest cli
    npx @react-native-community/cli init ProjectName
    ```
 
