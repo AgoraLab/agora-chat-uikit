@@ -99,6 +99,8 @@ Before you start, make sure your development environment meets the following con
    ```typescript
    import * as React from "react";
    import { Pressable, SafeAreaView, Text, View } from "react-native";
+
+   // Components used by UIKIT in quickstart.
    import {
      Container,
      ConversationDetail,
@@ -120,6 +122,7 @@ Before you start, make sure your development environment meets the following con
      const im = useChatContext();
    
      if (page === 0) {
+       // Load the login page.
        return (
          <SafeAreaView style={{ flex: 1 }}>
            <TextInput
@@ -173,6 +176,7 @@ Before you start, make sure your development environment meets the following con
          </SafeAreaView>
        );
      } else if (page === 1) {
+       // Load the chat page component, which can perform chat operations.
        return (
          <SafeAreaView style={{ flex: 1 }}>
            <ConversationDetail
@@ -194,6 +198,7 @@ Before you start, make sure your development environment meets the following con
    }
    
    function App(): React.JSX.Element {
+     // Initialize UIKIT at the entry root node.
      return (
        <Container options={{ appKey: appKey, autoLogin: false }}>
          <SendMessage />

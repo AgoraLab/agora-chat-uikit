@@ -26,29 +26,28 @@ Take the following steps to implement the project:
 
 1. Create a project:
 
-    ```
-    # Install CLI tools
-    npm install create-react-app
-    # Build a my-app project
-    npx create-react-app my-app
+    ```shell
+    # Install the CLI tools.
+    npm install -g create-vite
+    # Build a my-app project.
+    create-vite my-app --template react 
     cd my-app
+    # Install dependencies
+    npm install
     ```
-    
+
     ```
     Project directory:
     ├── package.json
-    ├── public # Webpack’s static directory
-    │ ├── favicon.ico
-    │ ├── index.html # Default single-page application
-    │ └── manifest.json
+    ├── vite.config.js  
+    ├── public                  # Vite's static directory.
     ├── src
-    │ ├── App.css # CSS for the app root component
-    │ ├── App.js # App component code
-    │ ├── App.test.js
-    │ ├── index.css # Startup file style
-    │ ├── index.js # Startup file
-    │ ├── logo.svg
-    │ └── serviceWorker.js
+    │   ├── assets
+    │   ├── App.css             # CSS for the App root component.
+    │   ├── App.js              # App component code.
+    │   ├── index.css           # Startup file style.
+    │   └── main.jsx            # Startup file.
+    ├── index.html
     └── yarn.lock
     ```
 
@@ -59,13 +58,13 @@ Take the following steps to implement the project:
        - Install via npm:
     
            ```
-           npm install easemob-chat-uikit --save
+           npm install agora-chat-uikit
            ```
     
        - Install via yarn:
     
            ```
-           yarn add easemob-chat-uikit
+           yarn add agora-chat-uikit
            ```
    
    1. Build an app using UIKit components,
@@ -81,8 +80,8 @@ Take the following steps to implement the project:
             ConversationList,
             useClient,
             rootStore,
-          } from "easemob-chat-uikit";
-          import "easemob-chat-uikit/style.css";
+          } from "agora-chat-uikit";
+          import "agora-chat-uikit/style.css";
     
           const ChatApp = () => {
             const client = useClient();
@@ -105,11 +104,22 @@ Take the following steps to implement the project:
             }, [client]);
     
             return (
-              <div>
-                <div>
+              <div style={{
+                width: '100%',
+                position: 'fixed',
+                top: '0',
+                display: 'flex',
+                height: '100vh',
+                gap: '1px'
+              }}>
+                <div style={{
+                  width: '350px'
+                }}>
                   <ConversationList />
                 </div>
-                <div>
+                <div style={{
+                  flex: '1'
+                }}>
                   <Chat />
                 </div>
               </div>
@@ -138,7 +148,7 @@ Take the following steps to implement the project:
    1. Run the project:
 
        ```
-       npm run start
+       npm run dev
        ```
    
        Your application is now visible in the browser.

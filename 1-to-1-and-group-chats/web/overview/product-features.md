@@ -54,7 +54,7 @@ A read receipt informs the sender that the receiver has read the message.
 
 ### Contact card
 
-A contact card contains detailed information about a contact, usually including their profile picture and nickname.
+A contact card contains detailed information about a contact, usually including their avatar and nickname.
 Users can quickly add a contact or start a conversation through the contact card.
 
 ### Voice message
@@ -65,18 +65,6 @@ Users can send and receive voice messages in addition to text ones.
 
 Messages sent by users are examined to determine whether they comply with the platform's
 community guidelines, terms of service, and relevant laws and regulations.
-
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-This feature is in the `Typing` component and enabled by default. Disable it in the global configuration as follows:
-
-```javascript
-features.chat.messageInput.typing = false;
-```
-
-This feature is implemented using the SDK's transparent message transmission. 
 
 ### Group mention
 
@@ -94,32 +82,23 @@ features.chat.messageInput.mention = false;
 
 This section covers specific features related to managing conversations.
 
-### Conversation marked as read
-
-Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
-long-press it to open a context menu and mark the conversation as read.
 
 ### Pin a conversation (sticky conversation)
 
-The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the
-top for easy access.
+The user can click **⋮** next to a conversation list item and pin it to the top for easy access.
 
 ### Do not disturb
 
-The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND
-mode.
+The user can click **⋮** next to a conversation list item and turn on the DND mode.
 
 ### Delete a conversation
 
-The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
+The user can click **⋮** next to a conversation list item and delete the conversation.
 
 ## Message-related
 
 This section covers specific features related to managing messages, including message deletion, recall, editing, quoting, translation, emoji reply, topic, and forwarding. You can turn these features on or off.
 
-### Copy a message
-
-Users can copy a message to the clipboard to save it somewhere else or paste it into other applications.
 
 ### Delete a message
 
@@ -179,7 +158,7 @@ Users can translate messages into other languages for easier communication. This
 
 ### Reply with emoji
 
-Users can long-press a single message to open the context menu and reply with an emoji. Emoji replies
+Users can click **⋮** next to the message to open the context menu and reply with an emoji. Emoji replies
 (reactions) can help express emotions or attitudes, conduct surveys or votes. 
 
 This feature is in the message components in UIKit, such as `TextMessage`, `AudioMessage`, `FileMessage`, and so on.
@@ -194,7 +173,7 @@ features.chat.message.reaction = false;
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-The thread page is implemented in the UIKit `EaseChatThreadActivity`. You only need to call `EaseChatThreadActivity.actionStart` to start the page and pass in the required parameters. This feature is in the UIKit `TextMessage` component.
+The thread page is implemented in the UIKit `Thread`. This feature is in the UIKit `TextMessage` component.
 
 The message thread feature is enabled by default. Disable it in the global configuration:
 
@@ -301,3 +280,15 @@ This feature is enabled by default. You can disable it in the global configurati
 features.chat.header.pinMessage = false;
 features.chat.message.pin = false;
 ```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+This feature is in the `Typing` component and enabled by default. Disable it in the global configuration as follows:
+
+```javascript
+features.chat.messageInput.typing = false;
+```
+
+This feature is implemented using the SDK's transparent message transmission. 

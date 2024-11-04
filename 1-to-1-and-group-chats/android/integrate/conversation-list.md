@@ -5,7 +5,7 @@
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
 - Click the expand button in the title bar and select **New conversation** to start a conversation.
-- Long-press a conversation in the list to display the menu, where you can delete the conversation, pin the conversation, or disable messages.
+- Long-press a conversation in the list to display the menu, where you can delete the conversation, pin the conversation, or pause message notifications.
 
 A single conversation displays the conversation name, the last message, the time of the last message, the pinned and muted status, and other information.
 
@@ -69,7 +69,7 @@ EaseConversationListFragment.Builder()
 | `setTitleBarBackPressListener()` | Set the event listener for clicking the back button in the title bar. |
 | `setItemClickListener()` | Set the click event listener. |
 | `setOnItemLongClickListener()` | Set the long-press event listener. |
-| `setOnMenuItemClickListener()` | Set the menu click event listener. |
+| `setOnMenuItemClickListener()` | Set the menu item click event listener. |
 | `setConversationChangeListener()` | Set the conversation change event listener. |
 | `setEmptyLayout()` | Set a blank page for the conversation list. |
 | `setCustomAdapter()` | Set a custom adapter. The default is `EaseConversationListAdapter`. |
@@ -77,7 +77,7 @@ EaseConversationListFragment.Builder()
 
 ### Add a custom conversation layout
 
-Inherit from `EaseConversationListAdapter` to implement your own `CustomConversationListAdapter` and then set it with `CustomConversationListAdapter`.
+Inherit from `EaseConversationListAdapter` to implement your own `CustomConversationListAdapter` and then set `CustomConversationListAdapter` in `EaseConversationListFragment#Builder#setCustomAdapter`.
 
 1. Create a custom adapter `CustomConversationListAdapter`, inherit from `EaseConversationListAdapter`, and override the `getViewHolder` and `getItemNotEmptyViewType` methods.
 
@@ -97,13 +97,13 @@ Inherit from `EaseConversationListAdapter` to implement your own `CustomConversa
    }
    ```
    
-1. Add `CustomConversationListAdapter` to `EaseConversationListFragment#Builder`.
+2. Add `CustomConversationListAdapter` to `EaseConversationListFragment#Builder`.
 
    ```kotlin
    builder.setCustomAdapter(customConversationListAdapter);
    ```
    
-1. Customize by inheriting `EaseConversationListFragment`
+3. Customize by inheriting `EaseConversationListFragment`.
 
    Create a custom `CustomConversationListFragment`, inherit from `EaseConversationListFragment`, and set it with `EaseConversationListFragment#Builder`.
 
@@ -151,7 +151,7 @@ The title bar of the conversation list page contains three areas: Left, center, 
 - Configure the click event for the avatar and text area:
 
     ```kotlin
-    // Logo icon click event
+    // Logo icon area click event
     binding?.titleConversations?.setLogoClickListener {}
     // Logo status text area click event
     binding?.titleConversations?.setTitleClickListener {}
@@ -224,7 +224,7 @@ The title bar of the conversation list page contains three areas: Left, center, 
 
     ```kotlin
     
-    // Whether to use the default search function (jump to EaseSearchActivity. The search page currently supports searching users, conversations, messages, and blacklisted users.
+    // Whether to use the default search function (jump to EaseSearchActivity). The search page currently supports searching users, conversations, messages, and blacklisted users.
     // true: yes; (default) false: no.
     EaseConversationListFragment.Builder().useSearchBar(true)
     ```
@@ -258,25 +258,25 @@ To configure the content of a conversation list item, get the `EaseConversationL
         binding?.listConversation?.let{
             it.setItemBackGround() //Set the background of the item.
             it.setItemHeight() //Set the height of the item.
-            it.setAvatarDefaultSrc() //Set the default avatar of the entry.
-            it.setAvatarSize() //Set the size of the entry avatar.
-            it.setAvatarShapeType() //Set the style of the entry avatar, which is divided into three styles: default ImageView style, circular style and rectangular style.
-            it.setAvatarRadius() //Set the corner radius of the entry avatar. This is valid when the style is set to rectangle.
-            it.setAvatarBorderWidth() //Set the width of the entry avatar border.
-            it.setAvatarBorderColor() //Set the color of the entry avatar border.
-            it.setNameTextSize() //Set the text size of the session entry title.
-            it.setNameTextColor() //Set the text color of the session entry title.
-            it.setMessageTextSize() //Set the text size of the session entry content.
-            it.setMessageTextColor() //Set the text color of the session entry content.
-            it.setDateTextSize() //Set the text size of the session entry date.
-            it.setDateTextColor() //Set the text color of the session entry date.
+            it.setAvatarDefaultSrc() //Set the default avatar of the item.
+            it.setAvatarSize() //Set the size of the item avatar.
+            it.setAvatarShapeType() //Set the style of the item avatar, which is divided into three styles: default ImageView style, circular style and rectangular style.
+            it.setAvatarRadius() //Set the corner radius of the item avatar. This is valid when the style is set to rectangle.
+            it.setAvatarBorderWidth() //Set the width of the item avatar border.
+            it.setAvatarBorderColor() //Set the color of the item avatar border.
+            it.setNameTextSize() //Set the text size of the conversation item title.
+            it.setNameTextColor() //Set the text color of the conversation item title.
+            it.setMessageTextSize() //Set the text size of the conversation item content.
+            it.setMessageTextColor() //Set the text color of the conversation item content.
+            it.setDateTextSize() //Set the text size of the conversation item date.
+            it.setDateTextColor() //Set the text color of the conversation item date.
     
-            it.setListAdapter() //Set a custom session list adapter.
-            it.getListAdapter() //Get the session list adapter.
-            it.addHeaderAdapter() //Add the adapter for the header layout of the session list.
-            it.addFooterAdapter() //Add the adapter for the footer layout of the session list.
-            it.addItemDecoration() //Add decorator for session list.
-            it.removeItemDecoration() //Remove the decorator of the session list.
+            it.setListAdapter() //Set a custom conversation list adapter.
+            it.getListAdapter() //Get the conversation list adapter.
+            it.addHeaderAdapter() //Add the adapter for the header layout of the conversation list.
+            it.addFooterAdapter() //Add the adapter for the footer layout of the conversation list.
+            it.addItemDecoration() //Add decorator for conversation list.
+            it.removeItemDecoration() //Remove the decorator of the conversation list.
             it.addItemMenu() //Add a long press item.
             it.clearMenu() //Clear the long press menu item.
             it.findItemVisible() //Set whether the specified menu item is visible.   
@@ -332,5 +332,5 @@ EaseConversationListFragment.Builder()
 | `setTitleBarBackPressListener()` | Set the click event listener for the back button in the title bar. |
 | `setItemClickListener()` | Set the item click event listener. |
 | `setOnItemLongClickListener()` | Set the item long-press event listener. |
-| `setOnMenuItemClickListener()` | Set the item menu click event listener. |
+| `setOnMenuItemClickListener()` | Set the menu item click event listener. |
 | `setConversationChangeListener()` | Set the conversation change event listener. |

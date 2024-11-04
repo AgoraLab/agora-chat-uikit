@@ -1,8 +1,8 @@
 # Product overview
 
 Agora UIKit for one-to-one and group chats is an instant messaging UI component library developed based on 
-Agora Chat SDK. It provides various components to implement features such as a conversation list, chat interface, 
-contact list and interface, and others. This helps you to quickly build instant messaging applications based 
+Agora Chat SDK. It provides various components to implement features such as a conversation list, chat UI, and 
+contact list. This helps you to quickly build instant messaging applications based 
 on the particular business needs.
 
 To access the source code, [click here](https://github.com/easemob/chatuikit-android).

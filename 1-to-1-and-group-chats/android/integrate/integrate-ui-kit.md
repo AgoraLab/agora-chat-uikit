@@ -19,31 +19,31 @@ Take the following steps to integrate UIKit:
 
 1. Add remote dependencies.
 
-   Add the following dependencies in `project build.gradle.kts`:
+   Add the following dependencies in `build.gradle.kts` of the app project: 
 
    ```kotlin
    implementation("io.hyphenate:ease-chat-kit:4.7.0")
    ```
 
-1. Add local dependencies.
+2. Add local dependencies.
 
    1. Download UIKit from the [GitHub repository](https://github.com/easemob/chatuikit-android).
 
-   1. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
+   2. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
 
       ```kotlin
       include(":ease-im-kit")
       project(":ease-im-kit").projectDir = File("../chatuikit-android/ease-im-kit")
       ```
    
-   1. Add the following code to the `/Gradle Scripts/build.gradle,kts` file:
+   3. Add the following code to the `/Gradle Scripts/build.gradle.kts` file:
 
       ```kotlin
       //chatuikit-android
       implementation(project(mapOf("path" to ":ease-im-kit")))
       ```
 
-1. Prevent code obfuscation.
+3. Prevent code obfuscation.
 
    Add the following line to `app/proguard-rules.pro`:
 

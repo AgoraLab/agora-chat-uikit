@@ -107,8 +107,8 @@ Take the following steps:
 
     1. Install UIKit:
 
-        ```javascript
-        npm i easemob-chat-uikit --save;
+        ```
+        npm i agora-chat-uikit
         ```
 
     1. Create a `react_app/chat.jsx` file, import UIKit, and initialize it using the app key and user information.
@@ -117,15 +117,15 @@ Take the following steps:
 
        ```javascript
        // Import react_app/chat.jsx component
-       import { UIKitProvider, Chat, ConversationList } from "easemob-chat-uikit";
+       import { UIKitProvider, Chat, ConversationList } from "agora-chat-uikit";
        // Introduce UIKit styles
-       import 'easemob-chat-uikit/style.css'
+       import 'agora-chat-uikit/style.css'
        
        const appKey = "your appkey";
        const userId = "userId";
-       const password = "password";
+       const token = "token";
        
-       const EaseChat = (props) => {
+       const ChatApp = (props) => {
          // The theme attribute passed in by the parent component
          const { theme } = props;
          return (
@@ -133,7 +133,7 @@ Take the following steps:
              initConfig={{
                appKey,
                userId,
-               password
+               token
              }}
              theme={{
                mode: theme
@@ -151,21 +151,21 @@ Take the following steps:
          );
        };
        
-       export default EaseChat;
+       export default ChatApp;
        ```
    
 1. Add UIKit to the Vue page.
 
-    Add `EaseChat` to the Vue page, delete all code in `views/HomeView.vue`, and add the following:
+    Add `ChatApp` to the Vue page, delete all code in `views/HomeView.vue`, and add the following:
 
     ```javascript
     <script setup>
     import { ref } from "vue";
     import { applyPureReactInVue } from "veaury";
-    import EaseChat from "../react_app/chat";
+    import ChatApp from "../react_app/chat";
     import Logo from "../assets/logo.svg";
     
-    const Chat = applyPureReactInVue(EaseChat);
+    const Chat = applyPureReactInVue(ChatApp);
     
     const theme = ref("light");
     
@@ -228,9 +228,9 @@ Take the following steps:
    
     The code does the following:
     
-    1. Imports the Veaury and `EaseChat` components.
+    1. Imports the Veaury and `ChatApp` components.
     1. Uses Veaury's `applyPureReactInVue` function to convert the React component into a Vue component.
-    1. Defines theme variables and passes them to the `EaseChat` component to switch the theme.
+    1. Defines theme variables and passes them to the `ChatApp` component to switch the theme.
     1. Adds styles to beautify the interface.
 
     Delete the irrelevant code in `App.vue` and keep only `RouterView`. Visit http://localhost:5173 to see the interface. Click **Switch Theme** in the upper right corner to switch the theme.

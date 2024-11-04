@@ -9,7 +9,7 @@ UIKit for chatroom has built-in light (default) and dark themes.
 You can change the theme by setting the `Provider` component's `theme` property:
 
 ```javascript
-import { Chatroom, UIKitProvider } from 'easemob-chat-uikit';
+import { Chatroom, UIKitProvider } from 'agora-chat-uikit';
 
 const ChatApp = () => {
   return (
@@ -19,7 +19,7 @@ const ChatApp = () => {
         primaryColor: '#00CE76', // Hexadecimal color value
       }}
     >
-      <Chatroom className="customClass" prefix="custom" />
+      <Chatroom className="customClass" />
     </UIKitProvider>
   );
 };

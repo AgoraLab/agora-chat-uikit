@@ -2,9 +2,8 @@
 
 UIKit provides various components to quickly build chat room applications for your particular business needs. Through this UIKit, users in the chat room can interact in real time and send messages, gifts, and global broadcasts.
 
-The source code is available [here](https://github.com/easemob/Easemob-UIKit-web).
+The source code is available [here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-web).
 
-Try out UIKit demo [here](https://webim-live.easemob.com/login). 
 
 ## Feature overview
 

@@ -12,8 +12,8 @@ For details about message-related functions, see [Product features](../overview/
 
 ```javascript
 import React from "react";
-import { Chat } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import { Chat } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ChatContainer = () => {
   return (
@@ -36,8 +36,8 @@ Taking text messages as an example, you can modify the message bubble style as f
 
 ```javascript
 import React from "react";
-import { Chat, MessageList, TextMessage } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import { Chat, MessageList, TextMessage } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ChatContainer = () => {
   const renderTxtMsg = (msg) => {
@@ -150,8 +150,8 @@ You can configure the features of the message input box, including whether to di
 
 ```javascript
 import React from 'react';
-import { Chat, Icon, MessageInput } from 'easemob-chat-uikit';
-import 'easemob-chat-uikit/style.css';
+import { Chat, Icon, MessageInput } from 'agora-chat-uikit';
+import 'agora-chat-uikit/style.css';
 
 const ChatContainer = () => {
   return (
@@ -197,17 +197,17 @@ const ChatContainer = () => {
 };
 ```
 
-### Add custom icons in the message editor
+### Add custom icons in the message input box
 
-Add a custom icon to the message editor in the following way:
+Add a custom icon to the message input box in the following way:
 
-1. Use the `renderMessageInput` method to customize the rendered message editor.
+1. Use the `renderMessageInput` method to customize the rendered message input box.
 1. Use custom `actions` components of `MessageInput`.
 
 ```javascript
 import React from "react";
-import { Chat, Icon, MessageInput } from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+import { Chat, Icon, MessageInput } from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ChatContainer = () => {
   // Add an icon in the message editor
@@ -251,8 +251,8 @@ import {
   rootStore,
   MessageInput,
   Icon,
-} from "easemob-chat-uikit";
-import "easemob-chat-uikit/style.css";
+} from "agora-chat-uikit";
+import "agora-chat-uikit/style.css";
 
 const ChatContainer = () => {
   // Display a custom message

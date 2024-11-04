@@ -7,7 +7,7 @@ This page provides several examples to show how to add your own business logic.
 Customize the header via the `renderHeader` method: 
 
 ```javascript
-import {Chatroom, Header} from 'easemob-chat-uikit'
+import {Chatroom, Header} from 'agora-chat-uikit'
 
 const ChatApp = () => {
   const CustomHeader = <Header back content="Custom Header">
@@ -24,13 +24,14 @@ const ChatApp = () => {
 Customize the message area via `renderMessageList`:
 
 ```typescript
-import { Chatroom, MessageList } from "easemob-chat-uikit";
+import { Chatroom, MessageList } from "agora-chat-uikit";
 
 const ChatApp = () => {
   const renderMessage = (message) => {
-    switch (message.type) {
-      case "txt":
-        return <div>{message.msg}</div>;
+    if(message.type === 'txt') {
+      return <div>{message.msg}</div>;
+    } else {
+      return null
     }
   };
   return (
@@ -57,13 +58,14 @@ const ChatApp = () => {
 Customize gifts via the `giftConfig` property of `messageEditorProps`:
 
 ```typescript
-import { Chatroom, MessageList } from "easemob-chat-uikit";
+import { Chatroom, MessageList } from "agora-chat-uikit";
 
 const ChatApp = () => {
   const renderMessage = (message) => {
-    switch (message.type) {
-      case "txt":
-        return <div>{message.msg}</div>;
+    if(message.type === 'txt') {
+      return <div>{message.msg}</div>;
+    } else {
+      return null
     }
   };
   return (
@@ -75,11 +77,10 @@ const ChatApp = () => {
             giftConfig: {
               gifts: [
                 {
-                  giftId: "2665752a-e273-427c-ac5a-4b2a9c82b255",
-                  giftIcon:
-                    "https://fullapp.oss-cn-beijing.aliyuncs.com/uikit/pictures/gift/AUIKitGift1.png",
-                  giftName: "Heart",
-                  giftPrice: "1",
+                  giftId: "giftId", // The ID of the gift
+                  giftIcon: "https://cdn.pixabay.com/photo/2014/04/02/10/47/red-304570_1280.png", // The URL of the gift image
+                  giftName: "Heart", // The name of the gift
+                  giftPrice: "1", // The price of the gift
                 },
               ],
             },
@@ -97,7 +98,7 @@ UIKit uses React Context to manage global data. You can use `useChatroomContext`
 
 ```javascript
 import React from "react";
-import { useChatroomContext, Button } from "easemob-chat-uikit";
+import { useChatroomContext, Button } from "agora-chat-uikit";
 
 const ChatAPP = () => {
   const {

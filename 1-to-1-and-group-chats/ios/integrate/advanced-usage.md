@@ -4,7 +4,7 @@ The following are examples of advanced usage of UIKit. The conversation list, me
 
 ## Initialization
 
-Compared to the initialization in the quickstart, additional `ChatOptions` parameter is added here, including switches for whether to print logs in the SDK, to log in automatically, and to use user attributes by default.
+Compared to the initialization in the quickstart, parameters in `ChatOptions` are added here, including switches for whether to print logs in the SDK, to log in automatically, and to use user attributes by default.
 
 ```swift
 let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
@@ -12,7 +12,7 @@ let error = EaseChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey)
 
 ## Login
 
-Use the information of the current user object that conforms to `EaseProfileProtocol` to log in to UIKIt. Pass in the user ID into the `userId` field in the following code: 
+Use the information of the current user object that conforms to `EaseProfileProtocol` to log in to UIKIt. Pass in the user ID into the `userId` field in the following code: // TODO：是符合这个协议的用户信息还是用户对象
 
 ```swift
 public final class YourAppUser: NSObject, EaseProfileProtocol {
@@ -206,16 +206,16 @@ If you have integrated Chat SDK, all user IDs can be used to log in to UIKit.
 Most of the message and page processing logic in the chat page can be overridden, including ViewModel:
 
 ```swift
-//Create a new user in the Agora Console, pass the user ID into the following construction method parameters, and jump to the chat page.
+//Create a new user in the Agora Console, pass the user ID into the following constructor parameters, and jump to the chat page.
 let vc = ComponentsRegister.shared.MessageViewController.init(conversationId: <#ID of the user just created#>, chatType: .chat)
-// Custom classes after inheritance and registration can also call the registerEventsListener method of ViewModel to listen for chat message-related events, such as message reception, long press, click, etc. 
+// Custom classes can also call the registerEventsListener method of ViewModel to listen for chat message-related events, such as message reception, long press, click, etc. 
 // Either push or present can be used
 ControllerStack.toDestination(vc: vc)
 ```
 
 ## Monitor user and server connection events
 
-Call `registerUserStateListener` to listen to the events and errors related to the user and the connection status changes between the server and UIKit:
+Call `registerUserStateListener` to listen for the events and errors related to the user and the connection status changes between the server and UIKit:
 
 ```swift
 EaseChatUIKitClient.shared.registerUserStateListener(self)

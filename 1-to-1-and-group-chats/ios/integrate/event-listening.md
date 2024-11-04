@@ -1,4 +1,4 @@
-# Overridable methods in the ViewModel of the main page
+# Overridable methods in the ViewModel of main pages
 
 The callback event monitoring and the monitoring of UI events are both in their respective ViewModels.
 
@@ -8,22 +8,22 @@ You can use the original logic or add your own extensions and implementations to
 
 Inherit `ConversationViewModel` and register it in `ComponentsRegister.shared.ConversationViewService`, then override the event listeners you want to intercept:
 
-| Method name | Usage | Overridable? (Yes/No) |
+| Method | Usage | Overridable? (Yes/No) |
 |:---:|:---:|:---:|
 | `loadExistLocalDataIfEmptyFetchServer` | Called when an error occurs while pulling the conversation list. This method will retrieve the conversation list again. | Yes |
-| `pin` | Triggered when swiping left on the conversation list and clicking the top button. | Yes |
-| `unpin` | Triggered when swiping left on the conversation list and clicking the **Unpin** button. | Yes |
-| `mute` | Triggered when swiping left on the conversation list and clicking the **Mute** button. | Yes |
-| `unmute` | Triggered when swiping left on the conversation list and clicking the **Unmute** button. | Yes |
-| `delete` | Triggered when swiping left on the conversation list and clicking the **Delete** button. | Yes |
-| `read` | Triggered when swiping left on the conversation list and clicking the **Read** button. | Yes |
+| `pin` | Triggered when swiping left on a conversation list cell and clicking the pin button. | Yes |
+| `unpin` | Triggered when swiping left on a conversation list cell and clicking the **Unpin** button. | Yes |
+| `mute` | Triggered when swiping left on a conversation list cell and clicking the **Mute** button. | Yes |
+| `unmute` | Triggered when swiping left on a conversation list cell and clicking the **Unmute** button. | Yes |
+| `delete` | Triggered when swiping left on a conversation list cell and clicking the **Delete** button. | Yes |
+| `read` | Triggered when swiping left on a conversation list cell and clicking the **Read** button. | Yes |
 | `conversationDidSelected` | Triggered when clicking a conversation list. | Yes |
-| `conversationLongPressed` | Triggered when long-pressing a conversatin list. | Yes |
-| `moreAction` | Trigerred when swiping right on the conversation list and clicking **...**. | Yes |
-| `conversationLastMessageUpdate` | Trigerred when the last message of a conversation in the list is updated. | Yes |
+| `conversationLongPressed` | Triggered when long-pressing a conversation list. | Yes |
+| `moreAction` | Triggered when swiping right on the conversation list and clicking **...**. | Yes |
+| `conversationLastMessageUpdate` | Triggered when the last message of a conversation in the list is updated. | Yes |
 | `playNewMessageSound` | Play audio for receiving a new message. | Yes |
-| `conversationMessageAlreadyReadOnOtherDevice` | Trigerred when messages in a conversation have been read on other devices. | Yes |
-| `conversationEventDidChanged` | Trigerred when the multi-device operation time of a conversation changes. | Yes |
+| `conversationMessageAlreadyReadOnOtherDevice` | Triggered when messages in a conversation have been read on other devices. | Yes |
+| `conversationEventDidChanged` | Triggered when the multi-device operation time of a conversation changes. | Yes |
 | `mapper` | Maps the `ConversationInfo` object methods. | Yes |
 
 

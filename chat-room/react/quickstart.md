@@ -40,7 +40,7 @@ Take the following steps to implement message sending:
    ```typescript
     export function App() {
       const appKey = '<your app key>';
-      return <Container appKey={appKey}>{/* // todo: 在这里添加组件 */}</Container>;
+      return <Container appKey={appKey}>{/* // todo: add component here */}</Container>;
     }
    ```
 
@@ -104,4 +104,4 @@ Take the following steps to implement message sending:
 
    Enter the message content at the bottom of the screen and click **Send** to send the message.
 
-   ![Send a message](../assets/images/click_chat.png)
+   ![Send a message](../assets/images/click_chat_2.png)

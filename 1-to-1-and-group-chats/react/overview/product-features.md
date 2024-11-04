@@ -74,7 +74,7 @@ A read receipt informs the sender that the receiver has read the message.
 
 ### Contact card
 
-A contact card contains detailed information about a contact, usually including their profile picture and nickname. 
+A contact card contains detailed information about a contact, usually including their avatar and nickname. 
 Users can quickly add a contact or start a conversation through the contact card.
 
 ![Contact card](../../assets/images/contact_card.png)
@@ -91,32 +91,6 @@ Messages sent by users are examined to determine whether they comply with the pl
 community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
-
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-![Message status indication](../../assets/images/message_status_indication.png)
-
-The input status indication feature is enabled by default. To disable this feature, set `ContainerProps.enableTyping` to `false`.
-
-The sample code is as follows:
-
-```typescript
-export function App() {
-  // Set whether to enable the input status indication
-  const enableTypingRef = React.useRef(false);
-
-  return (
-    <UIKitContainer enableTyping={enableTypingRef.current}>
-      {/* your custom component */}
-      <ToastView />
-    </UIKitContainer>
-  );
-}
-```
-
-If you need to customize the style of the typing component or the navigation bar component of the chat page, refer to the `ConversationDetailNavigationBar` component.
 
 ### Local message search
 
@@ -302,3 +276,29 @@ export function App() {
   );
 }
 ```
+
+### Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+![Message status indication](../../assets/images/message_status_indication.png)
+
+The input status indication feature is enabled by default. To disable this feature, set `ContainerProps.enableTyping` to `false`.
+
+The sample code is as follows:
+
+```typescript
+export function App() {
+  // Set whether to enable the input status indication
+  const enableTypingRef = React.useRef(false);
+
+  return (
+    <UIKitContainer enableTyping={enableTypingRef.current}>
+      {/* your custom component */}
+      <ToastView />
+    </UIKitContainer>
+  );
+}
+```
+
+If you need to customize the style of the typing component or the navigation bar component of the chat page, refer to the `ConversationDetailNavigationBar` component.

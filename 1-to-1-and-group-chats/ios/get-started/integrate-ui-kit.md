@@ -37,7 +37,7 @@ You can use CocoaPods to install UIKit as a dependency in your Xcode project.
    end
    ```
 
-1. Run the following command from the `Podfile` directory:
+1. Run the following command to navigate to the folder where `Podfile` is located:
 
     ```
     pod install --repo-update
