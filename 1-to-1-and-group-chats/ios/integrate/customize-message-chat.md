@@ -9,7 +9,7 @@ The UIKit message chat page provides the following features:
 
 For details about message-related functions, see [Product features](../overview/product-features.md).
 
-You can configure the chat page navigation bar, message list items, input box, jump events, and other elements. See [MessageListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Chat/Controllers/MessageListController.swift) for details.
+You can configure the chat page navigation bar, message list items, input box, jump events, and other elements. See [MessageListController.swift](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Components/Chat/Controllers/MessageListController.swift) for details.
 
 ## Customize the navigation bar
 

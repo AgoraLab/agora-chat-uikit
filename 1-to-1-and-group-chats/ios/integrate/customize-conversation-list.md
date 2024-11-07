@@ -14,7 +14,7 @@ A single conversation displays the conversation name, the last message, the time
 
 For details about the conversation list features, see [Product features](../overview/product-features.md).
 
-You can configure the navigation bar and conversation list cells on the conversation list page. See [ ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
+You can configure the navigation bar and conversation list cells on the conversation list page. See [ ConversationListController.swift](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
 
 ![Customize Conversation List](../../assets/images/conversation_list_highlighted.jpg)
 

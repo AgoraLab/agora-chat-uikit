@@ -229,4 +229,4 @@ EaseChatUIKitClient.shared.unregisterUserStateListener(self)
 
 ## More
 
-For more advanced usage, refer to the [demo](https://github.com/easemob/easemob-demo-ios/tree/SwiftDemo).
+For more advanced usage, refer to the [demo](https://github.com/AgoraIO-Usecase/AgoraChat-ios/tree/SwiftDemo).

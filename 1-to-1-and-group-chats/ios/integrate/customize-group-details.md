@@ -1,6 +1,6 @@
 # Customize the group details
 
-You can configure the navigation bar, group actions, group details, and other items. For details, see [GroupInfoViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/groupinfoviewcontroller).
+You can configure the navigation bar, group actions, group details, and other items. For details, see [GroupInfoViewController](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit/Documentation/chat_uikit.doccarchive/documentation/chat_uikit/groupinfoviewcontroller).
 
 ## Customize the navigation bar
 

@@ -4,7 +4,7 @@ The `Appearance.swift` class that contains all configurable items. These configu
 
 ## General configurable items
 
-Note that the following are values to be set, which will change the UI style or data source of the corresponding configuration item. Refer to the [source code](https://github.com/easemob/chatuikit-ios).
+Note that the following are values to be set, which will change the UI style or data source of the corresponding configuration item. Refer to the [source code](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Core/UIKit/Commons/Appearance.swift).
 
 - `Appearance.pageContainerTitleBarItemWidth = value`: The width of the title bar of the bottom pop-up page. To configure, search for it in the `PageContainerTitleBar.swift` file in Xcode.
 - `Appearance.pageContainerConstraintsSize = value`: The width and height of the bottom pop-up window page. Mainly use the `PageContainersDialogController.swift` class to find and view this property in Xcode.

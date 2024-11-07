@@ -1,6 +1,6 @@
 # Customize the contact list
 
-The contact list provides contacts with the contact search, contact addition, friend request list entry, and group list entry features. You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/contactviewcontroller) for details.
+The contact list provides contacts with the contact search, contact addition, friend request list entry, and group list entry features. You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit/Documentation/chat_uikit.doccarchive/documentation/chat_uikit/contactviewcontroller) for details.
 
 ## Customize the navigation bar
 

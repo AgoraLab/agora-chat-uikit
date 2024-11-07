@@ -1,6 +1,6 @@
 # Customize the contact details
 
-You can customize the navigation bar, actions, contact items, and other elements. See [ContactInfoViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/contactinfoviewcontroller) for details.
+You can customize the navigation bar, actions, contact items, and other elements. See [ContactInfoViewController](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit/Documentation/chat_uikit.doccarchive/documentation/chat_uikit/contactinfoviewcontroller) for details.
 
 ## Customize the navigation bar
 
