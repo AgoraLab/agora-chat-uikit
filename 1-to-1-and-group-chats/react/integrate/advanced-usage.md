@@ -21,7 +21,7 @@ UIKit provides themes, internationalization, common UI components, and other ele
 | `recallTimeout` | number | Optional | The callback timeout in milliseconds. The default is `120`. |
 | `group` | object | Optional | The maximum number of members to select when creating a group. The default is `1000`. |
 | `conversationDetail` | `ConversationDetailType` | Optional | A collection of chat page configurations. See the corresponding definition for details. |
-| `avatar` | object | Optional | The global avatar style settings. Supports border rounding settings. |
+| `avatar` | object | Optional | The global avatar style settings. Supports border radius settings. |
 | `input` | object | Optional | The global input style settings. Supports border radius settings. |
 | `alert` | object | Optional | The global warning box style settings. Supports border radius settings. |
 | `onInitLanguageSet` | function | Optional | Register the callback for the language pack. You can customize the language pack. |
@@ -79,7 +79,7 @@ This section introduces common hooks.
 
 ### useColors
 
-Usually used with the `usePaletteContext` custom color objects to change component colors.
+Usually used with the `usePaletteContext` to customize color objects and change component colors.
 
 For example:
 
@@ -104,7 +104,7 @@ export function SomeView() {
 
 ### useDelayExecTask
 
-Delays the execution of a task. If called again before the timeout occurs, the delay continues until the timeout while executing the task.
+Delays the execution of a task. If called again before the timeout occurs, the delay continues until the timeout occurs during task execution.
 
 For example:
 
@@ -208,9 +208,9 @@ UIKit provides two event notification methods:
     - `ConversationListener`: Listens for conversation-related notifications.
     - `GroupServiceListener`: Listens for group-related notifications.
     - `ContactServiceListener`: Listens for contact-related notifications.
-    - `PresenceServiceListener`: Listens for notifications of user status subscriptions.
+    - `PresenceServiceListener`: Listens for notifications of presence subscriptions.
     - `CustomServiceListener`: Listens for custom notifications.
-    - `MultiDeviceStateListener`: Listens for notifications related to multiple devices.
+    - `MultiDeviceStateListener`: Listens for notifications related to multi-device login.
     - `EventServiceListener`: Listens for event notifications, such as notifications before adding a friend, adding a friend successfully, and failure to add a friend.
 
 - UI event notifications: Application behavior may cause addition, deletion, and modification of list items, list refresh, and list reload. For example, if a group name is modified on the group details page, the page of the conversation list component will also be updated. In many cases, a single interface line may cause changes in multiple UI components. See [UIListener](#listeners) for details.

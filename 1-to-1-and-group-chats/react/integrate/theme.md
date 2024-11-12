@@ -36,7 +36,7 @@ export function App() {
 The customization is done via `Palette` and `Theme`:
 
 - `Palette`: Set the color palette of the theme.
-- `Theme`: Compose light and dark default themes by selecting different colors and styles.
+- `Theme`: Compose the default light and dark themes by selecting different colors and styles.
 
 The interface is as follows:
 
@@ -45,7 +45,7 @@ The interface is as follows:
 | `style` | The theme type: Light or dark. |
 | `button` | The button theme, supports custom styles and sizes. |
 | `shadow` | The shadow theme, supports custom styles. |
-| `cornerRadius` | The border rounding: Supports custom rounded corners for avatars, warning boxes, input boxes, and message bubbles. |
+| `cornerRadius` | The border radius: Supports custom rounded corners for avatars, warning boxes, input boxes, and message bubbles. |
 
 ### Modify theme colors
 
@@ -94,7 +94,7 @@ export function App() {
 
   // Modified by theme
   const light = useLightTheme(palette);
-  // Modify the rounded corner size of the message bubble border
+  // Modify the border radius of the message bubble
   light.cornerRadius.bubble = ["extraSmall"];
 
   return (

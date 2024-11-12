@@ -58,14 +58,14 @@ The `ContactList` component provides the following core properties:
 | `onSort` | Function | Optional | Customize the list sorting strategy. |
 | `onInitListItemActions` | Function | Optional | Customize individual list items in the contact list component. By default, it includes a contact application list and a group list. |
 | `groupId` | string | Optional | Used only in the contact lists for adding group members. |
-| `onClickedNewRequest` | Function | Optional | The callback for clicking the contact notification list. Routing may be used. |
+| `onClickedNewRequest` | Function | Optional | The callback for clicking the button for new request. Routing may be used. |
 | `onClickedGroupList` | Function | Optional | The callback for clicking the group list. |
 | `ListItemRender` | Function | Optional | The component for customizing contact list items. You can modify the layout, style, visibility, and other elements. |
 | `ListItemHeaderRender` | Function | Optional | The component for customizing the header of contact list items. You can modify the layout, style, visibility, and other elements. |
 | `onStateChanged` | Function | Optional | The list status notification, including loading failure, list is empty, and others. |
 | `propsRef` | reference | Optional | The reference object of the list component that can actively add, modify, and delete conversation list items. Pay attention to the operating conditions. |
 | `onForwardMessage` | Function | Optional | The message forwarding callback. Routing may be used. |
-| `onChangeRequestCount` | Function | Optional | The callback for changes in the number of new notifications. Routing may be used. |
+| `onChangeRequestCount` | Function | Optional | The callback for changes in the number of unread new requests. Routing may be used. |
 | `getFullLetter` | Function | Optional | Get the callback for category sorting. Routing may be used. |
 | `indexList` | array | Optional | The list of index headers. Defaults to `ABCDEFGHIJKLMNOPQRSTUVWXYZ#`. |
 | `visibleEmptyIndex` | boolean | Optional | Whether to display empty index categories. By default, they are not displayed. |

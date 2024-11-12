@@ -262,7 +262,7 @@ export function ConversationDetailScreen(props: Props) {
   // Search mode
   const messageId = ((route.params as any)?.params as any)?.messageId;
 
-  // Is it the multi-select mode?
+  // Is it the multi-selection mode?
   const selectType = ((route.params as any)?.params as any)?.selectType;
 
   // Topic mode parameters
