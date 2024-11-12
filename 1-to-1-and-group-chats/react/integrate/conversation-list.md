@@ -189,10 +189,10 @@ function MyConversationListScreen(props: MyConversationListScreenProps) {
               backgroundColor: 'orange',
             }}
             onPress={() => {
-              console.log('test:zuoyu: onPress');
+              console.log('onPress');
             }}
             onLongPress={() => {
-              console.log('test:zuoyu: onLongPress');
+              console.log('onLongPress');
             }}
           >
             <View
@@ -229,14 +229,7 @@ function MyConversationListScreen(props: MyConversationListScreenProps) {
 
 ## Configure the avatar and nickname
 
-`ConversationList` items are divided into users and groups. For avatars and nicknames, the priority is given to the data provided by the user. Otherwise, default avatars and IDs are used. For groups, the default avatars and IDs are used by default. 
-
-Avatars and nicknames can be provided in the following ways:
-
-- Register callbacks: Use the `onUsersHandler` and `onGroupsHandler` properties of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
-
-Regardless of the update method, the cached data will be updated, and active updates will also trigger UI component refreshes.
+Please refer to `user-information.md` for instructions.
 
 ## Event notifications
 

@@ -214,13 +214,7 @@ The methods of object reference are as follows:
 
 ## Avatar and nickname in the message list
 
-There is no default value in the `MessageList` component for the avatar and nickname that need to be provided by the user. If not provided, the default avatar and user ID will be displayed.
-
-Avatars and nicknames can be provided in the following ways:
-
-- Register callbacks: Use the `onRequestMultiDataproperty` property of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
-- Message-carried: The avatar and nickname carried in the message will be used first.
+Please refer to `user-information.md` for instructions.
 
 ### Set the background color of the message list
 
@@ -382,7 +376,7 @@ The core of the implementation is to customize the menu of the input component, 
 
 For example:
 
-```javascript
+```typescript
 export function MyMessageContent(props: MessageContentProps) {
   const { msg } = props;
   if (msg.body.type === ChatMessageType.CUSTOM) {

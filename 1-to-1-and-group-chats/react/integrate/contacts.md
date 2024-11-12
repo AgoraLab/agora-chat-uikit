@@ -141,14 +141,7 @@ function MyContactListScreen(props: MyContactListScreenProps) {
 
 ## Avatar and nickname
 
-There is no default value in the `ContactList` component for the avatar and nickname that must be provided by the user. If not provided, the default avatar and user ID will be displayed.
-
-Avatars and nicknames can be provided in the following ways:
-
-- Register callbacks: Use the `onUsersHandlerproperty` property of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
-
-Regardless of the update method, the cached data will be updated, and active updates will trigger UI component refreshes.
+Please refer to `user-information.md` for instructions.
 
 ## Event notification
 
