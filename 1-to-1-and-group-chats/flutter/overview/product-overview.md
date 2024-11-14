@@ -84,7 +84,7 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
 │   │   ├── group_member_list_view_controller.dart
 │   │   ├── message_list_view_controller.dart
 │   │   └── new_request_list_view_controller.dart
-│   ├── custom // The custom component.
+│   ├── custom // The component for customization
 │   │   ├── chat_uikit_emoji_data.dart
 │   │   ├── custom_text_editing_controller.dart
 │   │   └── message_list_share_user_data.dart
@@ -96,7 +96,7 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
 │   │   ├── group_item_model.dart
 │   │   ├── new_request_item_model.dart
 │   │   └── quote_mode.dart
-│   ├── route // The custom routing directory.
+│   ├── route // The directory for routing customization
 │   │   ├── chat_uikit_route.dart
 │   │   ├── chat_uikit_route_names.dart
 │   │   └── view_arguments
@@ -130,9 +130,9 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
 │   │   ├── conversations_view.dart // The conversation list component.
 │   │   ├── create_group_view.dart // The group creation component.
 │   │   ├── current_user_info_view.dart // The current user details component.
-│   │   ├── group_add_members_view.dart // The add a group member component.
-│   │   ├── group_change_owner_view.dart // The modify the group owner component.
-│   │   ├── group_delete_members_view.dart // The delete a group member component.
+│   │   ├── group_add_members_view.dart // The group member addition component.
+│   │   ├── group_change_owner_view.dart // The group owner change component.
+│   │   ├── group_delete_members_view.dart // The group member deletion component.
 │   │   ├── group_details_view.dart // The group details component.
 │   │   ├── group_members_view.dart // The group member list component.
 │   │   ├── group_mention_view.dart // The group mention component.
@@ -154,7 +154,7 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
 │       ├── chat_uikit_bottom_sheet.dart // The bottom sheet component.
 │       ├── chat_uikit_button.dart // The button component.
 │       ├── chat_uikit_dialog.dart // The dialog component.
-│       ├── chat_uikit_downloads_helper_widget.dart // The download attachment component.
+│       ├── chat_uikit_downloads_helper_widget.dart // The attachment download component.
 │       ├── chat_uikit_input_bar.dart // The message input component.
 │       ├── chat_uikit_input_emoji_bar.dart // The emoji component.
 │       ├── chat_uikit_list_view.dart // The list component.
@@ -191,7 +191,7 @@ To access the source code, [click here](https://github.com/easemob/chatuikit-flu
 │                   └── chat_uikit_voice_message_widget.dart // The audio message component.
 └── universal
     ├── chat_uikit_action_model.dart // The event model.
-    └── defines.dart // The internal use key.
+    └── defines.dart // The internal key.
 ```
 
 ## Features

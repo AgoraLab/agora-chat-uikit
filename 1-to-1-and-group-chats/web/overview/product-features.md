@@ -154,7 +154,7 @@ Users can translate messages into other languages for easier communication. This
    
 1. Set the target language
 
-    Initialize UIKit configuration `initConfig.translationTargetLanguage` and set it to the target language for translation. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+    Initialize UIKit configuration `initConfig.translationTargetLanguage` and set it to the target language for translation. If the target language is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
 
 ### Reply with emoji
 
@@ -181,7 +181,7 @@ The message thread feature is enabled by default. Disable it in the global confi
 features.chat.message.thread = false;
 ```
 
-Introduce the Thread component from UIKit and display this component when the listener `rootStore.threadStore.showThreadPanel` is set to `true`.
+Introduce the Thread component from UIKit and display this component when `rootStore.threadStore.showThreadPanel` is set to `true`.
 
 ### Forward multiple messages
 
@@ -227,7 +227,7 @@ Sample code:
             lastMessage: forwardedMessages,
         });
 
-         // Set the selection status of the last message in the current conversartion  
+         // Set the selection status of the last message in the current conversation  
         rootStore.messageStore.setSelectedMessage(currentConversation, {
             selectable: false,
             selectedMessage: [],
@@ -246,7 +246,7 @@ The single message forwarding feature is enabled by default. You can disable it 
 features.chat.message.forward = false;
 ```
 
-The logic is as follows: Listen for `onForwardMessage` events in the `Chat` component, display the contact component, select the target user to forward the message to, and then send the message.
+The logic is as follows: Listen for `onForwardMessage` event in the `Chat` component, display the contact component, select the target user to forward the message to, and then send the message.
 
 The sample code is as follows:
 
@@ -291,4 +291,4 @@ This feature is in the `Typing` component and enabled by default. Disable it in 
 features.chat.messageInput.typing = false;
 ```
 
-This feature is implemented using the SDK's transparent message transmission. 
+This feature is implemented using the SDK's command message transmission. 

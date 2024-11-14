@@ -15,7 +15,7 @@ All internal state data of UIKit is stored in `rootStore`. The `rootStore` data 
 | `conversationStore` |  |  |
 |  | `currentCvs` | The current conversation. |
 |  | `conversationList` | All conversations. |
-|  | `searchList` | The searched conversations. |
+|  | `searchList` | The conversations retrieved after a search. |
 | `messageStore` |  |  |
 |  | `message` | The entire app's messages including `singleChat` and `groupChat` messages, as well as messages stored by message ID (`byId`). |
 |  | `selectedMessage` | The multiple selected messages. |
@@ -116,7 +116,7 @@ const ChatAPP = () => {
 | Name | Property or method | Type | Description |
 |---|---|---|---|
 | `messages` | Property | Message | All message data in UIKit. |
-| `repliedMessage` | Property | `AgoraChat.MessagesType` | The message reply. |
+| `repliedMessage` | Property | `AgoraChat.MessagesType` | The message being replied to. |
 | `typing` | Property | Typing | The user object being entered. |
 | `sendMessage` | Method | `(message: AgoraChat.MessageBody) => Promise<void>` | Send a message. |
 | `deleteMessage` | Method |<code>deleteMessage: (cvs: CurrentConversation, messageId: string &#124; string[]) => void &#124; Promise<void></code> | Delete a message. |
@@ -125,7 +125,7 @@ const ChatAPP = () => {
 | `modifyMessage` | Method |`(messageId: string, msg: AgoraChat.TextMsgBody) => Promise<void>` | Edit a message on the server. After editing, the modified message will be displayed to the peer user. This method is only valid for text messages. |
 | `modifyLocalMessage` | Method |<code>(id: string, message: AgoraChat.MessageBody &#124; RecallMessage) => void</code> | Edit a local message. This method is valid for any type of message. |
 | `updateMessageStatus` | Method |<code>(msgId: string, status: 'received' &#124; 'read' &#124; 'unread' &#124; 'sent' &#124; 'failed' &#124; 'sending' &#124; 'default') => void</code> | Update a message status. |
-| `sendTypingCommand` | Method |`(cvs: CurrentConversation) => void` | Send the typing indication. |
+| `sendTypingCommand` | Method |`(cvs: CurrentConversation) => void` | Send the command to indicate that the peer user is typing. |
 | `setRepliedMessage` | Method |<code>(message: AgoraChat.MessageBody &#124; null) => void</code> | Set a  message reply. |
 | `clearMessages` | Method |`(cvs: CurrentConversation) => void` | Clear the local messages of a conversation. |
 

@@ -91,7 +91,7 @@ ReactDOM.createRoot(document.getElementById('root') as Element).render(
 
 When UIKit is used directly without any settings, the user ID is displayed by default, and the avatar defaults to the first two letters of the user ID. UIKit provides two ways to set the user's avatar and nickname:
 
-- If the user's avatar and nickname are stored on Agora server, UIKit uses the user attribute function to obtain the avatar and nickname by default. When a user logs in for the first time, they can call the SDK API to set their own avatar and nickname.
+- If the user's avatar and nickname are stored on Agora server, UIKit uses the user attribute function to obtain the avatar and nickname by default. Upon the first login, users can call the SDK API to set their own avatar and nickname.
 
     The sample code is as follows:
 
@@ -122,7 +122,7 @@ When UIKit is used directly without any settings, the user ID is displayed by de
     
     useEffect(() => {
       if (rootStore.loginState) {
-        // Filter out user IDs that have no user information.
+        // Pick out user IDs that have no user information.
         const userIds = rootStore.addressStore.contacts
           .filter(item => !rootStore.addressStore.appUsersInfo[item.id])
           .map(item => {

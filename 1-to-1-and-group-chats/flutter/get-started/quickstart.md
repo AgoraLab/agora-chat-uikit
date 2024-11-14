@@ -88,23 +88,13 @@ Before you start, make sure your development environment meets the following con
     }
    ```
 
-1. Log in.
-
-    The following login methods are provided: User ID and password and user ID and token. If you have integrated the Chat SDK, all user IDs of the SDK can be used to log in to the UIKit.
-
-    - Log in with the user ID and password:
-
-      ```dart
-      ChatUIKit.instance.loginWithPassword(userId: userId, password: password);
-      ```
-   
-    - Log in with the user ID and token:
+2. Log in with the user ID and token:
 
       ```dart
       ChatUIKit.instance.loginWithToken(userId: userId, token: token);
       ```
    
-1. Add a chat page.
+3. Add a chat page.
 
    UIKit provides `MessagesView` to display the chat page after a successful login:
 
@@ -116,7 +106,7 @@ Before you start, make sure your development environment meets the following con
       }
     ```
    
-1.  Send the first message.
+4.  Send the first message.
    
     Type your message at the bottom of the chat page and click **Send**.
     

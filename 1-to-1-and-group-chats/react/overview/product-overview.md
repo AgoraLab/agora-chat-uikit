@@ -72,7 +72,7 @@ UIKit provides the following main features: Themes, internationalization, multim
 | `GroupList` | The group list component, provides display and management of group lists. |
 | `GroupParticipantList` | The group member list component, provides display and management of the group member list. Reused in adding members, deleting members, modifying the group owner, and multi-person audio and video pages. |
 | `NewRequests` | The new notification list component, receives and processes friend requests. |
-| `CreateGroup` | The create a group component. |
+| `CreateGroup` | The group creation component. |
 | `ContactInfo` | The contact details component. |
 | `GroupInfo` | The group details component. |
 

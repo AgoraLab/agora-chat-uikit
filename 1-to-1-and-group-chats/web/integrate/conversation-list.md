@@ -5,7 +5,7 @@ The `ConversationList` component is used to display all conversations of the cur
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
 - Click the expand button in the navigation bar and select **New Conversation** to create a new conversation.
-- Click the action button of conversation list item to display the menu where you can delete the conversation, pin the conversation, or disable messages.
+- Click the action button of conversation list item to display the menu where you can delete the conversation, pin the conversation, or disable offline push for the conversation.
 
 A single conversation displays the conversation name, the last message, the time of the last message, and the pinned and muted status.
 
@@ -38,7 +38,7 @@ If the default conversation list page does not meet your needs, you can customiz
 
 You can customize the background color, size, and other styles of the conversation list.
 
-1. Add defined styles to the `className` component:
+1. Add `className` for the ConversationList component and define styles: 
 
     ```javascript
     import React from 'react';
@@ -55,7 +55,7 @@ You can customize the background color, size, and other styles of the conversati
     };
     ```
    
-1. Define the conversation UI style in `index.css`:
+2. Define the conversation UI style in `index.css`:
 
     ```javascript
     .conversation {
@@ -174,13 +174,13 @@ You can configure the `moreAction` property of `itemProps` to control which feat
       visible: true, // Whether to display more operations
       actions: [
         {
-          content: 'DELETE', // delete session
+          content: 'DELETE', // delete the conversation
         },
         {
           content: 'PIN', // Pin the conversation
         },
         {
-          content: 'SILENT', // Session Do Not Disturb
+          content: 'SILENT', // Conversation do-not-disturb
         },
         {
           content: 'Custom function',
@@ -262,7 +262,7 @@ const Conversation = () => {
                 visible: true,
                 actions: [
                   {
-                    // UIKit conversation deletion event is provided by default。
+                    // The conversation deletion event is provided by default。
                     content: 'DELETE',
                   },
                   {
@@ -324,6 +324,6 @@ The `ConversationList` component contains the following properties:
 | `itemProps` | `ConversationItemProps` | The `ConversationItem` component parameters. |
 | `renderHeader` | `() => React.ReactNode` | Customize the rendering of the header component. |
 | `renderSearch` | `() => React.ReactNode` | Customize the rendering of the search component. |
-| `onItemClick` | `(data: ConversationData[0]) => void` | Click on the callback event for each conversation in the conversation list. |
-| `onSearch` | `(e: React.ChangeEvent<HTMLInputElement>) => boolean` | The change event of the search input box. When the function returns `false`, the default search behavior will be overriden. You can use your own search criteria to search. |
+| `onItemClick` | `(data: ConversationData[0]) => void` | Callback event upon a click of a conversation in the conversation list. |
+| `onSearch` | `(e: React.ChangeEvent<HTMLInputElement>) => boolean` | The change event of the search input box. When the function returns `false`, the default search behavior will be prevented and you can use your own search criteria to search. | 
 
