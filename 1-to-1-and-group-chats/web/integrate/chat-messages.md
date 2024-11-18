@@ -117,7 +117,7 @@ Use the `customAction` property of `messageProps` to set the message action butt
           content: 'SELECT',
         },
         {
-          // Display message fixed
+          // Display the message on top
           content: 'PIN',
         },
         {
@@ -186,7 +186,7 @@ const ChatContainer = () => {
             sendButtonIcon={<Icon type="AIR_PLANE" />} // Icon of the Send button
             row={1} // Input row number
             placeHolder="Please enter content" // default placeholder
-            enabledMention={true} // Whether to enable the mention function
+            enabledMention={true} // Whether to enable the group mention function
             onSendMessage={message => {}} //Callback for sending message
             onBeforeSendMessage={message => {}} // Callback before message sending. The callback returns promise. If the status of the returned promise is resolved, send the message; if the status of the returned promise is rejected, do not send the message.
           />
@@ -288,7 +288,7 @@ const ChatContainer = () => {
 
   // Implement sending custom messages
   const sendCustomMessage = () => {
-    const customMsg = EaseChat.message.create({
+    const customMsg = ChatSDK.message.create({
       type: "custom",
       to: "targetId", // Message recipient: Peer user ID for a one-to-one chat and group ID for a group chat.
       chatType: "singleChat",

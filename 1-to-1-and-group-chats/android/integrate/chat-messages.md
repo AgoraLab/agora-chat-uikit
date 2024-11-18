@@ -297,7 +297,7 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
 
     ```kotlin
     binding?.let {
-        it.findItemVisible(itemId: Int, visible: Boolean)
+        it.layoutChat.findItemVisible(itemId: Int, visible: Boolean)
     }
     ```
     

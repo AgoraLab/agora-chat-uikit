@@ -127,6 +127,18 @@ private val returnSearchClickResult: ActivityResultLauncher<Intent> = registerFo
 
 UIKit also provides a search base class `EaseBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()` method in `EaseBaseSearchFragment` to implement your own adapters for data processing and display. 
 
+### Group mention
+
+The group mention feature allows users to directly mention specific members in a group chat using the `@` symbol, and the mentioned members will receive a special notification. This feature facilitates efficient delivery of important information and ensures that key messages receive timely attention and response.
+
+Group mentions are enabled by default. To disable them, set `enableMention` to `false`.
+
+The sample code is as follows:
+
+``` kotlin
+EaseIM .getConfig()?.chatConfig?.enableMention ==  false
+```
+
 ## Conversation-related 
 
 This section covers specific features related to managing conversations. 

@@ -6,7 +6,6 @@ Note that `value` in the examples below indicates the configured UI style or dat
 
 ## Set the bottom pop-up page style
 
-- `Appearance.pageContainerTitleBarItemWidth = value`: The width of the bottom pop-up page title bar. Configure it in `PageContainerTitleBar.swift`.
 - `Appearance.pageContainerConstraintsSize = value`: The width and height of the bottom pop-up page. Configure it in `PageContainersDialogController.swift`.
 
 ## Set the alert style

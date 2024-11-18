@@ -88,10 +88,10 @@ import React from "react";
 import { useChatContext, useSDK } from "agora-chat-uikit";
 
 const ChatAPP = () => {
-  const { agoraChat } = useSDK(); // Get Chat SDK
+  const { chatSDK } = useSDK(); // Get Chat SDK
   const { messages, sendMessage } = useChatContext();
   const sendCustomMessage = () => {
-    const customMsg = agoraChat.message.create({
+    const customMsg = chatSDK.message.create({
       type: "custom",
       to: "targetId", // Peer user ID for a one-to-one chat, group ID for a group chat.
       chatType: "singleChat",
@@ -116,17 +116,17 @@ const ChatAPP = () => {
 | Name | Property or method | Type | Description |
 |---|---|---|---|
 | `messages` | Property | Message | All message data in UIKit. |
-| `repliedMessage` | Property | `AgoraChat.MessagesType` | The message being replied to. |
+| `repliedMessage` | Property | `chatSDK.MessagesType` | The message being replied to. |
 | `typing` | Property | Typing | The user object being entered. |
-| `sendMessage` | Method | `(message: AgoraChat.MessageBody) => Promise<void>` | Send a message. |
+| `sendMessage` | Method | `(message: chatSDK.MessageBody) => Promise<void>` | Send a message. |
 | `deleteMessage` | Method |<code>deleteMessage: (cvs: CurrentConversation, messageId: string &#124; string[]) => void &#124; Promise<void></code> | Delete a message. |
 | `recallMessage` | Method |`(cvs: CurrentConversation, messageId: string, isChatThread?: boolean) => Promise<void>` | Recall a message. |
 | `translateMessage` |Method | `(cvs: CurrentConversation, messageId: string, language: string) => Promise<boolean>` | Translate text messages. |
-| `modifyMessage` | Method |`(messageId: string, msg: AgoraChat.TextMsgBody) => Promise<void>` | Edit a message on the server. After editing, the modified message will be displayed to the peer user. This method is only valid for text messages. |
-| `modifyLocalMessage` | Method |<code>(id: string, message: AgoraChat.MessageBody &#124; RecallMessage) => void</code> | Edit a local message. This method is valid for any type of message. |
+| `modifyMessage` | Method |`(messageId: string, msg: chatSDK.TextMsgBody) => Promise<void>` | Edit a message on the server. After editing, the modified message will be displayed to the peer user. This method is only valid for text messages. |
+| `modifyLocalMessage` | Method |<code>(id: string, message: chatSDK.MessageBody &#124; RecallMessage) => void</code> | Edit a local message. This method is valid for any type of message. |
 | `updateMessageStatus` | Method |<code>(msgId: string, status: 'received' &#124; 'read' &#124; 'unread' &#124; 'sent' &#124; 'failed' &#124; 'sending' &#124; 'default') => void</code> | Update a message status. |
 | `sendTypingCommand` | Method |`(cvs: CurrentConversation) => void` | Send the command to indicate that the peer user is typing. |
-| `setRepliedMessage` | Method |<code>(message: AgoraChat.MessageBody &#124; null) => void</code> | Set a  message reply. |
+| `setRepliedMessage` | Method |<code>(message: chatSDK.MessageBody &#124; null) => void</code> | Set a  message reply. |
 | `clearMessages` | Method |`(cvs: CurrentConversation) => void` | Clear the local messages of a conversation. |
 
 ## useAddressContext
@@ -154,7 +154,7 @@ const ChatAPP = () => {
 | `groups` | Property | `GroupItem[]` | All groups. |
 | `setAppUserInfo` | Method | `(appUsersInfo: Record<string, AppUserInfo>) => void` | Set the user information. |
 | `setGroups` | Method | `(groups: GroupItem[]) => void` | Set the group data. |
-| `setGroupMemberAttributes` | Method | `(groupId: string, userId: string, attributes: AgoraChat.MemberAttributes) => void` | Set the group member attributes. |
+| `setGroupMemberAttributes` | Method | `(groupId: string, userId: string, attributes: chatSDK.MemberAttributes) => void` | Set the group member attributes. |
 
 
 
