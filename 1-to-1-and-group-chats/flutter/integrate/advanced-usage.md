@@ -61,7 +61,7 @@ First use `ChatUIKitRoute.generateRoute` to intercept. If it returns `null`, con
 
 ### Route interception
 
-If you need to intercept the conversation list page to jump to the message page and modify the bubble style, use `settings.name == ChatUIKitRouteNames.messagesView` and reset the intercepted `MessagesViewArgumentsattributes`.
+If you need to intercept the conversation list page to jump to the message page and modify the bubble style, use `settings.name == ChatUIKitRouteNames.messagesView` and reset the intercepted `MessagesViewArguments`.
 
 ```dart
 @override

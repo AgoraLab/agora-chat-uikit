@@ -36,16 +36,15 @@ If you need to customize the message page, you can modify the following properti
 |:---:|:---:|
 | `final ChatUIKitProfile profile` | The user information packaging class. Refer to [User information](user-information.md) for details. |
 | `final MessageListViewController? controller`| The message list controller. |
-| `final ChatUIKitAppBar? appBar` | The custom message page. If `appBar` is not set, the default one will be used. |
+| `final ChatUIKitAppBarModel? appBarModel` | The custom message page. If `appBarModel` is not set, the default one will be used. |
 | `final bool enableAppBar` | Whether to enable `appBar`. It is enabled by default. Will no longer be displayed after disabling, and the `appBar` input will no longer take effect. |
 | `final String? title` | The default `appBar` title information. If you use a custom `appBar` or disable it, this parameter will not take effect. |
 | `final Widget? inputBar` | The custom input component. If not set, the default `ChatUIKitInputBar` will be used. |
 | `final CustomTextEditingController? inputBarTextEditingController` | If you customize the `inputBar` controller, the `inputBar` settings here will not take effect. |
 | `final bool showAvatar` | Whether to display the avatar. |
 | `final bool showNickname` | Whether to display the nickname. |
-| `final MessageItemTapHandler? onItemTap` | The message click event. By default, it will process video, image, and voice messages. If you need to intercept the click during customization, return `true`; if not, return `false`. |
-| `final MessageItemTapHandler? onItemLongPress` | The message long-press event. By default, a menu will pop up after a long press. When customizing, if you need to intercept the click, return `true`; if not, return `false`. |
-| `final MessageItemTapHandler? onDoubleTap` | The message double-click event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
+| `final MessageItemGlobalPositionTapHandler? onItemTap` | The message click event. By default, it will process video, image, and voice messages. If you need to intercept the click during customization, return `true`; if not, return `false`. |
+| `final MessageItemGlobalPositionTapHandler? onDoubleTap` | The message double-click event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
 | `final MessageItemTapHandler? onAvatarTap`| When the avatar click event occurs, the page will jump to the contact details page of the message sender by default. If the sender is not a friend, the page will be redirected to the add friend details page. If you need to intercept the click during customization, return `true`; if not, return `false`. |
 | `final MessageItemTapHandler? onAvatarLongPress` | The avatar long-press event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
 | `final MessageItemTapHandler? onNicknameTap` | The nickname long-press event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
@@ -56,7 +55,7 @@ If you need to customize the message page, you can modify the following properti
 | `final List<ChatUIKitBottomSheetItem>? morePressActions` | More menu button items. If not set, the default menu will be used. This parameter will not take effect after `inputBar` customization. |
 | `final MessagesViewMorePressHandler? onMoreActionsItemsHandler` | The callback when clicking the default `inputBar`. You can return a new menu list. If you return `null` or do not implement it, the content set in `morePressActions` will be used. If not set, the default `morePressActions` will be used. |
 | `final List<ChatUIKitBottomSheetItem>? longPressActions` | The message long-press menu. If not set, the default menu will be used. |
-| `final MessagesViewItemLongPressHandler? onItemLongPressHandler` | The callback for long-pressing the menu item, which can return a new menu list. If it returns `null` or is not implemented, the content set in `longPressActions` will be used. If not set, the default `longPressActions` will be used. |
+| `final MessagesViewItemLongPressPositionHandler? onItemLongPressHandler` | The callback for long-pressing the menu item, which can return a new menu list. If it returns `null` or is not implemented, the content set in `longPressActions` will be used. If not set, the default `longPressActions` will be used. |
 | `final bool? forceLeft` | Whether to flush all messages to the left. |
 | `final widget? emojiWidget` | The emoji widget. If not set, the default one will be used. |
 | `final MessageItemBuilder? replyBarBuilder` | The custom `replyBar` component, used to temporarily display the message content above the input box when the message is quoted. If not set, the default `ChatUIKitReplyBar` will be used. |
