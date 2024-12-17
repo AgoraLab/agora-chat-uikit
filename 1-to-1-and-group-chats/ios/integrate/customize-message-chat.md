@@ -4,7 +4,7 @@ The UIKit message chat page provides the following features:
 
 - Send and receive messages, including text, emojis, images, voice, video, files, business card messages and combined messages.
 - Copy, quote, recall, delete, edit, resend, and report messages.
-- Pull roaming messages from the local database.If you want to fetch history message from server.You'll set `EaseChatUIKitClient.shared.option.option_UI.loadLocalHistoryMessages` is `false` default is `true`.
+- Pull roaming messages from the local database.If you want to fetch history message from server.You'll set `ChatUIKitClient.shared.option.option_UI.loadLocalHistoryMessages` is `false` default is `true`.
 - Clear local messages.
 
 For details about message-related functions, see [Product features](../overview/product-features.md).
@@ -13,7 +13,7 @@ You can configure the chat page navigation bar, message list items, input box, j
 
 ## Customize the navigation bar
 
-The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
+The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `ChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 
 ## Customize the message list cells
 

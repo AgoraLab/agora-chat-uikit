@@ -98,7 +98,7 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+- The `subtitle` control in `ChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
 
 - Input status-related callbacks and methods are as follows:
   - The input status is delivered as a command message. When current user typing, the input status is sent by the `MessageListViewModel#notifyTypingState()` function.

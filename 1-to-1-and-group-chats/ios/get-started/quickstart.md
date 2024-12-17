@@ -17,7 +17,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
 
 1. [Create a new project](https://developer.apple.com/cn/documentation/xcode/creating_an_xcode_project_for_an_app/) using Xcode. In the **Choose options for your new project** dialog box, configure the following settings: 
 
-   - **Product Name**: Fill in **EaseChatUIKitQuickStart**.
+   - **Product Name**: Fill in **ChatUIKitQuickStart**.
    - **Organization Identifier**: Set to your ID.
    - **User Interface**: Select **Storyboard**.
    - **Language**: Select the development language you commonly use.
@@ -27,7 +27,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
    You can initialize UIKit when the app loads before EaseChatUIKit is used. During initialization, pass the app key you have obtained in Agora Console:
 
     ```
-    import EaseChatUIKit
+    import chat_uikit
         
     @UIApplicationMain
     class AppDelegate：UIResponder，UIApplicationDelegate {
@@ -36,7 +36,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
     
     
          func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-             let error = EaseChatUIKitClient.shared.setup(appkey: "Appkey")
+             let error = ChatUIKitClient.shared.setup(appkey: "Appkey")
          }
     }
     ```
@@ -46,7 +46,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
     Log in to UIKit with a user ID and token. If you have integrated Chat SDK, all user IDs can be used to log in to UIKit:
 
     ```
-    public final class YourAppUser: NSObject, EaseProfileProtocol {
+    public final class YourAppUser: NSObject, ChatUserProfileProtocol {
    
                public func toJsonObject() -> Dictionary<String, Any>? {
            ["ease_chat_uikit_user_info":["nickname":self.nickname,"avatarURL":self.avatarURL,"userId":self.id]]
@@ -66,8 +66,8 @@ If your network environment has a firewall deployed, contact [Agora technical su
        public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
    
     }
-    // Log in to EaseChatUIKit using the user information of the current user object that conforms to the `EaseProfileProtocol` protocol
-    EaseChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
+    // Log in to chat_uikit using the user information of the current user object that conforms to the `ChatUserProfileProtocol` protocol
+    ChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
     }
     ```
 
