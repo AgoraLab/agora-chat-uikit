@@ -32,7 +32,7 @@ export function ConversationDetailScreen(props: Props) {
   // Search mode
   const messageId = ((route.params as any)?.params as any)?.messageId;
 
-  // Multi-select mode?
+  // Multi-selection mode?
   const selectType = ((route.params as any)?.params as any)?.selectType;
 
   // Thread mode parameters
@@ -88,10 +88,10 @@ The core properties of the `ConversationDetail` component are as follows:
 | `thread` | `ChatMessageThread` | Optional | The thread mode parameters: The thread object. |
 | `firstMessage` | `ChatMessageThread` | Optional | The thread mode parameters: The thread message object. |
 | `msgId` | string | Optional | The parameters for starting the thread mode or the search mode: The ID of the thread message or the message keyword for the search mode. |
-| `parentId` | string | Optional | The create a thread mode parameter: The group ID of the thread. |
-| `newThreadName` | string | Optional | The create a thread mode parameter: The name of the thread. |
-| `onCreateThreadResult` | string | Optional | The create a thread mode parameters: The create a thread result callback. |
-| `onClickedThread` | Function | Optional | A click on the message bubble to open the callback notification of the thread page. Routing may be used. |
+| `parentId` | string | Optional | The thread creation mode parameter: The group ID of the thread. |
+| `newThreadName` | string | Optional | The thread creation mode parameter: The name of the thread. |
+| `onCreateThreadResult` | string | Optional | The thread creation mode parameters: The callback for thread creation result. |
+| `onClickedThread` | Function | Optional | Callback for opening the thread page upon a click on the message bubble. Routing may be used. |
 | `onClickedVoice` | Function | Optional | The callback for clicking the audio button in the navigation bar. Routing may be used. |
 | `onClickedVideo` | Function | Optional | The callback for clicking the video button in the navigation bar. Routing may be used. |
 | `onThreadDestroyed` | Function | Optional | The callback for thread deletion. Routing may be used. |
@@ -123,9 +123,9 @@ The core properties are as follows:
 | `onClickedSend` | Function | Optional | The callback for clicking the send button. |
 | `onEditMessageFinished` | Function | Optional | The callback for editing a message. |
 | `onClickedCardMenu` | Function | Optional | The callback for clicking a business card message. |
-| `onInitMenu` | Function | Optional | The callback for initializing the menu. |
+| `onInitMenu` | Function | Optional | Register the initialization menu callback. |
 | `emojiList` | string | Optional | The custom emoji list. If not set, the default list is used. |
-| `multiSelectCount` | number | Optional | The number of selected messages in the multi-select mode. |
+| `multiSelectCount` | number | Optional | The number of selected messages in the multi-selection mode. |
 | `onClickedMultiSelectDeleteButton` | Function | Optional | The callback for clicking the delete button. Internal routing. |
 | `onClickedMultiSelectShareButton` | Function | Optional | The callback for clicking the forward button. Internal routing. |
 | `unreadCount` | number | Optional | The number of unread messages. |
@@ -138,8 +138,8 @@ The core methods of the reference objects are as follows:
 | `close` | Close the keyboard input component and switch to the regular mode. |
 | `quoteMessage` | Reply to a message. |
 | `editMessage` | Edit a message. |
-| `showMultiSelect` | Turn on the multi-select mode and show checkboxes in the message list. |
-| `hideMultiSelect` | Cancel the multi-select mode and hide checkboxes in the message list. |
+| `showMultiSelect` | Turn on the multi-selection mode and show checkboxes in the message list. |
+| `hideMultiSelect` | Cancel the multi-selection mode and hide checkboxes in the message list. |
 
 ## Message list component
 
@@ -159,12 +159,12 @@ The core properties are as follows:
 |:---:|:---:|:---:|:---:|
 | `convId` | string | Required | The conversation ID. |
 | `convType` | `ChatConversationType` | Required | The conversation type. |
-| `selectType` | `ConversationSelectModeType` | Optional | The selection mode: Regular or multi-select. |
+| `selectType` | `ConversationSelectModeType` | Optional | The selection mode: Regular or multi-selection. |
 | `containerStyle` | object | Optional | Modify the component style. |
 | `thread` | `ChatMessageThread` | Optional | The thread mode parameters: Thread object. |
-| `msgId` | string | Optional | Parameters for creating a thread mode or a search mode: The ID of the thread message or the message keyword for the search mode. |
-| `parentId` | string | Optional | The create a thread mode parameters: The group ID of the thread. |
-| `newThreadName` | string | Optional | The create a thread mode parameters: The name of the thread. |
+| `msgId` | string | Optional | Parameters for the thread creation mode or a search mode: The ID of the thread message or the message keyword for the search mode. |
+| `parentId` | string | Optional | The thread creation mode parameters: The group ID of the thread. |
+| `newThreadName` | string | Optional | The thread creation mode parameters: The name of the thread. |
 | `firstMessage` | `ChatMessageThread` | Optional | The thread mode parameters: The thread message object. |
 | `onClicked` | Function | Optional | The callback for clicking the message list. |
 | `onClickedItem` | Function | Optional | The callback for clicking a message. |
@@ -177,7 +177,7 @@ The core properties are as follows:
 | `listItemRenderProps` | `MessageListItemRenders` | Optional | Customization of components of the message list items. Customization of internal components is also supported. |
 | `onInitMenu` | Function | Optional | The callback for initializing the menu. |
 | `onCopyFinished` | Function | Optional | The callback for when copying is completed. |
-| `recvMessageAutoScroll` | boolean | Optional | Whether to automatically scroll the message list when a new message is received. |
+| `recvMessageAutoScroll` | boolean | Optional | Whether to automatically scroll to the bottom of the message list when a new message is received. |
 | `messageLayoutType` | `MessageLayoutType` | Optional | Whether the message list is aligned to the left or the right. By default, received messages are on the left and sent messages are on the right. |
 | `onNoMoreMessage` | Function | Optional | The callback for when there are no more notifications for messages. You may receive multiple notifications, so be careful to avoid duplicates. |
 | `onCreateThread` | Function | Optional | The callback for requesting to create a thread. Routing may be used. |
@@ -214,13 +214,7 @@ The methods of object reference are as follows:
 
 ## Avatar and nickname in the message list
 
-There is no default value in the `MessageList` component for the avatar and nickname that need to be provided by the user. If not provided, the default avatar and user ID will be displayed.
-
-Avatars and nicknames can be provided in the following ways:
-
-- Register callbacks: Use the `onRequestMultiDataproperty` property of the `Container` component.
-- Active call: Use the `ChatService.updateDataList` method. Calling this method will trigger internal event distribution. You can also customize the distribution handle and refresh the loaded component page.
-- Message-carried: The avatar and nickname carried in the message will be used first.
+Please refer to `user-information.md` for instructions.
 
 ### Set the background color of the message list
 
@@ -382,7 +376,7 @@ The core of the implementation is to customize the menu of the input component, 
 
 For example:
 
-```javascript
+```typescript
 export function MyMessageContent(props: MessageContentProps) {
   const { msg } = props;
   if (msg.body.type === ChatMessageType.CUSTOM) {

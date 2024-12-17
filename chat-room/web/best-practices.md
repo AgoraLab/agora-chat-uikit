@@ -106,7 +106,7 @@ const ChatroomApp = () => {
 
   useEffect(() => {
     client.addEventHandler("chatroom", {
-      onChatroomEvent: (event) => {
+      onChatroomEvent: (event: ChatSDK .EventData) => {
         if (event.operation === "muteMember") {
           // console.log('You have been banned')
         }

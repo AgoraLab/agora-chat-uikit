@@ -66,31 +66,28 @@ Before you start, make sure your development environment meets the following con
     }
    ```
 
-3. Log in.
-
-    The following login methods are provided: User ID and token. If you have integrated the Chat SDK, all user IDs of the SDK can be used to log in to the UIKit.
-   
-    - Log in with the user ID and token:
+2. Log in with the user ID and token:
 
       ```dart
       ChatUIKit.instance.loginWithToken(userId: userId, token: token);
       ```
-   
-4. Add a chat page.
+
+3. Add a chat page.
 
    UIKit provides `MessagesView` to display the chat page after a successful login:
 
-  ```dart
-    @override
-    Widget build(BuildContext context) {
-      /// userId: Receiver's user ID
-      return MessagesView(profile: ChatUIKitProfile.contact(id: userId));
-    }
-  ```
-5.  Send the first message.
-   
+    ```dart
+      @override
+      Widget build(BuildContext context) {
+        /// userId: Receiver's user ID
+        return MessagesView(profile: ChatUIKitProfile.contact(id: userId));
+      }
+    ```
+
+4.  Send the first message.
+
     Type your message at the bottom of the chat page and click **Send**.
-    
+
 ## Reference
 
 The complete code to quickly start the entire process is as follows: 

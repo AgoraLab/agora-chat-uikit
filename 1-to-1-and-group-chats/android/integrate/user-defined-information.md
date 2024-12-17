@@ -96,10 +96,10 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
 ```kotlin
 
- // Use setUserProfileProvider to set profile for users in one-to-one chats, including the user avatar and nickname.
+ // Call setUserProfileProvider to set the user attributes for a one-to-one chat, including user avatar and nickname.
  EaseIM.setUserProfileProvider(object : EaseUserProfileProvider {
      override fun getUser(userId: String?): EaseProfile? {
-         // Return the local user profile of the userId
+         // Return the local user attributes corresponding to userId
          return DemoHelper.getInstance().getDataModel().getAllContacts()[userId]?.toProfile()
      }
 
@@ -111,7 +111,7 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
          // At the same time, the acquired information can be updated to the cache through EaseIM.updateUsersInfo(). When obtaining the Profile, UIKit will query from the cache first.
      }
  })
- // Use setGroupProfileProvider to set group profile.
+ // Set group information through setGroupProfileProvider.
  EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
     override fun getGroup(id: String?): EaseGroupProfile? {
@@ -132,13 +132,11 @@ EaseIM.setGroupProfileProvider(object : EaseGroupProfileProvider {
 
 ## Information processing logic
 
-1. If the information has been cached in memory, when the page needs to display it, UIKit gets the cached data and render it. 
+1. If the information has been cached in memory, when the page needs to display information, UIKit will first obtain the cached data from memory and render the page.
 
-If no data is cached, you can obtain data from the local database or memory of the app, build the `EaseProfile` object and use the `getUser` method to return the `EaseProfile` object. Then the UIKit will use the `EaseProfile` object to update the information on the UI.   
+1. If there is no cached data, you can get the data from the app's local database or memory, build an `EaseProfile` object, and use the `getUser` method to return it. This way, UIKit will use the `EaseProfile` object to update the information in the UI.
 
-1. If no data is obtained via the `getUser` method, the UIKit provider will get data from your server using the `fetchUsers` method:
-   
-When the list page stops sliding, UIKit will first obtain user data from the cache, provide a list of user IDs with no cached data, and then query user information for such users from the server. You can build the `List<EaseProfile>` object. When the `fetchUsers` method is called, it will return data via `onValueSuccess(List<EaseProfile>)`. 
+1. If the data is not obtained through the `getUser` method, the UIKit provider will get the data from your server through the `fetchUsers` method: When the list page stops sliding, UIKit will first get the data from the cache, provide a list of user IDs for which there is no cached data, and query the data of these users from the server. You can construct a `List <EaseProfile> ` object, and when calling the `fetchUsers` method, the data will be returned through `onValueSuccess(List<EaseProfile>)`.
 
 ## Update cached information for UIKit
 

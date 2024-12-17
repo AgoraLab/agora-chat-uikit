@@ -125,7 +125,7 @@ class ChatUIKitProfile {
 }
 ```
 
-When the avatar nickname information is displayed in UIKit, it will be obtained from the data you passed in `ChatUIKitProvider`. If it is not obtained, `ChatUIKitProvider` will ask for data through `ChatUIKitProviderProfileHandler`. If you return the required data, it will cache your return to reduce the number of requests. If not, it will continue to ask for data the next time it is used.
+When the avatar nickname information is displayed in UIKit, it will be obtained from the data you passed in `ChatUIKitProvider`. If it is not obtained, `ChatUIKitProvider` will ask for data through `ChatUIKitProviderProfileHandler`. If you return the required `ChatUIKitProfile`, `ChatUIKitProvider` will cache your returned `ChatUIKitProfile` to reduce the number of requests. If not, `ChatUIKitProvider` will continue to ask for data the next time when data is required.
 
 ## Set user information
 
@@ -148,7 +148,7 @@ typedef ChatUIKitProviderProfileHandler = List<ChatUIKitProfile>? Function(
 );
 ```
 
-The profiles needed for the current chat will be called back. You need to respond accordingly and return the `ChatUIKitProfile` data. If no data is returned, you will be asked for it the next time it is used.
+The profiles needed for the current chat will be called back. You need to return the `ChatUIKitProfile` data according to `ChatUIKitProfileType`. If no data is returned, you will be asked for it the next time it is used.
 
 The `ChatUIKitProviderProfileHandler` usage is as follows:
 
@@ -157,7 +157,7 @@ The `ChatUIKitProviderProfileHandler` usage is as follows:
 // usersProfiles: The data you return.
 ChatUIKitProvider.instance.profilesHandler = (profiles) {
   ...
-  // You need to return the data in the database or cache. If you don't return it, you will be asked for the data next time you need it.
+  // You need to return the data in the database or cache. If you don't return it, you will be asked for the data next time it is used.
   return usersProfiles;
 };
 ```
@@ -190,7 +190,7 @@ class _UserProviderWidgetState extends State<UserProviderWidget>
     super.dispose();
   }
 
-  // Create your own group callback
+  // Callback occurs when a group is created by yourself
   @override
   void onGroupCreatedByMyself(Group group) {
     // After receiving the callback, add the group information to profiles
@@ -199,7 +199,7 @@ class _UserProviderWidgetState extends State<UserProviderWidget>
     );
   }
 
-  // Change group name callback
+  // Callback for changing the group name
   @override
   void onGroupNameChangedByMeSelf(Group group) {
     // After receiving the callback, add the group information to profiles

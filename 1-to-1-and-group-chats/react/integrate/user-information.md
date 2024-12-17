@@ -44,7 +44,7 @@ export function App() {
       });
       return ret;
     },
-    [im]
+    [im],
   );
   const onGroupsHandler = React.useCallback(
     async (data: Map<string, DataModel>) => {
@@ -75,7 +75,7 @@ export function App() {
       });
       return ret;
     },
-    [im]
+    [im],
   );
 
   return (
@@ -96,7 +96,7 @@ Data is updated by using the `ChatService.updateDataList` interface.
 
 For example:
 
-```javascript
+```typescript
 // Suppose the group name is updated
 export function SomeComponent() {
   const im = useChatContext();
@@ -164,7 +164,7 @@ export function SomeComponent() {
 
 There is also a public `ChatService.getDataModel` interface, through which you can obtain the avatar and nickname of a specified user. It is more convenient for custom components.
 
-## Conversation list and group list 
+## Conversation list and group list
 
 Both components have list items of the group type, and groups have names. Therefore, pay attention to notifications of group name changes to ensure data consistency.
 
@@ -174,5 +174,91 @@ In addition to using `DataProfileProvider` to obtain avatars and nicknames, the 
 
 ## Avatar and nickname usage rules
 
-- If provided in `DataProfileProvider`, use the provided data. If not, use the default avatar and ID for a user and the default avatar and name for a group.
-- For a chat page, use the avatar and nickname carried in the message first; otherwise use `DataProfileProvider`.
+UIKit components provide the opportunity to modify nickname and avatar. This is mainly done through passive registration and active call.
+
+### Passive registration
+
+Register callbacks through `onUsersHandler` and `onGroupsHandler` during the initialization phase. When calling, pass the default value and return the new value to complete the customization.
+
+```typescript
+const onUsersHandler = React.useCallback(
+  async (data: Map<string, DataModel>) => {
+    const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+      // todo: The user updates `data`, adds information such as avatar and nickname, and returns it to `uikit`.
+      resolve(new Map());
+      // todo: If the user fails to obtain information, the original `data` can be returned to `uikit`.
+      reject(new Map());
+    });
+    return ret;
+  },
+  [],
+);
+const onGroupsHandler = React.useCallback(
+  async (data: Map<string, DataModel>) => {
+    if (data.size === 0) return data;
+    const ret = new Promise<Map<string, DataModel>>((resolve, reject) => {
+      // todo: The user updates `data`, adds information such as avatar and nickname, and returns it to `uikit`.
+      resolve(new Map());
+      // todo: If the user fails to obtain information, the original `data` can be returned to `uikit`.
+      reject(new Map());
+    });
+    return ret;
+  },
+  [],
+);
+```
+
+Pass the set callback method to `uikit`.
+
+```typescript
+export function App() {
+  const { onGroupsHandler, onUsersHandler } = useApp();
+
+  return (
+    <UIKitContainer
+      onGroupsHandler={onGroupsHandler}
+      onUsersHandler={onUsersHandler}
+    >
+      {/* your sub components */}
+    </UIKitContainer>
+  );
+}
+```
+
+### Active call
+
+Where needed, update the custom data through `ChatService.updateDataList` and notify the concerned components.
+
+For example: update a contact's nickname and avatar information.
+
+```typescript
+export function useContactInfo(
+  props: ContactInfoProps,
+  ref?: React.ForwardedRef<ContactInfoRef>,
+) {
+  const im = useChatContext();
+
+  React.useEffect(() => {
+    // todo: update user nick name and avatar for user.
+    im.updateDataList({
+      dataList: DataProfileProvider.toMap([
+        {
+          id: "<user id>",
+          name: "<user name>",
+          avatar: "<user avatar>",
+          remark: "<user remark>",
+          type: "user",
+        } as DataModel,
+      ]),
+      dispatchHandler: (data) => {
+        // todo: updated data
+        return false;
+      },
+    });
+  }, []);
+
+  return {
+    ...props,
+  };
+}
+```

@@ -31,8 +31,8 @@ To customize the conversation list, modify the following properties:
 | `final List<Widget>? beforeWidgets` | The widget displayed before the conversation list. |
 | `final List<Widget>? afterWidgets` | The widget displayed after the conversation list. |
 | `final ConversationItemBuilder? listViewItemBuilder` | The conversation list item builder. If you need to rewrite the conversation list, do it here. |
-| `final void Function(BuildContext context, ConversationModel info)? onTap` | The callback for clicking on the conversation list. If not implemented, the default page will be routed to the message page. |
-| `final ConversationsViewItemLongPressHandler? onItemLongPressHandler `| The long-press event in the conversation list. A default action list will be provided and a new action list will be returned. |
+| `final void Function(BuildContext context, ConversationModel info)? onTap` | The callback for clicking on the conversation list. If not implemented, the default page will be routed to the message page. | 
+| `final ConversationsViewItemLongPressHandler? onLongPressHandler `| The long-press event in the conversation list. A default action list will be provided and a new action list will be returned. |
 | `final String? searchBarHideText` | The default text displayed in the search box. |
 | `final bool enableSearchBar` | Whether to use search. Used by default. |
 | `final Widget? listViewBackground` | The background image to display when the list is empty. |
@@ -115,8 +115,8 @@ For more information about avatar rounded corners, default avatar, and other set
 
     ```dart
     try {
-       // appointIds: Specifies the conversation range to be retrieved to see if it contains new messages.
-       // hasUnreadMessagesConversationCount: Returns the number of conversations with new messages in the passed `appointIds`. This return includes conversations set to do not disturb.
+       // appointIds: Specifies the conversation range with a new message.
+       // hasUnreadMessagesConversationCount: Returns the number of conversations with new messages in the passed `appointIds`, including the number of conversations set to do not disturb.
       int hasUnreadMessagesConversationCount =
           await ChatUIKit.instance.appointNewMessageConversationCount(
         appointIds: [

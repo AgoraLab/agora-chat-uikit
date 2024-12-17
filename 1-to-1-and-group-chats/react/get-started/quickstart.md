@@ -8,90 +8,88 @@ Before you start, make sure your development environment meets the following con
 
 - MacOS 12 or above;
 - React Native 0.71 or above;
-- NodeJs 16.18 or above;
+- NodeJs 18.16 or above;
 - For iOS: Xcode 14 or above;
 - For Android: Android Studio 2022 or above;
-- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details.
 
 ## Implementation
 
 1. Create a new project.
-   
-   Run the following command to create a project: 
 
-   ```
+   Run the following command to create a project:
+
+   ```sh
+   # old cli
    npx react-native --version 0.73.2 init ProjectName
+
+   # latest cli
+   npx @react-native-community/cli init ProjectName
    ```
-   
+
    You may be prompted to install the latest version of React.
 
    Once the creation is completed, the project will be initialized by default, `node_modules` dependencies will be installed, and `package-lock.json` file will be generated. If you use yarn initialization, `yarn.lock` file will be generated.
-   
+
 1. Add dependencies.
 
-   UIKit requires additional dependencies. Add them to the `package.json` file:
+   ```bash
+   yarn add react-native-async-storage/async-storage \
+     react-native-camera-roll/camera-roll \
+     react-native-clipboard/clipboard \
+     date-fns \
+     pinyin-pro \
+     pure-uuid \
+     react \
+     react-native \
+     react-native-agora \
+     react-native-chat-uikit \
+     react-native-chat-sdk \
+     react-native-audio-recorder-player \
+     easemob/react-native-create-thumbnail \
+     react-native-device-info \
+     react-native-document-picker \
+     react-native-fast-image \
+     react-native-file-access \
+     react-native-gesture-handler \
+     react-native-get-random-values \
+     react-native-image-picker \
+     react-native-permissions \
+     react-native-safe-area-context \
+     react-native-screens \
+     react-native-video \
+     react-native-web \
+     react-native-webview \
+     twemoji
+   ```
 
-   ```json
-   {
-     "dependencies": {
-       "@react-native-async-storage/async-storage": "^1.17.11",
-       "@react-native-camera-roll/camera-roll": "^5.6.0",
-       "@react-native-clipboard/clipboard": "^1.13.2",
-       "date-fns": "^2.30.0",
-       "pinyin-pro": "^3.18.3",
-       "pure-uuid": "^1.6.3",
-       "react": "18.2.0",
-       "react-native": "0.73.2",
-       "react-native-agora": "^4.2.6",
-       "react-native-chat-uikit": "2.1.0",
-       "react-native-chat-sdk": "1.3.1",
-       "react-native-audio-recorder-player": "^3.5.3",
-       "@easemob/react-native-create-thumbnail": "^1.6.6",
-       "react-native-device-info": "^10.6.0",
-       "react-native-document-picker": "^9.0.1",
-       "react-native-fast-image": "^8.6.3",
-       "react-native-file-access": "^3.0.4",
-       "react-native-gesture-handler": "~2.9.0",
-       "react-native-get-random-values": "~1.8.0",
-       "react-native-image-picker": "^7.0.3",
-       "react-native-permissions": "^3.8.0",
-       "react-native-safe-area-context": "4.5.0",
-       "react-native-screens": "^3.20.0",
-       "react-native-video": "^5.2.1",
-       "react-native-web": "~0.19.6",
-       "react-native-webview": "13.2.2",
-       "twemoji": ">=14.0.2"
-     }
-   }
-    ```
-   
-    - For iOS, update the `ProjectName/Info.plist` file to add the following permissions:
+   - For iOS, update the `ProjectName/Info.plist` file to add the following permissions:
 
-      ```xml
-      <dict>
-        <!-- Start of append section -->
-              <key>NSCameraUsageDescription</key>
-              <string></string>
-              <key>NSMicrophoneUsageDescription</key>
-              <string></string>
-              <key>NSPhotoLibraryUsageDescription</key>
-              <string></string>
-        <!-- End of additional section -->
-      </dict>
-      ```
-      
-    - For Android, update the `AndroidManifest.xml` file:
+     ```xml
+     <dict>
+       <!-- Start of append section -->
+             <key>NSCameraUsageDescription</key>
+             <string></string>
+             <key>NSMicrophoneUsageDescription</key>
+             <string></string>
+             <key>NSPhotoLibraryUsageDescription</key>
+             <string></string>
+       <!-- End of additional section -->
+     </dict>
+     ```
 
-      ```xml
-      <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-          <uses-permission android:name="android.permission.INTERNET"/>
-          <uses-permission android:name="android.permission.CAMERA" />
-          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-          <uses-permission android:name="android.permission.RECORD_AUDIO" />
-      </manifest>
-      ```
-   
+   - For Android, update the `AndroidManifest.xml` file:
+
+     ```xml
+     <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+         <uses-permission android:name="android.permission.INTERNET"/>
+         <uses-permission android:name="android.permission.CAMERA" />
+         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         <uses-permission android:name="android.permission.RECORD_AUDIO" />
+     </manifest>
+     ```
+
 1. Add code.
 
    The main code added includes logging in, logging out, and sending messages:
@@ -107,12 +105,12 @@ Before you start, make sure your development environment meets the following con
      TextInput,
      useChatContext,
    } from "react-native-chat-uikit";
-   
-   const appKey = "easemob#easeim";
-   const userId = "du004";
-   const userPs = "1";
-   const peerId = "du005";
-   
+
+   const appKey = "<your app key>";
+   const userId = "<current login id>";
+   const userPs = "<current login password or token>";
+   const peerId = "<chat peer id>";
+
    function SendMessage() {
      const [page, setPage] = React.useState(0);
      const [appkey, setAppkey] = React.useState(appKey);
@@ -120,7 +118,7 @@ Before you start, make sure your development environment meets the following con
      const [ps, setPs] = React.useState(userPs);
      const [peer, setPeer] = React.useState(peerId);
      const im = useChatContext();
-   
+
      if (page === 0) {
        // Load the login page.
        return (
@@ -147,14 +145,13 @@ Before you start, make sure your development environment meets the following con
            />
            <Pressable
              onPress={() => {
-               console.log("test:zuoyu:login", id, ps);
+               // Login to im server
                im.login({
                  userId: id,
                  userToken: ps,
                  usePassword: true,
                  result: (res) => {
                    console.log("login result", res);
-                   console.log("test:zuoyu:error", res);
                    if (res.isOk === true) {
                      setPage(1);
                    }
@@ -166,6 +163,7 @@ Before you start, make sure your development environment meets the following con
            </Pressable>
            <Pressable
              onPress={() => {
+               // Logout from im server
                im.logout({
                  result: () => {},
                });
@@ -196,7 +194,7 @@ Before you start, make sure your development environment meets the following con
        return <View />;
      }
    }
-   
+
    function App(): React.JSX.Element {
      // Initialize UIKIT at the entry root node.
      return (
@@ -205,7 +203,7 @@ Before you start, make sure your development environment meets the following con
        </Container>
      );
    }
-   
+
    export default App;
    ```
 
@@ -214,7 +212,18 @@ Before you start, make sure your development environment meets the following con
    - For iOS: Run `yarn run ios`.
    - For Android: Run `yarn run android`.
 
-1. Send the first message.
+2. Send the first message.
 
    Click **Login** to enter the chat page, enter the text, and click **Send**.
 
+
+## Q&A
+
+#### yarn vs npm in react-native ?
+
+For `react-native` developers, `yarn` tool is usually used for management. The main basis is as follows:
+
+1. Use the command recommended by the official website to create an application project. The project management configuration uses `yarn` by default. You can verify it by creating a project `npx @react-native-community/cli init xxx-app`
+2. Check the help document of the cli recommended by the official website to create an application `npx @react-native-community/cli init --help `
+3. Use the official recommended command to create a library project. The project management configuration uses `yarn` by default. You can verify it by creating a project `npx create-react-native-library@0.34.3 --react-native-version 0.72.17 react-native-xxx-lib`
+4. After creating a project, some scripts are completed through `yarn`, which may automatically execute actions or behaviors, while `npm` cannot trigger automatic execution.

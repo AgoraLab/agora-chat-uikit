@@ -2,7 +2,7 @@
 
 ## Implement custom pages through routing jumps
 
-Internally, the `Navigator.of(context).pushNamed` method is used for redirects, and each available View and `routeName` are provided. When you need to customize the View or intercept the jump page, you can use the routing method to intercept and customize it.
+Internally, the `Navigator.of(context).pushNamed` method is used preferentially for redirects, and each available View provides `routeName`. When you need to customize the View or intercept the jump page, you can use the routing method to intercept and customize it.
 
 | `routeName` | Corresponding string | Description |
 |:---:|:---:|:---:|
@@ -14,23 +14,23 @@ Internally, the `Navigator.of(context).pushNamed` method is used for redirects, 
 | `ChatUIKitRouteNames.currentUserInfoView` | `/CurrentUserInfoView` | The current user details page. |
 | `ChatUIKitRouteNames.forwardMessageSelectView` | `/forwardMessageSelectView` | The message forwarding selection page. |
 | `ChatUIKitRouteNames.forwardMessagesView` | `/forwardMessagesView` | The message forwarding page. |
-| `ChatUIKitRouteNames.groupChangeOwnerView` | `/GroupChangeOwnerView` | The modify the group owner page. |
+| `ChatUIKitRouteNames.groupChangeOwnerView` | `/GroupChangeOwnerView` | The group owner change page. |
 | `ChatUIKitRouteNames.groupDetailsView` | `/GroupDetailsView` | The group details page. |
 | `ChatUIKitRouteNames.groupsView` | `/GroupsView` | The group list page. |
 | `ChatUIKitRouteNames.groupMembersView` | `/GroupMembersView` | The group member list page. |
-| `ChatUIKitRouteNames.groupMentionView` | `/GroupMentionView` | The group and select members page. |
-| `ChatUIKitRouteNames.groupDeleteMembersView` | `/GroupDeleteMembersView` | The delete a group member page. |
+| `ChatUIKitRouteNames.groupMentionView` | `/GroupMentionView` | The mention page. |
+| `ChatUIKitRouteNames.groupDeleteMembersView` | `/GroupDeleteMembersView` | The group member deletion page. |
 | `ChatUIKitRouteNames.groupAddMembersView` | `/GroupAddMembersView` | The add group members page. |
 | `ChatUIKitRouteNames.messagesView` | `/MessagesView` | The message page. |
 | `ChatUIKitRouteNames.newRequestDetailsView` | `/NewRequestDetailsView` | The new friend request details page. |
 | `ChatUIKitRouteNames.newRequestsView` | `/NewRequestsView` | The new requests page. |
-| `ChatUIKitRouteNames.reportMessageView` | `/ReportMessageView` | The report a message page. |
-| `ChatUIKitRouteNames.searchUsersView` | `/SearchUsersView` | The search the contacts page. |
+| `ChatUIKitRouteNames.reportMessageView` | `/ReportMessageView` | The message reporting page. |
+| `ChatUIKitRouteNames.searchUsersView` | `/SearchUsersView` | The contact search page. |
 | `ChatUIKitRouteNames.searchGroupMembersView` | `/SearchGroupMembersView` | The search group members page. |
-| `ChatUIKitRouteNames.selectContactsView` | `/SelectContactsView` | The select a contact page. |
-| `ChatUIKitRouteNames.showImageView` | `/ShowImageView` | The view image page. |
-| `ChatUIKitRouteNames.showVideoView` | `/ShowVideoView` | The view video page. |
-| `ChatUIKitRouteNames.searchHistoryView` | `/SearchHistoryView` | The search message history page. |
+| `ChatUIKitRouteNames.selectContactsView` | `/SelectContactsView` | The contact selection page. |
+| `ChatUIKitRouteNames.showImageView` | `/ShowImageView` | The page for viewing images. |
+| `ChatUIKitRouteNames.showVideoView` | `/ShowVideoView` | The page for viewing videos. |
+| `ChatUIKitRouteNames.searchHistoryView` | `/SearchHistoryView` | The page for searching for historical messages. |
 | `ChatUIKitRouteNames.threadMessagesView` | `/ThreadMessagesView` | The message thread page. |
 | `ChatUIKitRouteNames.threadMembersView` | `/ThreadMembersView` | The thread members page. |
 | `ChatUIKitRouteNames.threadsView` | `/ThreadsView` | The thread list page. |
@@ -131,9 +131,9 @@ In addition to `MessagesViewArguments`, each View provides the corresponding `Vi
 
 ```dart
 ChatUIKitTimeFormatter.instance.formatterHandler = (context, type, time) {
-  if (type == ChatUIKitTimeType.conversation) { // The time used in the conversation list needs to return the complete time content based on time, such as 'xx month xx day xx:xx'
+  if (type == ChatUIKitTimeType.conversation) { // The conversation time on the conversation list. The complete time is returned with `time`, such as MMDD HH:MM.
     return '...';
-  } else if (type == ChatUIKitTimeType.message) { // The time format used by the message needs to return the complete time content based on time, such as 'xx month xx day xx:xx'
+  } else if (type == ChatUIKitTimeType.message) { // The conversation time on the conversation list. The complete time is returned with `time`, such as MMDD HH:MM.
     return '...';
   }
   return null; // If null is returned, no changes are made.
@@ -153,13 +153,13 @@ class _ToastPageState extends State<ToastPage> with ChatSDKEventsObserver, ChatU
   @override
   void initState() {
     super.initState();
-    // Register to listen
+    // Register a listener
     ChatUIKit.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    // Remove listening
+    // Remove a listener
     ChatUIKit.instance.removeObserver(this);
     super.dispose();
   }
@@ -169,7 +169,7 @@ class _ToastPageState extends State<ToastPage> with ChatSDKEventsObserver, ChatU
   void onChatSDKEventBegin(ChatSDKEvent event) {
   }
 
-  // he Chat SDK method call ends
+  // The Chat SDK method call ends
   @override
   void onChatSDKEventEnd(ChatSDKEvent event, ChatError? error) {
   }
@@ -185,7 +185,7 @@ class _ToastPageState extends State<ToastPage> with ChatSDKEventsObserver, ChatU
 
 The default configuration items must be configured when the application starts.
 
-### Configure the avatar corner rounding
+### Configure the corner radius of the avatar
 
 The default is `CornerRadius.medium`:
 
@@ -235,7 +235,7 @@ The default is `true`.
 ChatUIKitSettings.showConversationListUnreadCount = true;
 ```
 
-### Configure the mute icon displayed in the conversation list
+### Configure the DND icon displayed in the conversation list
 
 The default is `packages/agora_chat_uikit/assets/images/no_disturb.png`:
 
@@ -267,11 +267,11 @@ When a user long-presses a message, a menu will pop up. You can modify its defau
 
 You can modify the pop-up menu by adjusting the order and content. For example, you can remove the copy option (`MessageLongPressActionType.copy`) in the `ChatUIKitSettings.msgItemLongPressActions` menu. 
 
-### Set whether to open the message thread
+### Set whether to enable the message thread
 
 Users can create a thread based on a message in a group chat to conduct in-depth discussions and track specific project tasks without affecting other chat content.
 
-The message topic feature is provided as a switch in `ChatUIKitSettings.enableChatThreadMessage`, with a default value of `false`. To enable it, set this parameter to `true`.
+The message thread feature is provided as a switch in `ChatUIKitSettings.enableChatThreadMessage`, with a default value of `false`. To enable it, set this parameter to `true`.
 
 The sample code is as follows:
 
@@ -469,5 +469,5 @@ itemBuilder: (context, model) {
       );
     },
   );
-},
+}
 ```

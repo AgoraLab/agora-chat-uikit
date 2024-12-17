@@ -18,7 +18,6 @@ Inherit `ConversationViewModel` and register it in `ComponentsRegister.shared.Co
 | `delete` | Triggered when swiping left on a conversation list cell and clicking the **Delete** button. | Yes |
 | `read` | Triggered when swiping left on a conversation list cell and clicking the **Read** button. | Yes |
 | `conversationDidSelected` | Triggered when clicking a conversation list. | Yes |
-| `conversationLongPressed` | Triggered when long-pressing a conversation list. | Yes |
 | `moreAction` | Triggered when swiping right on the conversation list and clicking **...**. | Yes |
 | `conversationLastMessageUpdate` | Triggered when the last message of a conversation in the list is updated. | Yes |
 | `playNewMessageSound` | Play audio for receiving a new message. | Yes |
