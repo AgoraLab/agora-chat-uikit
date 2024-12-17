@@ -162,21 +162,20 @@ The sample code is as follows:
 
 ## Conversation-related 
 
-This section covers specific features related to managing conversations. 
+This section covers specific features related to managing conversations. On the chat list page, users can swipe left or right on a single conversation to perform various actions. The left-swipe menu includes setting the DND mode, pinning a conversation, and deleting it. The right-swipe menu includes marking a conversation as read and calling up more menus.
 
 ### Conversation marked as read
-
 Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right it to open a context menu and mark the conversation as read. 
 
 ### Pin a conversation (sticky conversation)
 
 The user can swipe an important conversation left/right it to open a context menu and pin it to the 
+
 top for easy access.
 
 ### Do not disturb
 
-The user can swipe a conversation left/right it to open a context menu and turn on the DND 
-mode. 
+The user can swipe a conversation left/right it to open a context menu and turn on the DND mode. 
 
 ### Delete a conversation
 

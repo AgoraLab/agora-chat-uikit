@@ -28,7 +28,7 @@ _localization.displayLanguageWhenNotSupported = const Locale('en');
 
 ## Add a new language
 
-Use the `ChatUIKitLocalizations.addLocales` method to expand the languages supported by internationalization. The corresponding text constants are defined in the `ChatUIKitLocal` file. You can add your own `ChatLocalobject` to `ChatUIKitLocalizations` to implement internationalization.
+Use the `ChatUIKitLocalizations.addLocales` method to expand the languages supported by internationalization. The corresponding text constants are defined in the `ChatUIKitLocal` file. You can add your own `ChatLocal` object to `ChatUIKitLocalizations` to implement internationalization.
 
 For example, you can add support for French in the following way:
 

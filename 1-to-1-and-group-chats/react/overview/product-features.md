@@ -141,28 +141,25 @@ export function MessageSearchScreen(props: Props) {
 
 This section covers specific features related to managing conversations. 
 
-![Conversation swipe menu](../../assets/images/conversation_swipe.png)
-
-![Conversation swipe menu](../../assets/images/conversation_swipe_2.png)
 
 ### Conversation marked as read
 
-Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right or
-long-press it to open a context menu and mark the conversation as read.
+Shows whether the user has read a conversation with unread messages. The user can
+long-press a conversation to open a context menu and mark the conversation as read.
 
 ### Pin a conversation (sticky conversation)
 
-The user can swipe an important conversation left/right or long-press it to open a context menu and pin it to the 
+The user can long-press an important conversation to open a context menu and pin it to the 
 top for easy access.
 
 ### Do not disturb
 
-The user can swipe a conversation left/right or long-press it to open a context menu and turn on the DND 
+The user can long-press a conversation to open a context menu and turn on the DND 
 mode. 
 
 ### Delete a conversation
 
-The user can swipe a conversation left/right or long-press it to open a context menu and delete the conversation.
+The user can long-press a conversation to open a context menu and delete the conversation.
 
 ## Message-related
 

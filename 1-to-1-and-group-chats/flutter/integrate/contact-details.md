@@ -5,8 +5,8 @@ You can configure the AppBar, the button in the middle, the list items, and othe
 The contact details page provides the following customization options:
 
 - AppBar: Customize through `appBarModel`.
-- The buttons in the middle, including sending messages, searching messages, audio calls, and video calls: Customize through `actionsBuilder`. The default events will be returned through the builder, and the events to be displayed need to be returned.
-- List items on the page, including the DND mode, clear chat history, and others: Customize through `itemsBuilder`. The default list items will be called back through the builder, and the list items to be displayed need to be returned.
+- The buttons in the middle, including sending messages, searching for messages, audio calls, and video calls: Customize through `actionsBuilder`. The default events will be returned through the builder, and the events to be displayed need to be returned.
+- List items on the page, including the DND mode, clear chat history, and others: Customize through `itemsBuilder`. The default list items will be called back through the builder, and the list items to be displayed need to be returned. 
 
 Customize the contact details page in the following ways:
    

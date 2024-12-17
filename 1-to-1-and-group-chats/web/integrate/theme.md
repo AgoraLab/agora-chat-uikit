@@ -31,7 +31,7 @@ const App = () => {
   return (
     <UIKitProvider
       theme={{
-        primaryColor: '#00CE76', // hexidecimal color value
+        primaryColor: '#00CE76', // hexadecimal color value
       }}
     ></UIKitProvider>
   );
@@ -74,7 +74,7 @@ Modify these variables in the following way:
     @import 'agora-chat-uikit/components.scss'; // UIKit component styles
     ```
 
-- Override SCSS variables by modifying the Webpack config.
+- Override SCSS variables by modifying the Webpack configurations.
 
     Configure the SCSS loader to automatically import custom `style.scss` files:
     

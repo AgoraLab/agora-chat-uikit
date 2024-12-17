@@ -97,11 +97,11 @@ Use the `customAction` property of `messageProps` to set the message action butt
       icon: null,
       actions: [
         {
-          // Display a single forwarding
+          // Display Forwarding of a single message
           content: 'FORWARD',
         },
         {
-          // Display message reference
+          // Display message quote
           content: 'REPLY',
         },
         {
@@ -113,11 +113,11 @@ Use the `customAction` property of `messageProps` to set the message action butt
           content: 'Modify',
         },
         {
-          // Display message multiple selection
+          // Display selection of multiple messages
           content: 'SELECT',
         },
         {
-          // Display message fixed
+          // Display the message on top
           content: 'PIN',
         },
         {
@@ -183,12 +183,12 @@ const ChatContainer = () => {
             ]}
             enabledTyping={true} // Whether to enable the typing function
             showSendButton={true} // Whether to display the send button
-            sendButtonIcon={<Icon type="AIR_PLANE" />} // Send button Icon
+            sendButtonIcon={<Icon type="AIR_PLANE" />} // Icon of the Send button
             row={1} // Input row number
             placeHolder="Please enter content" // default placeholder
-            enabledMention={true} // Whether to enable the @ function
+            enabledMention={true} // Whether to enable the group mention function
             onSendMessage={message => {}} //Callback for sending message
-            onBeforeSendMessage={message => {}} // Callback before message sending. The callback returns promise. If the status of the returned promise is resolved, the message is sent; if the status of the returned promise is rejected, the message is not sent.
+            onBeforeSendMessage={message => {}} // Callback before message sending. The callback returns promise. If the status of the returned promise is resolved, send the message; if the status of the returned promise is rejected, do not send the message.
           />
         )}
       />
@@ -210,7 +210,7 @@ import { Chat, Icon, MessageInput } from "agora-chat-uikit";
 import "agora-chat-uikit/style.css";
 
 const ChatContainer = () => {
-  // Add an icon in the message editor
+  // Customize an icon to add in the message input box
   const CustomIcon = {
     visible: true,
     name: "CUSTOM",
@@ -225,7 +225,7 @@ const ChatContainer = () => {
   };
 
   const actions = [...MessageInput.defaultActions];
-  // Insert custom icon after textarea
+  // Add a custom icon in the message input box
   actions.splice(2, 0, CustomIcon);
   return (
     <div style={{ width: "70%", height: "100%" }}>
@@ -270,7 +270,7 @@ const ChatContainer = () => {
     }
   };
 
-  // Add an icon in the message editor
+  // Add an icon in the message input box
   const CustomIcon = {
     visible: true,
     name: "CUSTOM",
@@ -288,7 +288,7 @@ const ChatContainer = () => {
 
   // Implement sending custom messages
   const sendCustomMessage = () => {
-    const customMsg = EaseChat.message.create({
+    const customMsg = ChatSDK.message.create({
       type: "custom",
       to: "targetId", // Message recipient: Peer user ID for a one-to-one chat and group ID for a group chat.
       chatType: "singleChat",
@@ -362,7 +362,7 @@ The `Chat` component contains the following properties:
 | `headerProps` | `HeaderProps` | The properties in the header component. |
 | `messageListProps` | `MsgListProps` | The properties of the `MessageList` component. |
 | `messageInputProps` | `MessageInputProps` | The properties of the `MessageInput` component. |
-| `renderHeader` | `(cvs: CurrentCvs) => React.ReactNode` | Customize the method for rendering the header component. |
-| `renderMessageList` | `() => ReactNode;` | Customize the method for rendering the `MessageList` component. |
-| `renderMessageInput` | `() => ReactNode;` | Customize the method for rendering the `MessageInput` component. |
-| `renderEmpty` | `() => ReactNode;` | Customize the method for rendering the empty content components. |
+| `renderHeader` | `(cvs: CurrentCvs) => React.ReactNode` | Method for customizing the rendering of the header component. |
+| `renderMessageList` | `() => ReactNode;` | Method for customizing the rendering of the `MessageList` component. |
+| `renderMessageInput` | `() => ReactNode;` | Method for customizing the rendering of the `MessageInput` component. |
+| `renderEmpty` | `() => ReactNode;` | Method for customizing the rendering of the empty content components. |

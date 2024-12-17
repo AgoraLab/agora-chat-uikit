@@ -110,10 +110,10 @@ const ContactListContainer = () => {
 | `prefix` | `String` | The prefix for the CSS class names. |
 | `style` | `React.CSSProperties` | The styles for the `ContactList` component. |
 | `onItemClick` | <code>(info: { id: string; type: 'contact' &#124; 'group' &#124; 'request'; name: string }) => void;</code> | The click callback of each item. |
-| `hasMenu` | `boolean` | Whether to display the category menu item, the default value is `true`. It can be set to `false` when there is only one menu item in the contact list. |
-| `checkable` | `boolean` | Whether to display a checkbox after the contact. |
-| `onCheckboxChange` | `(checked: boolean, data: UserInfoData) => void;` | The callback that displays a checkbox after clicking a contact. |
+| `hasMenu` | `boolean` | Whether to display the classified menu items. The default value is `true`. It can be set to `false` when there is only one menu item in the contact list. |
+| `checkable` | `boolean` | Whether to display a checkbox for selecting contacts. | 
+| `onCheckboxChange` | `(checked: boolean, data: UserInfoData) => void;` | The callback upon a click on the checkbox after the contact. |
 | `header` | `React.ReactNode;` | The component's `Header`. |
-| `checkedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | For a selectable contact list, set the item to be selected. |
+| `checkedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | For a selectable contact list, set the items that are selected by default. | 
 | `defaultCheckedList` | `{ id: string; type: 'contact' &#124; 'group'; name?: string }[]` | For a selectable contact list, set the default selected item. |
 | `menu` | <code>( &#124; 'contacts' &#124; 'groups' &#124; 'requests' &#124; { title: string; data: ({ remark?: string; userId: string } &#124; { groupname: string; groupid: string })[]; } )[] ;</code> | Customize the menu items of `ContactList`. |

@@ -81,6 +81,16 @@ Set the message text color of the receiver/sender on the chat page with `Appeara
 
 ### Set the attachment message
 
+#### Set the UIActionSheet style
+
+Create a `UIActionSheet` style pop-up that appears after long-pressing a message as follows:
+
+```swift 
+Appearance.chat.messageAttachmentMenuStyle = .actionSheet
+```
+
+#### Set configuration items related to attachment messages
+
 - Set the maximum duration of a voice message recording.
 
     You can set the maximum duration of an audio message recording in the chat page via `Appearance.chat.audioDuration = value`. The default is 60 seconds.
@@ -148,6 +158,13 @@ Get the click event of an action:
         Appearance.chat.messageLongPressedActions.first { $0.tag == "xxx" }?.action = { [weak self ] in
            //action handler
         }
+```
+#### Set the UIActionSheet style popup
+
+Create a `UIActionSheet` style pop-up that appears after long-pressing a message as follows:
+
+```swift 
+    Appearance.chat.messageLongPressMenuStyle = .actionSheet
 ```
 
 ### Set the input box of the chat page 

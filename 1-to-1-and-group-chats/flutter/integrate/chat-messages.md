@@ -44,14 +44,14 @@ If you need to customize the message page, you can modify the following properti
 | `final bool showAvatar` | Whether to display the avatar. |
 | `final bool showNickname` | Whether to display the nickname. |
 | `final MessageItemTapHandler? onItemTap` | The message click event. By default, it will process video, image, and voice messages. If you need to intercept the click during customization, return `true`; if not, return `false`. |
-| `final MessageItemTapHandler? onItemLongPress` | The message long-press event. By default, a menu will pop up after a long press. When customizing, if you need to intercept the click, return `true`; if not, return `false`. |
+| `final MessageItemTapHandler? onItemLongPress` | The message long-press event. By default, a menu will pop up after a long press. When customizing, if you need to intercept the click, return `true`; if not, return `false`. | 
 | `final MessageItemTapHandler? onDoubleTap` | The message double-click event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
-| `final MessageItemTapHandler? onAvatarTap`| When the avatar click event occurs, the page will jump to the contact details page of the message sender by default. If the sender is not a friend, the page will be redirected to the add friend details page. If you need to intercept the click during customization, return `true`; if not, return `false`. |
+| `final MessageItemTapHandler? onAvatarTap`| When the avatar click event occurs, the page will jump to the contact details page of the message sender by default. If the sender is not a friend, the page will be redirected to the friend addition details page. If you need to intercept the click during customization, return `true`; if not, return `false`. |
 | `final MessageItemTapHandler? onAvatarLongPress` | The avatar long-press event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
 | `final MessageItemTapHandler? onNicknameTap` | The nickname long-press event, not implemented by default. If you need to intercept the click during customization, return `true`; if not, return `false`. |
-| `final ChatUIKitMessageListViewBubbleStyle bubbleStyle` | The message bubble style. Currently two styles are provided: `ChatUIKitMessageListViewBubbleStyle.arrow` (default) and `ChatUIKitMessageListViewBubbleStyle.noArrow`. |
-| `final MessageItemBuilder? itemBuilder` | The custom message item builder. If you need to rewrite the message style (including avatar, nickname, message bubble, message quote, and all other styles), implement it here. |
-| `final MessageItemBuilder? alertItemBuilder` | The prompt message of the custom item builder. If you need to rewrite the prompt message style, implement it here. |
+| `final ChatUIKitMessageListViewBubbleStyle bubbleStyle` | The message bubble style. Currently two styles are provided: `ChatUIKitMessageListViewBubbleStyle.arrow` (default) and `ChatUIKitMessageListViewBubbleStyle.noArrow`. |  
+| `final MessageItemBuilder? itemBuilder` | The builder for message item customization. If you need to rewrite the message style (including avatar, nickname, message bubble, message quote, and all other styles), implement it here. | 
+| `final MessageItemBuilder? alertItemBuilder` | The builder for item customization for the prompt message. Yan can rewrite the prompt message styles with the builder. | 
 | `final FocusNode? focusNode` | The input control focus controller, not recommended to set. If `inputBar` is customized, this setting will not take effect. |
 | `final List<ChatUIKitBottomSheetItem>? morePressActions` | More menu button items. If not set, the default menu will be used. This parameter will not take effect after `inputBar` customization. |
 | `final MessagesViewMorePressHandler? onMoreActionsItemsHandler` | The callback when clicking the default `inputBar`. You can return a new menu list. If you return `null` or do not implement it, the content set in `morePressActions` will be used. If not set, the default `morePressActions` will be used. |
@@ -62,9 +62,9 @@ If you need to customize the message page, you can modify the following properti
 | `final MessageItemBuilder? replyBarBuilder` | The custom `replyBar` component, used to temporarily display the message content above the input box when the message is quoted. If not set, the default `ChatUIKitReplyBar` will be used. |
 | `final Widget Function(BuildContext context, QuoteModel model)? quoteBuilder` | Customize the style of message references when displayed. If not set, the default style is used. |
 | `final bool Function(BuildContext context, Message message)? onErrorTapHandler;` | The callback when clicking the red dot of the message sending failure. If not set, it will trigger the message to be re-sent. |
-| `final MessageItemBubbleBuilder? bubbleBuilder` | The message bubble. If you need to customize the message bubble, implement it here. If you don't set it, the default `ChatUIKitMessageListViewBubble` will be used. |
-| `final MessageBubbleContentBuilder? bubbleContentBuilder` | The message bubble content. If you need to customize the bubble content, implement it here. If you do not set it, the default value will be used. |
-| `final String? attributes` | The extended parameters that will be passed to the next page. |
+| `final MessageItemBubbleBuilder? bubbleBuilder` | The message bubble. You can customize the message bubble with this parameter. If you don't set it, the default `ChatUIKitMessageListViewBubble` will be used. |
+| `final MessageBubbleContentBuilder? bubbleContentBuilder` | The message bubble content. You can customize the message bubble content with this parameter. If you do not set it, the default value will be used. |
+| `final String? attributes` | The extended parameters that will be passed to the next page. | 
 
 ## Customize AppBar
 
@@ -90,7 +90,7 @@ The message page can be customized in two ways:
 
 ### Avatar and nickname in the message list
 
-The message list display follows the `ChatUIKitProvider` principle. For setting the avatar and nickname, refer to the [User information](user-information.md). To configure whether the avatar and nickname are displayed through `showMessageItemAvatar` and `showMessageItemNickname`, respectively.
+The message list display follows the `ChatUIKitProvider` principle. For setting the avatar and nickname, refer to the [User information](user-information.md). You can configure whether the avatar and nickname are displayed by using `showMessageItemAvatar` and `showMessageItemNickname` respectively.
 
 For more information about avatar rounded corners, default avatar, and other settings, see [Advanced usage](advanced-usage.md).
 

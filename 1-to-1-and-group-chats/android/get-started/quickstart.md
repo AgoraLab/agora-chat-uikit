@@ -1,6 +1,6 @@
 # Quickstart
 
-With UIKit, you can easily implement messaging in one-to-one chats and group chats. This page explains how do this for a one-to-one chat.
+With UIKit, you can easily implement messaging in one-to-one and group chats. This page explains how do this.
 
 ## Prerequisites
 

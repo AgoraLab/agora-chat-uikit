@@ -8,7 +8,7 @@ Before you start, make sure your development environment meets the following con
 
 - MacOS 12 or above;
 - React Native 0.71 or above;
-- NodeJs 16.18 or above;
+- NodeJs 18.16 or above;
 - For iOS: Xcode 14 or above;
 - For Android: Android Studio 2022 or above;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
@@ -32,7 +32,7 @@ Take the following steps to download and run the sample project:
    1. After the download is complete, open the file directory and run the following command:
       
       ```
-      yarn && yarn uikit-prepack
+      yarn && yarn yarn-prepack
       ```
 
    1. Add the dependencies.
@@ -40,7 +40,7 @@ Take the following steps to download and run the sample project:
       - For iOS, Run `pod install` to initialize the native dependency configuration:
         
          ```
-         cd example/ios && pod install
+         cd examples/uikit-example/ios && pod install
          ```
 
       - For Android, use the Android Studio to open the `example/android` directory and sync the sample project.
@@ -49,24 +49,12 @@ Take the following steps to download and run the sample project:
 
    Fill in your user ID, app ID, and token in `example/src/env.ts`:
 
-      ```javascript
-      export const useSendBox = false;
-      export const isDevMode = true;
-      export const appKey = "xxx";
-      export const accountType = "easemob"; 
-      export const agoraAppId = "xxx";
-      export const fcmSenderId = "xxx";
-      export const account = [{ id: "xxx", token: "xxx" }];
-      ```
-   
-      Manually set the region in `packages/react-native-chat-uikit/src/config.local.ts`. The currently supported ones are domestic and overseas. 
-
-      ```javascript
-      export const language = "zh-Hans"; // 'en' or 'zh-Hans'
-      export const release_area = "china"; // 'china' or 'global'
+      ```typescript
+      export const appKey = "<your app key>";
+      export const account = [{ id: "<your user id>", token: "<your user token>" }];
       ```
 
-1. Compile and run.
+2. Compile and run.
 
     Run the local service in the debug mode. During debugging, you can modify the JavaScript file and view the effect of the modification.
     
@@ -79,9 +67,4 @@ Take the following steps to download and run the sample project:
     ```
     yarn run android
     ```
-
-## FAQ
-
-Q: Why won't the app compile on Android? 
-A: You may need a `cmake 3.10.2` plugin for Android Studio.
 

@@ -5,7 +5,7 @@ The conversation list page is used to display all conversations of the current u
 - Click **Search** to jump to the search page and search for conversations.
 - Click a conversation list cell to jump to the conversation details page.
 - Click the expand button in the navigation bar and select **New Conversation** to create a new conversation.
-- Swipe left, swipe right, or long-press a conversation to trigger the conversation extended function menu, where you can delete the conversation, pin the conversation, or turn on the do not disturb mode.
+- Swipe left or right on a conversation to delete it, pin it to the top, set the DND mode, and mark it as read.
 
 A single conversation displays the conversation name, the last message, the time of the last message, the pinned and muted status, and others.
 
@@ -174,17 +174,8 @@ You need to fully implement the business and UI refresh logic after interception
 
 The conversation list events are as follows:
 
-- `swipeAction`: Slide event.
-- `longPressed`: Long-press event.
+- `swipeAction`: Swipe event.
 - `didSelected`: Click event.
-
-The following sample code is a conversation long-press event:
-
-```swift
-ComponentViewsActionHooker.shared.conversation.longPressed = { [weak self] indexPath,info in 
-    //Process your business logic.
-}
-```
 
 ## Other settings
 

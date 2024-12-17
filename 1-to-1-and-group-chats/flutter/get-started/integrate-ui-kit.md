@@ -20,7 +20,7 @@ Take the following steps to integrate UIKit:
    flutter pub add agora_chat_uikit
    ```
 
-1. Add permissions.
+2. Add permissions.
 
    Because UIKit uses the feature of sending images and audio, you need to enable the permissions to record, use camera, and access the image library.
 
@@ -40,14 +40,14 @@ Take the following steps to integrate UIKit:
        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
      ```
    
-1. Introduce the header file:
+3. Introduce the header file:
 
     ```dart
     // Import the header file
     import 'package:agora_chat_uikit/chat_uikit.dart';
     ```
 
-1. Initialize UIKit.
+4. Initialize UIKit.
 
    All components used in the project need `ChatUIKitTheme` to be used internally. When using UIKit, configure  `ChatUIKitTheme` first:
 
@@ -75,23 +75,13 @@ Take the following steps to integrate UIKit:
    }
    ```
 
-1. Log in.
-
-    The following login methods are provided: User ID and password and user ID and token. 
-
-    - Log in with the user ID and password:
-
-      ```dart
-      ChatUIKit.instance.loginWithPassword(userId: userId, password: password);
-      ```
-   
-    - Log in with the user ID and token:
+5. Log in with the user ID and token:
 
       ```dart
       ChatUIKit.instance.loginWithToken(userId: userId, token: token);
       ```
 
-1. Build the interface.
+6. Build the interface.
 
    UIKit provides components such as a conversation list, a chat, group settings, and a contact list. You can use these components to build the interface. These components support customization. For details, refer to the documentation of each corresponding component.
    
@@ -116,9 +106,9 @@ Take the following steps to integrate UIKit:
    }
    ```
    
-1. Package the app.
+7. Package the app.
 
-   When packaging for Android, add the following code to the `project/android/app/proguard-rules.pro` file. If it does not exist, create it:
+   When packaging for Android, add the following code to the `project/android/app/proguard-rules.pro` file. If this file does not exist, create it with the same name:
 
     ```dart
     -keep class com.hyphenate.** {*;}
