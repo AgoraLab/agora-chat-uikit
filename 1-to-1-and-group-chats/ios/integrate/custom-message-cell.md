@@ -2,9 +2,9 @@
 
 This guide uses the red envelope message as an example to introduce how to add a new type of custom message cell.
 
-## Step 1 Inherit the custom message cell
+## Step 1: Inherit the custom message cell
 
-Inherit the custom message cell in `chat_uikit` according to your requirements.
+Create a custom message cell by inheriting `CustomMessageCell`.
 
 ```Swift
 import UIKit
@@ -32,12 +32,11 @@ class RedPackageCell: CustomMessageCell {
 }
 ```
 
+![new-message-type](../../assets/images/new-message-type.png)
 
-[Diagram](./red_package_message.jpg)
+## Step 2: Inherit the Cell's rendering model
 
-## Step 2 Inherit Cell's rendering model
-
-According to the requirements, inherit the rendering model `MessageEntity` of the Cell in `chat_uikit` and specify the bubble size, where `redPackageIdentifier` is the `event` event of the custom message of the red envelope.
+According to your requirements, inherit the rendering model `MessageEntity` of the Cell in `chat_uikit` and specify the bubble size, where `redPackageIdentifier` is the `event` of the custom message of the red envelope.
 
 ```Swift
 import UIKit
@@ -68,18 +67,18 @@ final class MineMessageEntity: MessageEntity {
 }
 ```
 
-## Step 3 Add attachment message type
+## Step 3: Add attachment message type
 
 Add the attachment message type, for example, add a red envelope message.
 
-[Image](./send_red_package.jpg)
+![custom-attachment-message](../../assets/images/custom-attachment-message.png)
 
 ```Swift
 let redPackage = ActionSheetItem(title: "Red envelope".chat.localize, type: .normal,tag: "Red",image: UIImage(named: "photo", in: .chatBundle, with: nil))
 Appearance.chat.inputExtendActions.append(redPackage)
 ```
 
-## Step 4: Handle click events of newly added attachment message types
+## Step 4:: Handle click events of the newly added attachment message types
 
 Inherit `MessageListController` and handle click events of newly added attachment message types.
 
@@ -106,7 +105,7 @@ class CustomMessageListController: MessageListController {
 let redPackageIdentifier = "redPackage"
 ```
 
-## Step 5 Add a method to send a new type of attachment message
+## Step 5: Add a method to send a new type of attachment message
 
 Add a method to send red envelope messages in `MessageListViewModel` of `chat_uikit`.
 
@@ -137,9 +136,9 @@ extension MessageListViewModel {
 }
 ```
 
-## Step 6 Register inherited objects
+## Step 6: Register inherited objects
 
-After initializing the inherited objects above, register them in `chat_uikit`.
+After initializing the inherited objects, register them in `chat_uikit`.
 
 ```Swift
 ComponentsRegister.shared.MessageRenderEntity = MineMessageEntity.self
@@ -148,11 +147,11 @@ ComponentsRegister.shared.MessageViewController = CustomMessageListController.se
 ComponentsRegister.shared.registerCustomizeCellClass(cellType: RedPackageCell.self)
 ```
 
-Here, `ComponentsRegister.shared.Conversation = MineConversationInfo.self` is used to display the content of the new type of custom message received in the conversation list.
+Where `ComponentsRegister.shared.Conversation = MineConversationInfo.self` is used to display the content of the new type of custom message received in the conversation list.
 
 For example, in the following sample code, when a new message is received in the conversation, it is displayed as "[red envelope]", and the main adjustment is to display the corresponding content according to the `event` of the custom message in the `else` of the non-text message type.
 
-[Illustration](./red_package_placeholder.jpg)
+![show-custom-message-type](../../assets/images/show-custom-message-type.png)
 
 ```Swift
 import UIKit
