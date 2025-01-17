@@ -59,8 +59,23 @@ Refer to the following design guides:
 <summary>Web</summary>
 
 - About
+    - [Product overview](1-to-1-and-group-chats/web/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/web/overview/product-features.md)
 - Get started
+    - [Integrate UIKit with Vue](1-to-1-and-group-chats/web/get-started/integrate-with-vue.md)
+    - [Integrate UIKit with React](1-to-1-and-group-chats/web/get-started/integrate-with-react.md)
+    - [Quickstart](1-to-1-and-group-chats/web/get-started/quickstart.md)
 - Integrate
+    - [Audio and video calls](1-to-1-and-group-chats/web/integrate/audio-and-video-calls.md)
+    - [Message chat](1-to-1-and-group-chats/web/integrate/chat-messages.md)
+    - [Contacts](1-to-1-and-group-chats/web/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/web/integrate/conversation-list.md)
+    - [Event listeners](1-to-1-and-group-chats/web/integrate/event-listeners.md)
+    - [Global context](1-to-1-and-group-chats/web/integrate/global-context.md)
+    - [Internationalization](1-to-1-and-group-chats/web/integrate/internationalization.md)
+    - [Log in to UIKit](1-to-1-and-group-chats/web/integrate/log-in.md)
+    - [Theme](1-to-1-and-group-chats/web/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/web/integrate/user-information.md)
 
 </details>
 
