@@ -12,8 +12,8 @@ Refer to the following design guides:
 - About
     - [Product overview](1-to-1-and-group-chats/android/overview/product-overview.md)
     - [Product features](1-to-1-and-group-chats/android/overview/product-features.md)
-- Get Started
-    - [Quickstart](1-to-1-and-group-chats//android/get-started/quickstart.md)
+- Get started
+    - [Quickstart](1-to-1-and-group-chats/android/get-started/quickstart.md)
 - Integrate
     - [Advanced usage](1-to-1-and-group-chats/android/integrate/advanced-usage.md)
     - [Message chat](1-to-1-and-group-chats/android/integrate/chat-messages.md)
@@ -31,20 +31,41 @@ Refer to the following design guides:
 <details>
 <summary>iOS</summary>
 
+- About
+    - [Product overview](1-to-1-and-group-chats/ios/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/ios/overview/product-features.md)
+- Get started
+    - [Integrate UIKit](1-to-1-and-group-chats/ios/get-started/integrate-ui-kit.md)
+    - [Quickstart](1-to-1-and-group-chats/ios/get-started/quickstart.md)
+    - [Run the sample project](1-to-1-and-group-chats/ios/get-started/run-sample-project.md)
+- Integrate
+
 </details>
 
 <details>
 <summary>Web</summary>
+
+- About
+- Get started
+- Integrate
 
 </details>
 
 <details>
 <summary>Flutter</summary>
 
+- About
+- Get started
+- Integrate
+
 </details>
 
 <details>
 <summary>React</summary>
+
+- About
+- Get started
+- Integrate
 
 </details>
 
