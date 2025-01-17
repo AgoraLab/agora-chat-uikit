@@ -4,7 +4,9 @@
 
 Refer to the following design guides:
 
-[**1-to-1 and Group Chats**](1-to-1-and-group-chats/design-guide.md)
+## 1-to-1 and Group Chats
+
+[**Design guide**](1-to-1-and-group-chats/design-guide.md)
 
 <details>
 <summary>Android</summary>
@@ -124,6 +126,111 @@ Refer to the following design guides:
     - [User information](1-to-1-and-group-chats/react/integrate/user-information.md)
 </details>
 
+## Chat Room
 
-[**Chat Room**](chat-room/design-guide.md)
+[**Design guide**](chat-room/design-guide.md)
 
+
+<details>
+<summary>Android</summary>
+
+- About
+    - [Product overview](agora-chat-uikit/chat-room/android/overview.md)
+    - [Product features](agora-chat-uikit/chat-room/android/product-features.md)
+- Get started
+    - [Integrate UIKit](agora-chat-uikit/chat-room/android/integrate-ui-kit.md)
+    - [Quickstart](agora-chat-uikit/chat-room/android/quickstart.md)
+    - [Run the sample project](agora-chat-uikit/chat-room/android/run-sample-project.md)
+- Integrate
+    - [Best practices](agora-chat-uikit/chat-room/android/best-practices.md)
+    - [Configurable items](agora-chat-uikit/chat-room/android/configurable-items.md)
+    - [Theme](agora-chat-uikit/chat-room/android/theme.md)
+    
+</details>
+
+<details>
+<summary>iOS</summary>
+
+- About
+    - [Product overview](agora-chat-uikit/chat-room/ios/overview.md)
+    - [Product features](agora-chat-uikit/chat-room/ios/product-features.md)
+- Get started
+    - [Integrate UIKit](agora-chat-uikit/chat-room/ios/integrate-ui-kit.md)
+    - [Quickstart](agora-chat-uikit/chat-room/ios/quickstart.md)
+    - [Run the sample project](agora-chat-uikit/chat-room/ios/run-sample-project.md)
+- Integrate
+    - [Best practices](agora-chat-uikit/chat-room/ios/best-practices.md)
+    - [Configurable items](agora-chat-uikit/chat-room/ios/configurable-items.md)
+    - [Customizations](agora-chat-uikit/chat-room/ios/customizations.md)
+    - [Theme](agora-chat-uikit/chat-room/ios/theme.md)
+
+</details>
+
+<details>
+<summary>Web</summary>
+
+- About
+    - [Product overview](1-to-1-and-group-chats/web/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/web/overview/product-features.md)
+- Get started
+    - [Integrate UIKit with Vue](1-to-1-and-group-chats/web/get-started/integrate-with-vue.md)
+    - [Integrate UIKit with React](1-to-1-and-group-chats/web/get-started/integrate-with-react.md)
+    - [Quickstart](1-to-1-and-group-chats/web/get-started/quickstart.md)
+- Integrate
+    - [Audio and video calls](1-to-1-and-group-chats/web/integrate/audio-and-video-calls.md)
+    - [Message chat](1-to-1-and-group-chats/web/integrate/chat-messages.md)
+    - [Contacts](1-to-1-and-group-chats/web/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/web/integrate/conversation-list.md)
+    - [Event listeners](1-to-1-and-group-chats/web/integrate/event-listeners.md)
+    - [Global context](1-to-1-and-group-chats/web/integrate/global-context.md)
+    - [Internationalization](1-to-1-and-group-chats/web/integrate/internationalization.md)
+    - [Log in to UIKit](1-to-1-and-group-chats/web/integrate/log-in.md)
+    - [Theme](1-to-1-and-group-chats/web/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/web/integrate/user-information.md)
+
+</details>
+
+<details>
+<summary>Flutter</summary>
+
+- About
+    - [Product overview](1-to-1-and-group-chats/flutter/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/flutter/overview/product-features.md)
+- Get started
+    - [Integrate UIKit](1-to-1-and-group-chats/flutter/get-started/integrate-ui-kit.md)
+    - [Quickstart](1-to-1-and-group-chats/flutter/get-started/quickstart.md)
+    - [Run the sample project](1-to-1-and-group-chats/flutter/get-started/run-sample-project.md)
+- Integrate
+    - [Advanced usage](1-to-1-and-group-chats/flutter/integrate/advanced-usage.md)
+    - [Chat messages](1-to-1-and-group-chats/flutter/integrate/chat-messages.md)
+    - [Contact details](1-to-1-and-group-chats/flutter/integrate/contact-details.md)
+    - [Contacts](1-to-1-and-group-chats/flutter/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/flutter/integrate/conversation-list.md)
+    - [Group details](1-to-1-and-group-chats/flutter/integrate/group-details.md)
+    - [Internationalization](1-to-1-and-group-chats/flutter/integrate/internationalization.md)
+    - [Theme](1-to-1-and-group-chats/flutter/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/flutter/integrate/user-information.md)
+
+</details>
+
+<details>
+<summary>React</summary>
+
+- About
+    - [Product overview](1-to-1-and-group-chats/react/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/react/overview/product-features.md)
+- Get started
+    - [Integrate UIKit](1-to-1-and-group-chats/react/get-started/integrate-ui-kit.md)
+    - [Quickstart](1-to-1-and-group-chats/react/get-started/quickstart.md)
+    - [Run the sample project](1-to-1-and-group-chats/react/get-started/run-sample-project.md)
+- Integrate
+    - [Advanced usage](1-to-1-and-group-chats/react/integrate/advanced-usage.md)
+    - [Chat messages](1-to-1-and-group-chats/react/integrate/chat-messages.md)
+    - [Contact details](1-to-1-and-group-chats/react/integrate/contact-details.md)
+    - [Contacts](1-to-1-and-group-chats/react/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/react/integrate/conversation-list.md)
+    - [Group details](1-to-1-and-group-chats/react/integrate/group-details.md)
+    - [Internationalization](1-to-1-and-group-chats/react/integrate/internationalization.md)
+    - [Theme](1-to-1-and-group-chats/react/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/react/integrate/user-information.md)
+</details>
