@@ -106,9 +106,22 @@ Refer to the following design guides:
 <summary>React</summary>
 
 - About
+    - [Product overview](1-to-1-and-group-chats/react/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/react/overview/product-features.md)
 - Get started
+    - [Integrate UIKit](1-to-1-and-group-chats/react/get-started/integrate-ui-kit.md)
+    - [Quickstart](1-to-1-and-group-chats/react/get-started/quickstart.md)
+    - [Run the sample project](1-to-1-and-group-chats/react/get-started/run-sample-project.md)
 - Integrate
-
+    - [Advanced usage](1-to-1-and-group-chats/react/integrate/advanced-usage.md)
+    - [Chat messages](1-to-1-and-group-chats/react/integrate/chat-messages.md)
+    - [Contact details](1-to-1-and-group-chats/react/integrate/contact-details.md)
+    - [Contacts](1-to-1-and-group-chats/react/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/react/integrate/conversation-list.md)
+    - [Group details](1-to-1-and-group-chats/react/integrate/group-details.md)
+    - [Internationalization](1-to-1-and-group-chats/react/integrate/internationalization.md)
+    - [Theme](1-to-1-and-group-chats/react/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/react/integrate/user-information.md)
 </details>
 
 
