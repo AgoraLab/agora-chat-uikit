@@ -83,8 +83,22 @@ Refer to the following design guides:
 <summary>Flutter</summary>
 
 - About
+    - [Product overview](1-to-1-and-group-chats/flutter/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/flutter/overview/product-features.md)
 - Get started
+    - [Integrate UIKit](1-to-1-and-group-chats/flutter/get-started/integrate-ui-kit.md)
+    - [Quickstart](1-to-1-and-group-chats/flutter/get-started/quickstart.md)
+    - [Run the sample project](1-to-1-and-group-chats/flutter/get-started/run-sample-project.md)
 - Integrate
+    - [Advanced usage](1-to-1-and-group-chats/flutter/integrate/advanced-usage.md)
+    - [Chat messages](1-to-1-and-group-chats/flutter/integrate/chat-messages.md)
+    - [Contact details](1-to-1-and-group-chats/flutter/integrate/contact-details.md)
+    - [Contacts](1-to-1-and-group-chats/flutter/integrate/contacts.md)
+    - [Conversation list](1-to-1-and-group-chats/flutter/integrate/conversation-list.md)
+    - [Group details](1-to-1-and-group-chats/flutter/integrate/group-details.md)
+    - [Internationalization](1-to-1-and-group-chats/flutter/integrate/internationalization.md)
+    - [Theme](1-to-1-and-group-chats/flutter/integrate/theme.md)
+    - [User information](1-to-1-and-group-chats/flutter/integrate/user-information.md)
 
 </details>
 
