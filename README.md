@@ -39,6 +39,19 @@ Refer to the following design guides:
     - [Quickstart](1-to-1-and-group-chats/ios/get-started/quickstart.md)
     - [Run the sample project](1-to-1-and-group-chats/ios/get-started/run-sample-project.md)
 - Integrate
+    - [Advanced usage](1-to-1-and-group-chats/ios/integrate/advanced-usage.md)
+    - [Implement a new type of custom message cell](1-to-1-and-group-chats/ios/integrate/custom-message-cell.md)
+    - [Customize the contact details](1-to-1-and-group-chats/ios/integrate/customize-contact-details.md)
+    - [Customize the contact list](1-to-1-and-group-chats/ios/integrate/customize-contact-list.md)
+    - [Customize the conversation list](1-to-1-and-group-chats/ios/integrate/customize-conversation-list.md)
+    - [Customize the group details](1-to-1-and-group-chats/ios/integrate/customize-group-details.md)
+    - [Customize the message chat](1-to-1-and-group-chats/ios/integrate/customize-message-chat.md)
+    - [Overridable methods in the ViewModel of main pages](1-to-1-and-group-chats/ios/integrate/event-listening.md)
+    - [General configurable items](1-to-1-and-group-chats/ios/integrate/general-configurable-items.md)
+    - [Intercept the main page click jump event](1-to-1-and-group-chats/ios/integrate/intercept-main-page-click-jump-event.md)
+    - [Internationalization](1-to-1-and-group-chats/ios/integrate/internationalization.md)
+    - [General configurable items](1-to-1-and-group-chats/ios/integrate/optional-items.md)
+    - [Theme](1-to-1-and-group-chats/ios/integrate/theme.md)
 
 </details>
 
@@ -69,5 +82,6 @@ Refer to the following design guides:
 
 </details>
 
-- [Chat Room](chat-room/design-guide.md)
+
+[**Chat Room**](chat-room/design-guide.md)
 
