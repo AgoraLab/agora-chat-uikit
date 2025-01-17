@@ -12,17 +12,24 @@ Refer to the following design guides:
         - Get Started
             - [Quickstart](1-to-1-and-group-chats//android/get-started/quickstart.md)
         - Integrate
-            - [Advanced usage](advanced-usage.md)
-            - [Message chat](chat-messages.md)
-            - [Contact details](contact-details.md)
-            - [Contact list](contacts.md)
-            - [Conversation list](conversation-list.md)
-            - [Group details](group-details.md)
-            - [Integrate UIKit](integrate-ui-kit.md)
-            - [Internationalization](internationalization.md)
-            - [Theme](theme.md)
-            - [User-defined information](user-defined-information.md)
-        
-
+            - [Advanced usage](1-to-1-and-group-chats/android/integrate/advanced-usage.md)
+            - [Message chat](1-to-1-and-group-chats/android/integrate/chat-messages.md)
+            - [Contact details](1-to-1-and-group-chats/android/integrate/contact-details.md)
+            - [Contact list](1-to-1-and-group-chats/android/integrate/contacts.md)
+            - [Conversation list](1-to-1-and-group-chats/android/integrate/conversation-list.md)
+            - [Group details](1-to-1-and-group-chats/android/integrate/group-details.md)
+            - [Integrate UIKit](1-to-1-and-group-chats/android/integrate/integrate-ui-kit.md)
+            - [Internationalization](1-to-1-and-group-chats/android/integrate/internationalization.md)
+            - [Theme](1-to-1-and-group-chats/android/integrate/theme.md)
+            - [User-defined information](1-to-1-and-group-chats/android/integrate/user-defined-information.md)
 
 - [Chat Room](chat-room/design-guide.md)
+
+<details>
+<summary>iOS</summary>
+- About
+    - [Product overview](1-to-1-and-group-chats/android/overview/product-overview.md)
+    - [Product features](1-to-1-and-group-chats/android/overview/product-features.md)
+- Get Started
+    - [Quickstart](1-to-1-and-group-chats//android/get-started/quickstart.md)
+</details>
