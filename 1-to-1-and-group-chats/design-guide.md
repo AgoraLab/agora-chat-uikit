@@ -39,7 +39,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 - **Saturation**: Radius of the cylinder (0% to 100%)
 - **Lightness**: Height of the cylinder (0% to 100%)
 
-![HSLA Model Overview](/assets/images/cruk1113.png)
+![HSLA Model Overview](assets/images/cruk1113.png)
 
 #### 1.1.2. Theme colors
 
