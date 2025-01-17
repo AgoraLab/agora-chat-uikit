@@ -27,9 +27,11 @@ Refer to the following design guides:
 
 <details>
 <summary>iOS</summary>
+
 - About
     - [Product overview](1-to-1-and-group-chats/android/overview/product-overview.md)
     - [Product features](1-to-1-and-group-chats/android/overview/product-features.md)
 - Get Started
     - [Quickstart](1-to-1-and-group-chats//android/get-started/quickstart.md)
+
 </details>
