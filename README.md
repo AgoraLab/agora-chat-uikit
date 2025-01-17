@@ -1,6 +1,6 @@
 # Agora Chat UIKit 2.0
 
-![Cover Image](../1-to-1-and-group-chats/assets/images/CUIcover2.png)
+![Cover Image](1-to-1-and-group-chats/assets/images/CUIcover2.png)
 
 Refer to the following design guides:
 
