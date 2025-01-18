@@ -1,6 +1,6 @@
 # UIKit Mobile Design Guide
 
-![Cover Image](/assets/images/CUIcover2.png)
+![Cover Image](assets/images/CUIcover2.png)
 
 ## General design principles
 
@@ -39,7 +39,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 - **Saturation**: Radius of the cylinder (0% to 100%)
 - **Lightness**: Height of the cylinder (0% to 100%)
 
-![HSLA Model Overview](/assets/images/cruk1113.png)
+![HSLA Model Overview](assets/images/cruk1113.png)
 
 #### 1.1.2. Theme colors
 
@@ -47,7 +47,7 @@ Colors are specified using the HSLA model, visualized as a cylinder:
 
 Users can set the Hue (0-360) to adjust the theme colors. The Hue value changes the color to fit user scenarios.
 
-![Hue Example](/assets/images/cruk11211.png)
+![Hue Example](assets/images/cruk11211.png)
 
 ##### 1.1.2.2. Saturation
 
@@ -57,37 +57,37 @@ The saturation values are fixed:
 - **Neutral**: 8%
 - **Special neutral**: 36%
 
-![Saturation Example](/assets/images/cruk1122.png)
+![Saturation Example](assets/images/cruk1122.png)
 
 ##### 1.1.2.3. Lightness
 
 Thirteen levels of lighting are available, ranging from 0 (0%) to 100 (100%).
 
-![Lightness Levels](/assets/images/cruk1123.png)
+![Lightness Levels](assets/images/cruk1123.png)
 
 ##### 1.1.2.4. Example
 
 Setting the primary hue to 203, secondary hue to 155, and error hue to 350 generates 39 theme colors.
 
-![Example Colors](/assets/images/cruk1124.png)
+![Example Colors](assets/images/cruk1124.png)
 
 #### 1.1.3. Primary gradient color
 
 The gradient theme color is a gradient color derived from the primary color. It is a linear gradient with 8 possible directions:
 
-![Gradient Directions](/assets/images/cruk113.png)
+![Gradient Directions](assets/images/cruk113.png)
 
 ##### 1.1.3.1. Start color
 
 The start color should match the primary color.
 
- ![Start Color](/assets/images/cruk1131.png)
+ ![Start Color](assets/images/cruk1131.png)
 
 ##### 1.1.3.2. End color
 
 Users can configure the end color hue. The brightness is fixed.
 
- ![End Color Example](/assets/images/cruk11321.png)
+ ![End Color Example](assets/images/cruk11321.png)
 
 ##### 1.1.3.3. Gradient configuration
 
@@ -97,7 +97,7 @@ Users can configure the end color hue for gradient effects.
 
 End color hue 233 with the downward gradient direction produces the following effect:
 
-![Gradient Example](/assets/images/cruk11341.png)
+![Gradient Example](assets/images/cruk11341.png)
 
 #### 1.1.4. Transparent color (Alpha)
 
@@ -105,7 +105,7 @@ End color hue 233 with the downward gradient direction produces the following ef
 
 Used for the modal background and the light prompt background. There are two categories: Alpha onlight and Alpha ondark.
 
-![Alpha Colors](/assets/images/cruk1141.png)
+![Alpha Colors](assets/images/cruk1141.png)
 
 ### 1.1.5. Neutral colors
 
@@ -113,13 +113,13 @@ Used for the modal background and the light prompt background. There are two cat
 
 A neutral color only has hue as a configurable item. The saturation is fixed at 8%.
 
-![Neutral Example](/assets/images/cruk1151.png)
+![Neutral Example](assets/images/cruk1151.png)
 
 #### 1.1.5.2. Example
 
 If the primary hue is 203 and the neutral hue is also 203, then users get the following color options:
 
-![Neutral Example Colors](/assets/images/cruk11521.png)
+![Neutral Example Colors](assets/images/cruk11521.png)
 
 ### 1.1.6. Neutral special
 
@@ -127,7 +127,7 @@ If the primary hue is 203 and the neutral hue is also 203, then users get the fo
 
 For a primary hue of 203 and a neutral special hue of 220:
 
-![Neutral Special Colors](/assets/images/cruk1161.png)
+![Neutral Special Colors](assets/images/cruk1161.png)
 
 ## 1.2. Theme
 
@@ -137,13 +137,13 @@ There are two themes - rounded and hard. Each comes with light and dark modes.
 
 Uses larger rounded corners for a soft, light appearance.
 
-![Rounded Theme](/assets/images/1.2.1.png)
+![Rounded Theme](assets/images/1.2.1.png)
 
 ### 1.2.2. Hard theme
 
 Avoids large rounded corners for a tough, solid look.
 
-![Hard Theme](/assets/images/1.2.2.png)
+![Hard Theme](assets/images/1.2.2.png)
 
 ## 1.3. Icon
 
@@ -151,13 +151,13 @@ Avoids large rounded corners for a tough, solid look.
 
 Icons follow the Material Icon Font template with a 24-grid base and a 1.5-grid stroke.
 
-![Icon Template](/assets/images/cruk131.png)
+![Icon Template](assets/images/cruk131.png)
 
 ### 1.3.2. Icon naming
 
 Icons should be named descriptively, avoiding fixed operational behaviors.
 
-![Icon Naming](/assets/images/cruk132.png)
+![Icon Naming](assets/images/cruk132.png)
 
 ## 1.4. Typography
 
@@ -215,7 +215,7 @@ Roles include headline, title, label, and body. Use based on the component conte
 
 Set font typesetting tokens as shown below:
 
-![Font Token](/assets/images/cruk146a.png)
+![Font Token](assets/images/cruk146a.png)
 
 ## 1.5. Effects
 
@@ -266,7 +266,7 @@ box-shadow: 0 4px 4px rgba(Neutral4, 0.15), 2px 0 8px rgba(Neutral1, 0.1);
 box-shadow: 0 1px 3px rgba(Neutral4, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 ```
 
-![img](/assets/images/cruk1522b.png)
+![img](assets/images/cruk1522b.png)
 
 ## 1.6. Radius
 
@@ -274,7 +274,7 @@ box-shadow: 0 1px 3px rgba(Neutral4, 0.15), 1px 0 2px rgba(Neutral1, 0.1);
 
 Rounded corners are categorized into six values: None (r=0), extra small (r=4), small (r=8), medium (r=12), large (r=16), and extra large (r=½ height). Typically, all four corners of a component share the same radius.
 
-![General Rounded Corners](/assets/images/cruk161.png)
+![General Rounded Corners](assets/images/cruk161.png)
 
 #### 1.6.1.1. Extra small (r=4)
 
@@ -321,7 +321,7 @@ Special rounded corners are applied to chat message components with background c
 
 - Message bubble (large radius)
 
-![Special Rounded Corners](/assets/images/cruk162.png)
+![Special Rounded Corners](assets/images/cruk162.png)
 
 ## 2. Widgets
 
@@ -339,29 +339,29 @@ Regular buttons are divided into two types: Primary and secondary.
 
 Used for recommended actions. Typically, the background color is the theme color (Primary5/Primary6) or a gradient theme color. It appears grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Primary Button](/assets/images/cruk2111.png)
+![Primary Button](assets/images/cruk2111.png)
 
 #### 2.1.1.2. Secondary button
 
 Used to assist primary operations. They usually do not appear alone. The background color is typically light (Neutral98) or dark (Neutral1) and includes a stroke. They appear grayed out when disabled. Rounded corners can be configured, and icons can be added as needed.
 
-![Secondary Button](/assets/images/cruk2112.png)
+![Secondary Button](assets/images/cruk2112.png)
 
 ### 2.1.2. Text button (Text)
 
 Text buttons only have foreground color and are divided into primary and secondary. They are used for more frequent routine actions (for example, form steps, message display) or as secondary actions when a regular button is present on the page.
 
-![Text Button](/assets/images/cruk212.png)
+![Text Button](assets/images/cruk212.png)
 
 ### 2.1.3. Icon button (Icon)
 
 Icon buttons are used when space is limited but buttons are necessary, such as for keyboard switching, top bar operations, form actions, or clearing inputs.
 
-![Icon Button](/assets/images/cruk213.png)
+![Icon Button](assets/images/cruk213.png)
 
 Note: On the web, icon buttons should be used with a popover to explain their specific function clearly.
 
-![Icon Button with Popover](/assets/images/cruk213b.png)
+![Icon Button with Popover](assets/images/cruk213b.png)
 
 ### 2.2. Input box
 
@@ -374,7 +374,7 @@ Used for entering short text. It comes in three sizes: Large, medium, and small.
 - Disabled and filled, 
 - Disabled and unfilled.
 
-![Input Box](/assets/images/cruk22.png)
+![Input Box](assets/images/cruk22.png)
 
 ### 2.3. Input area
 
@@ -387,7 +387,7 @@ Used for entering larger amounts of text, such as in forms or content publishing
 - Disabled and filled, 
 - Disabled and unfilled.
 
-![Input Area](/assets/images/cruk23.png)
+![Input Area](assets/images/cruk23.png)
 
 ### 2.4. Checkboxes and radio buttons
 
@@ -427,7 +427,7 @@ Avatars display user or operation item information. They are often placed on per
 
 Displays a picture when user avatar information is available.
 
-![Picture Avatar](/assets/images/cruk241.png)
+![Picture Avatar](assets/images/cruk241.png)
 
 #### 2.8.2. Character avatar
 
@@ -437,19 +437,19 @@ Displayed when the user has not uploaded an avatar. Character avatars can be sin
 
 Automatically generated avatars for group chats when no user avatar data is available.
 
-![Combined Avatars](/assets/images/cruk243.png)
+![Combined Avatars](assets/images/cruk243.png)
 
 #### 2.8.4. Icon avatar
 
 Used for empty states when no user avatar information is available or for form items with icons.
 
-![Icon Avatar](/assets/images/cruk244.png)
+![Icon Avatar](assets/images/cruk244.png)
 
 #### 2.8.5. Avatar badge
 
 Avatars can include badges to reflect online and offline status. Badges can be placed in the lower right or upper right corner.
 
-![Avatar Badge](/assets/images/cruk245.png)
+![Avatar Badge](assets/images/cruk245.png)
 
 ### 2.9. Badge
 
@@ -461,13 +461,13 @@ Badges are used in navigation items, list items, and avatars to display status, 
 
 Twemoji, an open-source emoji set free for commercial use, is used as the base for emojis. By default, 52 emojis are built in. Users can replace, add, or remove emojis from the 3,245 available in Twemoji.
 
-![Twemoji Examples](/assets/images/cruk291.png)
+![Twemoji Examples](assets/images/cruk291.png)
 
 #### 2.10.2. Emoji template
 
 For custom emojis or replacing Twemoji, use the provided templates.
 
-![Emoji Template](/assets/images/cruk292.png)
+![Emoji Template](assets/images/cruk292.png)
 
 #### 2.10.3. Expression component state
 
@@ -480,7 +480,7 @@ Expression components have four states:
 
 On hover, the background color darkens; when clicked, it lightens; and on focus, it changes to the Key Color.
 
-![Expression Component State](/assets/images/cruk293.png)
+![Expression Component State](assets/images/cruk293.png)
 
 ### 2.11. Toast
 
@@ -558,7 +558,7 @@ The emoji keyboard allows sending emojis built into the app. It supports the fol
 
 **Note:** Emojis entered through this component will not synchronize with the system's emojis but will display as built-in app emojis. Use emojis that are open source and free for commercial use to meet legal requirements.
 
-![EmojisPick](/assets/images/cruk34.png)
+![EmojisPick](assets/images/cruk34.png)
 
 ### 3.5. List item
 
@@ -603,7 +603,7 @@ Popup notifications are modal prompts for key information or user actions. Confi
 
 Style options include matching rounded corners of the input box and operation buttons with the popup window.
 
-![Popup Window](/assets/images/cruk27.png)
+![Popup Window](assets/images/cruk27.png)
 
 ### 3.7. Action sheet
 
@@ -614,7 +614,7 @@ The action sheet displays multiple operation items in a modal form. Each item ha
 
 This component is available only on mobile devices.
 
-![Action Sheet](/assets/images/cruk25.png)
+![Action Sheet](assets/images/cruk25.png)
 
 ## 4. Message bubble
 
