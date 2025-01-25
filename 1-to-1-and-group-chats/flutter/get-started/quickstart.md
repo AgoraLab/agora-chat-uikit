@@ -8,7 +8,7 @@ UIKit for Flutter supports iOS and Android.
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Flutter v3.3.0 and above;
+- Flutter v3.19.0 and above;
 - Permissions granted in the following way:
 
     - iOS: Add the following permissions in `<project root>/ios/Runner/Info.plist`:
@@ -47,30 +47,8 @@ Before you start, make sure your development environment meets the following con
     flutter pub get
     ```
    
-1. Add a theme.
 
-    Open the newly created project and add the `ChatUIKitTheme` theme dependency.
-    
-    Ensure that the theme is the parent component of all components in `ChatUIKit`. It is recommended to put it in `MyApp` to ensure that it is always in use.
-
-    ```dart
-    class MyApp extends StatelessWidget {
-      const MyApp({super.key});
-    
-      @override
-      Widget build(BuildContext context) {
-        return MaterialApp(
-          ...
-          //Newly added code
-          builder: (context, child) {
-            return ChatUIKitTheme(child: child!);
-          },
-        );
-      }
-    }
-    ```
-
-1. Initialize UIKit.
+2. Initialize UIKit.
 
    Initialize UIKit, replace `appkey` with your own app key:
 
@@ -93,7 +71,7 @@ Before you start, make sure your development environment meets the following con
       ```dart
       ChatUIKit.instance.loginWithToken(userId: userId, token: token);
       ```
-   
+
 3. Add a chat page.
 
    UIKit provides `MessagesView` to display the chat page after a successful login:
@@ -105,11 +83,11 @@ Before you start, make sure your development environment meets the following con
         return MessagesView(profile: ChatUIKitProfile.contact(id: userId));
       }
     ```
-   
+
 4.  Send the first message.
-   
+
     Type your message at the bottom of the chat page and click **Send**.
-    
+
 ## Reference
 
 The complete code to quickly start the entire process is as follows: 
@@ -120,7 +98,7 @@ import 'package:flutter/material.dart';
 
 const appkey = '';
 const currentUserId = '';
-const currentUserPwd = '';
+const currentUserToken = '';
 const chatterId = '';
 void main() {
   ChatUIKit.instance
@@ -142,15 +120,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      builder: (context, child) {
-        return ChatUIKitTheme(
-          color: ChatUIKitColor.light(),
-          child: child!,
-        );
-      },
-      onGenerateRoute: (settings) {
-        return null;
-      },
     );
   }
 }
@@ -182,8 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ChatUIKit.instance.logout().then((value) => setState(() {}));
                 } else {
                   ChatUIKit.instance
-                      .loginWithPassword(
-                          userId: currentUserId, password: currentUserPwd)
+                      .loginWithToken(
+                          userId: currentUserId, token: currentUserToken)
                       .then((value) => setState(() {}));
                 }
               },

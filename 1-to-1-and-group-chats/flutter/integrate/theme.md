@@ -10,39 +10,15 @@ UIKit has built-in light (default) and dark themes.
 
   ![Dark theme](../../assets/images/dark_theme.png)
 
-```dart
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      ...
-      builder: (context, child) {
-        // Set the UIKit theme
-        return ChatUIKitTheme(child: child!);
-      },
-    );
-  }
-```
 
 ## Switch to a built-in theme
 
 To switch from the current theme to the built-in light or dark theme, use the following method:
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      ...
-      builder: (context, child) {
-        return ChatUIKitTheme(
-          // Set the light theme. The dark theme is ChatUIKitColor.dark()
-          color: ChatUIKitColor.light(),
-          child: child!,
-        );
-      },
-    );
-  }
-
+ChatUIKitTheme.instance.setColor(ChatUIKitColor.light());
 ```
+
 
 ## Switch to a custom theme
 
@@ -61,31 +37,11 @@ All colors in UIKit are defined using the HSLA color model, which is a way of re
 By adjusting the hue value of the HSLA model, you can achieve precise color control.
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      ...
-      builder: (context, child) {
-        return ChatUIKitTheme(
-            // Adjust the color value in light mode, dark color is:
-            //  ChatUIKitColor.dark(
-            //     primaryHue: 203,
-            //     secondaryHue: 155,
-            //     errorHue: 350,
-            //     neutralHue: 203,
-            //     neutralSpecialHue: 220,
-            //  ),
-          color: ChatUIKitColor.light(
-            primaryHue: 203,
-            secondaryHue: 155,
-            errorHue: 350,
-            neutralHue: 203,
-            neutralSpecialHue: 220,
-          ),
-          child: child!,
-        );
-      },
-    );
-  }
+ChatUIKitTheme.instance.setColor(ChatUIKitColor.light(
+  primaryHue: 200,
+  secondaryHue: 200,
+  neutralHue: 200,
+  neutralSpecialHue: 200,
+));
 ```
 

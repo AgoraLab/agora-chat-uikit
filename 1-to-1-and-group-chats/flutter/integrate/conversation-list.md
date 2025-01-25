@@ -24,9 +24,8 @@ To customize the conversation list, modify the following properties:
 | Property | Description |
 |:---:|:---:|
 | `final ConversationListViewController? controller` | The conversation list controller. If not passed, the default controller is used internally. |
-| `final ChatUIKitAppBar? appBar` | Customize the conversation list `appBar`. If not set, the default is used. |
+| `final ChatUIKitAppBarModel? appBarModel` | Customize the conversation list `appBarModel`. If not set, the default is used. |
 | `final bool enableAppBar` | Whether to enable `appBar`. Enabled by default. If disabled, it will no longer be displayed and the input `appBar` will no longer take effect. |
-| `final String? title` | The default `appBar` title display content. If a custom one is passed in `appBar`, this setting will not take effect. | 
 | `final AppBarMoreActionsBuilder? appBarMoreActionsBuilder` | By default, the callback for clicking the `appBar` more button in the upper right corner will provide a default operation list and return a new operation list. |
 | `final void Function(List<ConversationModel> data)? onSearchTap` | The event callback of the conversation list search click. After clicking, all current conversations will be called back. If not set, there will be a default implementation. |
 | `final List<Widget>? beforeWidgets` | The widget displayed before the conversation list. |
