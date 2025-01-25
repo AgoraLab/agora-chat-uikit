@@ -6,7 +6,7 @@ Refer to the following design guides:
 
 ## 1-to-1 and Group Chats
 
-[**Design guide**](1-to-1-and-group-chats/design-guide.md)
+Agora UIKit for one-to-one and group chats is an instant messaging UI component library developed based on Agora Chat SDK. It provides various components to implement features such as a conversation list, chat UI, and contact list. To quickly build instant messaging applications based on the particular business needs, refer to the documentation for your development platform.
 
 <details>
 <summary>Android</summary>
@@ -126,10 +126,14 @@ Refer to the following design guides:
     - [User information](1-to-1-and-group-chats/react/integrate/user-information.md)
 </details>
 
+[**Design guide**](1-to-1-and-group-chats/design-guide.md)
+
+**Figma assets:**
+- [Web](https://www.figma.com/community/file/1462016929921662608/agora-chat-uikit-for-web)
+- [Mobiles](https://www.figma.com/community/file/1462018524524243606/agora-chat-uikit-for-mobiles)
+
 ## Chat Room
-
-[**Design guide**](chat-room/design-guide.md)
-
+Agora UIKit for Chat Room provides various components to quickly build chat room applications for your particular business needs. Through this UIKit, users in the chat room can interact in real time and send messages, gifts, and global broadcasts. Refer to the following documentation for your development platform.
 
 <details>
 <summary>Android</summary>
@@ -216,3 +220,8 @@ Refer to the following design guides:
     - [Theme](chat-room/react/theme.md)
 
 </details>
+
+[**Design guide**](chat-room/design-guide.md)
+
+**Figma assets:**
+- [Web and mobiles](https://www.figma.com/community/file/1462020408049722010/agora-chat-chatroom-uikit-for-mobiles-and-web)
