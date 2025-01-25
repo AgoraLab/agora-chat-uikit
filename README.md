@@ -2,7 +2,7 @@
 
 ![Cover Image](1-to-1-and-group-chats/assets/images/CUIcover2.png)
 
-Refer to the following design guides:
+Instant messaging connects people wherever they are and allows them to communicate with others in real time. Agora offers Chat UI Kit with built-in user interfaces (UI) for key Chat features, the Agora Chat UI Kit enables you to quickly embed real-time messaging into your app without requiring extra effort on the UI.
 
 ## 1-to-1 and Group Chats
 
