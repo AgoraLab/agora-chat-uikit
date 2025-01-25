@@ -5,7 +5,7 @@ Agora Chat SDK. It provides various components to implement features such as a c
 contact list and interface, and others. This helps you to quickly build instant messaging applications, including UI, based 
 on the particular business needs.
 
-To access the source code, [click here](https://github.com/easemob/chatuikit-ios).
+To access the source code, [click here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit).
 
 ## UIKit basic project structure
 

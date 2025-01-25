@@ -92,7 +92,30 @@ community guidelines, terms of service, and relevant laws and regulations.
 
 ![Message reporting](../../assets/images/message-reporting.png)
 
-### Local search
+## Input status indication
+
+The input status indicator helps users understand whether the other party is replying in real time.
+
+The UI and logic structure of the input status indication are as follows:
+
+- The `subtitle` control in `ChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+
+- Input status-related callbacks and methods are as follows:
+  - The input status is delivered as a command message. When current user typing, the input status is sent by the `MessageListViewModel#notifyTypingState()` function.
+  - The other party received input state callback is `MessageListViewModel#onOtherPartyTypingText`.
+
+The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
+
+The sample code is as follows:
+
+```swift
+    Appearance.chat.enableTyping = false
+
+```
+
+This feature is implemented using the SDK's command message transmission. Monitor the command message callback to process navigation-related effects.
+
+## Local search
 
 Users can search for messages within a conversation, with support for keyword matching.
 
@@ -115,10 +138,12 @@ The sample code is as follows:
 
 ### Group mentions
 
-Uses can directly mention specific members in a group chat using the @ symbol, and the mentioned members will receive a special notification. 
+Uses can directly mention specific members in a group chat using the @ symbol on the input box, and the mentioned members will receive a special notification. 
 
 The UI and logic of the group mention feature are as follows: Enter the `@` character in `MessageInputBar` of `MessageListView` of  `MessageListController`. This will inform `ViewModel` and `Controller` that the user has entered the `@` character. After selecting the user with the `@` character, the name or nickname of the mentioned user will be displayed in the input box.
 
+The group mention feature is enabled by default. To disable it, ignore the `MessageListController#mentionAction` method. Override this method without handling the mention event.
+or
 The group mention feature is enabled by default. To disable it, ignore the `MessageListController#onInputBoxEventsOccur` method. That is to say, override this method without handling the mention event.
 
 The sample code is as follows:
@@ -140,22 +165,21 @@ The sample code is as follows:
 This section covers specific features related to managing conversations. On the chat list page, users can swipe left or right on a single conversation to perform various actions. The left-swipe menu includes setting the DND mode, pinning a conversation, and deleting it. The right-swipe menu includes marking a conversation as read and calling up more menus.
 
 ### Conversation marked as read
-
-Shows whether the user has read a conversation with unread messages. The user can swipe a conversation right to open a context menu and mark the conversation as read. 
+Shows whether the user has read a conversation with unread messages. The user can swipe a conversation left/right it to open a context menu and mark the conversation as read. 
 
 ### Pin a conversation (sticky conversation)
 
-The user can swipe an important conversation left to open a context menu and pin it to the 
+The user can swipe an important conversation left/right it to open a context menu and pin it to the 
+
 top for easy access.
 
 ### Do not disturb
 
-The user can swipe a conversation left to open a context menu and turn on the DND 
-mode. 
+The user can swipe a conversation left/right it to open a context menu and turn on the DND mode. 
 
 ### Delete a conversation
 
-The user can swipe a conversation left to open a context menu and delete the conversation.
+The user can swipe a conversation left/right it to open a context menu and delete the conversation.
 
 ## Message-related
 
@@ -168,7 +192,7 @@ The message cell contains the following display modules:
 - User nickname
 - Message time
 - Message thread
-- Emoji reply
+- Emoji reaction
 
 If a module is not displayed, it can be hidden. The sample code is as follows: 
 
@@ -207,7 +231,13 @@ Users can delete messages that they do not want to keep.
 
 ### Recall a message
 
-Users can recall messages that were sent by mistake.
+Users can recall messages that were sent by mistake.Recall message limited time `default` is 2minus.It's unit is second.
+
+What if you will modify it to you want.Some sample code as follows:
+
+```
+Appearance.chat.recallExpiredTime = UInt(120)
+```
 
 ![Recall message](../../assets/images/recall_message.png)
 
@@ -235,7 +265,11 @@ Appearance.chat.contentStyle: [MessageContentDisplayStyle] = [.withReply,.withAv
 
 ### Translate a message
 
-Users can translate messages into other languages for easier communication. The UI and logic structure are in 
+Users can translate messages into other languages for easier communication.
+
+The premise is that you have enabled the translation function in Agora Chat Console. If you only set `enableTranslation` translation related interfaces, an error will be reported.
+
+The UI and logic structure are in 
 `Appearance.swift`:
 
 1. Enable message translation
@@ -258,7 +292,8 @@ Users can translate messages into other languages for easier communication. The 
 ### Reply with emoji
 
 Users can long-press a single message to open the context menu and reply with an emoji. Emoji replies 
-(reactions) can help express emotions or attitudes, conduct surveys or votes. 
+(reactions) can help express emotions or attitudes, conduct surveys or votes. Which can be turned on and off in `Appearance.swift`.
+
 
 ![Emoji reply](../../assets/images/emoji_reply.png)
 
@@ -308,26 +343,3 @@ The message pinning feature is enabled by default in `Appearance.chat`. That is,
 Appearance.chat.enablePinMessage = false
 Appearance.chat.messageLongPressedActions.removeAll { $0.tag == "Pin" }
 ```
-
-### Input status indication
-
-The input status indicator helps users understand whether the other party is replying in real time.
-
-The UI and logic structure of the input status indication are as follows:
-
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
-
-- Input status-related callbacks and methods are as follows:
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status is updated through the `MessageListViewModel#notifyTypingState()` callback.
-  - The input state callback is `MessageListViewModel#onOtherPartyTypingText`.
-
-The input status indication feature is enabled by default in `Appearance.chat.enableTyping`, that is, the default value of `Appearance.chat.enableTyping` is `true`. To disable, set this parameter to `false`.
-
-The sample code is as follows:
-
-```swift
-    Appearance.chat.enableTyping = false
-
-```
-
-This feature is implemented using the SDK's transparent message transmission. Monitor the transparent message callback to process navigation-related effects.

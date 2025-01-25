@@ -15,7 +15,7 @@ Before you start, make sure your development environment meets the following con
 
 Take the following steps to download and run the sample project:
 
-1. Download the sample code from [GitHub](https://github.com/easemob/easemob-uikit-ios).
+1. Download the sample code from [GitHub](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit).
 
 1. Run the `pod` command:
 

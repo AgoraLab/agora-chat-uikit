@@ -2,7 +2,7 @@
 
 The `Appearance.swift` class contains all configurable items. These items have default values. If you want to modify some of them, you need to modify the properties of the related UI control before initializing it for the configurable items to take effect.
 
-Note that `value` in the examples below indicates the configured UI style or data source of the corresponding configurable item. Check the [source code](https://github.com/easemob/chatuikit-ios) before use.
+Note that `value` in the examples below indicates the configured UI style or data source of the corresponding configurable item. Check the [source code](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Core/UIKit/Commons/Appearance.swift) before use.
 
 ## Set the bottom pop-up page style
 

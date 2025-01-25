@@ -1,10 +1,10 @@
 # Customize the contact list
 
-The contact list provides contacts with the contact search, contact addition, friend request list entry, and group list entry features. You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/contactviewcontroller) for details.
+The contact list provides contacts with the contact search, contact addition, friend request list entry, and group list entry features. You can customize the navigation bar, header, contact list, and contact list items. See [ContactViewController](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit/Documentation/chat_uikit.doccarchive/documentation/chat_uikit/contactviewcontroller) for details.
 
 ## Customize the navigation bar
 
-The navigation bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar of the contact list page (`ContactViewController.swift`) does not meet your requirements, customize it and pass in the customized navigation class by overriding the method. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
+The navigation bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `ChatNavigationBar`. If the navigation bar of the contact list page (`ContactViewController.swift`) does not meet your requirements, customize it and pass in the customized navigation class by overriding the method. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 
 ## Customize the contact list header
 
@@ -42,7 +42,7 @@ Set the height via `Appearance.contact.headerRowHeight = value`.
 
 ## Customize the contact list
 
-To customize the contact list `TableView`, override the `createContactList` method in the contact list page and return the class object that inherits the `ContactView` in `EaseChatUIKit`. For details on implementing business logic in the navigation bar, see the `ContactView.swift` class. The sample code is as follows:
+To customize the contact list `TableView`, override the `createContactList` method in the contact list page and return the class object that inherits the `ContactView` in `chat-uikit`. For details on implementing business logic in the navigation bar, see the `ContactView.swift` class. The sample code is as follows:
 
 ```swift
     override open func createContactList() -> ContactView {
@@ -54,7 +54,7 @@ To customize the contact list `TableView`, override the `createContactList` meth
 
 To customize the content of a contact cell in the contact list, take the following steps:
 
-1. Inherit the `ContactCell` class in `EaseChatUIKit` to create a new custom class `CustomContactCell`, then set it with the following code:
+1. Inherit the `ContactCell` class in `chat-uikit` to create a new custom class `CustomContactCell`, then set it with the following code:
 
 ```swift
     ComponentsRegister.shared.ContactsCell = CustomContactCell.self
@@ -65,7 +65,7 @@ To customize the content of a contact cell in the contact list, take the followi
    If you need to reuse existing logic and add new logic, override the corresponding method and call it `super.xxx`, for example:
 
 ```swift
-    override open func refresh(profile: EaseProfileProtocol) {
+    override open func refresh(profile: ChatUserProfileProtocol) {
        super.refresh(profile: profile)
        //Continue with your new logic
     }

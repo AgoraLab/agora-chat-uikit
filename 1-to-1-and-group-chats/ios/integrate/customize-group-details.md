@@ -1,10 +1,10 @@
 # Customize the group details
 
-You can configure the navigation bar, group actions, group details, and other items. For details, see [GroupInfoViewController](https://github.com/easemob/easemob-uikit-ios/tree/main/Documentation/EaseChatUIKit.doccarchive/documentation/easechatuikit/groupinfoviewcontroller).
+You can configure the navigation bar, group actions, group details, and other items. For details, see [GroupInfoViewController](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/tree/SwiftUIKit/Documentation/chat_uikit.doccarchive/documentation/chat_uikit/groupinfoviewcontroller).
 
 ## Customize the navigation bar
 
-The navigation bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar of the contact list page (`ContactViewController.swift`) does not meet your requirements, customize it and pass in the customized navigation class by overriding the method. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
+The navigation bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `ChatNavigationBar`. If the navigation bar of the contact list page (`ContactViewController.swift`) does not meet your requirements, customize it and pass in the customized navigation class by overriding the method. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 
 ### Set the group actions
 
@@ -21,12 +21,12 @@ Get the click event of a single item in the array:
 
 ```Swift
         if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
         if let item = Appearance.contact.moreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
@@ -34,7 +34,7 @@ Get the click event of a single item in the array:
 
 ## Custom buttons
 
-Configure the data source of the header button with `Appearance.contact.detailExtensionActionItems`. The main features include chatting, audio and video calls, and others. To customize, inherit the group details page, register it into `EaseChatUIKit`, and add configurable items. The example is as follows:
+Configure the data source of the header button with `Appearance.contact.detailExtensionActionItems`. The main features include chatting, audio and video calls, and others. To customize, inherit the group details page, register it into `chat-uikit`, and add configurable items. The example is as follows:
 
 ```swift
 final class MineGroupDetailViewController: GroupInfoViewController {

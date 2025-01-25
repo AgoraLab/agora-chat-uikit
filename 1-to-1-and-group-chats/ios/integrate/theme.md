@@ -17,7 +17,7 @@ Theme.switchTheme(style: .dark)
 ```
 
 ```swift
-Theme.switchTheme(style: .dark)
+Theme.switchTheme(style: .light)
 ```
 
 ## Switch to a custom theme

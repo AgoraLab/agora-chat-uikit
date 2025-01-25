@@ -4,16 +4,16 @@ The UIKit message chat page provides the following features:
 
 - Send and receive messages, including text, emojis, images, voice, video, files, business card messages and combined messages.
 - Copy, quote, recall, delete, edit, resend, and report messages.
-- Pull roaming messages from the server.
+- Pull roaming messages from the local database.If you want to fetch history message from server.You'll set `ChatUIKitClient.shared.option.option_UI.loadLocalHistoryMessages` is `false` default is `true`.
 - Clear local messages.
 
 For details about message-related functions, see [Product features](../overview/product-features.md).
 
-You can configure the chat page navigation bar, message list items, input box, jump events, and other elements. See [MessageListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Chat/Controllers/MessageListController.swift) for details.
+You can configure the chat page navigation bar, message list items, input box, jump events, and other elements. See [MessageListController.swift](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Components/Chat/Controllers/MessageListController.swift) for details.
 
 ## Customize the navigation bar
 
-The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
+The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `ChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class. For details about the title, background color, button image, and avatar, see [Customize the conversation list](customize-conversation-list.md).
 
 ## Customize the message list cells
 
@@ -123,6 +123,16 @@ Set the path of the audio file that plays when the chat page receives a new mess
 - `Appearance.chat.targetLanguage= .English`: The target language for translation. After long-pressing a text message, the **Translation** menu appears. Click **Translate** to set the target language for translation. Before using, set `Appearance.chat.enableTranslation` to `true`.
 - `Appearance.chat.receiveTranslationColor = value`: The translation text color of the message receiver.
 - `Appearance.chat.sendTranslationColor = value`: The translation text color of the message sender.
+
+### Set text message link preview 
+
+- `Appearance.chat.enableURLPreview = true`: Whether enable URL preview or not.
+-  If you are not satisfied with the default URL preview regular expression, you can modify the corresponding regular expression.Some sample code as follows:
+  ```Swift
+          Appearance.chat.titlePreviewPattern = value
+          Appearance.chat.descriptionPreviewPattern = value
+          Appearance.chat.imagePreviewPattern = value
+  ``` 
 
 ### Set the action displayed after long-pressing a message
 

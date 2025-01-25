@@ -14,20 +14,20 @@ A single conversation displays the conversation name, the last message, the time
 
 For details about the conversation list features, see [Product features](../overview/product-features.md).
 
-You can configure the navigation bar and conversation list cells on the conversation list page. See [ ConversationListController.swift](https://github.com/easemob/easemob-uikit-ios/blob/main/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
+You can configure the navigation bar and conversation list cells on the conversation list page. See [ ConversationListController.swift](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-ios/blob/SwiftUIKit/Sources/EaseChatUIKit/Classes/UI/Components/Conversation/Controllers/ConversationListController.swift) for details.
 
 ![Customize Conversation List](../../assets/images/conversation_list_highlighted.jpg)
 
 ## Customize the header navigation bar 
 
-The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class.
+The navigation bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `ChatNavigationBar`. If the navigation bar does not meet your needs, you can customize it by overriding the method and passing in the customized navigation class.
 
-1. In the demo, inherit the `EaseChatNavigationBar` class in `EaseChatUIKit` to create your own page navigation bar. For example, `CustomConversationNavigationBar`.
+1. In the demo, inherit the `ChatNavigationBar` class in `ChatUIKit` to create your own page navigation bar. For example, `CustomConversationNavigationBar`.
 
 1. Override the `createNavigation()` method and return the object you have created using `CustomConversationNavigationBar`. The sample code is as follows:
 
     ```swift
-    override func createNavigationBar() -> EaseChatNavigationBar {
+    override func createNavigationBar() -> ChatNavigationBar {
                 CustomConversationNavigationBar(showLeftItem: false,rightImages: [UIImage(named: "add", in: .chatBundle, with: nil,hiddenAvatar: false)])
             }
     ```
@@ -70,7 +70,7 @@ Use `Appearance.conversation.listMoreActions = value` to customize the menu disp
 To set the click events in the navigation bar, override the `navigationClick` method in the conversation list page, and then perform the processing according to the corresponding click area. The sample code is as follows:
 
 ```swift
-override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: IndexPath?) {
+override func navigationClick(type: ChatNavigationBarClickEvent, indexPath: IndexPath?) {
                switch type {
                case .back: self.backAction()
                case .avatar: self.avatarAction()
@@ -85,7 +85,7 @@ override func navigationClick(type: EaseChatNavigationBarClickEvent, indexPath: 
 
 ## Customize the conversation list
 
-To customize the conversation list `TableView`, override the `createList` method in the conversation list page and return the class object that you inherited from `ConversationList` class in `EaseChatUIKit`. Find and take a closer look at the `ConversationList.swift` class to implement the business logic. The sample code is as follows:
+To customize the conversation list `TableView`, override the `createList` method in the conversation list page and return the class object that you inherited from `ConversationList` class in `chat-uikit`. Find and take a closer look at the `ConversationList.swift` class to implement the business logic. The sample code is as follows:
 
 ```swift
 override open func createList() -> ConversationList {
@@ -97,7 +97,7 @@ override open func createList() -> ConversationList {
 
 To customize the contents of the list cells, take the following steps:
  
-1. Create a new custom class `CustomConversationCell` by inheriting the `ConversationCell` class in `EaseChatUIKit` and set it up with the following code:
+1. Create a new custom class `CustomConversationCell` by inheriting the `ConversationCell` class in `chat-uikit` and set it up with the following code:
 
     ```swift
     ComponentsRegister.shared.ConversationCell = CustomConversationCell.self
@@ -150,12 +150,12 @@ Get the click event of an item in the array:
 
 ```swift
         if let item = Appearance.conversation.listMoreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
         if let item = Appearance.conversation.listMoreActions.first(where: { $0.tag == "xxx" }) {
-            item.actionClosure = { [weak self] _ in
+            item.actionClosure = { [weak self] item,object in
                 //do something
             }
         }
