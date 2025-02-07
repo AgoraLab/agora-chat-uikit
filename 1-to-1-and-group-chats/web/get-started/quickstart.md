@@ -69,7 +69,7 @@ Take the following steps to implement the project:
    
    1. Build an app using UIKit components,
     
-      Import the `easemob-chat-uikit` library:
+      Import the `agora-chat-uikit` library:
     
        ```javascript
           // App.js

@@ -33,7 +33,7 @@ import en from './en.json';
 ></UIKitProvider>;
 ```
 
-Set the strings to be modified in the `en.json` file. View all strings [here](https://github.com/easemob/Easemob-UIKit-web/tree/dev/local). For example:
+Set the strings to be modified in the `en.json` file. View all strings [here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-web/tree/main/local). For example:
 
 ```json
 {

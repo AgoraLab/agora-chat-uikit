@@ -62,13 +62,13 @@ Take the following steps:
     )
     ```
    
-    For more configuration information, see [UIKitProvider documentation](../core-functionality/user-information.md).
+    For more configuration information, see [UIKitProvider documentation](../integrate/user-information.md).
 
 1. Log in.
 
     When `UIKitProvider` is rendered and destroyed, UIKit will automatically complete the login and logout.
     
-    For more information about automated and manual login, see the [login documentation](../core-functionality/log-in.md).
+    For more information about automated and manual login, see the [login documentation](../integrate/log-in.md).
     
 1. Build the interface.
 
