@@ -9,7 +9,7 @@ The following features are available:
 - Pull roaming messages from the server.
 - Clear local messages.
 
-For details about message-related features, see [Product features](./overview/product-features.md).
+For details about message-related features, see [Product features](./flutter/overview/product-features.md).
 
 ## Add a message page
 

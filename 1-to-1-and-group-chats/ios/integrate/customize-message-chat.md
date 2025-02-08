@@ -36,7 +36,7 @@ If you need to reuse the existing logic and add new logic, override the correspo
 If you need to modify the previous logic, copy the code in the previous `refresh` method and modify it without calling it `super.xxxx`.
 
 | Message cell class | Description | Properties to register and override |
-| ------------------------ | ------------------ | -------- -------------------------------------------------- -- |
+| ------------------------ | ------------------ | ------------------------------------------------------------ |
 | `TextMessageCell` | Text message | `ComponentsRegister.shared.ChatTextMessageCell = YourTextMessageCell.self` |
 | `ImageMessageCell` | Image message | `ComponentsRegister.shared.ChatImageMessageCell = YourImageMessageCell.self` |
 | `AudioMessageCell` | Audio message | `ComponentsRegister.shared.ChatAudioMessageCell = YourAudioMessageCell.self` |
@@ -196,7 +196,7 @@ Use `Appearance.chat.reportSelectionTags` and `Appearance.chat.reportSelectionRe
 For custom redirect events, check the overridable methods marked as open in the chat page and override them accordingly. The following are the commonly used APIs for overriding:
   
 | Method | Description | Overridable (Y/N) |
-| --------------------------- | --------------------------- ------ | ---------- |
+| --------------------------- | --------------------------------- | ---------- |
 | `messageBubbleClicked` | The message bubble click. | Yes |
 | `messageAvatarClick` | The message avatar click. | Yes |
 | `audioDialog` | The input box audio button click. | Yes |
