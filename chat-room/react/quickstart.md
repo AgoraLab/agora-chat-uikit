@@ -26,11 +26,11 @@ Take the following steps to implement message sending:
     Enter the project and execute the following command:
     
     ```
-    npm install react-native-chat-room
+    npm install react-native-agora-chat-room
     # or
-    yarn add react-native-chat-room
+    yarn add react-native-agora-chat-room
     # or
-    npx expo install react-native-chat-room
+    npx expo install react-native-agora-chat-room
     ```
    
 1. Initialize UIKit.

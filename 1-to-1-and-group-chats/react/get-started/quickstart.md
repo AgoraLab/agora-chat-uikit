@@ -34,33 +34,30 @@ Before you start, make sure your development environment meets the following con
 1. Add dependencies.
 
    ```bash
-   yarn add react-native-async-storage/async-storage \
-     react-native-camera-roll/camera-roll \
-     react-native-clipboard/clipboard \
-     date-fns \
-     pinyin-pro \
-     pure-uuid \
-     react \
-     react-native \
-     react-native-agora \
-     react-native-chat-uikit \
-     react-native-chat-sdk \
-     react-native-audio-recorder-player \
-     easemob/react-native-create-thumbnail \
-     react-native-device-info \
-     react-native-document-picker \
-     react-native-fast-image \
-     react-native-file-access \
-     react-native-gesture-handler \
-     react-native-get-random-values \
-     react-native-image-picker \
-     react-native-permissions \
-     react-native-safe-area-context \
-     react-native-screens \
-     react-native-video \
-     react-native-web \
-     react-native-webview \
-     twemoji
+    yarn add @react-native-async-storage/async-storage \
+    @react-native-camera-roll/camera-roll \
+    @react-native-clipboard/clipboard \
+    date-fns \
+    pinyin-pro \
+    pure-uuid \
+    react-native-agora-chat-uikit \
+    react-native-agora-chat-sdk \
+    react-native-audio-recorder-player \
+    react-native-create-thumbnail \
+    react-native-device-info \
+    react-native-document-picker \
+    react-native-fast-image \
+    react-native-file-access \
+    react-native-gesture-handler \
+    react-native-get-random-values \
+    react-native-image-picker \
+    react-native-permissions \
+    react-native-safe-area-context \
+    react-native-screens \
+    react-native-video \
+    react-native-web \
+    react-native-webview \
+    twemoji
    ```
 
    - For iOS, update the `ProjectName/Info.plist` file to add the following permissions:
@@ -104,7 +101,7 @@ Before you start, make sure your development environment meets the following con
      ConversationDetail,
      TextInput,
      useChatContext,
-   } from "react-native-chat-uikit";
+   } from "react-native-agora-chat-uikit";
 
    const appKey = "<your app key>";
    const userId = "<current login id>";

@@ -257,7 +257,7 @@ The following sample code shows how to enable this feature:
 
 ```typescript
 import { NavigationContainer } from "@react-navigation/native";
-import { Container as UIKitContainer } from "react-native-chat-uikit";
+import { Container as UIKitContainer } from "react-native-agora-chat-uikit";
 export function App() {
   // The default is on. To turn it off, set it to false.
   const enableMessagePin = true;
