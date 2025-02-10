@@ -5,44 +5,63 @@ Agora Chat SDK. It provides various components to implement features such as a c
 contact list. This helps you to quickly build instant messaging applications based 
 on the particular business needs.
 
-To access the source code, [click here](https://github.com/easemob/chatuikit-android).
+To access the source code, [click here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-android/tree/dev-kotlin).
 
-## UIKit basic project structure
+## Basic project structure of chat_uikit
 
 ```
-└── easeui
-    ├── EaseIM // The UIKit SDK entrance.
-    ├── EaseIMConfig // The UIKit SDK configuration class.
-    ├── feature // The UIKit function modules.
-    │ ├── chat // The chat function module.
-    │ │ ├── activities // The Activity folder.
-    │ │ │ └── EaseChatActivity // The built-in chat interface.
-    │ │ ├── adapter // The adapter folder.
-    │ │ │ └── EaseMessagesAdapter // The message list adapter.
-    │ │ ├── reply // The components related to the reply feature.
-    │ │ ├── report // The components related to the message reporting feature.
-    │ │ ├── viewholders // The message type ViewHolders.
-    │ │ ├── widgets // The custom views.
-    │ │ └── EaseChatFragment // The chat fragment provided in UIKit.
-    │ ├── conversation // The conversation list function module.
-    │ │ ├── adapter // The adapter folder.
-    │ │ │ └── EaseConversationListAdapter // The conversation list adapter.
-    │ │ ├── viewholders // The conversation type ViewHolders.
-    │ │ ├── widgets // The custom views.
-    │ │ └── EaseConversationListFragment // The conversation list fragment.
-    │ ├── contact // The contact list function module.
-    │ │ ├── adapter // The adapter folder.
-    │ │ │ └── EaseContactListAdapter // The contact list adapter.
-    │ │ ├── viewholders // The contact-related ViewHolders.
-    │ │ ├── widgets // The custom views.
-    │ │ └── EaseContactsListFragment // The contact list fragment provided in UIKit.
-    │ └── group // The group function module.
-    ├── repository // The UIKit SDK data warehouse.
-    ├── viewmodel // The UIKit SDK ViewModel.
-    ├── provider // The UIKit SDK provider.
-    ├── common // The UIKit SDK public class.
-    ├── interfaces // The UIKit SDK interface classes.
-    └── widget // The UIKit SDK custom view.
+└── uikit
+    ├── ChatUIKitClient                                   // UIKit SDK entry
+    ├── ChatUIKitConfig                             // UIKit SDK configuration class
+    ├── feature                                  // UIKit function module
+    │   ├── chat                                   // Chat module
+    │   │   ├── activities                            // Activity folder
+    │   │   │   └── UIKitChatActivity                  // Chat page built in the UIKit
+    │   │   ├── adapter                               // Adapter folder of the chat module
+    │   │   │   └── ChatUIKitMessagesAdapter          // Message list adapter
+    │   │   ├── controllers                           // Controller of all functions of the chat module
+    │   │   ├── pin                                   // Message pinning
+    │   │   ├── urlpreview                            // URL preview
+    │   │   ├── reply                                 // Message reply
+    │   │   ├── report                                // Message reporting
+    │   │   ├── chathistory                           // Chat history
+    │   │   ├── forward                               // Message forwarding
+    │   │   ├── reaction                              // Message reaction
+    │   │   ├── search                                // Message search
+    │   │   ├── translation                           // Message translation
+    │   │   ├── viewholders                           // Message type ViewHolder
+    │   │   ├── widgets                               // Custom view of the chat module
+    │   │   └── UIKitChatFragment                      // Chat fragment built in the UIKit
+    │   ├── conversation                           // Conversation list module
+    │   │   ├── adapter                               // Adapter folder
+    │   │   │   └── ChatUIKitConversationListAdapter       // Conversation list adapter
+    │   │   ├── viewholders                           // Conversation ViewHolder
+    │   │   ├── widgets                               // Custom view of the conversation list module
+    │   │   └── ChatUIKitConversationListFragment          // Conversation list fragment built in the UIKit
+    │   ├── thread                                 // Message thread module
+    │   │   ├── adapter                               // Adapter folder
+    │   │   │   └── ChatUIKitThreadListAdapter         // Message thread list adapter
+    │   │   ├── viewholder                            // Message thread ViewHolder 
+    │   │   ├── widgets                               // Custom view of the message thread module
+    │   │   └── ChatUIKitThreadActivity               // Thread chat page within the UIKit
+    │   ├── contact                               // Contact list module
+    │   │   ├── adapter                               // Contact list adapter folder 
+    │   │   │   └── ChatUIKitContactListAdapter            // Contact list adapter
+    │   │   ├── viewholders                           // Contact ViewHolder
+    │   │   ├── widgets                               // Custom view of the contact list module
+    │   │   └── ChatUIKitContactsListFragment              // Contact list fragment built in the UIKit
+    │   └── group                                 // Group module
+    │       ├── fragments                             // Group fragment
+    │       ├── adapter                               // Adapter folder 
+    │       │   └── ChatUIKitGroupListAdapter                // Group list adapter
+    │       ├── viewholders                           // ViewHolder   Message ViewHolder
+    │       └── ChatUIKitGroupListActivity                 // Group list UI built in the UIKit
+    ├── repository                               // UIKit SDK data repository
+    ├── viewmodel                                // UIKit SDK ViewModel
+    ├── provider                                 // UIKit SDK Provider
+    ├── common                                   // Public class of UIKit SDK
+    ├── interfaces                               // API class of UIKit SDK
+    └── widget                                   // Custom view of UIKit SDK
 ```
 
 ## Features

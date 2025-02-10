@@ -1,6 +1,6 @@
 # Conversation list
 
-`EaseConversationListFragment` is used to display all conversations of the current user, including one-to-one chats and group chats. It provides conversation search, deletion, pinning, and do not disturb functions, specifically:
+`ChatUIKitConversationListFragment` is used to display all conversations of the current user, including one-to-one chats and group chats. It provides conversation search, deletion, pinning, and do not disturb functions, specifically:
 
 - Click **Search** to go to the search page and search for conversations.
 - Click a conversation list item to jump to the conversation details page.
@@ -25,7 +25,7 @@ class ConversationListActivity: AppCompactActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation_list)
 
-        EaseConversationListFragment.Builder()
+        ChatUIKitConversationListFragment.Builder()
                         .build()?.let { fragment ->
                             supportFragmentManager.beginTransaction()
                                 .replace(R.id.fl_fragment, fragment).commit()
@@ -38,12 +38,12 @@ class ConversationListActivity: AppCompactActivity() {
 
 You can configure the title bar and the list items on the conversation list page.
 
-### Customize settings through EaseConversationListFragment.Builder
+### Customize settings through ChatUIKitConversationListFragment.Builder
 
-The `EaseConversationListFragment.Builder` construction method is provided for custom settings. The currently provided settings are as follows:
+The `ChatUIKitConversationListFragment.Builder` construction method is provided for custom settings. The currently provided settings are as follows:
 
 ```kotlin
-EaseConversationListFragment.Builder()
+ChatUIKitConversationListFragment.Builder()
     .useTitleBar(true)
     .setTitleBarTitle("title")
     .enableTitleBarPressBack(true)
@@ -59,11 +59,11 @@ EaseConversationListFragment.Builder()
     .build()
 ```
 
-`EaseConversationListFragment#Builder` provides the following methods:
+`ChatUIKitConversationListFragment#Builder` provides the following methods:
 
 | Method | Description |
 |:---:|:---:|
-| `useTitleBar()` | Set whether to use the default title bar (`EaseTitleBar`). Set to `true` for yes, `false` (default) for no. |
+| `useTitleBar()` | Set whether to use the default title bar (`ChatUIKitTitleBar`). Set to `true` for yes, `false` (default) for no. |
 | `setTitleBarTitle()` | Set the title of the title bar. |
 | `enableTitleBarPressBack()` | Set whether to display the back button. Set to `true` for yes, `false` (default) for no. |
 | `setTitleBarBackPressListener()` | Set the event listener for clicking the back button in the title bar. |
@@ -72,24 +72,24 @@ EaseConversationListFragment.Builder()
 | `setOnMenuItemClickListener()` | Set the menu item click event listener. |
 | `setConversationChangeListener()` | Set the conversation change event listener. |
 | `setEmptyLayout()` | Set a blank page for the conversation list. |
-| `setCustomAdapter()` | Set a custom adapter. The default is `EaseConversationListAdapter`. |
-| `setCustomFragment()` | Set a custom chat fragment. Inherit from `EaseConversationListFragment`. |
+| `setCustomAdapter()` | Set a custom adapter. The default is `ChatUIKitConversationListAdapter`. |
+| `setCustomFragment()` | Set a custom chat fragment. Inherit from `ChatUIKitConversationListFragment`. |
 
 ### Add a custom conversation layout
 
-Inherit from `EaseConversationListAdapter` to implement your own `CustomConversationListAdapter` and then set `CustomConversationListAdapter` in `EaseConversationListFragment#Builder#setCustomAdapter`.
+Inherit from `ChatUIKitConversationListAdapter` to implement your own `CustomConversationListAdapter` and then set `CustomConversationListAdapter` in `ChatUIKitConversationListFragment#Builder#setCustomAdapter`.
 
-1. Create a custom adapter `CustomConversationListAdapter`, inherit from `EaseConversationListAdapter`, and override the `getViewHolder` and `getItemNotEmptyViewType` methods.
+1. Create a custom adapter `CustomConversationListAdapter`, inherit from `ChatUIKitConversationListAdapter`, and override the `getViewHolder` and `getItemNotEmptyViewType` methods.
 
    ```kotlin
-   class CustomConversationListAdapter : EaseConversationListAdapter() {
+   class CustomConversationListAdapter : ChatUIKitConversationListAdapter() {
    override fun getItemNotEmptyViewType(position: Int): Int {
    // Set a custom itemViewType according to the message type
    // If you use the default itemViewType, return super.getItemNotEmptyViewType(position)
    return CUSTOM_YOUR_CONVERSATION_TYPE
    }
    
-   override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseConversation> {
+   override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatUIKitConversation> {
    // Return the corresponding ViewHolder according to the returned viewType
    // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
    return CUSTOM_YOUR_VIEW_HOLDER()
@@ -97,15 +97,15 @@ Inherit from `EaseConversationListAdapter` to implement your own `CustomConversa
    }
    ```
    
-2. Add `CustomConversationListAdapter` to `EaseConversationListFragment#Builder`.
+2. Add `CustomConversationListAdapter` to `ChatUIKitConversationListFragment#Builder`.
 
    ```kotlin
    builder.setCustomAdapter(customConversationListAdapter);
    ```
    
-3. Customize by inheriting `EaseConversationListFragment`.
+3. Customize by inheriting `ChatUIKitConversationListFragment`.
 
-   Create a custom `CustomConversationListFragment`, inherit from `EaseConversationListFragment`, and set it with `EaseConversationListFragment#Builder`.
+   Create a custom `CustomConversationListFragment`, inherit from `ChatUIKitConversationListFragment`, and set it with `ChatUIKitConversationListFragment#Builder`.
 
     ```kotlin
     builder.setCustomFragment(customConversationListFragment);
@@ -113,23 +113,23 @@ Inherit from `EaseConversationListAdapter` to implement your own `CustomConversa
 
 ### Configure the title bar
 
-The title bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `EaseTitleBar`. If the title bar does not meet your needs, you can customize it.
+The title bars of the conversation list page, chat page, contact list page, group details page, and contact details page use `ChatUIKitTitleBar`. If the title bar does not meet your needs, you can customize it.
 
-The title bar of the conversation list page contains three areas: Left, center, and right. This section describes how to configure these areas when using `EaseConversationListFragment`.
+The title bar of the conversation list page contains three areas: Left, center, and right. This section describes how to configure these areas when using `ChatUIKitConversationListFragment`.
 
 - Configure whether to enable the title bar:
 
     ```kotlin
     
-    //Whether to use the default title bar (EaseTitleBar): true: Yes; (default) false: No.
-    EaseConversationListFragment.Builder().useTitleBar()
+    //Whether to use the default title bar (ChatUIKitTitleBar): true: Yes; (default) false: No.
+    ChatUIKitConversationListFragment.Builder().useTitleBar()
         
     ```
 
 - Configure the avatar on the left:
     
     ```kotlin
-    //Use binding?.titleConversations to directly get EaseTitleBar
+    //Use binding?.titleConversations to directly get ChatUIKitTitleBar
     
     binding?.titleConversations?.let { titlebar->
         // Get logoView
@@ -162,7 +162,7 @@ The title bar of the conversation list page contains three areas: Left, center, 
 
     ```kotlin
     // Text settings
-    EaseConversationListFragment.Builder().setTitleBarTitle("title")
+    ChatUIKitConversationListFragment.Builder().setTitleBarTitle("title")
     //Image settings
     binding?.titleConversations?.setTitleEndDrawable(R.drawable.conversation_title)   
     ```
@@ -171,7 +171,7 @@ The title bar of the conversation list page contains three areas: Left, center, 
 
    Generally, the right side will support setting multiple icons. Use the menu setting method to set it.
 
-    `EaseConversationListFragment` has a default implementation of the `defaultMenu()` method. If the default menu does not meet your needs, you can replace it with your own menu and rewrite the `defaultMenu()` method.   
+    `ChatUIKitConversationListFragment` has a default implementation of the `defaultMenu()` method. If the default menu does not meet your needs, you can replace it with your own menu and rewrite the `defaultMenu()` method.   
 
     ```kotlin
         // Add menu
@@ -204,9 +204,9 @@ The title bar of the conversation list page contains three areas: Left, center, 
     ```kotlin
     
     //Set whether to support displaying the back button: true: Yes; (default) false: No.   
-    EaseConversationListFragment.Builder().enableTitleBarPressBack()
+    ChatUIKitConversationListFragment.Builder().enableTitleBarPressBack()
     //Set the listener for clicking the back button in the title bar.
-    EaseConversationListFragment.Builder().setTitleBarBackPressListener() 
+    ChatUIKitConversationListFragment.Builder().setTitleBarBackPressListener() 
         
     ```
 
@@ -224,9 +224,9 @@ The title bar of the conversation list page contains three areas: Left, center, 
 
     ```kotlin
     
-    // Whether to use the default search function (jump to EaseSearchActivity). The search page currently supports searching users, conversations, messages, and blacklisted users.
+    // Whether to use the default search function (jump to ChatUIKitSearchActivity). The search page currently supports searching users, conversations, messages, and blacklisted users.
     // true: yes; (default) false: no.
-    EaseConversationListFragment.Builder().useSearchBar(true)
+    ChatUIKitConversationListFragment.Builder().useSearchBar(true)
     ```
 
 - Configure custom search.
@@ -234,11 +234,11 @@ The title bar of the conversation list page contains three areas: Left, center, 
     If the default search does not meet user needs, you can modify the jump route through `setCustomActivityRoute` to jump to your own search page.
     
     ```kotlin
-    EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
+    ChatUIKitClient.setCustomActivityRoute(object : ChatUIKitCustomActivityRoute {
         override fun getActivityRoute(intent: Intent): Intent? {
             intent.component?.className?.let {
                  when(it) {
-                    EaseSearchActivity::class.java.name -> {   
+                    ChatUIKitSearchActivity::class.java.name -> {   
                         intent.setClass(context, MySearchActivity::class.java)    
                     }
                     else -> {
@@ -252,7 +252,7 @@ The title bar of the conversation list page contains three areas: Left, center, 
 
 ### Configure the conversation list item
 
-To configure the content of a conversation list item, get the `EaseConversationListLayout` object, which provides more detailed settings:
+To configure the content of a conversation list item, get the `ChatUIKitConversationListLayout` object, which provides more detailed settings:
 
 ```kotlin
         binding?.listConversation?.let{
@@ -285,40 +285,40 @@ To configure the content of a conversation list item, get the `EaseConversationL
 
 For details on setting the chat avatar and nickname, see [User-defined information](user-defined-information.md).
 
-## Default functions implemented in EaseConversationListFragment
+## Default functions implemented in ChatUIKitConversationListFragment
 
-`EaseConversationListFragment` implements the conversation do not disturb mode, conversation pinning, marking a conversation read, and conversation deletion features by default.
+`ChatUIKitConversationListFragment` implements the conversation do not disturb mode, conversation pinning, marking a conversation read, and conversation deletion features by default.
 
 ### Do Not Disturb
 
-Use the following methods provided in `EaseConversationListViewModel` to set the Do Not Disturb (DND) mode:
+Use the following methods provided in `ChatUIKitConversationListViewModel` to set the Do Not Disturb (DND) mode:
 
 - `makeSilentForConversation`: Set a conversation to DND.
 - `cancelSilentForConversation`: Cancel DND.
 
 ### Pin a conversation
 
-Use the following methods provided in `EaseConversationListViewModel` to pin a conversation to the top:
+Use the following methods provided in `ChatUIKitConversationListViewModel` to pin a conversation to the top:
 
 - `pinConversation`: Pin a conversation.
 - `unpinConversation`: Unpin the conversation.
 
 ### Mark a conversation read
 
-Mark a conversation as read using the `makeConversionRead` method provided in `EaseConversationListViewModel`.
+Mark a conversation as read using the `makeConversionRead` method provided in `ChatUIKitConversationListViewModel`.
 
 ### Delete a conversation
 
-Use the `deleteConversation` method provided in `EaseConversationListViewModel` to delete a conversation.
+Use the `deleteConversation` method provided in `ChatUIKitConversationListViewModel` to delete a conversation.
 
 ![Conversation deletion](../../assets/images/delete_conversation.jpg)
 
 ## Event listening
 
-The following event listening is provided in `EaseConversationListFragment#Builder`:
+The following event listening is provided in `ChatUIKitConversationListFragment#Builder`:
 
 ```kotlin
-EaseConversationListFragment.Builder()
+ChatUIKitConversationListFragment.Builder()
     .setTitleBarBackPressListener()
     .setItemClickListener(onItemClickListener)
     .setOnItemLongClickListener(onItemLongClickListener)
