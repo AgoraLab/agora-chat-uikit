@@ -12,7 +12,7 @@ let error = ChatUIKitClient.shared.setup(option: ChatOptions(appkey: appKey))
 
 ## Login
 
-Use the information of the current user object that conforms to `ChatUserProfileProtocol` to log in to UIKIt. Pass in the user ID into the `userId` field in the following code: // TODO：是符合这个协议的用户信息还是用户对象
+Use the information of the current user object that conforms to `ChatUserProfileProtocol` to log in to UIKIt. Pass in the user ID into the `userId` field in the following code:
 
 ```swift
 public final class YourAppUser: NSObject, ChatUserProfileProtocol {
