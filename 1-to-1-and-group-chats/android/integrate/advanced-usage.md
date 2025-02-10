@@ -4,23 +4,23 @@
 
 If the default Activity and its configurable items do not meet your needs, you can inherit the default Activity and add additional logics. If the Activity is an internally called page in the UIKit, you can modify its route.
 
-For example, if `EaseChatActivity` fails to meet your needs, you can implement `ChatActivity` by inheriting `EaseChatActivity`. In this case, when calling `EaseChatActivity.actionStart` for activity routing, the UIKit, via `getActivityRoute()`, intercepts the default route and redirects the activity to `ChatActivity`.
+For example, if `UIKitChatActivity` fails to meet your needs, you can implement `ChatActivity` by inheriting `UIKitChatActivity`. In this case, when calling `UIKitChatActivity.actionStart` for activity routing, the UIKit, via `getActivityRoute()`, intercepts the default route and redirects the activity to `ChatActivity`.
 
-Only the Activity that implements `EaseIM.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
+Only the Activity that implements `ChatUIKitClient.getCustomActivityRoute()?.getActivityRoute()` can be intercepted.
 
 ```kotlin
-// Implement getActivityRoute for the EaseChatActivity page
+// Implement getActivityRoute for the UIKitChatActivity page
 
 companion object {
     private const val REQUEST_CODE_STORAGE_PICTURE = 111
     private const val REQUEST_CODE_STORAGE_VIDEO = 112
     private const val REQUEST_CODE_STORAGE_FILE = 113
 
-    fun actionStart(context: Context, conversationId: String, chatType: EaseChatType) {
-        Intent(context, EaseChatActivity::class.java).apply {
-             putExtra(EaseConstant.EXTRA_CONVERSATION_ID, conversationId)
-             putExtra(EaseConstant.EXTRA_CHAT_TYPE, chatType.ordinal)
-             EaseIM.getCustomActivityRoute()?.getActivityRoute(this.clone() as Intent)?.let {
+    fun actionStart(context: Context, conversationId: String, chatType: ChatUIKitType) {
+        Intent(context, UIKitChatActivity::class.java).apply {
+             putExtra(ChatUIKitConstant.EXTRA_CONVERSATION_ID, conversationId)
+             putExtra(ChatUIKitConstant.EXTRA_CHAT_TYPE, chatType.ordinal)
+             ChatUIKitClient.getCustomActivityRoute()?.getActivityRoute(this.clone() as Intent)?.let {
                     if (it.hasRoute()) {
                     context.startActivity(it)
                     return
@@ -33,9 +33,9 @@ companion object {
 
 
 // Implementation of the routing interception for the application
-EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
+ChatUIKitClient.setCustomActivityRoute(object : ChatUIKitCustomActivityRoute {
     override fun getActivityRoute(intent: Intent): Intent {
-        if (intent.component?.className == EaseChatActivity::class.java.name) {
+        if (intent.component?.className == UIKitChatActivity::class.java.name) {
             intent.setClass(this@DemoApplication, ChatActivity::class.java)
          }
         return intent
@@ -48,14 +48,14 @@ EaseIM.setCustomActivityRoute(object : EaseCustomActivityRoute {
 UIKit provides some global configurations that can be set during initialization. The sample code is as follows:
 
 ```kotlin
-val avatarConfig = EaseAvatarConfig()
+val avatarConfig = ChatUIKitAvatarConfig()
 // Set avatar with rounded corners
-avatarConfig.avatarShape = EaseImageView.ShapeType.ROUND
-val config = EaseIMConfig(avatarConfig = avatarConfig)
-EaseIM.init(this, options, config)
+avatarConfig.avatarShape = ChatUIKitImageView.ShapeType.ROUND
+val config = ChatUIKitConfig(avatarConfig = avatarConfig)
+ChatUIKitClient.init(this, options, config)
 ```
 
-`EaseAvatarConfig` provides the following configuration items:
+`ChatUIKitAvatarConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -64,7 +64,7 @@ EaseIM.init(this, options, config)
 | `avatarBorderColor` | The color of the avatar border. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
-`EaseChatConfig` provides the following configuration items:
+`ChatUIKitConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -73,7 +73,7 @@ EaseIM.init(this, options, config)
 | `timePeriodCanRecallMessage` | Set the time within which a message can be recalled. The default is 2 minutes. |
 | `avatarBorderWidth` | The width of the avatar border. |
 
-`EaseDateFormatConfig` provides the following configuration items:
+`ChatUIKitDateFormatConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
@@ -81,13 +81,13 @@ EaseIM.init(this, options, config)
 | `convOtherDayFormat` | The format for dates other than the current date. The default format is `MM:dd`. |
 | `convOtherYearFormat` | The format for years other than the current year. The default format is `MM:dd:yyyy`. |
 
-`EaseSystemMsgConfig` provides the following configuration items:
+`ChatUIKitSystemMsgConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|
 | `useDefaultContactInvitedSystemMsg` | Whether to enable the system message feature. Enabled by default.|
 
-`EaseMultiDeviceEventConfig` provides the following configuration items:
+`ChatUIKitMultiDeviceEventConfig` provides the following configuration items:
 
 | Property | Description |
 |:---:|:---:|

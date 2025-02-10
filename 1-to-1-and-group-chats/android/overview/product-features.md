@@ -98,9 +98,9 @@ Users can search contacts (with or without a selection box), conversations, mess
 
 ![Search](../../assets/images/search.png)
 
-UIKit provides an encapsulated `EaseSearchActivity` search page. After the user enters keywords, the search data is searched according to `EaseSearchType` and the search results are displayed.
+UIKit provides an encapsulated `ChatUIKitSearchActivity` search page. After the user enters keywords, the search data is searched according to `ChatUIKitSearchType` and the search results are displayed.
 
-Jump to the `EaseSearchActivity` page and enter the required parameters according to the type of search you need. UIKit will match the keywords and display the search results according to `EaseSearchType`: `USER`, `SELECT_USER`, `CONVERSATION`, `MESSAGE`, and `BLOCK_USER`.
+Jump to the `ChatUIKitSearchActivity` page and enter the required parameters according to the type of search you need. UIKit will match the keywords and display the search results according to `ChatUIKitSearchType`: `USER`, `SELECT_USER`, `CONVERSATION`, `MESSAGE`, and `BLOCK_USER`.
 
 For example, the sample code for searching the blacklist is as follows:
 
@@ -125,7 +125,7 @@ private val returnSearchClickResult: ActivityResultLauncher<Intent> = registerFo
     }
 ```
 
-UIKit also provides a search base class `EaseBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()` method in `EaseBaseSearchFragment` to implement your own adapters for data processing and display. 
+UIKit also provides a search base class `ChatUIKitBaseSearchFragment`, which you can inherit and extend for a different implementation. Use the `initAdapter()` method in `ChatUIKitBaseSearchFragment` to implement your own adapters for data processing and display. 
 
 ### Group mention
 
@@ -136,7 +136,7 @@ Group mentions are enabled by default. To disable them, set `enableMention` to `
 The sample code is as follows:
 
 ``` kotlin
-EaseIM .getConfig()?.chatConfig?.enableMention ==  false
+ChatUIKitClient .getConfig()?.chatConfig?.enableMention ==  false
 ```
 
 ## Conversation-related 
@@ -197,49 +197,49 @@ Users can quote a specific message to reply to it or emphasize its importance.
 
 The message quoting UI and logic structure are as follows:
 
-- `EaseChatMessageReplyView`: The custom view for the quoted message.
-- `EaseChatExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box. 
+- `ChatUIKitMessageReplyView`: The custom view for the quoted message.
+- `ChatUIKitExtendMessageReplyView`: The custom view for the quoted message displayed above the bottom input box. 
   component.
-- `EaseChatMessageReplyController`: Control the display, hiding, scrolling, and other logic of the quoting feature.
+- `ChatUIKitMessageReplyController`: Control the display, hiding, scrolling, and other logic of the quoting feature.
 
-The quoting feature is enabled by default in `EaseChatConfig`, that is, the default value of `enableReplyMessage` 
+The quoting feature is enabled by default in `ChatUIKitConfig`, that is, the default value of `enableReplyMessage` 
 is `true`. To disable this feature, set it to `false`.
 
 The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableReplyMessage
+ChatUIKitClient.getConfig()?.chatConfig?.enableReplyMessage
 ```
 
 ### Translate a message
 
 Users can translate messages into other languages for easier communication. The UI and logic structure are as follows:
 
-- The UI layout of message translation is a custom `EaseChatMessageTranslationView` layout.
+- The UI layout of message translation is a custom `ChatUIKitMessageTranslationView` layout.
 - The logic for adding views to the message bubble and showing and hiding the translation layout is in the 
-  `addTranslationViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
+  `addTranslationViewToMessage` method in `ChatUIKitAddExtendFunctionViewController`.
 - The logic for showing and hiding the translation menu that pops up when long-pressing a message bubble is in 
-  `EaseChatMessageTranslationController`.
+  `ChatUIKitMessageTranslationController`.
 
 1. Enable message translation
 
   The message translation feature is disabled by default, that is, the default value of 
      `enableTranslationMessage` in 
-  `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+  `ChatUIKitConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
   
   ```kotlin
-  EaseIM.getConfig()?.chatConfig?.enableTranslationMessage
+  ChatUIKitClient.getConfig()?.chatConfig?.enableTranslationMessage
   ```
 
 1. Set the target language
 
-  The `EaseChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
+  The `UIKitChatFragment.Builder` object provides the `setTargetTranslation` method. If the target language is not set, 
   English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
   
   The sample code is as follows: 
 
   ```kotlin
-  val builder = EaseChatFragment.Builder
+  val builder = UIKitChatFragment.Builder
   builder.setTargetTranslation(ChatTranslationLanguageType.English)
   ```
 
@@ -252,38 +252,38 @@ Users can long-press a single message to open the context menu and reply with an
 
 The structure of the reaction UI and logic is as follows:
 
-- `EaseChatMessageReactionView` implements a custom reaction layout in the message item.
-- `EaseMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. 
-- The reaction popup window `EaseChatReactionsDialog` is inherited from `EaseBaseSheetFragmentDialog`.
-- `EaseReactionUserListFragment` implements the list of users that add or remove a reaction for a message. 
+- `ChatUIKitMessageReactionView` implements a custom reaction layout in the message item.
+- `ChatUIKitMessageMenuReactionView` implements a custom layout in the message long-press menu `RecyclerView`. 
+- The reaction popup window `ChatUIKitReactionsDialog` is inherited from `ChatUIKitBaseSheetFragmentDialog`.
+- `ChatUIKitReactionUserListFragment` implements the list of users that add or remove a reaction for a message. 
 
 The logic for adding views to message bubbles and showing and hiding React layouts is in the 
-`addReactionViewToMessage` method in `EaseChatAddExtendFunctionViewController`.
+`addReactionViewToMessage` method in `ChatUIKitAddExtendFunctionViewController`.
 
-The reaction feature is disabled by default. That is, the default value of `enableMessageReaction` in `EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+The reaction feature is disabled by default. That is, the default value of `enableMessageReaction` in `ChatUIKitConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableMessageReaction
+ChatUIKitClient.getConfig()?.chatConfig?.enableMessageReaction
 ```
 
 ### Message thread
 
 Users can create a message thread based on a message in a group chat, to have a topic-specific discussion.
 
-The thread page is implemented in `EaseChatThreadActivity`. Call `EaseChatThreadActivity.actionStart` and pass in the required parameters.
+The thread page is implemented in `ChatUIKitThreadActivity`. Call `ChatUIKitThreadActivity.actionStart` and pass in the required parameters.
 
 The message thread feature is disabled by default. That is, the default value of `enableChatThreadMessage` in 
-`EaseChatConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
+`ChatUIKitConfig` is `false`. To enable this feature, set it to `true`. The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableChatThreadMessage
+ChatUIKitClient.getConfig()?.chatConfig?.enableChatThreadMessage
 ```
 
-You can add your own logic by inheriting `EaseChatThreadActivity`. For example:
+You can add your own logic by inheriting `ChatUIKitThreadActivity`. For example:
 
 ```kotlin
-class ChatThreadActivity:EaseChatThreadActivity() {
-    override fun setChildSettings(builder: EaseChatFragment.Builder) {
+class ChatThreadActivity:ChatUIKitThreadActivity() {
+    override fun setChildSettings(builder: UIKitChatFragment.Builder) {
         super.setChildSettings(builder)
     }
 }
@@ -295,15 +295,15 @@ Users can forward a single or multiple combined messages to other users.
 
 The UI and logic structure are as follows:
 
-- `Forward EaseChatMultipleSelectMenuView`: The bottom menu view.
-- `Forward EaseChatMessageMultipleSelectController`: Handles the UI layout changes (hiding/showing `EaseChatInputMenu` in `EaseChatLayout`) and logic for forwarding and deleting.
-- `Forward EaseChatMessageMultiSelectHelper`: The message selection helper class used to record the selected message information and provide acquisition methods.
+- `Forward ChatUIKitMultipleSelectMenuView`: The bottom menu view.
+- `Forward ChatUIKitMessageMultipleSelectController`: Handles the UI layout changes (hiding/showing `ChatUIKitInputMenu` in `ChatUIKitLayout`) and logic for forwarding and deleting.
+- `Forward ChatUIKitMessageMultiSelectHelper`: The message selection helper class used to record the selected message information and provide acquisition methods.
 
 The message forwarding feature is enabled by default. That is, the default value of `enableSendCombineMessage` in
-`EaseChatConfig` is `true`. To disable, set it to `false`. The sample code is as follows:
+`ChatUIKitConfig` is `true`. To disable, set it to `false`. The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableSendCombineMessage
+ChatUIKitClient.getConfig()?.chatConfig?.enableSendCombineMessage
 ```
 
 ### Pin a message
@@ -312,22 +312,22 @@ Users can pin important messages to the top of a conversation. This feature is p
 
 The UI and logic structure are as follows:
 
-- `EaseChatPinMessageListViewGroup`: A custom View for the message pinning area.
-- `EaseChatPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
-- `EaseChatPinMessageListAdapter`: The adapter of the list of pinned messages.
-- `EaseChatPinDefaultViewHolder`: The default display style of pinned messages.
-- `EaseChatPinTextMessageViewHolder`: The display style of the pinned text message.
-- `EaseChatPinImageMessageViewHolder`: The display style of the pinned image message.
+- `ChatUIKitPinMessageListViewGroup`: A custom View for the message pinning area.
+- `ChatUIKitPinMessageController`: Controls the display, hiding, scrolling, and other logic of the pinned message.
+- `ChatUIKitPinMessageListAdapter`: The adapter of the list of pinned messages.
+- `ChatUIKitPinDefaultViewHolder`: The default display style of pinned messages.
+- `ChatUIKitPinTextMessageViewHolder`: The display style of the pinned text message.
+- `ChatUIKitPinImageMessageViewHolder`: The display style of the pinned image message.
 
 The message pinning feature is enabled by default. That is, the default value of `enableChatPingMessage` in
-`EaseChatConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
+`ChatUIKitConfig` is `true`. To disable this feature, set it to `false`. The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableChatPingMessage
+ChatUIKitClient.getConfig()?.chatConfig?.enableChatPingMessage
 
 // Define the message pinning controller
-val chatPinMessageController:EaseChatPinMessageController by lazy {
-  EaseChatPinMessageController(mContext,this@EaseChatLayout, conversationId, viewModel)
+val chatPinMessageController:ChatUIKitPinMessageController by lazy {
+  ChatUIKitPinMessageController(mContext,this@ChatUIKitLayout, conversationId, viewModel)
 }
 // Initialize the controller.
 chatPinMessageController.initPinInfoView()
@@ -347,7 +347,7 @@ override fun onFetchPinMessageFromServerSuccess(value: MutableList<ChatMessage>?
 chatPinMessageController.pinMessage(message,true)
 
 // Add a listener for listening for the message pinning state changes.
-private val chatMessageListener = object : EaseMessageListener() {
+private val chatMessageListener = object : ChatUIKitMessageListener() {
   // Message pinning status change event
   override fun onMessagePinChanged(
           messageId: String?,
@@ -367,7 +367,7 @@ private val chatMessageListener = object : EaseMessageListener() {
   }
 }
 
-EaseIM.addChatMessageListener(chatMessageListener)
+ChatUIKitClient.addChatMessageListener(chatMessageListener)
 
 // Show pin view
 chatPinMessageController.showPinInfoView()
@@ -383,19 +383,19 @@ The input status indicator helps users understand whether the other party is rep
 
 The UI and logic structure of the input status indication are as follows:
 
-- The `subtitle` control in `EaseChatNavigationBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
+- The `subtitle` control in `ChatUIKitTitleBar` displays the user's status and the input status. If received, the input status is displayed first. If you disable the input status indication, only the user's status will be displayed.
 
 - The input-status-related callbacks and methods are as follows:
 
-  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `EaseChatFragment.Builder`.
-  - The input status callback is `onPeerTyping(action: String?)`, where `action` represents the `EaseChatLayout.ACTION_TYPING_BEGI| EaseChatLayout.ACTION_TYPING_END` state .
+  - The input status is delivered as a transparent message. After receiving the transparent message, the input status of the other party is monitored through the `setOnPeerTypingListener` method provided in `UIKitChatFragment.Builder`.
+  - The input status callback is `onPeerTyping(action: String?)`, where `action` represents the `ChatUIKitLayout.ACTION_TYPING_BEGI| ChatUIKitLayout.ACTION_TYPING_END` state .
 
-The input status indication feature is enabled by default in `EaseIM.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable, set this parameter to `false`.
+The input status indication feature is enabled by default in `ChatUIKitClient.getConfig()?.chatConfig?.enableChatTyping`. That is, the default value of `enableChatTyping` is `true`. To disable, set this parameter to `false`.
 
-This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `EaseChatFragment.Builder`, which has a higher priority.
+This feature can also be set via the `builder.turnOnTypingMonitor(true|false)` API provided in `UIKitChatFragment.Builder`, which has a higher priority.
 
 The sample code is as follows:
 
 ```kotlin
-EaseIM.getConfig()?.chatConfig?.enableChatTyping = true
+ChatUIKitClient.getConfig()?.chatConfig?.enableChatTyping = true
 ```

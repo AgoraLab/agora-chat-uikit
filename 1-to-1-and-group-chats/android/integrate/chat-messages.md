@@ -1,6 +1,6 @@
 # Message chat
 
-UIKit provides `EaseChatActivity` and `EaseChatFragment` to facilitate quick integration and customization of chat pages. This page illustrates the following features:
+UIKit provides `UIKitChatActivity` and `UIKitChatFragment` to facilitate quick integration and customization of chat pages. This page illustrates the following features:
 
 - Send and receive messages, including text, emojis, images, voice, video, files, and business card messages.
 - Copy, quote, recall, delete, edit, resend, and review messages.
@@ -11,12 +11,12 @@ For details about message-related features, see [Product features](./overview/pr
 
 ## Usage examples
 
-The `EaseChatActivity` page requests permissions, such as camera permissions, voice permissions, and others.
+The `UIKitChatActivity` page requests permissions, such as camera permissions, voice permissions, and others.
 
 ```kotlin
 // conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
-// chatType: For one-to-one chat and group chat, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-EaseChatActivity.actionStart(mContext, conversationId, chatType)
+// chatType: For one-to-one chat and group chat, it is ChatUIKitType#SINGLE_CHAT and ChatUIKitType#GROUP_CHAT, respectively.
+UIKitChatActivity.actionStart(mContext, conversationId, chatType)
 ```
 ```kotlin
 class ChatActivity: AppCompactActivity() {
@@ -24,8 +24,8 @@ class ChatActivity: AppCompactActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         // conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
-        // chatType: For one-to-one chat and group chat, it is EaseChatType#SINGLE_CHAT and EaseChatType#GROUP_CHAT, respectively.
-        EaseChatFragment.Builder(conversationId, chatType)
+        // chatType: For one-to-one chat and group chat, it is ChatUIKitType#SINGLE_CHAT and ChatUIKitType#GROUP_CHAT, respectively.
+        UIKitChatFragment.Builder(conversationId, chatType)
             .build()?.let { fragment ->
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fl_fragment, fragment).commit()
@@ -38,14 +38,14 @@ class ChatActivity: AppCompactActivity() {
 
 You can configure the chat page title bar, message list items, input menu, and other elements.
 
-### Customize settings through EaseChatFragment.Builder
+### Customize settings through UIKitChatFragment.Builder
 
-The `EaseChatFragment.Builder` method facilitates customization of settings. The currently provided settings are as follows:
+The `UIKitChatFragment.Builder` method facilitates customization of settings. The currently provided settings are as follows:
 
 ```kotlin
 // conversationID: Peer user ID for a one-to-one conversation and group ID for a group chat
-// easeChatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and group chat, respectively
-EaseChatFragment.Builder(conversationID, easeChatType) 
+// chatType: SINGLE_CHAT and GROUP_CHAT for one-to-one and group chat, respectively
+UIKitChatFragment.Builder(conversationID, chatType) 
         .useTitleBar(true)
         .setTitleBarTitle("title")
         .setTitleBarSubTitle("subtitle")
@@ -77,11 +77,11 @@ EaseChatFragment.Builder(conversationID, easeChatType)
         .build()
 ```
 
-`EaseChatFragment#Builder` provides the following methods:
+`UIKitChatFragment#Builder` provides the following methods:
 
 | Method | Description |
 |:---:|:---:|
-| `useTitleBar()` | Set whether to use the default title bar (`EaseTitleBar`). Set to `true` for yes, `false` (default) for no. |
+| `useTitleBar()` | Set whether to use the default title bar (`ChatUIKitTitleBar`). Set to `true` for yes, `false` (default) for no. |
 | `setTitleBarTitle()` | Set the title of the title bar. |
 | `setTitleBarSubTitle()` | Set the subtitle of the title bar. |
 | `enableTitleBarPressBack()` | Set whether to display the back button. Set to `true` for yes, `false` (default) for no. |
@@ -107,17 +107,17 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 | `setChatInputMenuHint()` | Set the prompt text of the menu input area. |
 | `sendMessageByOriginalImage()` | Set whether to send the original image when sending image messages. Set to `true` for yes, `false` (default) for no. |
 | `setEmptyLayout()` | Set a blank page for the chat list. |
-| `setCustomAdapter()` | Set a custom adapter. The default is `EaseMessageAdapter`. |
-| `setCustomFragment()` | Set a custom chat fragment. Inherit from `EaseChatFragment`. |
+| `setCustomAdapter()` | Set a custom adapter. The default is `ChatUIKitMessagesAdapter`. |
+| `setCustomFragment()` | Set a custom chat fragment. Inherit from `UIKitChatFragment`. |
 
 ### Add a custom message layout
 
-You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set it with `EaseChatFragment#Builder#setCustomAdapter`.
+You can inherit from `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `ChatUIKitRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set it with `UIKitChatFragment#Builder#setCustomAdapter`.
 
-1. To create a custom `CustomMessageAdapter`, inherit from `EaseMessageAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
+1. To create a custom `CustomMessageAdapter`, inherit from `ChatUIKitMessagesAdapter` and override the `getViewHolder` and `getItemNotEmptyViewType` methods:
 
     ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
+    class CustomMessageAdapter: ChatUIKitMessagesAdapter() {
     
         override fun getItemNotEmptyViewType(position: Int): Int {
             // Set your own itemViewType according to the message type
@@ -133,7 +133,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     }
     ```
    
-1. Inherit from `EaseChatRow` to create `CustomTypeChatRow`:
+1. Inherit from `ChatUIKitRow` to create `CustomTypeChatRow`:
 
     ```kotlin
     class CustomTypeChatRow(
@@ -141,7 +141,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
         private val attrs: AttributeSet? = null,
         private val defStyle: Int = 0,
         isSender: Boolean = false
-    ): EaseChatRow(context, attrs, defStyle, isSender) {
+    ): ChatUIKitRow(context, attrs, defStyle, isSender) {
     
         override fun onInflateView() {
             inflater.inflate(if (!isSender) R.layout.layout_row_received_custom_type
@@ -157,12 +157,12 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     }
     ```
 
-1. Inherit from `EaseChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
+1. Inherit from `ChatUIKitRowViewHolder` to create `CustomChatTypeViewViewHolder`:
 
     ```kotlin
     class CustomChatTypeViewViewHolder(
         itemView: View
-    ): EaseChatRowViewHolder(itemView) {
+    ): ChatUIKitRowViewHolder(itemView) {
     
         override fun onBubbleClick(message: EaseMessage?) {
             super.onBubbleClick(message)
@@ -174,7 +174,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
 1. Complete `CustomMessageAdapter`:
 
     ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
+    class CustomMessageAdapter: ChatUIKitMessagesAdapter() {
   
       override fun getItemNotEmptyViewType(position: Int): Int {
           // Set your own itemViewType according to the message type.
@@ -212,7 +212,7 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
     }
     ```
     
-1. Add `CustomMessageAdapter` to `EaseChatFragment#Builder`:
+1. Add `CustomMessageAdapter` to `UIKitChatFragment#Builder`:
 
     ```kotlin
     builder.setCustomAdapter(CustomMessageAdapter())
@@ -221,15 +221,15 @@ You can inherit from `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseCha
 ## List control-related function settings
 
 ```kotlin
-val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
+val chatMessageListLayout:ChatUIKitMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
 ```
 
-`EaseChatMessageListLayout` provides the following methods:
+`ChatUIKitMessageListLayout` provides the following methods:
 
 | Method | Description |
 |:---:|:---:|
-| `setViewModel()` | UIKit provides a default implementation of `EaseMessageListViewModel`, which you can inherit and add your own logic. |
-| `setMessagesAdapter()` | Set the adapter for the message list. Must be a subclass of `EaseMessagesAdapter`. |
+| `setViewModel()` | UIKit provides a default implementation of `ChatUIKitMessageListViewModel`, which you can inherit and add your own logic. |
+| `setMessagesAdapter()` | Set the adapter for the message list. Must be a subclass of `ChatUIKitMessagesAdapter`. |
 | `getMessagesAdapter()` | An adapter that returns a list of messages. |
 | `addHeaderAdapter()` | Add an adapter for the header layout of the message list. |
 | `addFooterAdapter()` | Add an adapter for the footer layout of the message list. |
@@ -238,17 +238,17 @@ val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chat
 | `removeItemDecoration()` | Remove the message list decorator. |
 | `setAvatarDefaultSrc()` | Set the default avatar for an entry. |
 | `setAvatarShapeType()` | Set the style of the avatar: Default, round, and rectangular. |
-| `showNickname()` | Whether to display the nickname of the entry. `EaseChatFragment#Builder` also provides a setting method for this feature. |
-| `setItemSenderBackground()` | Set the background of the sender. `EaseChatFragment#Builder` also provides a setting method for this feature. |
-| `setItemReceiverBackground()` | Set the background of the receiver. `EaseChatFragment#Builder` also provides a setting method for this feature. |
+| `showNickname()` | Whether to display the nickname of the entry. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
+| `setItemSenderBackground()` | Set the background of the sender. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
+| `setItemReceiverBackground()` | Set the background of the receiver. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
 | `setItemTextSize()` | Set the font size for text messages. |
 | `setItemTextColor()` | Set the font color of text messages. |
-| `setTimeTextSize()` | Set the font size of the message time indication. `EaseChatFragment#Builder` also provides a setting method for this feature. |
-| `setTimeTextColor()` | Set the color of the message time indication. `EaseChatFragment#Builder` also provides a setting method for this feature. |
+| `setTimeTextSize()` | Set the font size of the message time indication. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
+| `setTimeTextColor()` | Set the color of the message time indication. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
 | `setTimeBackground()` | Set the background of the message time indication. |
-| `hideChatReceiveAvatar()` | Hide the recipient's avatar. Displayed by default. `EaseChatFragment#Builder` also provides a setting method for this feature. |
-| `hideChatSendAvatar()` | Hide the sender's avatar. It is displayed by default. `EaseChatFragment#Builder` also provides a setting method for this feature. |
-| `setOnChatErrorListener()` | Set the error callback when sending a message. `EaseChatFragment#Builder` also provides a setting method for this feature. |
+| `hideChatReceiveAvatar()` | Hide the recipient's avatar. Displayed by default. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
+| `hideChatSendAvatar()` | Hide the sender's avatar. It is displayed by default. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
+| `setOnChatErrorListener()` | Set the error callback when sending a message. `UIKitChatFragment#Builder` also provides a setting method for this feature. |
 
 ## Extended function settings
 
@@ -270,7 +270,7 @@ After obtaining a `chatExtendMenu` object, you can add, remove, sort, and handle
 
 ## Listen for extension item click events
 
-You can use `EaseChatFragment#Builder#setOnChatExtendMenuItemClickListener` or override the `ChatExtendMenuItemClick` method in a custom fragment.
+You can use `UIKitChatFragment#Builder#setOnChatExtendMenuItemClickListener` or override the `ChatExtendMenuItemClick` method in a custom fragment.
 
 ```kotlin
 override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
@@ -301,25 +301,25 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
     }
     ```
     
-    `EaseChatLayout` provides the following long-press menu methods: 
+    `ChatUIKitLayout` provides the following long-press menu methods: 
     
     | Method | Description |
     |:---:|:---:|
     | `clearMenu()` | Clear a menu item. |
     | `addItemMenu()` | Add a new menu item. |
     | `findItemVisible()` | Set the visibility of a menu item by specifying `itemId`. |
-    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `EaseChatFragment`.|
+    | `setOnMenuChangeListener()` | Set the click event listener for the menu item. This listener is already set in `UIKitChatFragment`.|
 
 - Handle menu events.
 
     Override the following method in your custom fragment:
 
     ```kotlin
-        override fun onPreMenu(helper: EaseChatMenuHelper?, message: ChatMessage?) {
+        override fun onPreMenu(helper: ChatUIKitChatMenuHelper?, message: ChatMessage?) {
           // Callback event before menu is displayed. You can use the helper object to set whether the menu item is displayed.
         }
       
-        override fun onMenuItemClick(item: EaseMenuItem?, message: ChatMessage?): Boolean {
+        override fun onMenuItemClick(item: ChatUIKitMenuItem?, message: ChatMessage?): Boolean {
           // If you want to intercept a click event, you need to set it to return `true`.
         return false
         }
@@ -331,10 +331,10 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   
 ## Set properties related to the input menu 
 
-- Get an `EaseChatInputMenu` object: 
+- Get an `ChatUIKitInputMenu` object: 
 
   ```kotlin
-   val chatInputMenu: EaseChatInputMenu? = binding?.layoutChat?.chatInputMenu
+   val chatInputMenu: ChatUIKitInputMenu? = binding?.layoutChat?.chatInputMenu
    
        chatInputMenu?.let{
            it.setCustomPrimaryMenu() //Set custom menu items, supporting view and fragment
@@ -352,11 +352,11 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
        }
    
        //For example, set a custom extension function
-       val menuDialog = EaseChatExtendMenuDialog(mContext)
+       val menuDialog = ChatUIKitExtendMenuDialog(mContext)
        binding?.layoutChat?.chatInputMenu?.setCustomExtendMenu(menuDialog)
   ```
   
-  `EaseChatInputMenu` provides the following methods: 
+  `ChatUIKitInputMenu` provides the following methods: 
 
     | method | describe |
     |:---:|:---:|
@@ -412,19 +412,19 @@ override fun onChatExtendMenuItemClick(view: View?, itemId: Int): Boolean {
   
 ## Customize the chat page style
 
-You can configure the title bar, message list items, and other elements. The following settings are all based on the premise of using or inheriting `EaseChatFragment`.
+You can configure the title bar, message list items, and other elements. The following settings are all based on the premise of using or inheriting `UIKitChatFragment`.
 
 ### Set the title bar
 
-The title bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `EaseTitleBar`. If the title bar does not meet your requirements, customize it. For details about the title, background color, button image, and avatar, see [Conversation list](conversation-list.md).
+The title bars of the contact list page, chat page, conversation list page, group details page, and contact details page use `ChatUIKitTitleBar`. If the title bar does not meet your requirements, customize it. For details about the title, background color, button image, and avatar, see [Conversation list](conversation-list.md).
 
 ### Set message list items
 
 #### Set the message list control functions
 
 ```kotlin
-//Get the EaseChatMessageListLayout object:
-val chatMessageListLayout:EaseChatMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
+//Get the ChatUIKitMessageListLayout object:
+val chatMessageListLayout:ChatUIKitMessageListLayout? = binding?.layoutChat?.chatMessageListLayout
 chatMessageListLayout?.let{
     it.setTimeBackground() //Set the background of the message time indication.
     it.setItemTextSize() //Set the font size of the text message.
@@ -433,8 +433,8 @@ chatMessageListLayout?.let{
     it.setAvatarShapeType() //Set the style of the avatar: default, round, and rectangular.
 }
 
-// EaseChatFragment#Builder also provides some message list-related configuration items
-EaseChatFragment.Builder(conversationID, easeChatType)
+// UIKitChatFragment#Builder also provides some message list-related configuration items
+UIKitChatFragment.Builder(conversationID, chatType)
     .showNickname() //Whether to display the nickname: true: yes; (default) false: no.
     .setMsgTimeTextColor() //Set the color of the message time indication.
     .setMsgTimeTextSize() //Set the font size of the message time indication.
@@ -451,12 +451,12 @@ EaseChatFragment.Builder(conversationID, easeChatType)
 
 You can customize the message layout of various message types.
 
-Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set it with `EaseChatFragment#Builder#setCustomAdapter`.
+Inherit `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `ChatUIKitRow` to implement your own `CustomMessageAdapter`, `CustomChatTypeViewViewHolder`, and `CustomTypeChatRow`, and then set it with `UIKitChatFragment#Builder#setCustomAdapter`.
 
-1. Inherit from `EaseMessageAdapter` to create `CustomMessageAdapter`, then override the `getViewHolder` and `getItemNotEmptyViewType` methods:
+1. Inherit from `ChatUIKitMessagesAdapter` to create `CustomMessageAdapter`, then override the `getViewHolder` and `getItemNotEmptyViewType` methods:
 
     ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
+    class CustomMessageAdapter: ChatUIKitMessagesAdapter() {
     
         override fun getItemNotEmptyViewType(position: Int): Int {
             // According to the message type, set your own itemViewType.
@@ -472,7 +472,7 @@ Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to impl
     }
     ```
 
-1. Inherit from `EaseChatRow` to create `CustomTypeChatRow`:
+1. Inherit from `ChatUIKitRow` to create `CustomTypeChatRow`:
 
     ```kotlin
     class CustomTypeChatRow(
@@ -480,7 +480,7 @@ Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to impl
         private val attrs: AttributeSet? = null,
         private val defStyle: Int = 0,
         isSender: Boolean = false
-    ): EaseChatRow(context, attrs, defStyle, isSender) {
+    ): ChatUIKitRow(context, attrs, defStyle, isSender) {
     
         override fun onInflateView() {
             inflater.inflate(if (!isSender) R.layout.layout_row_received_custom_type
@@ -496,12 +496,12 @@ Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to impl
     }
     ```
 
-1. Inherit from `EaseChatRowViewHolder` to create `CustomChatTypeViewViewHolder`:
+1. Inherit from `ChatUIKitRowViewHolder` to create `CustomChatTypeViewViewHolder`:
 
     ```kotlin
     class CustomChatTypeViewViewHolder(
         itemView: View
-    ): EaseChatRowViewHolder(itemView) {
+    ): ChatUIKitRowViewHolder(itemView) {
     
         override fun onBubbleClick(message: EaseMessage?) {
             super.onBubbleClick(message)
@@ -513,7 +513,7 @@ Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to impl
 1. Configure `CustomMessageAdapter`:
 
     ```kotlin
-    class CustomMessageAdapter: EaseMessagesAdapter() {
+    class CustomMessageAdapter: ChatUIKitMessagesAdapter() {
     
         override fun getItemNotEmptyViewType(position: Int): Int {
             // Set your own itemViewType according to the message type.
@@ -551,7 +551,7 @@ Inherit `EaseMessageAdapter`, `EaseChatRowViewHolder`, and `EaseChatRow` to impl
     }
     ```
 
-1. Add `CustomMessageAdapter` to `EaseChatFragment#Builder`:
+1. Add `CustomMessageAdapter` to `UIKitChatFragment#Builder`:
 
     ```kotlin
     builder.setCustomAdapter(CustomMessageAdapter())
@@ -563,7 +563,7 @@ For details on setting avatars and nicknames, see [User-defined information](use
 
 #### Set list-related events
 
-`EaseChatFragment#Builder` sets the click event listener for message items, including click and long-press events of the bubble area and avatar.
+`UIKitChatFragment#Builder` sets the click event listener for message items, including click and long-press events of the bubble area and avatar.
 
 ```kotlin
     builder.setOnMessageItemClickListener(object : OnMessageItemClickListener{
@@ -582,7 +582,7 @@ For details on setting avatars and nicknames, see [User-defined information](use
 
 #### Set the message date
 
-`EaseDateFormatConfig` provides the following configuration items:
+`ChatUIKitDateFormatConfig` provides the following configuration items:
 
 | Property | Description |
 | -------------------------------------- | ---------------------------------------------------------------- |
@@ -592,23 +592,23 @@ For details on setting avatars and nicknames, see [User-defined information](use
 
 ```kotlin
     // Date/language region switch (follow the mobile phone regional language setting). The default value is false and uses ENGLISH.
-    EaseIM.getConfig()?.dateFormatConfig?.useDefaultLocale = true  
+    ChatUIKitClient.getConfig()?.dateFormatConfig?.useDefaultLocale = true  
     // Today's date format in the message
-    EaseIM.getConfig()?.dateFormatConfig?.chatTodayFormat = "HH:mm"
+    ChatUIKitClient.getConfig()?.dateFormatConfig?.chatTodayFormat = "HH:mm"
     // Date format for other dates in the message
-    EaseIM.getConfig()?.dateFormatConfig?.chatOtherDayFormat = "MMM dd, yyyy"
+    ChatUIKitClient.getConfig()?.dateFormatConfig?.chatOtherDayFormat = "MMM dd, yyyy"
     // Date format for other years in the message
-    EaseIM.getConfig()?.dateFormatConfig?.chatOtherYearFormat = "MMM dd, yyyy HH:mm"
+    ChatUIKitClient.getConfig()?.dateFormatConfig?.chatOtherYearFormat = "MMM dd, yyyy HH:mm"
 ```
 
 #### Set the message recall time
 
-You can set the effective time for recalling messages on the chat page through `EaseIM.getConfig()?.chatConfig?.timePeriodCanRecallMessage`. The default is 120 seconds.
+You can set the effective time for recalling messages on the chat page through `ChatUIKitClient.getConfig()?.chatConfig?.timePeriodCanRecallMessage`. The default is 120 seconds.
 
 #### Set message translation
 
-- `EaseIM.getConfig()?.chatConfig?.enableTranslationMessage`: Whether to enable the long-press translation feature for text messages. The default value is `false`.
-- `EaseIM.getConfig()?.chatConfig?.targetTranslationLanguage = "en"`: The target language for translation. After long-pressing a text message, the **Translation** menu appears. A user clicks **Translate** to set the target language for translation. Before using, set `EaseIM.getConfig()?.chatConfig?.enableTranslationMessage` to `true`.
+- `ChatUIKitClient.getConfig()?.chatConfig?.enableTranslationMessage`: Whether to enable the long-press translation feature for text messages. The default value is `false`.
+- `ChatUIKitClient.getConfig()?.chatConfig?.targetTranslationLanguage = "en"`: The target language for translation. After long-pressing a text message, the **Translation** menu appears. A user clicks **Translate** to set the target language for translation. Before using, set `ChatUIKitClient.getConfig()?.chatConfig?.enableTranslationMessage` to `true`.
 - `<style name="ease_chat_message_received_translation_content_style">`: The message recipient can modify any attribute of the translated text style.
 - `<style name="ease_chat_message_sent_translation_content_style">`: The message sender can modify any attribute of the translated text style.
 
