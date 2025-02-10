@@ -213,7 +213,7 @@ The UI layout of message translation is in `MessageText`.
 
 1. Set the target language.
 
-  The `ContainerProps` object of UIKit provides a `translateLanguage` setting to enable the message translation feature. If the target language for the translation is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+  The `ContainerProps` object of UIKit provides a `translateLanguage` setting to enable the message translation feature. If the target language for the translation is not set, English is used by default. For more translation target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
  
 ### Reply with emoji
 

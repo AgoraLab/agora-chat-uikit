@@ -299,7 +299,7 @@ ChatUIKitSettings.enableMessageThread = true;
 
     If the target language is not set, English is used by default. 
 
-    For more target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+    For more target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
 
 ### Set whether to enable an emoji reply
 
