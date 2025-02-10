@@ -125,7 +125,7 @@ You can inherit from `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `
     return CUSTOM_YOUR_MESSAGE_TYPE
         }
     
-        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
             // Return the corresponding ViewHolder according to the returned viewType
             // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType)
     return CUSTOM_VIEW_HOLDER()
@@ -164,7 +164,7 @@ You can inherit from `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `
         itemView: View
     ): ChatUIKitRowViewHolder(itemView) {
     
-        override fun onBubbleClick(message: EaseMessage?) {
+        override fun onBubbleClick(message: ChatMessage?) {
             super.onBubbleClick(message)
             // Adding a click event
         }
@@ -193,7 +193,7 @@ You can inherit from `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `
           return super.getItemNotEmptyViewType(position)
       }
   
-      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+      override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
           // Return ViewHolder according to the returned viewType.
           if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
               CustomChatTypeViewViewHolder(
@@ -464,7 +464,7 @@ Inherit `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `ChatUIKitRow`
             return CUSTOM_YOUR_MESSAGE_TYPE
         }
     
-        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
             // Return the corresponding ViewHolder according to the returned viewType.
             // Return a custom ViewHolder or use the default super.getViewHolder(parent, viewType).
             return CUSTOM_VIEW_HOLDER()
@@ -503,7 +503,7 @@ Inherit `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `ChatUIKitRow`
         itemView: View
     ): ChatUIKitRowViewHolder(itemView) {
     
-        override fun onBubbleClick(message: EaseMessage?) {
+        override fun onBubbleClick(message: ChatMessage?) {
             super.onBubbleClick(message)
             // Add click event
         }
@@ -532,7 +532,7 @@ Inherit `ChatUIKitMessagesAdapter`, `ChatUIKitRowViewHolder`, and `ChatUIKitRow`
             return super.getItemNotEmptyViewType(position)
         }
     
-        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<EaseMessage> {
+        override fun getViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<ChatMessage> {
             // Return the corresponding ViewHolder according to the returned viewType.
             if (viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_ME || viewType == VIEW_TYPE_MESSAGE_CUSTOM_VIEW_OTHER) {
                 CustomChatTypeViewViewHolder(
