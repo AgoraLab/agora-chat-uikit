@@ -140,5 +140,3 @@ class _ChatroomViewState extends State<ChatroomView>
   }
 }
 ```
-
-To learn more about the best practices above, click [here](https://github.com/easemob/ChatroomDemo/tree/dev/flutter/chatroom_uikit_demo). 

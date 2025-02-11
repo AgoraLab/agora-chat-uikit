@@ -2,13 +2,7 @@
 
 UIKit provides various components to quickly build chat room applications for your particular business needs. Through this UIKit, users in the chat room can interact in real time and send messages, gifts, and global broadcasts.
 
-The source code is available [here](https://github.com/easemob/UIKit_Chatroom_flutter).
-
-Try out UIKit demo:
-
-- [Android](http://www.pgyer.com/YZUCrW)
-- [iOS](https://testflight.apple.com/join/NzmtvJ6n)
-
+The source code is available [here](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-Chatroom-flutter).
 
 ## Feature overview
 
