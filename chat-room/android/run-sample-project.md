@@ -17,7 +17,7 @@ Before you start, make sure your development environment meets the following req
 
 Take the following steps to compile and run the sample project:
 
-1. Download [the sample code](https://github.com/easemob/UIKit_Chatroom_android).
+1. Download [the sample code](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-Chatroom-android).
 
 1. Add UIKit module dependency:
 
