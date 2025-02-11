@@ -35,8 +35,6 @@ Currently, the following controls in existing components support customization:
    The way to customize the gift container is similar to other controls. You need to inherit `GiftsViewController` and create a new class, then pass in an object of the new class when calling `DialogManager.shared.showGiftsDialog(titles: ["Gifts","1231232"], gifts: [self.gift1,self.gift2])`.
    
    Make sure that the gift service on your server is processed before calling the gift message sending API provided by UIKit.
-
-   ![Gifts](../assets/images/GiftsViewController.png)
   
 ## Customization examples
 
