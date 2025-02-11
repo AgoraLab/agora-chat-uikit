@@ -52,7 +52,7 @@ The core common methods are as follows:
 | `userId` | get | Get the ID of the logged-in user. |  
 | `updateDataList` | Function | Actively update the avatar and nickname with the specified data. Triggers the refresh of the loaded UI components. |  
 
-For more methods, see the [corresponding definitions](https://github.com/easemob/react-native-chat-library).
+For more methods, see the [corresponding definitions](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-rn).
 
 ### Listeners
 

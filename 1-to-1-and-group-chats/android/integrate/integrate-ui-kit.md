@@ -2,56 +2,96 @@
 
 Before using UIKit, you need to integrate it into your app. This page explains the necessary steps. 
 
-## Prerequisites
+## Development Environment
 
-Before you start, make sure your development environment meets the following conditions:
+- Android Studio Flamingo | 2022.2.1 or later
+- Gradle 8.0 or later
+- TargetVersion 26 or later
+- Android SDK API 21 or later
+- JDK 17 or later
 
-- Android Studio 4.0 and above;
-- Gradle 4.10.x and above;
-- targetVersion 26 and above;
-- Android SDK API 21 and above;
-- JDK 11 and above;
-- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+## Installation
 
-## Integrate UIKIt
+The UIKit can be integrated with Gradle and module source code.
 
-Take the following steps to integrate UIKit:
+### Integrate with Gradle
 
-1. Add remote dependencies.
+#### Gradle before 7.0
 
-   Add the following dependencies in `build.gradle.kts` of the app project: 
+Add the Maven remote repository in `build.gradle` or `build.gradle.kts` in the root directory of the project.
 
-   ```kotlin
-   implementation("io.hyphenate:ease-chat-kit:4.7.0")
-   ```
+```kotlin
+buildscript {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+allprojects {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+```
 
-2. Add local dependencies.
+#### Gradle later than 7.0
 
-   1. Download UIKit from the [GitHub repository](https://github.com/easemob/chatuikit-android).
+Add the Maven remote repository in `settings.gradle` or `settings.gradle.kts` in the root directory of the project.
 
-   2. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
+```kotlin
+pluginManagement {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+```
 
-      ```kotlin
-      include(":ease-im-kit")
-      project(":ease-im-kit").projectDir = File("../chatuikit-android/ease-im-kit")
-      ```
+### Module remote dependency
+
+Add the following dependency to `build.gradle.kts` of the app project,where `x.y.z` indicates the [latest version](https://central.sonatype.com/artifact/io.agora.rtc/chat-uikit/versions):
+
+```kotlin
+
+implementation("io.agora.rtc:chat-uikit:x.y.z")
+
+```
+
+### Integrate with the Module source code
+
+Acquire the Chat UIKit source code from the [GitHub repository](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-android/tree/dev-kotlin) and integrate it in the following way:
+
+1. Add the following code in the `settings.gradle.kts` file Project/settings.gradle.kts(Project Settings) in the root directory.
+
+```kotlin
+include(":chat-uikit")
+project(":chat-uikit").projectDir = File("../AgoraChat-UIKit-android/ease-im-kit")
+```
+
+2. Add the following code in `build.gradle.kts` app/build.gradle(Module: app).
+
+```kotlin
+//chat-uikit
+implementation(project(mapOf("path" to ":chat-uikit")))
+```
+
+### Prevent code obfuscation
+
+Add the following lines to `app/proguard-rules.pro` to prevent code obfuscation.
+
+```kotlin
+-keep class io.agora.** {*;}
+-dontwarn  io.agora.**
+```
    
-   3. Add the following code to the `/Gradle Scripts/build.gradle.kts` file:
-
-      ```kotlin
-      //chatuikit-android
-      implementation(project(mapOf("path" to ":ease-im-kit")))
-      ```
-
-3. Prevent code obfuscation.
-
-   Add the following line to `app/proguard-rules.pro`:
-
-   ```kotlin
-   -keep class com.hyphenate.** {*;}
-   -dontwarn  com.hyphenate.**
-   ```
-
 ## Build a page
 
 Take the following steps to build a page.
@@ -60,17 +100,17 @@ Take the following steps to build a page.
 
 Use either of the following: 
 
-- The `EaseChatActivity#actionStart` method of the `EaseChatActivity` page. The sample code is as follows:
+- The `UIKitChatActivity#actionStart` method of the `UIKitChatActivity` page. The sample code is as follows:
 
    ```kotlin
    // conversationId: Peer user ID for a one-to-one conversation and group ID for a group chat
-   // chatType: EaseChatType#SINGLE_CHAT for one-to-one chat and EaseChatType#GROUP_CHAT for group chat
-   EaseChatActivity.actionStart(mContext, conversationId, chatType)
+   // chatType: ChatUIKitType#SINGLE_CHAT for one-to-one chat and ChatUIKitType#GROUP_CHAT for group chat
+   UIKitChatActivity.actionStart(mContext, conversationId, chatType)
    ```
 
-   The `EaseChatActivity` page requests permissions, such as camera permissions, voice permissions, and other.
+   The `UIKitChatActivity` page requests permissions, such as camera permissions, voice permissions, and other.
 
-- The `EaseChatFragment`. The sample code is as follows:
+- The `UIKitChatFragment`. The sample code is as follows:
 
    ```kotlin
    class ChatActivity: AppCompactActivity() {
@@ -78,8 +118,8 @@ Use either of the following:
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         // conversationID: Peer user ID for a one-to-one chat and group ID for a group chat
-        // chatType: EaseChatType#SINGLE_CHAT or EaseChatType#GROUP_CHAT
-        EaseChatFragment.Builder(conversationId, chatType)
+        // chatType: ChatUIKitType#SINGLE_CHAT or ChatUIKitType#GROUP_CHAT
+        UIKitChatFragment.Builder(conversationId, chatType)
                         .build()?.let { fragment ->
                             supportFragmentManager.beginTransaction()
                                 .replace(R.id.fl_fragment, fragment).commit()
@@ -90,7 +130,7 @@ Use either of the following:
 
 ### Create a conversation list page
 
-UIKit provides `EaseConversationListFragment` that can be added to Activity. The sample code is as follows:
+UIKit provides `ChatUIKitConversationListFragment` that can be added to Activity. The sample code is as follows:
 
 ```kotlin
 class ConversationListActivity: AppCompactActivity() {
@@ -98,7 +138,7 @@ class ConversationListActivity: AppCompactActivity() {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.activity_conversation_list)
 
-      EaseConversationListFragment.Builder()
+      ChatUIKitConversationListFragment.Builder()
               .build()?.let { fragment ->
                  supportFragmentManager.beginTransaction()
                          .replace(R.id.fl_fragment, fragment).commit()
@@ -109,7 +149,7 @@ class ConversationListActivity: AppCompactActivity() {
 
 ### Create a contact list page
 
-UIKit provides `EaseContactsListFragment` that can be used by adding it to Activity. The sample code is as follows:
+UIKit provides `ChatUIKitContactsListFragment` that can be used by adding it to Activity. The sample code is as follows:
 
 ```kotlin
 class ContactListActivity: AppCompactActivity() {
@@ -117,7 +157,7 @@ class ContactListActivity: AppCompactActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_list)
 
-        EaseContactsListFragment.Builder()
+        ChatUIKitContactsListFragment.Builder()
                         .build()?.let { fragment ->
                             supportFragmentManager.beginTransaction()
                                 .replace(R.id.fl_fragment, fragment).commit()

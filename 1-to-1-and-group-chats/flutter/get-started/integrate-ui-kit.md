@@ -6,8 +6,8 @@ Before using UIKit, you need to integrate it into your app. This page explains t
 
 Before you start, make sure your development environment meets the following conditions:
 
-- Flutter 3.3.0 or above;
-- iOS 11 or above or Android 21 or above;
+- Flutter 3.19.0 or above;
+- iOS 12 or above or Android 23 or above;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKIt
@@ -49,20 +49,6 @@ Take the following steps to integrate UIKit:
 
 4. Initialize UIKit.
 
-   All components used in the project need `ChatUIKitTheme` to be used internally. When using UIKit, configure  `ChatUIKitTheme` first:
-
-   ```dart
-     @override
-     Widget build(BuildContext context) {
-       return MaterialApp(
-         ...
-         builder: (context, child) {
-           return ChatUIKitTheme(child: child!);
-         },
-       );
-     }
-   ```
-   
    Initialize Chat SDK when the app starts:
 
    ```dart

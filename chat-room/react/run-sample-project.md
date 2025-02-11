@@ -19,32 +19,26 @@ Take the following steps to compile and run the sample project:
 
 1. Download the sample project.
 
-   The `example` folder contains the sample project. You can download, compile, and run it.
+   The `examples/room-example` folder contains the sample project. You can download, compile, and run it.
 
    - Download the source code repository:
 
      ```
-     git clone https://github.com/agora/rncr/react-native-chat-room
-     ```
-     
-   - Alternatively download the source zip file:
-
-     ```
-     curl -L -o file.zip  https://github.com/AsteriskZuo/react-native-chat-room/archive/refs/heads/main.zip
+     git clone https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-rn
      ```
    
 2. Initialize the project
 
-   1. Run `yarn & yarn env` in the project root directory. 
+   1. Run `yarn & yarn-prepack` in the project root directory. 
    
-   2. In the generated `example/src/env.ts` file, modify the necessary configuration items.
+   2. In the file `examples/room-example/src/env.ts`, set `appKey` parameters.
    
       - For iOS: Run `pod install`.
       - For Android: Run `gradle sync`.
       
 3. Run the project
 
-  Run the following command in the `react-native-chat-room/example` directory:
+  Run the following command in the `examples/room-example` directory:
 
   ```
   yarn run ios

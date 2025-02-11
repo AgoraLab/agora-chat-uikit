@@ -2,89 +2,95 @@
 
 With UIKit, you can easily implement messaging in one-to-one and group chats. This page explains how do this.
 
-## Prerequisites
+## Development Environment
 
-Before you start, make sure your development environment meets the following conditions:
+- Android Studio Flamingo | 2022.2.1 or later
+- Gradle 8.0 or later
+- TargetVersion 26 or later
+- Android SDK API 21 or later
+- JDK 17 or later
 
-- Android Studio 4.0 and above;
-- Gradle 4.10.x and above;
-- targetVersion 26 and above;
-- Android SDK API 21 and above;
-- JDK 11 and above;
-- A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
+## Installation
 
-## Project setup
+The UIKit can be integrated with Gradle and module source code.
 
-Set up your environment in the following way:
+### Integrate with Gradle
 
-1. [Create a new project](https://developer.android.com/studio/projects/create-project) in Android Studio.
+#### Gradle before 7.0
 
-    - In the **Phone and Tablet** tab, select the **Empty Views Activity**.
-    - For **Minimum SDK**, select **API 21: Android 5.0 (Lollipop)**.
-    - Select **Kotlin** for **Language**.
+Add the Maven remote repository in `build.gradle` or `build.gradle.kts` in the root directory of the project.
 
-   Once the project is created successfully, make sure it is synchronized.
+```kotlin
+buildscript {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+allprojects {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+```
 
-1. Check whether the project has the **MavenCentral** repository.
+#### Gradle later than 7.0
 
-    - Before Gradle 7.0:
+Add the Maven remote repository in `settings.gradle` or `settings.gradle.kts` in the root directory of the project.
 
-      In the `/Gradle Scripts/build.gradle.kts(Project: <projectname>)` file, check if there is a **MavenCentral**
-      repository:
+```kotlin
+pluginManagement {
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        ...
+        mavenCentral()
+    }
+}
+```
 
-        ```kotlin
-        buildscript {
-           repositories {
-               mavenCentral()
-           }
-        }
-        ```
+### Module remote dependency
 
-    - Gradle 7.0 and later
+Add the following dependency to `build.gradle.kts` of the app project,where `x.y.z` indicates the [latest version](https://central.sonatype.com/artifact/io.agora.rtc/chat-uikit/versions):
 
-      In the `/Gradle Scripts/settings.gradle.kts(Project Settings)` file, check if there is a **MavenCentral**
-      repository:
+```kotlin
 
-        ```kotlin
-        dependencyResolutionManagement {
-           repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-           repositories {
-               mavenCentral()
-           }
-        }             
-        ```
+implementation("io.agora.rtc:chat-uikit:x.y.z")
 
-1. Introduce UIKit into the project.
+```
 
-    - Add the remote dependencies in the app project `build.gradle.kts`:
+### Integrate with the Module source code
 
-       ```kotlin
-       implementation("io.hyphenate:ease-chat-kit:4.7.0")
-       ```
+Acquire the Chat UIKit source code from the [GitHub repository](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-android/tree/dev-kotlin) and integrate it in the following way:
 
-    - Add local dependencies:
+1. Add the following code in the `settings.gradle.kts` file Project/settings.gradle.kts(Project Settings) in the root directory.
 
-        1. Get the [UIKit source code](https://github.com/easemob/chatuikit-android).
-        1. Add the following code to the `/Gradle Scripts/settings.gradle.kts` file:
+```kotlin
+include(":chat-uikit")
+project(":chat-uikit").projectDir = File("../AgoraChat-UIKit-android/ease-im-kit")
+```
 
-           ```kotlin
-           include(":chat-im-kit")
-           project(":chat-im-kit").projectDir = File("../chatuikit-android/chat-im-kit")
-           ```
-        1. Add the following code to the `/Gradle Scripts/build.gradle.kts` file:
+2. Add the following code in `build.gradle.kts` app/build.gradle(Module: app).
 
-           ```kotlin
-           //chatuikit-android
-           implementation(project(mapOf("path" to ":chat-im-kit")))
-           ```
-1. Prevent code obfuscation.
+```kotlin
+//chat-uikit
+implementation(project(mapOf("path" to ":chat-uikit")))
+```
 
-   Add the following code to the `/Gradle Scripts/proguard-rules.pro` file:
+### Prevent code obfuscation
 
-    ```kotlin
-    -keep class com.hyphenate.** {*;}
-        -dontwarn  com.hyphenate.**
-    ```
+Add the following lines to `app/proguard-rules.pro` to prevent code obfuscation.
+
+```kotlin
+-keep class io.agora.** {*;}
+-dontwarn  io.agora.**
+```
 
 ## Implementation
 
@@ -92,211 +98,208 @@ Take the following steps to send a message to a one-to-one or group chat.
 
 1. Create a quick start page. 
 
-    1. Open the `app/res/values/strings.xml` file and replace the content with the following:
+   1. Open the `app/res/values/strings.xml` file and replace the content with the following:
 
-       ```xml
-       <resources>
-          <string name="app_name">quickstart</string>
+      ```xml
+      <resources>
+         <string name="app_name">quickstart</string>
        
-          <string name="app_key">[Your app key]</string>
-       </resources>
-       ```
+         <string name="app_key">[Your app key]</string>
+      </resources>
+      ```
 
-       Replace `app_key` with your app key.
+      Replace `app_key` with your app key.
 
-    2. Open the `app/res/layout/activity_main.xml` file and replace the content with the following:
+   2. Open the `app/res/layout/activity_main.xml` file and replace the content with the following:
 
-       ```xml
-       <?xml version="1.0" encoding="utf-8"?>
-       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="vertical"
-          tools:context=".MainActivity">
-          
-              <EditText
-                  android:id="@+id/et_userId"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:hint="UserId"/>
-          
-              <EditText
-                  android:id="@+id/et_password"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:hint="Password"/>
-          
-              <Button
-                  android:id="@+id/btn_login"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:onClick="login"
-                  android:text="Login"/>
-          
-              <Button
-                  android:id="@+id/btn_logout"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:onClick="logout"
-                  android:text="Logout"/>
-          
-              <EditText
-                  android:id="@+id/et_peerId"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:hint="PeerId"/>
-          
-              <Button
-                  android:id="@+id/btn_chat"
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:layout_margin="20dp"
-                  android:onClick="startChat"
-                  android:text="Start Chat"/>
-          
-       </LinearLayout>
-       ```
+      ```xml
+      <?xml version="1.0" encoding="utf-8"?>
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      tools:context=".MainActivity">
+     
+          <EditText
+              android:id="@+id/et_userId"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:hint="UserId"/>
+     
+          <EditText
+              android:id="@+id/et_password"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:hint="Password"/>
+     
+          <Button
+              android:id="@+id/btn_login"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:onClick="login"
+              android:text="Login"/>
+     
+          <Button
+              android:id="@+id/btn_logout"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:onClick="logout"
+              android:text="Logout"/>
+     
+          <EditText
+              android:id="@+id/et_peerId"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:hint="PeerId"/>
+     
+          <Button
+              android:id="@+id/btn_chat"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_margin="20dp"
+              android:onClick="startChat"
+              android:text="Start Chat"/>
+     
+      </LinearLayout>
+     ```
 
 2. Implement the logic.
 
-      1. Implement the login and logout pages.
+   1. Implement the login and logout pages.
 
-         If you have integrated Chat SDK, all user IDs can be used to log into the UIKit. Open the `MainActivity` file and replace the code with the following:
+      If you have integrated Chat SDK, all user IDs can be used to log into the UIKit. Open the `MainActivity` file and replace the code with the following:
 
-          ```kotlin
-          package com.easemob.quickstart
-   
-          import android.content.Context
-          import androidx.appcompat.app.AppCompactActivity
-          import android.os.Bundle
-          import android.view.View
-          import android.widget.Toast
-          import com.easemob.quickstart.databinding.ActivityMainBinding
-          import com.hyphenate.chatui.EaseIM
-          import com.hyphenate.chatui.common.ChatConnectionListener
-          import com.hyphenate.chatui.common.ChatLog
-          import com.hyphenate.chatui.common.ChatOptions
-          import com.hyphenate.chatui.feature.messages.EaseChatType
-          import com.hyphenate.chatui.feature.messages.activities.EaseChatActivity
-          import kotlinx.coroutines.CoroutineScope
-          import kotlinx.coroutines.Dispatchers
-          import kotlinx.coroutines.launch
-   
-          class MainActivity : AppCompactActivity(), ChatConnectionListener {
-             private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+       ```kotlin
+       package io.agora.quickstart
+
+         import androidx.appcompat.app.AppCompatActivity
+         import android.os.Bundle
+         import android.view.View
+         import io.agora.quickstart.databinding.ActivityMainBinding
+         import io.agora.chat.uikit.ChatUIKitClient
+         import io.agora.chat.uikit.common.ChatLog
+         import io.agora.chat.uikit.common.ChatOptions
+         import io.agora.chat.uikit.common.extensions.showToast
+         import io.agora.chat.uikit.feature.chat.enums.ChatUIKitType
+         import io.agora.chat.uikit.feature.chat.activities.UIKitChatActivity
+         import io.agora.chat.uikit.interfaces.ChatUIKitConnectionListener
+            
+         class MainActivity : AppCompatActivity() {
+         private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+            
+             private val connectListener by lazy {
+                 object : ChatUIKitConnectionListener() {
+                     override fun onConnected() {}
+            
+                     override fun onDisconnected(errorCode: Int) {}
+            
+                     override fun onLogout(errorCode: Int, info: String?) {
+                         super.onLogout(errorCode, info)
+                         showToast("You have been logged out, please log in again!")
+                         ChatLog.e(TAG, "")
+                     }
+                 }
+             }
              override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                setContentView(binding.root)
-                initSDK()
-                initListener()
+                 super.onCreate(savedInstanceState)
+                 setContentView(binding.root)
+                 initSDK()
+                 initListener()
              }
-   
+            
              private fun initSDK() {
-                val appkey = getString(R.string.app_key)
-                if (appkey.isNullOrEmpty()) {
-                   showToast("You should set your AppKey first!")
-                   ChatLog.e(TAG, "You should set your AppKey first!")
-                   return
-                }
-                ChatOptions().apply {
-                   //Set your own app key
-                   this.appKey = appkey
-                   // Set to manual login
-                   this.autoLogin = false
-                   //Set whether the receiver is required to send a delivery receipt. The default is `false`, which is not required.
-                   this.requireDeliveryAck = true
-                }.let {
-                   EaseIM.init(applicationContext, it)
-                }
+                 val appkey = getString(R.string.app_key)
+                 if (appkey.isEmpty()) {
+                     applicationContext.showToast("You should set your AppKey first!")
+                     ChatLog.e(TAG, "You should set your AppKey first!")
+                     return
+                 }
+                 ChatOptions().apply {
+                     // Set your own appkey here
+                     this.appKey = appkey
+                     // Set not to log in automatically
+                     this.autoLogin = false
+                     // Set whether confirmation of delivery is required by the recipient. Default: false
+                     this.requireDeliveryAck = true
+                 }.let {
+                     ChatUIKitClient.init(applicationContext, it)
+                 }
              }
+            
              private fun initListener() {
-                EaseIM.subscribeConnectionDelegates(this)
+                 ChatUIKitClient.addConnectionListener(connectListener)
              }
-   
+            
              fun login(view: View) {
-                val username = binding.etUserId.text.toString().trim()
-                val password = binding.etPassword.text.toString().trim()
-                if (username.isEmpty() || password.isEmpty()) {
-                   showToast("Username or password cannot be empty!")
-                   ChatLog.e(TAG, "Username or password cannot be empty!")
-                   return
-                }
-                if (!EaseIM.isInited()) {
-                   showToast("Please init first!")
-                   ChatLog.e(TAG, "Please init first!")
-                   return
-                }
-                EaseIM.login(username, password
-                        , onSuccess = {
-                   showToast("Login successful!")
-                   ChatLog.e(TAG, "Login successful!")
-                }, onError = { code, message ->
-                   showToast("Login failed: $message")
-                   ChatLog.e(TAG, "Login failed: $message")
-                }
-                )
+                 val username = binding.etUserId.text.toString().trim()
+                 val password = binding.etPassword.text.toString().trim()
+                 if (username.isEmpty() || password.isEmpty()) {
+                     showToast("Username or password cannot be empty!")
+                     ChatLog.e(TAG, "Username or password cannot be empty!")
+                     return
+                 }
+                 if (!ChatUIKitClient.isInited()) {
+                     showToast("Please init first!")
+                     ChatLog.e(TAG, "Please init first!")
+                     return
+                 }
+                 ChatUIKitClient.login(username, password
+                     , onSuccess = {
+                         showToast("Login successfully!")
+                         ChatLog.e(TAG, "Login successfully!")
+                     }, onError = { code, message ->
+                         showToast("Login failed: $message")
+                         ChatLog.e(TAG, "Login failed: $message")
+                     }
+                 )
              }
+            
              fun logout(view: View) {
-                if (!EaseIM.isInited()) {
-                   showToast("Please init first!")
-                   ChatLog.e(TAG, "Please init first!")
-                   return
-                }
-                EaseIM.logout(false
-                        , onSuccess = {
-                   showToast("Logout successful!")
-                   ChatLog.e(TAG, "Logout successful!")
-                }
-                )
+                 if (!ChatUIKitClient.isInited()) {
+                     showToast("Please init first!")
+                     ChatLog.e(TAG, "Please init first!")
+                     return
+                 }
+                 ChatUIKitClient.logout(false
+                     , onSuccess = {
+                         showToast("Logout successfully!")
+                         ChatLog.e(TAG, "Logout successfully!")
+                     }
+                 )
              }
-          // Jump to the chat page
+            
              fun startChat(view: View) {
-                val username = binding.etPeerId.text.toString().trim()
-                if (username.isEmpty()) {
-                   showToast("Peer id cannot be empty!")
-                   ChatLog.e(TAG, "Peer id cannot be empty!")
-                   return
-                }
-                if (!EaseIM.isLoggedIn()) {
-                   showToast("Please log in first!")
-                   ChatLog.e(TAG, "Please log in first!")
-                   return
-                } // For group chat, `username` is replaced by group ID and `EaseChatType.SINGLE_CHAT` by `EaseChatType.GROUP_CHAT`.
-                EaseChatActivity.actionStart(this, username, EaseChatType.SINGLE_CHAT)
+                 val username = binding.etPeerId.text.toString().trim()
+                 if (username.isEmpty()) {
+                     showToast("Peer id cannot be empty!")
+                     ChatLog.e(TAG, "Peer id cannot be empty!")
+                     return
+                 }
+                 if (!ChatUIKitClient.isLoggedIn()) {
+                     showToast("Please login first!")
+                     ChatLog.e(TAG, "Please login first!")
+                     return
+                 }
+                 UIKitChatActivity.actionStart(this, username, ChatUIKitType.SINGLE_CHAT)
              }
-   
-             override fun onConnected() {}
-   
-             override fun onDisconnected(errorCode: Int) {}
-   
-             override fun onLogout(errorCode: Int, info: String?) {
-                super.onLogout(errorCode, info)
-                showToast("You have been logged out, please log in again!")
-                ChatLog.e(TAG, "")
-             }
-   
+            
              override fun onDestroy() {
-                super.onDestroy()
-                EaseIM.unsubscribeConnectionDelegates(this)
+                 ChatUIKitClient.removeConnectionListener(connectListener)
+                 ChatUIKitClient.releaseGlobalListener()
+                 super.onDestroy()
              }
-   
+            
              companion object {
-                private const val TAG = "MainActivity"
+                 private const val TAG = "MainActivity"
              }
-          }
-   
-          fun Context.showToast(msg: String) {
-             CoroutineScope(Dispatchers.Main).launch {
-                Toast.makeText(this@showToast, msg, Toast.LENGTH_SHORT).show()
-             }
-          }
-          ```
+         }
+       ```
 
       2. Click **Sync Project with Gradle Files**. You can now test your application.
 

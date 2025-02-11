@@ -10,7 +10,7 @@ Before you start, make sure your development environment meets the following con
 
 ## Implementation
 
-1. [Download the project](https://github.com/easemob/chatuikit-flutter) and go to the local `Example` directory.
+1. [Download the project](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-flutter) and go to the local `Example` directory.
 
 2. Execute the following commands to update the dependency libraries and run the project:
 

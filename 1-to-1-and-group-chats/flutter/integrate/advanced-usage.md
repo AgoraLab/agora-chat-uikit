@@ -61,7 +61,7 @@ First use `ChatUIKitRoute.generateRoute` to intercept. If it returns `null`, con
 
 ### Route interception
 
-If you need to intercept the conversation list page to jump to the message page and modify the bubble style, use `settings.name == ChatUIKitRouteNames.messagesView` and reset the intercepted `MessagesViewArgumentsattributes`.
+If you need to intercept the conversation list page to jump to the message page and modify the bubble style, use `settings.name == ChatUIKitRouteNames.messagesView` and reset the intercepted `MessagesViewArguments`.
 
 ```dart
 @override
@@ -299,7 +299,7 @@ ChatUIKitSettings.enableMessageThread = true;
 
     If the target language is not set, English is used by default. 
 
-    For more target languages, refer to [Translation Language Support](https://learn.microsoft.com/zh-cn/azure/ai-services/translator/language-support).
+    For more target languages, refer to [Translation Language Support](https://learn.microsoft.com/en-us/azure/ai-services/translator/language-support).
 
 ### Set whether to enable an emoji reply
 

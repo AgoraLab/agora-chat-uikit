@@ -9,7 +9,7 @@ The following features are available:
 - Pull roaming messages from the server.
 - Clear local messages.
 
-For details about message-related features, see [Product features](./overview/product-features.md).
+For details about message-related features, see [Product features](./flutter/overview/product-features.md).
 
 ## Add a message page
 
@@ -36,7 +36,7 @@ If you need to customize the message page, you can modify the following properti
 |:---:|:---:|
 | `final ChatUIKitProfile profile` | The user information packaging class. Refer to [User information](user-information.md) for details. |
 | `final MessageListViewController? controller`| The message list controller. |
-| `final ChatUIKitAppBar? appBar` | The custom message page. If `appBar` is not set, the default one will be used. |
+| `final ChatUIKitAppBarModel? appBarModel` | The custom message page. If `appBarModel` is not set, the default one will be used. |
 | `final bool enableAppBar` | Whether to enable `appBar`. It is enabled by default. Will no longer be displayed after disabling, and the `appBar` input will no longer take effect. |
 | `final String? title` | The default `appBar` title information. If you use a custom `appBar` or disable it, this parameter will not take effect. |
 | `final Widget? inputBar` | The custom input component. If not set, the default `ChatUIKitInputBar` will be used. |
@@ -56,7 +56,7 @@ If you need to customize the message page, you can modify the following properti
 | `final List<ChatUIKitBottomSheetItem>? morePressActions` | More menu button items. If not set, the default menu will be used. This parameter will not take effect after `inputBar` customization. |
 | `final MessagesViewMorePressHandler? onMoreActionsItemsHandler` | The callback when clicking the default `inputBar`. You can return a new menu list. If you return `null` or do not implement it, the content set in `morePressActions` will be used. If not set, the default `morePressActions` will be used. |
 | `final List<ChatUIKitBottomSheetItem>? longPressActions` | The message long-press menu. If not set, the default menu will be used. |
-| `final MessagesViewItemLongPressHandler? onItemLongPressHandler` | The callback for long-pressing the menu item, which can return a new menu list. If it returns `null` or is not implemented, the content set in `longPressActions` will be used. If not set, the default `longPressActions` will be used. |
+| `final MessagesViewItemLongPressPositionHandler? onItemLongPressHandler` | The callback for long-pressing the menu item, which can return a new menu list. If it returns `null` or is not implemented, the content set in `longPressActions` will be used. If not set, the default `longPressActions` will be used. |
 | `final bool? forceLeft` | Whether to flush all messages to the left. |
 | `final widget? emojiWidget` | The emoji widget. If not set, the default one will be used. |
 | `final MessageItemBuilder? replyBarBuilder` | The custom `replyBar` component, used to temporarily display the message content above the input box when the message is quoted. If not set, the default `ChatUIKitReplyBar` will be used. |

@@ -24,7 +24,7 @@ If your network environment has a firewall deployed, contact [Agora technical su
 
 1. Initialize UIKit.
 
-   You can initialize UIKit when the app loads before EaseChatUIKit is used. During initialization, pass the app key you have obtained in Agora Console:
+   You can initialize UIKit when the app loads before UIKit is used. During initialization, pass the app key you have obtained in Agora Console:
 
     ```
     import chat_uikit

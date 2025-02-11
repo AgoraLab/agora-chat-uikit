@@ -20,7 +20,7 @@ class ChatUIKitProfile {
   final String id;
 
   /// Name: The user name for a contact, the group name for a group
-  final String? name;
+  final String? showName;
 
   /// Avatar address: The user avatar address for a contact, the group avatar address for the group
   final String? avatarUrl;
@@ -37,20 +37,22 @@ class ChatUIKitProfile {
   final String? remark;
 
   /// The name to be displayed. If empty, ID is displayed.
-  String get showName {
-    if (remark != null && remark!.isNotEmpty && type == ChatUIKitProfileType.contact) {
+  String get contactShowName {
+    if (remark != null &&
+        remark!.isNotEmpty &&
+        type == ChatUIKitProfileType.contact) {
       return remark!;
     }
 
-    if (name != null && name!.isNotEmpty) {
-      return name!;
+    if (showName != null && showName!.isNotEmpty) {
+      return showName!;
     }
     return id;
   }
 
   String get nickname {
-    if (name != null && name!.isNotEmpty) {
-      return name!;
+    if (showName != null && showName!.isNotEmpty) {
+      return showName!;
     }
     return id;
   }
@@ -58,7 +60,7 @@ class ChatUIKitProfile {
   ChatUIKitProfile({
     required this.id,
     required this.type,
-    this.name,
+    this.showName,
     this.avatarUrl,
     this.extension,
     this.remark,
@@ -67,14 +69,14 @@ class ChatUIKitProfile {
 
   ChatUIKitProfile.contact({
     required String id,
-    String? nickname,
+    String? groupName,
     String? avatarUrl,
     String? remark,
     Map<String, String>? extension,
     int timestamp = 0,
   }) : this(
           id: id,
-          name: nickname,
+          showName: nickname,
           avatarUrl: avatarUrl,
           type: ChatUIKitProfileType.contact,
           extension: extension,
@@ -90,7 +92,7 @@ class ChatUIKitProfile {
     int timestamp = 0,
   }) : this(
           id: id,
-          name: groupName,
+          showName: groupName,
           avatarUrl: avatarUrl,
           type: ChatUIKitProfileType.group,
           extension: extension,
@@ -99,7 +101,7 @@ class ChatUIKitProfile {
 
   /// Used to copy a new profile object. If the passed parameter is not empty, the passed parameter is used; otherwise the parameters of the current profile are used.
   ChatUIKitProfile copyWith({
-    String? name,
+    String? showName,
     String? avatarUrl,
     Map<String, String>? extension,
     String? remark,
@@ -107,7 +109,7 @@ class ChatUIKitProfile {
   }) {
     return ChatUIKitProfile(
       id: id,
-      name: name ?? this.name,
+      showName: showName ?? this.showName,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       type: type,
       extension: extension ?? this.extension,

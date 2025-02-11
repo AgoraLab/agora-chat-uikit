@@ -34,8 +34,6 @@ Take the following steps to download and run the sample project:
 
    2. Press `cmd+B` on the keyboard to compile. A compilation error will be reported.
 
-        ![Compilation error](../../assets/images/buildError.png)
-
    3. Fill in the `appKey` field with your app key and re-compile the project.
 
    4. Log in with the created user ID and token. 

@@ -25,7 +25,7 @@ See details in `example/src/demo/common/rest.api.ts`.
 
 Take the following steps to download and run the sample project:
 
-1. Download the sample code from [GitHub](https://github.com/easemob/react-native-chat-library).
+1. Download the sample code from [GitHub](https://github.com/AgoraIO/Agora-Chat-API-Examples).
 
 1. Initialize the project.
 
