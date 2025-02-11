@@ -13,12 +13,12 @@ With UIKit, you can easily implement user interaction in a chat room. This page 
 
 Take the following steps to implement message sending:
 
-1. Initialize `ChatroomUIKit`:
+1. Initialize `AgoraChatroomUIKit`:
 
     You can initialize `ChatroomUIKit` when your app loads or before use. During initialization, you need to pass in the app key.
 
     ```swift
-    import ChatroomUIKit
+    import AgoraChatroomUIKit
         
     @UIApplicationMain
     class AppDelegate：UIResponder，UIApplicationDelegate {
@@ -37,7 +37,7 @@ Take the following steps to implement message sending:
    ChatroomUIKitClient.shared.login(userId: "user id", token: "token", completion: <#T##(ChatError?) -> Void#>)
    ```
 
-1. Log in to `ChatroomUIKit`.
+1. Log in to `AgoraChatroomUIKit`.
 
    If you have integrated Chat SDK, the corresponding user IDs can be used to log into UIKit. 
   
