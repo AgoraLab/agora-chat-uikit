@@ -719,4 +719,4 @@ Displays group details, including group avatar, name, and ID. Supports group do-
 
 ## 6. Design Resources
 
-For design resources, please see the [Figma project](https://www.figma.com/community/file/1327193019424263350/chat-uikit-for-mobile).
+For design resources, please see the [Figma project](https://www.figma.com/@agora_chat).

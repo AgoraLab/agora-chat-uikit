@@ -38,4 +38,4 @@ If you need to change the theme color, you can modify the `hue` value of `ChatUI
     });
 ```
 
-See also [Design guide](../design-guide.md) and [design resources](https://www.figma.com/community/file/1322495388317476706/chatroom-uikit). 
+See also [Design guide](../design-guide.md) and [design resources](https://www.figma.com/@agora_chat). 
