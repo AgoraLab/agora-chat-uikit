@@ -28,7 +28,8 @@ public final class YourAppUser: NSObject, ChatUserProfileProtocol {
     public var avatarURL: String = "https://accktvpic.oss-cn-beijing.aliyuncs.com/pic/sample_avatar/sample_avatar_1.png"
 
 }
- ChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in
+ ChatUIKitClient.shared.login(user: YourAppUser(), token: ExampleRequiredConfig.chatToken) { error in 
+
  }
 ```
 
@@ -186,9 +187,9 @@ If you have integrated Chat SDK, all user IDs can be used to log in to UIKit.
 
    A custom class that inherits the contact list page class can call ViewModel's methods to listen to related events after registering it with `ContactViewController().viewModel.registerEventsListener`:
 
-   ```swift
-   let vc = ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
-   ```
+    ```swift
+    let vc = ComponentsRegister.shared.ContactsController.init(headerStyle: .contact)
+    ```
 
 1. Listen for contact list page events:
 
@@ -225,3 +226,4 @@ ChatUIKitClient.shared.unregisterUserStateListener(self)
 ## More
 
 For more advanced usage, refer to the [demo](https://github.com/AgoraIO-Usecase/AgoraChat-ios/tree/SwiftDemo).
+

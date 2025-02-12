@@ -23,7 +23,7 @@ You can add `ChatroomUIKit` as a dependency to your Xcode project using CocoaPod
     target 'YourTarget' do
       use_frameworks!
       
-      pod 'ChatroomUIKit'
+      pod 'AgoraChatroomUIKit'
     end
     
     post_install do |installer|

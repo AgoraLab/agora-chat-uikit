@@ -16,7 +16,7 @@ Before you start, make sure your development environment meets the following req
 
 Take the following steps to compile and run the sample project:
 
-1. Download [the sample code](https://github.com/easemob/UIKit_Chatroom_ios).
+1. Download [the sample code](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-Chatroom-iOS).
 
 1. Execute the pod command:
 
