@@ -17,10 +17,10 @@ You can use the `example` project for demonstration. The `example` folder contai
 
 Take the following steps to compile and run the sample project:
 
-1. [Download the sample code](https://codeload.github.com/easemob/UIKit_Chatroom_flutter/zip/refs/heads/main) or run the following command:
+1. [Download the sample code](https://github.com/AgoraIO-Usecase/AgoraChat-UIKit-Chatroom-flutter/archive/refs/heads/main.zip) or run the following command:
 
    ```
-   git clone git@github.com:easemob/UIKit_Chatroom_flutter.git
+   git clone git@github.com:AgoraIO-Usecase/AgoraChat-UIKit-Chatroom-flutter.git
    ```
 
 1. Initialize the project:
