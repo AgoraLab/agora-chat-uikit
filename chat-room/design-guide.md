@@ -660,4 +660,4 @@ Combine points 3.6.1.-3.6.3. to form an entire list item.
 
 ## 4. Design Resources
 
-For design resources, please see the [Figma project](https://www.figma.com/community/file/1327193019424263350/chat-uikit-for-mobile).
+For design resources, please see the [Figma project](https://www.figma.com/@agora_chat).

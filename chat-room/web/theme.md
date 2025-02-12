@@ -25,4 +25,4 @@ const ChatApp = () => {
 };
 ```
 
-See also [Design guide](../design-guide.md) and [design resources](https://www.figma.com/community/file/1322495388317476706/chatroom-uikit). 
+See also [Design guide](../design-guide.md) and [design resources](https://www.figma.com/@agora_chat). 
