@@ -77,7 +77,7 @@ Take the following steps to implement message sending:
     // App.js
     import React, { useState, useEffect, Component } from "react";
     import {
-      Provider,
+      UIKitProvider,
       Chatroom,
       useClient,
       rootStore,
@@ -122,7 +122,7 @@ Take the following steps to implement message sending:
           position: 'fixed',
           top: '0'
         }}>
-          <Provider
+          <UIKitProvider
             theme={{
               mode: "dark",
             }}
@@ -158,7 +158,7 @@ Take the following steps to implement message sending:
             <div style={{ flex: "1" }}>
               <ChatroomMember chatroomId={chatroomId}></ChatroomMember>
             </div>
-          </Provider>
+          </UIKitProvider>
         </div>
       );
     });

@@ -6,7 +6,7 @@ UIKit for chatroom has built-in light (default) and dark themes.
 
 ## Modify the theme
 
-You can change the theme by setting the `Provider` component's `theme` property:
+You can change the theme by setting the `UIKitProvider` component's `theme` property:
 
 ```javascript
 import { Chatroom, UIKitProvider } from 'agora-chat-uikit';
