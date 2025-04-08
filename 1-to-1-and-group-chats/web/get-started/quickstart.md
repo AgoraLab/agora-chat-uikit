@@ -6,8 +6,8 @@ With UIKit, you can easily implement messaging in one-to-one chats and group cha
 
 Before you start, make sure your development environment meets the following conditions:
 
-- React 16.8.0 or above;
-- React DOM 16.8.0 or above;
+- React 18;
+- React DOM 18;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Supported browsers
@@ -72,75 +72,72 @@ Take the following steps to implement the project:
       Import the `agora-chat-uikit` library:
     
        ```javascript
-          // App.js
-          import React, { Component, useEffect } from "react";
-          import {
-            Provider,
-            Chat,
-            ConversationList,
-            useClient,
-            rootStore,
-          } from "agora-chat-uikit";
-          import "agora-chat-uikit/style.css";
-    
-          const ChatApp = () => {
-            const client = useClient();
-            useEffect(() => {
-              client &&
-                client
-                  .open({
-                    user: "",
-                    token: "",
-                  })
-                  .then((res) => {
-                    // Create a conversation
-                    rootStore.conversationStore.addConversation({
-                      chatType: "singleChat", // One-to-onne chat and group chat are 'singleChat' and 'groupChat', respectively.
-                      conversationId: "userId", // Peer user ID for a one-to-one chat, group ID for a group chat.
-                      name: "User 1", // Peer user nickname for a one-to-one chat, group name for a group chat.
-                      lastMessage: {},
-                    });
+        // App.js
+        import React, { Component, useEffect } from "react";
+        import {
+          UIKitProvider,
+          Chat,
+          ConversationList,
+          useClient,
+          rootStore,
+        } from "agora-chat-uikit";
+        import "agora-chat-uikit/style.css";
+
+        // Attention: Before using UIKit, please set the userId, AccessToken and appKey first.
+        const userId = "userId";
+        const accessToken = "accessToken";
+        const appKey = "your appKey";
+
+        const ChatApp = () => {
+          const client = useClient();
+          useEffect(() => {
+            client &&
+              client
+                .open({
+                  user: userId,
+                  accessToken: accessToken,
+                })
+                .then((res) => {
+                  // Create a conversation
+                  rootStore.conversationStore.addConversation({
+                    chatType: "singleChat", // One-to-onne chat and group chat are 'singleChat' and 'groupChat', respectively.
+                    conversationId: "userId", // Peer user ID for a one-to-one chat, group ID for a group chat.
+                    name: "User 1", // Peer user nickname for a one-to-one chat, group name for a group chat.
+                    lastMessage: {},
                   });
-            }, [client]);
-    
-            return (
-              <div style={{
-                width: '100%',
-                position: 'fixed',
-                top: '0',
-                display: 'flex',
-                height: '100vh',
-                gap: '1px'
-              }}>
-                <div style={{
-                  width: '350px'
-                }}>
-                  <ConversationList />
-                </div>
-                <div style={{
-                  flex: '1'
-                }}>
-                  <Chat />
-                </div>
+                })
+                .catch((err) => {
+                  console.log("login failed", err);
+                });
+          }, [client]);
+
+          return (
+            <div style={{ display: "flex", height: "100vh" }}>
+              <div style={{ width: "350px", borderRight: "1px solid #ddd" }}>
+                <ConversationList />
               </div>
+              <div style={{ flex: "1" }}>
+                <Chat />
+              </div>
+            </div>
+          );
+        };
+        class App extends Component {
+          render() {
+            return (
+              <UIKitProvider
+                initConfig={{
+                  appKey: appKey,
+                }}
+              >
+                <ChatApp />
+              </UIKitProvider>
             );
-          };
-    
-          class App extends Component {
-            render() {
-              return (
-                <Provider
-                  initConfig={{
-                    appKey: "your app key",
-                  }}
-          >
-                  <ChatApp />
-                </Provider>
-              );
-            }
           }
-    
-          export default App;
+        }
+
+        export default App;
+
        ```
 
 3. Run the project and send your first message.
