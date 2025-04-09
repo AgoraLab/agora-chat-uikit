@@ -6,8 +6,8 @@ Before using UIKit, you need to integrate it into your app. This page explains h
 
 Before you start, make sure your development environment meets the following conditions:
 
-- React 16.8.0 or above;
-- React DOM 16.8.0 or above;
+- React 18;
+- React DOM 18;
 - A valid Agora project with users and tokens generated. See [Enable and configure Chat](https://docs.agora.io/en/agora-chat/get-started/enable) and [Secure authentication with tokens](https://docs.agora.io/en/agora-chat/develop/authentication) for details. 
 
 ## Integrate UIKIt
